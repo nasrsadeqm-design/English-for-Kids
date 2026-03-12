@@ -54,54 +54,54 @@ export default function App() {
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full max-w-lg aspect-[3/4.2] bg-indigo-600 rounded-[3rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col items-center justify-between p-10 sm:p-14 text-white border-[16px] border-indigo-700"
+        className="w-full max-w-lg min-h-[580px] sm:aspect-[3/4.2] bg-indigo-600 rounded-[2.5rem] sm:rounded-[3rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col items-center justify-between p-8 sm:p-14 text-white border-[10px] sm:border-[16px] border-indigo-700"
       >
         {/* Decorative Elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
         
-        <div className="relative z-10 text-center space-y-8 w-full">
+        <div className="relative z-10 text-center space-y-6 sm:space-y-8 w-full">
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 100 }}
-            className="w-28 h-28 bg-white/15 backdrop-blur-xl rounded-[2.5rem] mx-auto flex items-center justify-center shadow-inner"
+            className="w-20 h-20 sm:w-28 sm:h-28 bg-white/15 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] mx-auto flex items-center justify-center shadow-inner"
           >
-            <BookOpen size={56} className="text-white drop-shadow-lg" />
+            <BookOpen size={40} className="text-white sm:size-[56px] drop-shadow-lg" />
           </motion.div>
           
-          <div className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl font-black leading-[1.15] tracking-tight drop-shadow-md" dir="rtl">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-4xl sm:text-6xl font-black leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-md" dir="rtl">
               كلمات اللغة الانجليزية
-              <span className="block text-indigo-200 text-3xl sm:text-4xl mt-3 font-bold">للصف الاول الثانوي</span>
+              <span className="block text-indigo-200 text-2xl sm:text-4xl mt-2 sm:mt-3 font-bold">للصف الأول الثانوي</span>
             </h1>
             
-            <div className="h-1.5 w-24 bg-indigo-300 mx-auto rounded-full opacity-50" />
+            <div className="h-1 w-16 sm:h-1.5 sm:w-24 bg-indigo-300 mx-auto rounded-full opacity-50" />
             
-            <p className="text-2xl sm:text-3xl font-semibold text-indigo-100" dir="rtl">
+            <p className="text-xl sm:text-3xl font-semibold text-indigo-100" dir="rtl">
               إعداد / صادق الجباري
             </p>
           </div>
         </div>
 
-        <div className="w-full space-y-6 relative z-10">
+        <div className="w-full space-y-4 sm:space-y-6 relative z-10 mt-8 sm:mt-0">
           <motion.button
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => setView('home')}
-            className="w-full py-6 bg-white text-indigo-600 rounded-3xl font-black text-3xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.2)] hover:bg-indigo-50 transition-all flex items-center justify-center gap-4 group"
+            className="w-full py-4 sm:py-6 bg-white text-indigo-600 rounded-2xl sm:rounded-3xl font-black text-2xl sm:text-3xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.2)] hover:bg-indigo-50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
           >
             <span>دخول</span>
-            <ArrowRight size={32} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={24} className="sm:size-[32px] group-hover:translate-x-1 transition-transform" />
           </motion.button>
           
-          <p className="text-center text-indigo-200/80 font-medium text-sm tracking-widest uppercase">
+          <p className="text-center text-indigo-200/80 font-medium text-xs sm:text-sm tracking-widest uppercase">
             Interactive Learning Experience
           </p>
         </div>
 
         {/* Book Spine Detail */}
-        <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/30 to-transparent" />
+        <div className="absolute left-0 top-0 bottom-0 w-4 sm:w-6 bg-gradient-to-r from-black/30 to-transparent" />
       </motion.div>
     </div>
   );
