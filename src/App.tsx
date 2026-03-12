@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   BookOpen, 
@@ -9,27 +10,127 @@ import {
   Volume2,
   LayoutGrid,
   Trophy,
-  ArrowRight
+  ArrowRight,
+  ChevronRight
 } from 'lucide-react';
 import { words } from './data/words';
 import { Category, Word } from './types';
 import { speak, cn } from './utils';
 import { Flashcard } from './components/Flashcard';
-import { Quiz } from './components/Quiz';
+import { AdvancedQuiz as Quiz } from './components/AdvancedQuiz';
 import { MatchGame } from './components/MatchGame';
+import { DictionaryTool } from './components/DictionaryTool';
 
-type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results';
+interface FlashcardViewProps {
+  words: Word[];
+  onBack: () => void;
+}
+
+const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  if (words.length === 0) {
+    return (
+      <div className="text-center py-20 space-y-6">
+        <div className="text-6xl">🔍</div>
+        <h3 className="text-2xl font-black text-slate-800">لا توجد كلمات في هذا القسم بعد</h3>
+        <button onClick={onBack} className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black">
+          العودة للخلف
+        </button>
+      </div>
+    );
+  }
+
+  const currentWord = words[currentIndex];
+
+  return (
+    <div className="space-y-10 max-w-md mx-auto">
+      <div className="flex items-center justify-between px-2">
+        <button 
+          onClick={onBack} 
+          className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <span className="font-black text-slate-400 text-lg">{currentIndex + 1} / {words.length}</span>
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -50, opacity: 0 }}
+          className="perspective-1000"
+        >
+          <Flashcard word={currentWord} />
+        </motion.div>
+      </AnimatePresence>
+
+      <div className="flex gap-5">
+        <button 
+          disabled={currentIndex === 0}
+          onClick={() => setCurrentIndex(c => c - 1)}
+          className="flex-1 py-5 bg-white rounded-[2rem] font-black text-xl text-slate-600 shadow-sm border-2 border-transparent hover:border-indigo-100 disabled:opacity-30 transition-all"
+        >
+          السابق
+        </button>
+        <button 
+          disabled={currentIndex === words.length - 1}
+          onClick={() => setCurrentIndex(c => c + 1)}
+          className="flex-1 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all"
+        >
+          التالي <ArrowRight size={24} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category';
 
 export default function App() {
   const [view, setView] = useState<View>('landing');
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+  const [targetGame, setTargetGame] = useState<'flashcards' | 'match' | 'quiz' | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
+  const [allWords, setAllWords] = useState<Word[]>(words);
+
+  // Load user-added words from localStorage
+  useEffect(() => {
+    const savedWords = localStorage.getItem('user_added_words');
+    if (savedWords) {
+      try {
+        const parsed = JSON.parse(savedWords);
+        setAllWords(prev => [...prev, ...parsed]);
+      } catch (e) {
+        console.error("Error loading saved words:", e);
+      }
+    }
+  }, []);
+
+  const handleAddWord = useCallback((newWord: Word) => {
+    setAllWords(prev => {
+      // Check if word already exists (to avoid duplicates from Gemini)
+      if (prev.some(w => w.english.toLowerCase() === newWord.english.toLowerCase())) {
+        return prev;
+      }
+      
+      const updated = [...prev, newWord];
+      
+      // Save only user-added words to localStorage
+      const userWords = updated.filter(w => w.id.startsWith('user-'));
+      localStorage.setItem('user_added_words', JSON.stringify(userWords));
+      
+      return updated;
+    });
+  }, []);
 
   const categories: Category[] = ['Nouns', 'Verbs', 'Adjectives', 'Adverbs', 'Phrasal Verbs'];
 
   const filteredWords = useMemo(() => {
-    let result = words;
+    let result = allWords;
     if (selectedCategory) {
       result = result.filter(w => w.category === selectedCategory);
     }
@@ -40,12 +141,19 @@ export default function App() {
       );
     }
     return result;
-  }, [selectedCategory, searchQuery]);
+  }, [allWords, selectedCategory, searchQuery]);
 
   const handleBack = () => {
     if (view === 'home') setView('landing');
     else if (view === 'category') setView('home');
-    else if (['flashcards', 'match', 'quiz'].includes(view)) setView('category');
+    else if (view === 'select-category') setView('home');
+    else if (['flashcards', 'match', 'quiz'].includes(view)) {
+      if (targetGame) {
+        setView('select-category');
+      } else {
+        setView('category');
+      }
+    }
     else setView('home');
   };
 
@@ -137,10 +245,73 @@ export default function App() {
           </motion.div>
           
           <div className="space-y-1">
-            <h1 className="text-5xl font-black text-slate-900 tracking-tight">مرحباً بك يا فراس!</h1>
-            <p className="text-xl text-slate-500 font-bold">Welcome Firas! Choose your adventure</p>
+            <h1 className="text-3xl font-black text-slate-900 tracking-tight">مرحباً بك يا فراس!</h1>
+            <p className="text-lg text-slate-500 font-bold">Welcome Feras! challenge yourself</p>
+            <p className="text-sm text-indigo-500 font-bold mt-2" dir="rtl">حفظ ثلاث كلمات يومياً يجعلك قريباً من التحدث باللغة الإنجليزية</p>
           </div>
         </header>
+
+        <DictionaryTool localWords={allWords} onAddWord={handleAddWord} />
+
+        <div className="pt-4">
+          <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تصفح حسب الأقسام</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {categories.map((cat, index) => {
+              const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
+              return (
+                <motion.button
+                  key={cat}
+                  onClick={() => {
+                    setTargetGame(null);
+                    setSelectedCategory(cat);
+                    setView('category');
+                  }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={cn(
+                    "p-6 bg-white rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-sm",
+                    colors.border
+                  )}
+                >
+                  <div className={cn("p-4 rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
+                    <ChevronRight size={24} />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-2xl font-black text-slate-800">{colors.arabic}</p>
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{cat} • {allWords.filter(w => w.category === cat).length} words</p>
+                  </div>
+                </motion.button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderSelectCategory = () => {
+    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string }> = {
+      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50', arabic: 'الأسماء' },
+      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50', arabic: 'الأفعال' },
+      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50', arabic: 'الصفات' },
+      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50', arabic: 'الظروف' },
+      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50', arabic: 'الأفعال المركبة' },
+    };
+
+    const gameTitle = targetGame === 'flashcards' ? 'البطاقات التعليمية' : targetGame === 'quiz' ? 'اختبار' : 'لعبة التوصيل';
+
+    return (
+      <div className="space-y-10">
+        <div className="flex items-center gap-6">
+          <button onClick={handleBack} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
+            <ChevronLeft size={24} />
+          </button>
+          <div className="text-right">
+            <h2 className="text-3xl font-black text-slate-800">{gameTitle}</h2>
+            <p className="text-slate-400 font-bold">اختر قسماً للبدء</p>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {categories.map((cat, index) => {
@@ -148,36 +319,25 @@ export default function App() {
             return (
               <motion.button
                 key={cat}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  if (targetGame) setView(targetGame);
+                  else setView('category');
+                }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8, shadow: "0 25px 30px -10px rgb(0 0 0 / 0.15)" }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setView('category');
-                }}
                 className={cn(
-                  "p-8 bg-white rounded-[3rem] shadow-sm border-2 border-transparent transition-all text-right flex items-center justify-between group overflow-hidden relative",
+                  "p-6 bg-white rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-sm",
                   colors.border
                 )}
               >
-                {/* Decorative background circle */}
-                <div className={cn("absolute -right-4 -top-4 w-24 h-24 rounded-full opacity-5 transition-transform group-hover:scale-150", colors.bg)} />
-                
-                <div className={cn("p-5 rounded-3xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
-                  <BookOpen size={32} />
+                <div className={cn("p-4 rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
+                  <ChevronRight size={24} />
                 </div>
-                
-                <div className="text-right relative z-10">
-                  <h3 className="text-3xl font-black text-slate-800 tracking-tight">{colors.arabic}</h3>
-                  <p className="text-lg font-bold text-slate-400 -mt-1">{cat}</p>
-                  <div className="flex items-center justify-end gap-2 mt-2">
-                    <span className="text-base text-slate-400 font-bold">
-                      {words.filter(w => w.category === cat).length} words
-                    </span>
-                    <div className={cn("w-2 h-2 rounded-full", colors.bg)} />
-                  </div>
+                <div className="space-y-1">
+                  <p className="text-2xl font-black text-slate-800">{colors.arabic}</p>
+                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{cat}</p>
                 </div>
               </motion.button>
             );
@@ -201,7 +361,10 @@ export default function App() {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <button 
-          onClick={() => setView('flashcards')}
+          onClick={() => {
+            setTargetGame(null);
+            setView('flashcards');
+          }}
           className="p-8 bg-white border-2 border-amber-100 text-amber-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-amber-50 hover:border-amber-200 transition-all shadow-sm"
         >
           <div className="p-4 bg-amber-100 rounded-2xl">
@@ -210,7 +373,10 @@ export default function App() {
           <span className="text-lg">بطاقات تعليمية</span>
         </button>
         <button 
-          onClick={() => setView('match')}
+          onClick={() => {
+            setTargetGame(null);
+            setView('match');
+          }}
           className="p-8 bg-white border-2 border-emerald-100 text-emerald-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-emerald-50 hover:border-emerald-200 transition-all shadow-sm"
         >
           <div className="p-4 bg-emerald-100 rounded-2xl">
@@ -219,7 +385,10 @@ export default function App() {
           <span className="text-lg">لعبة التوصيل</span>
         </button>
         <button 
-          onClick={() => setView('quiz')}
+          onClick={() => {
+            setTargetGame(null);
+            setView('quiz');
+          }}
           className="p-8 bg-white border-2 border-indigo-100 text-indigo-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-indigo-50 hover:border-indigo-200 transition-all shadow-sm"
         >
           <div className="p-4 bg-indigo-100 rounded-2xl">
@@ -267,54 +436,6 @@ export default function App() {
     </div>
   );
 
-  const renderFlashcards = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const currentWord = filteredWords[currentIndex];
-
-    return (
-      <div className="space-y-10 max-w-md mx-auto">
-        <div className="flex items-center justify-between px-2">
-          <button 
-            onClick={handleBack} 
-            className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <span className="font-black text-slate-400 text-lg">{currentIndex + 1} / {filteredWords.length}</span>
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentIndex}
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -50, opacity: 0 }}
-            className="perspective-1000"
-          >
-            <Flashcard word={currentWord} />
-          </motion.div>
-        </AnimatePresence>
-
-        <div className="flex gap-5">
-          <button 
-            disabled={currentIndex === 0}
-            onClick={() => setCurrentIndex(c => c - 1)}
-            className="flex-1 py-5 bg-white rounded-[2rem] font-black text-xl text-slate-600 shadow-sm border-2 border-transparent hover:border-indigo-100 disabled:opacity-30 transition-all"
-          >
-            السابق
-          </button>
-          <button 
-            disabled={currentIndex === filteredWords.length - 1}
-            onClick={() => setCurrentIndex(c => c + 1)}
-            className="flex-1 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all"
-          >
-            التالي <ArrowRight size={24} />
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   if (view === 'landing') return renderLanding();
 
   return (
@@ -329,8 +450,11 @@ export default function App() {
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
             {view === 'home' && renderHome()}
+            {view === 'select-category' && renderSelectCategory()}
             {view === 'category' && renderCategory()}
-            {view === 'flashcards' && renderFlashcards()}
+            {view === 'flashcards' && (
+              <FlashcardView words={filteredWords} onBack={handleBack} />
+            )}
             {view === 'match' && (
               <div className="space-y-10">
                 <div className="flex items-center gap-6">
@@ -344,18 +468,9 @@ export default function App() {
             )}
             {view === 'quiz' && (
               <div className="space-y-10">
-                <div className="flex items-center gap-6">
-                  <button onClick={handleBack} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
-                    <ChevronLeft size={24} />
-                  </button>
-                  <h2 className="text-3xl font-black text-slate-800">وقت الاختبار!</h2>
-                </div>
                 <Quiz 
                   words={filteredWords} 
-                  onComplete={(s, t) => {
-                    setQuizScore({ score: s, total: t });
-                  }}
-                  onRestart={() => setView('quiz')}
+                  onBack={handleBack}
                 />
               </div>
             )}
@@ -374,20 +489,20 @@ export default function App() {
         </button>
         <button 
           onClick={() => {
-            if (selectedCategory) setView('category');
-            else setView('home');
+            setTargetGame('flashcards');
+            setView('select-category');
           }}
-          className={cn("flex flex-col items-center gap-1.5 transition-all", ['category', 'flashcards', 'match'].includes(view) ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}
+          className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'flashcards' || (view === 'select-category' && targetGame === 'flashcards') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}
         >
-          <Gamepad2 size={28} />
-          <span className="text-[10px] font-black uppercase tracking-widest">الألعاب</span>
+          <BookOpen size={28} />
+          <span className="text-[10px] font-black uppercase tracking-widest">البطاقات</span>
         </button>
         <button 
           onClick={() => {
-            if (selectedCategory) setView('quiz');
-            else setView('home');
+            setTargetGame('quiz');
+            setView('select-category');
           }}
-          className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'quiz' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}
+          className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'quiz' || (view === 'select-category' && targetGame === 'quiz') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}
         >
           <Trophy size={28} />
           <span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
