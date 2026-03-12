@@ -43,7 +43,14 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
       return;
     }
 
-    // 2. Use Gemini for bidirectional translation and categorization
+    // 2. Check if online before using Gemini
+    if (!navigator.onLine) {
+      setError("عذراً، المترجم الذكي يحتاج للاتصال بالإنترنت. الكلمات الموجودة مسبقاً في التطبيق ستعمل بدون إنترنت.");
+      setIsLoading(false);
+      return;
+    }
+
+    // 3. Use Gemini for bidirectional translation and categorization
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
       const prompt = source === 'en' 
