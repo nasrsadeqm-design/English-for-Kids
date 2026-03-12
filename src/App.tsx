@@ -106,52 +106,82 @@ export default function App() {
     </div>
   );
 
-  const renderHome = () => (
-    <div className="space-y-10">
-      <header className="flex flex-col items-center text-center space-y-4 relative">
-        <button 
-          onClick={handleBack}
-          className="absolute left-0 top-0 p-3 bg-white rounded-2xl shadow-sm text-slate-400 hover:text-indigo-600 transition-colors"
-        >
-          <ChevronLeft size={24} />
-        </button>
-        
-        <div className="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center shadow-lg shadow-indigo-200">
-          <GraduationCap size={40} className="text-white" />
-        </div>
-        
-        <div className="space-y-1">
-          <h1 className="text-4xl font-black text-slate-900 tracking-tight">مرحباً بك!</h1>
-          <p className="text-lg text-slate-500 font-semibold">اختر تصنيفاً للبدء في التعلم</p>
-        </div>
-      </header>
+  const renderHome = () => {
+    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string }> = {
+      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50' },
+      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50' },
+      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50' },
+      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50' },
+      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50' },
+    };
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {categories.map((cat) => (
-          <motion.button
-            key={cat}
-            whileHover={{ y: -5, shadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)" }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setView('category');
-            }}
-            className="p-8 bg-white rounded-[2.5rem] shadow-sm border-2 border-transparent hover:border-indigo-100 transition-all text-right flex items-center justify-between group"
+    return (
+      <div className="space-y-10">
+        <header className="flex flex-col items-center text-center space-y-4 relative">
+          <button 
+            onClick={handleBack}
+            className="absolute left-0 top-0 p-3 bg-white rounded-2xl shadow-sm text-slate-400 hover:text-indigo-600 transition-colors"
           >
-            <div className="p-4 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-              <BookOpen size={28} />
-            </div>
-            <div className="text-right">
-              <h3 className="text-2xl font-black text-slate-800">{cat}</h3>
-              <p className="text-base text-slate-400 font-bold mt-1">
-                {words.filter(w => w.category === cat).length} كلمة تعليمية
-              </p>
-            </div>
-          </motion.button>
-        ))}
+            <ChevronLeft size={24} />
+          </button>
+          
+          <motion.div 
+            initial={{ scale: 0.5, rotate: -10 }}
+            animate={{ scale: 1, rotate: 0 }}
+            className="w-24 h-24 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-[2rem] flex items-center justify-center shadow-xl shadow-indigo-200"
+          >
+            <GraduationCap size={48} className="text-white" />
+          </motion.div>
+          
+          <div className="space-y-1">
+            <h1 className="text-5xl font-black text-slate-900 tracking-tight">مرحباً بك يا فراس!</h1>
+            <p className="text-xl text-slate-500 font-bold">اختر مغامرتك التعليمية اليوم</p>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {categories.map((cat, index) => {
+            const colors = categoryColors[cat] || categoryColors['Nouns'];
+            return (
+              <motion.button
+                key={cat}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -8, shadow: "0 25px 30px -10px rgb(0 0 0 / 0.15)" }}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setView('category');
+                }}
+                className={cn(
+                  "p-8 bg-white rounded-[3rem] shadow-sm border-2 border-transparent transition-all text-right flex items-center justify-between group overflow-hidden relative",
+                  colors.border
+                )}
+              >
+                {/* Decorative background circle */}
+                <div className={cn("absolute -right-4 -top-4 w-24 h-24 rounded-full opacity-5 transition-transform group-hover:scale-150", colors.bg)} />
+                
+                <div className={cn("p-5 rounded-3xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
+                  <BookOpen size={32} />
+                </div>
+                
+                <div className="text-right relative z-10">
+                  <h3 className="text-3xl font-black text-slate-800 tracking-tight">{cat}</h3>
+                  <div className="flex items-center justify-end gap-2 mt-2">
+                    <span className="text-base text-slate-400 font-bold">
+                      {words.filter(w => w.category === cat).length} كلمة
+                    </span>
+                    <div className={cn("w-2 h-2 rounded-full", colors.bg)} />
+                  </div>
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderCategory = () => (
     <div className="space-y-8">
