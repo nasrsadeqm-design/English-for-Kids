@@ -189,13 +189,13 @@ export default function App() {
             
             <div className="h-1 w-16 sm:h-1.5 sm:w-24 bg-indigo-300 mx-auto rounded-full opacity-50" />
             
-            <p className="text-xl sm:text-3xl font-semibold text-indigo-100" dir="rtl">
-              إعداد / صادق الجباري
+            <p className="text-lg sm:text-xl font-black text-indigo-100 whitespace-nowrap" dir="rtl">
+              إعداد الأستاذ / صادق الجباري
             </p>
           </div>
         </div>
 
-        <div className="w-full space-y-4 sm:space-y-6 relative z-10 mt-8 sm:mt-0">
+        <div className="w-full space-y-4 sm:space-y-6 relative z-10 mt-12 sm:mt-8">
           <motion.button
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
