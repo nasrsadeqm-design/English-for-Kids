@@ -71,10 +71,13 @@ export default function App() {
           </motion.div>
           
           <div className="space-y-3 sm:space-y-4">
-            <h1 className="text-4xl sm:text-6xl font-black leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-md" dir="rtl">
-              كلمات اللغة الانجليزية
-              <span className="block text-indigo-200 text-2xl sm:text-4xl mt-2 sm:mt-3 font-bold">للصف الأول الثانوي</span>
-            </h1>
+            <div className="space-y-1">
+              <h2 className="text-xl sm:text-2xl font-bold text-indigo-200 uppercase tracking-[0.3em]">English Vocabulary</h2>
+              <h1 className="text-4xl sm:text-6xl font-black leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-md" dir="rtl">
+                كلمات اللغة الانجليزية
+                <span className="block text-indigo-200 text-2xl sm:text-4xl mt-2 sm:mt-3 font-bold">للصف الأول الثانوي</span>
+              </h1>
+            </div>
             
             <div className="h-1 w-16 sm:h-1.5 sm:w-24 bg-indigo-300 mx-auto rounded-full opacity-50" />
             
@@ -91,7 +94,7 @@ export default function App() {
             onClick={() => setView('home')}
             className="w-full py-4 sm:py-6 bg-white text-indigo-600 rounded-2xl sm:rounded-3xl font-black text-2xl sm:text-3xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.2)] hover:bg-indigo-50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
           >
-            <span>دخول</span>
+            <span>دخول • Enter</span>
             <ArrowRight size={24} className="sm:size-[32px] group-hover:translate-x-1 transition-transform" />
           </motion.button>
           
@@ -107,12 +110,12 @@ export default function App() {
   );
 
   const renderHome = () => {
-    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string }> = {
-      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50' },
-      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50' },
-      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50' },
-      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50' },
-      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50' },
+    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string }> = {
+      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50', arabic: 'الأسماء' },
+      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50', arabic: 'الأفعال' },
+      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50', arabic: 'الصفات' },
+      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50', arabic: 'الظروف' },
+      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50', arabic: 'الأفعال المركبة' },
     };
 
     return (
@@ -135,13 +138,13 @@ export default function App() {
           
           <div className="space-y-1">
             <h1 className="text-5xl font-black text-slate-900 tracking-tight">مرحباً بك يا فراس!</h1>
-            <p className="text-xl text-slate-500 font-bold">اختر مغامرتك التعليمية اليوم</p>
+            <p className="text-xl text-slate-500 font-bold">Welcome Firas! Choose your adventure</p>
           </div>
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {categories.map((cat, index) => {
-            const colors = categoryColors[cat] || categoryColors['Nouns'];
+            const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
             return (
               <motion.button
                 key={cat}
@@ -167,10 +170,11 @@ export default function App() {
                 </div>
                 
                 <div className="text-right relative z-10">
-                  <h3 className="text-3xl font-black text-slate-800 tracking-tight">{cat}</h3>
+                  <h3 className="text-3xl font-black text-slate-800 tracking-tight">{colors.arabic}</h3>
+                  <p className="text-lg font-bold text-slate-400 -mt-1">{cat}</p>
                   <div className="flex items-center justify-end gap-2 mt-2">
                     <span className="text-base text-slate-400 font-bold">
-                      {words.filter(w => w.category === cat).length} كلمة
+                      {words.filter(w => w.category === cat).length} words
                     </span>
                     <div className={cn("w-2 h-2 rounded-full", colors.bg)} />
                   </div>
