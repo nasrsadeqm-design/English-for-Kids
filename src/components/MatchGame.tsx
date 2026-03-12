@@ -77,7 +77,7 @@ export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 w-full max-w-lg mx-auto">
+    <div className="grid grid-cols-2 gap-5 w-full max-w-xl mx-auto p-4">
       {items.map((item) => {
         const isMatched = matchedIds.has(item.id);
         const isSelected = selected?.id === item.id;
@@ -87,14 +87,16 @@ export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
           <motion.button
             key={item.id}
             layout
+            whileHover={!isMatched ? { scale: 1.02 } : {}}
+            whileTap={!isMatched ? { scale: 0.98 } : {}}
             onClick={() => handleSelect(item)}
             disabled={isMatched}
             className={cn(
-              "p-4 h-24 rounded-2xl font-bold text-lg transition-all border-4 flex items-center justify-center text-center",
-              isMatched ? "bg-green-100 border-green-500 text-green-700 opacity-50" : 
-              isSelected ? "bg-indigo-100 border-indigo-500 text-indigo-700 scale-105" :
-              isWrong ? "bg-red-100 border-red-500 text-red-700 animate-shake" :
-              "bg-white border-gray-100 text-gray-700 hover:border-indigo-200 shadow-sm"
+              "p-6 h-32 rounded-[2rem] font-black text-2xl transition-all border-4 flex items-center justify-center text-center shadow-sm",
+              isMatched ? "bg-emerald-50 border-emerald-400 text-emerald-600 opacity-40 grayscale" : 
+              isSelected ? "bg-indigo-50 border-indigo-500 text-indigo-700 shadow-lg shadow-indigo-100" :
+              isWrong ? "bg-rose-50 border-rose-500 text-rose-700 animate-shake" :
+              "bg-white border-slate-50 text-slate-700 hover:border-indigo-100 hover:shadow-md"
             )}
             dir={item.type === 'arabic' ? 'rtl' : 'ltr'}
           >

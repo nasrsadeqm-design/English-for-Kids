@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, Volume2, ArrowRight, RotateCcw } from 'lucide-react';
+import { CheckCircle2, XCircle, Volume2, ArrowRight, RotateCcw, Trophy } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Word, QuizQuestion } from '../types';
 import { speak, cn } from '../utils';
@@ -82,20 +82,23 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
 
     return (
       <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-white rounded-3xl p-8 shadow-2xl text-center"
+        className="bg-white rounded-[3rem] p-12 shadow-2xl text-center border-8 border-indigo-50"
       >
-        <h2 className="text-3xl font-bold mb-4">Quiz Finished!</h2>
-        <div className={cn("text-5xl font-black mb-2", color)}>{score} / {questions.length}</div>
-        <p className="text-xl font-medium mb-8">{rating}</p>
+        <div className="w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Trophy size={48} className="text-indigo-600" />
+        </div>
+        <h2 className="text-4xl font-black mb-4 text-slate-800">انتهى الاختبار!</h2>
+        <div className={cn("text-7xl font-black mb-4", color)}>{score} / {questions.length}</div>
+        <p className="text-2xl font-bold mb-10 text-slate-500">{rating}</p>
         
         <div className="flex gap-4 justify-center">
           <button 
             onClick={onRestart}
-            className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-colors"
+            className="flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200"
           >
-            <RotateCcw size={20} /> Try Again
+            <RotateCcw size={24} /> المحاولة مرة أخرى
           </button>
         </div>
       </motion.div>
@@ -105,12 +108,12 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="w-full max-w-md mx-auto">
-      <div className="mb-6 flex justify-between items-center px-2">
-        <span className="text-sm font-bold text-gray-400 uppercase tracking-widest">Question {currentIndex + 1} of {questions.length}</span>
-        <div className="h-2 w-32 bg-gray-100 rounded-full overflow-hidden">
+    <div className="w-full max-w-lg mx-auto">
+      <div className="mb-8 flex justify-between items-center px-4">
+        <span className="text-sm font-black text-slate-400 uppercase tracking-[0.2em]">السؤال {currentIndex + 1} من {questions.length}</span>
+        <div className="h-3 w-40 bg-slate-100 rounded-full overflow-hidden shadow-inner">
           <div 
-            className="h-full bg-indigo-500 transition-all duration-300" 
+            className="h-full bg-indigo-500 transition-all duration-500 ease-out" 
             style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
           />
         </div>
@@ -120,29 +123,29 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
         key={currentIndex}
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="bg-white rounded-3xl p-8 shadow-xl border-4 border-indigo-50"
+        className="bg-white rounded-[3rem] p-10 shadow-xl border-8 border-indigo-50"
       >
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-8">
           <button 
             onClick={() => speak(currentQuestion.word.english)}
-            className="p-4 bg-indigo-50 rounded-full text-indigo-600 hover:scale-110 transition-transform"
+            className="p-6 bg-indigo-50 rounded-[2rem] text-indigo-600 hover:scale-110 transition-all shadow-inner"
           >
-            <Volume2 size={32} />
+            <Volume2 size={40} />
           </button>
         </div>
         
-        <h3 className="text-4xl font-bold text-center text-gray-800 mb-8">{currentQuestion.word.english}</h3>
+        <h3 className="text-5xl font-black text-center text-slate-800 mb-10 tracking-tight">{currentQuestion.word.english}</h3>
 
-        <div className="grid gap-3">
+        <div className="grid gap-4">
           {currentQuestion.options.map((option, idx) => {
             const isSelected = selectedAnswer === option;
             const isCorrectOption = option === currentQuestion.correctAnswer;
             
-            let btnClass = "bg-gray-50 text-gray-700 border-2 border-transparent";
+            let btnClass = "bg-slate-50 text-slate-700 border-4 border-transparent";
             if (selectedAnswer) {
-              if (isCorrectOption) btnClass = "bg-green-100 text-green-700 border-green-500";
-              else if (isSelected) btnClass = "bg-red-100 text-red-700 border-red-500";
-              else btnClass = "bg-gray-50 text-gray-300 opacity-50";
+              if (isCorrectOption) btnClass = "bg-emerald-50 text-emerald-700 border-emerald-400";
+              else if (isSelected) btnClass = "bg-rose-50 text-rose-700 border-rose-400";
+              else btnClass = "bg-slate-50 text-slate-300 opacity-50";
             }
 
             return (
@@ -151,15 +154,15 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
                 onClick={() => handleAnswer(option)}
                 disabled={!!selectedAnswer}
                 className={cn(
-                  "w-full p-4 rounded-2xl text-xl font-bold transition-all flex justify-between items-center",
+                  "w-full p-6 rounded-[2rem] text-2xl font-black transition-all flex justify-between items-center",
                   btnClass,
-                  !selectedAnswer && "hover:bg-indigo-50 hover:border-indigo-200"
+                  !selectedAnswer && "hover:bg-indigo-50 hover:border-indigo-100 hover:scale-[1.02]"
                 )}
                 dir="rtl"
               >
-                {option}
-                {selectedAnswer && isCorrectOption && <CheckCircle2 size={20} className="text-green-500" />}
-                {selectedAnswer && isSelected && !isCorrectOption && <XCircle size={20} className="text-red-500" />}
+                <span>{option}</span>
+                {selectedAnswer && isCorrectOption && <CheckCircle2 size={28} className="text-emerald-500" />}
+                {selectedAnswer && isSelected && !isCorrectOption && <XCircle size={28} className="text-rose-500" />}
               </button>
             );
           })}
@@ -168,12 +171,12 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
         <AnimatePresence>
           {selectedAnswer && (
             <motion.button
-              initial={{ y: 10, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               onClick={nextQuestion}
-              className="w-full mt-8 p-4 bg-indigo-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-indigo-700"
+              className="w-full mt-10 p-6 bg-indigo-600 text-white rounded-[2rem] font-black text-2xl flex items-center justify-center gap-3 hover:bg-indigo-700 shadow-lg shadow-indigo-100"
             >
-              {currentIndex === questions.length - 1 ? "Finish Quiz" : "Next Question"} <ArrowRight size={20} />
+              {currentIndex === questions.length - 1 ? "إنهاء الاختبار" : "السؤال التالي"} <ArrowRight size={28} />
             </motion.button>
           )}
         </AnimatePresence>
