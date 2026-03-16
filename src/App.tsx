@@ -104,8 +104,20 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
 type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin';
 
 export default function App() {
-  const [view, setView] = useState<View>('landing');
+  const [view, setView] = useState<View>('home'); // Default to home, but logic below will override
+  const [isActivated, setIsActivated] = useState<boolean | null>(null);
+  const [studentId, setStudentId] = useState<string | null>(null);
+  const [activationCode, setActivationCode] = useState('');
+  const [activationError, setActivationError] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [adminSearch, setAdminSearch] = useState('');
   
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+  const [targetGame, setTargetGame] = useState<'flashcards' | 'match' | 'quiz' | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
+  const [allWords, setAllWords] = useState<Word[]>(words);
+
   // Generate 2000 students if the JSON is just a sample
   const studentsData = useMemo(() => {
     if (studentsDataRaw.length >= 2000) return studentsDataRaw;
@@ -123,18 +135,6 @@ export default function App() {
     }
     return fullList;
   }, []);
-  const [isActivated, setIsActivated] = useState<boolean | null>(null);
-  const [studentId, setStudentId] = useState<string | null>(null);
-  const [activationCode, setActivationCode] = useState('');
-  const [activationError, setActivationError] = useState('');
-  const [isVerifying, setIsVerifying] = useState(false);
-  const [adminSearch, setAdminSearch] = useState('');
-  
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
-  const [targetGame, setTargetGame] = useState<'flashcards' | 'match' | 'quiz' | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
-  const [allWords, setAllWords] = useState<Word[]>(words);
 
   // Activation Check
   useEffect(() => {
@@ -148,11 +148,9 @@ export default function App() {
 
       if (storedLicense) {
         setIsActivated(true);
-        // If already activated, we can go to landing
         setView('landing');
       } else {
         setIsActivated(false);
-        // Force activation view if not activated, regardless of URL
         setView('activation');
       }
     };
