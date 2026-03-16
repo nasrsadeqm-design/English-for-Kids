@@ -706,7 +706,15 @@ export default function App() {
     </div>
   );
 
-  if (isActivated === false && view === 'activation') return renderActivation();
+  if (isActivated === null) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-indigo-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
+
+  if (isActivated === false) return renderActivation();
   if (view === 'admin') return renderAdmin();
   if (view === 'landing') return renderLanding();
 
