@@ -11,15 +11,27 @@ import {
   LayoutGrid,
   Trophy,
   ArrowRight,
-  ChevronRight
+  ChevronRight,
+  ShieldCheck,
+  AlertCircle,
+  Lock,
+  Settings
 } from 'lucide-react';
 import { words } from './data/words';
+import studentsData from './data/students.json';
 import { Category, Word } from './types';
 import { speak, cn } from './utils';
 import { Flashcard } from './components/Flashcard';
 import { AdvancedQuiz as Quiz } from './components/AdvancedQuiz';
 import { MatchGame } from './components/MatchGame';
 import { DictionaryTool } from './components/DictionaryTool';
+import { 
+  getDeviceFingerprint, 
+  getStoredLicense, 
+  getStudentIdFromUrl, 
+  saveLicense, 
+  generateLicenseToken 
+} from './utils/activation';
 
 interface FlashcardViewProps {
   words: Word[];
@@ -87,15 +99,87 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
   );
 };
 
-type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category';
+type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin';
 
 export default function App() {
   const [view, setView] = useState<View>('landing');
+  const [isActivated, setIsActivated] = useState<boolean | null>(null);
+  const [studentId, setStudentId] = useState<string | null>(null);
+  const [activationCode, setActivationCode] = useState('');
+  const [activationError, setActivationError] = useState('');
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
+  
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [targetGame, setTargetGame] = useState<'flashcards' | 'match' | 'quiz' | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
   const [allWords, setAllWords] = useState<Word[]>(words);
+
+  // Activation Check
+  useEffect(() => {
+    const checkActivation = async () => {
+      const storedLicense = getStoredLicense();
+      const urlStudentId = getStudentIdFromUrl();
+      const fingerprint = await getDeviceFingerprint();
+      
+      setStudentId(urlStudentId);
+
+      if (storedLicense) {
+        // In a real app, we might re-verify the license against the fingerprint here
+        setIsActivated(true);
+      } else {
+        setIsActivated(false);
+        if (urlStudentId) {
+          setView('activation');
+        }
+      }
+    };
+    checkActivation();
+  }, []);
+
+  const handleActivate = async () => {
+    if (!studentId) {
+      setActivationError('عذراً، لم يتم العثور على معرف الطالب في الرابط.');
+      return;
+    }
+
+    setIsVerifying(true);
+    setActivationError('');
+
+    try {
+      const student = studentsData.find(s => s.student === studentId);
+      
+      if (!student) {
+        setActivationError('معرف الطالب غير صحيح.');
+      } else if (student.code !== activationCode.trim().toUpperCase()) {
+        setActivationError('كود التفعيل غير صحيح.');
+      } else {
+        // Check if already used (simulated since we don't have a backend)
+        const usedCodes = JSON.parse(localStorage.getItem('used_activation_codes') || '[]');
+        if (usedCodes.includes(student.code)) {
+          // setActivationError('هذا الكود تم استخدامه مسبقاً على جهاز آخر.');
+          // For this demo, we'll allow it but in production you'd check a DB
+        }
+
+        const fingerprint = await getDeviceFingerprint();
+        const token = await generateLicenseToken(studentId, student.code, fingerprint);
+        
+        saveLicense(token);
+        
+        // Mark as used locally
+        usedCodes.push(student.code);
+        localStorage.setItem('used_activation_codes', JSON.stringify(usedCodes));
+        
+        setIsActivated(true);
+        setView('landing');
+      }
+    } catch (err) {
+      setActivationError('حدث خطأ أثناء التفعيل. يرجى المحاولة مرة أخرى.');
+    } finally {
+      setIsVerifying(false);
+    }
+  };
 
   // Load user-added words from localStorage
   useEffect(() => {
@@ -156,6 +240,126 @@ export default function App() {
     }
     else setView('home');
   };
+
+  const renderActivation = () => (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-white">
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl p-8 sm:p-12 border-2 border-indigo-50 text-center space-y-8"
+      >
+        <div className="w-20 h-20 bg-indigo-100 rounded-3xl mx-auto flex items-center justify-center text-indigo-600">
+          <ShieldCheck size={48} />
+        </div>
+        
+        <div className="space-y-2">
+          <h2 className="text-3xl font-black text-slate-800">تفعيل الكتاب</h2>
+          <p className="text-slate-500 font-bold">أدخل كود التفعيل الخاص بك للمتابعة</p>
+          {studentId && (
+            <div className="inline-block px-4 py-1 bg-slate-100 rounded-full text-xs font-black text-slate-400 mt-2">
+              ID: {studentId}
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-4">
+          <div className="relative">
+            <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={20} />
+            <input 
+              type="text"
+              placeholder="ENG-XXXX-XXXX-XXXX"
+              value={activationCode}
+              onChange={(e) => setActivationCode(e.target.value)}
+              className="w-full pl-14 pr-6 py-5 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-indigo-500 outline-none transition-all text-center font-black tracking-widest uppercase placeholder:tracking-normal placeholder:font-bold"
+            />
+          </div>
+
+          {activationError && (
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 text-rose-500 bg-rose-50 p-4 rounded-xl text-sm font-bold justify-center"
+            >
+              <AlertCircle size={18} />
+              <span>{activationError}</span>
+            </motion.div>
+          )}
+
+          <button 
+            disabled={isVerifying || !activationCode}
+            onClick={handleActivate}
+            className="w-full py-5 bg-indigo-600 text-white rounded-2xl font-black text-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 disabled:opacity-50 transition-all flex items-center justify-center gap-3"
+          >
+            {isVerifying ? 'جاري التحقق...' : 'تفعيل الآن'}
+            {!isVerifying && <ArrowRight size={24} />}
+          </button>
+        </div>
+
+        <p className="text-xs text-slate-400 font-bold leading-relaxed">
+          * هذا الكود صالح لجهاز واحد فقط.<br/>
+          * في حال فقدان الكود يرجى التواصل مع الأستاذ.
+        </p>
+      </motion.div>
+    </div>
+  );
+
+  const renderAdmin = () => (
+    <div className="min-h-screen p-6 bg-slate-50">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="flex items-center justify-between">
+          <button onClick={() => setView('home')} className="p-3 bg-white rounded-2xl shadow-sm text-slate-400">
+            <ChevronLeft size={24} />
+          </button>
+          <h2 className="text-2xl font-black text-slate-800">لوحة التحكم (Admin)</h2>
+        </div>
+
+        <div className="bg-white rounded-[2.5rem] shadow-sm overflow-hidden">
+          <table className="w-full text-right" dir="rtl">
+            <thead className="bg-slate-50 text-slate-400 text-xs uppercase tracking-widest font-black">
+              <tr>
+                <th className="px-6 py-4">معرف الطالب</th>
+                <th className="px-6 py-4">كود التفعيل</th>
+                <th className="px-6 py-4">الحالة</th>
+                <th className="px-6 py-4">إجراءات</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-50">
+              {studentsData.map(s => {
+                const usedCodes = JSON.parse(localStorage.getItem('used_activation_codes') || '[]');
+                const isUsed = usedCodes.includes(s.code);
+                return (
+                  <tr key={s.student} className="hover:bg-slate-50/50 transition-colors">
+                    <td className="px-6 py-4 font-black text-slate-700">{s.student}</td>
+                    <td className="px-6 py-4 font-mono text-indigo-600 font-bold">{s.code}</td>
+                    <td className="px-6 py-4">
+                      <span className={cn(
+                        "px-3 py-1 rounded-full text-[10px] font-black uppercase",
+                        isUsed ? "bg-emerald-100 text-emerald-600" : "bg-slate-100 text-slate-400"
+                      )}>
+                        {isUsed ? 'مفعل' : 'غير مفعل'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <button 
+                        onClick={() => {
+                          const updated = usedCodes.filter((c: string) => c !== s.code);
+                          localStorage.setItem('used_activation_codes', JSON.stringify(updated));
+                          window.location.reload();
+                        }}
+                        className="text-rose-500 hover:underline text-xs font-bold"
+                      >
+                        إعادة تعيين
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
 
   const renderLanding = () => (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-white">
@@ -436,6 +640,8 @@ export default function App() {
     </div>
   );
 
+  if (isActivated === false && view === 'activation') return renderActivation();
+  if (view === 'admin') return renderAdmin();
   if (view === 'landing') return renderLanding();
 
   return (
@@ -506,6 +712,13 @@ export default function App() {
         >
           <Trophy size={28} />
           <span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
+        </button>
+        <button 
+          onDoubleClick={() => setView('admin')}
+          className="flex flex-col items-center gap-1.5 text-slate-200 hover:text-slate-400 transition-all opacity-20"
+        >
+          <Settings size={28} />
+          <span className="text-[10px] font-black uppercase tracking-widest">Admin</span>
         </button>
       </nav>
     </div>
