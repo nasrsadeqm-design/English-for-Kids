@@ -34,6 +34,8 @@ import {
   saveLicense, 
   generateLicenseToken 
 } from './utils/activation';
+import { db } from './firebase';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 interface FlashcardViewProps {
   words: Word[];
@@ -173,23 +175,48 @@ export default function App() {
       
       if (!student) {
         setActivationError('معرف الطالب غير صحيح.');
-      } else if (student.code !== activationCode.trim().toUpperCase()) {
+        setIsVerifying(false);
+        return;
+      } 
+      
+      if (student.code !== activationCode.trim().toUpperCase()) {
         setActivationError('كود التفعيل غير صحيح.');
-      } else {
-        const usedCodes = JSON.parse(localStorage.getItem('used_activation_codes') || '[]');
-        const fingerprint = await getDeviceFingerprint();
-        const token = await generateLicenseToken(finalStudentId, student.code, fingerprint);
-        
-        saveLicense(token);
-        
-        usedCodes.push(student.code);
-        localStorage.setItem('used_activation_codes', JSON.stringify(usedCodes));
-        
-        setIsActivated(true);
-        setView('landing');
+        setIsVerifying(false);
+        return;
       }
+
+      // --- Firebase Integration ---
+      const fingerprint = await getDeviceFingerprint();
+      const activationRef = doc(db, 'activations', finalStudentId);
+      const activationSnap = await getDoc(activationRef);
+
+      if (activationSnap.exists()) {
+        const data = activationSnap.data();
+        if (data.deviceFingerprint !== fingerprint) {
+          setActivationError('عذراً، هذا الكود مفعل مسبقاً على جهاز آخر. لا يمكن استخدامه إلا على جهاز واحد.');
+          setIsVerifying(false);
+          return;
+        }
+        // If it exists and fingerprint matches, we just proceed to save local license
+      } else {
+        // New activation - save to Firestore
+        await setDoc(activationRef, {
+          studentId: finalStudentId,
+          activationCode: student.code,
+          deviceFingerprint: fingerprint,
+          activatedAt: serverTimestamp()
+        });
+      }
+      // --- End Firebase Integration ---
+
+      const token = await generateLicenseToken(finalStudentId, student.code, fingerprint);
+      saveLicense(token);
+      
+      setIsActivated(true);
+      setView('landing');
     } catch (err) {
-      setActivationError('حدث خطأ أثناء التفعيل. يرجى المحاولة مرة أخرى.');
+      console.error('Activation Error:', err);
+      setActivationError('حدث خطأ أثناء التفعيل السحابي. يرجى التأكد من اتصالك بالإنترنت.');
     } finally {
       setIsVerifying(false);
     }

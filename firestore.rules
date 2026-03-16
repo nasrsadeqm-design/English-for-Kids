@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    // Collection: activations
+    // Document ID: studentId
+    // Fields:
+    //   - studentId: string (required)
+    //   - activationCode: string (required)
+    //   - deviceFingerprint: string (required)
+    //   - activatedAt: timestamp (required)
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isValidActivation(data) {
+      return data.keys().hasAll(['studentId', 'activationCode', 'deviceFingerprint', 'activatedAt']) &&
+             data.studentId is string && data.studentId.size() > 0 &&
+             data.activationCode is string && data.activationCode.size() > 0 &&
+             data.deviceFingerprint is string && data.deviceFingerprint.size() > 0;
+    }
+
+    match /activations/{studentId} {
+      // Anyone can check if an ID is activated (to see if they can activate it)
+      // In a real production app, we might restrict this more, but for this use case:
+      allow get: if true;
+      
+      // Create only if it doesn't exist
+      allow create: if isValidActivation(request.resource.data) && 
+                      request.resource.data.studentId == studentId;
+      
+      // No updates or deletes allowed by students
+      allow update, delete: if false;
+    }
+    
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

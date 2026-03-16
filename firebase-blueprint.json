@@ -1,0 +1,22 @@
+{
+  "entities": {
+    "Activation": {
+      "title": "Activation Record",
+      "description": "Records which device activated a specific student code.",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "The unique ID of the student." },
+        "activationCode": { "type": "string", "description": "The code used for activation." },
+        "deviceFingerprint": { "type": "string", "description": "Unique identifier for the device." },
+        "activatedAt": { "type": "string", "format": "date-time", "description": "When the activation occurred." }
+      },
+      "required": ["studentId", "activationCode", "deviceFingerprint", "activatedAt"]
+    }
+  },
+  "firestore": {
+    "/activations/{studentId}": {
+      "schema": "Activation",
+      "description": "Collection of activation records keyed by student ID."
+    }
+  }
+}
