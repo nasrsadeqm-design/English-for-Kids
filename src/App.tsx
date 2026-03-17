@@ -36,6 +36,9 @@ import {
 } from './utils/activation';
 import { db } from './firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { GrammarLesson } from './components/GrammarLesson';
+import { GrammarQuiz } from './components/GrammarQuiz';
+import { allGrammarLessons } from './data/grammar';
 
 interface FlashcardViewProps {
   words: Word[];
@@ -103,7 +106,7 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
   );
 };
 
-type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin';
+type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin' | 'grammar-list' | 'grammar-lesson' | 'grammar-quiz' | 'global-grammar-quiz' | 'games-menu';
 
 export default function App() {
   const [view, setView] = useState<View>('home'); // Default to home, but logic below will override
@@ -119,6 +122,8 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [quizScore, setQuizScore] = useState({ score: 0, total: 0 });
   const [allWords, setAllWords] = useState<Word[]>(words);
+  const [selectedGrammarLesson, setSelectedGrammarLesson] = useState<any>(null);
+  const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
 
   // Generate 2000 students if the JSON is just a sample
   const studentsData = useMemo(() => {
@@ -311,7 +316,7 @@ export default function App() {
   const handleBack = () => {
     if (view === 'home') setView('landing');
     else if (view === 'category') setView('home');
-    else if (view === 'select-category') setView('home');
+    else if (view === 'select-category') setView('games-menu');
     else if (['flashcards', 'match', 'quiz'].includes(view)) {
       if (targetGame) setView('select-category');
       else setView('category');
@@ -497,9 +502,14 @@ export default function App() {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 100 }}
-            className="w-20 h-20 sm:w-28 sm:h-28 bg-white/15 backdrop-blur-xl rounded-[2rem] sm:rounded-[2.5rem] mx-auto flex items-center justify-center shadow-inner"
+            className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2"
           >
-            <BookOpen size={40} className="text-white sm:size-[56px] drop-shadow-lg" />
+            <img 
+              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
+              alt="Al-Fawaris Logo" 
+              className="w-full h-full object-contain drop-shadow-2xl"
+              referrerPolicy="no-referrer"
+            />
           </motion.div>
           
           <div className="space-y-3 sm:space-y-4">
@@ -511,9 +521,14 @@ export default function App() {
               </h1>
             </div>
             <div className="h-1 w-16 sm:h-1.5 sm:w-24 bg-indigo-300 mx-auto rounded-full opacity-50" />
-            <p className="text-lg sm:text-xl font-black text-indigo-100 whitespace-nowrap" dir="rtl">
-              إعداد الأستاذ / صادق الجباري
-            </p>
+            <div className="flex flex-col items-center gap-1.5 mt-2">
+              <p className="text-lg sm:text-xl font-black text-indigo-100 whitespace-nowrap" dir="rtl">
+                إعداد وتنفيذ / منصة الفوارس الرقمية
+              </p>
+              <p className="text-base sm:text-lg font-bold text-indigo-200 whitespace-nowrap" dir="rtl">
+                إشراف الأستاذ / صادق الجباري
+              </p>
+            </div>
           </div>
         </div>
 
@@ -556,17 +571,22 @@ export default function App() {
           </button>
           
           <motion.div 
-            initial={{ scale: 0.5, rotate: -10 }}
-            animate={{ scale: 1, rotate: 0 }}
-            className="w-24 h-24 bg-gradient-to-tr from-indigo-600 to-violet-500 rounded-[2rem] flex items-center justify-center shadow-xl shadow-indigo-200"
+            initial={{ scale: 0.5, y: -20 }}
+            animate={{ scale: 1, y: 0 }}
+            className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2"
           >
-            <GraduationCap size={48} className="text-white" />
+            <img 
+              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
+              alt="Al-Fawaris Logo" 
+              className="w-full h-full object-contain drop-shadow-2xl"
+              referrerPolicy="no-referrer"
+            />
           </motion.div>
           
           <div className="space-y-1">
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">مرحباً بك يا فراس!</h1>
-            <p className="text-lg text-slate-500 font-bold">Welcome Feras! challenge yourself</p>
-            <p className="text-sm text-indigo-500 font-bold mt-2" dir="rtl">حفظ ثلاث كلمات يومياً يجعلك قريباً من التحدث باللغة الإنجليزية</p>
+            <h1 className="text-3xl font-black text-slate-900 tracking-tight">مرحباً بك يا بطل!</h1>
+            <p className="text-lg text-slate-500 font-bold">Welcome! Challenge yourself</p>
+            <p className="text-sm text-indigo-500 font-bold mt-2" dir="rtl">كل تحدٍ تجتازه اليوم يجعلك أقرب لإتقان الإنجليزية غداً.. استمر! 🌟</p>
           </div>
         </header>
 
@@ -574,6 +594,7 @@ export default function App() {
 
         <div className="pt-4">
           <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تصفح حسب الأقسام</h3>
+          
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {categories.map((cat, index) => {
               const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
@@ -630,6 +651,27 @@ export default function App() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {targetGame === 'quiz' && (
+            <motion.button
+              onClick={() => {
+                const allQuestions = allGrammarLessons.flatMap(lesson => lesson.quiz);
+                const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 15);
+                setGlobalGrammarQuestions(shuffled);
+                setView('global-grammar-quiz');
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-lg shadow-indigo-200 hover:shadow-xl hover:scale-[1.02] col-span-1 sm:col-span-2"
+            >
+              <div className="p-4 rounded-2xl transition-all group-hover:scale-110 bg-white/20 text-white backdrop-blur-sm">
+                <Trophy size={24} />
+              </div>
+              <div className="space-y-1 text-white">
+                <p className="text-2xl font-black">اختبار القواعد الشامل</p>
+                <p className="text-sm font-bold opacity-90">أسئلة متنوعة تشمل جميع القواعد 🚀</p>
+              </div>
+            </motion.button>
+          )}
           {categories.map((cat, index) => {
             const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
             return (
@@ -663,6 +705,43 @@ export default function App() {
     );
   };
 
+  const renderGamesMenu = () => (
+    <div className="space-y-8">
+      <div className="flex items-center gap-6">
+        <button onClick={() => setView('home')} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
+          <ChevronLeft size={24} />
+        </button>
+        <div>
+          <h2 className="text-3xl font-black text-slate-800">الاختبارات والألعاب</h2>
+          <p className="text-slate-400 font-bold">اختر نوع التدريب للبدء</p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-5">
+        <button onClick={() => { setTargetGame('flashcards'); setView('select-category'); }} className="p-8 bg-white border-2 border-amber-100 text-amber-600 rounded-[2rem] font-black flex items-center gap-6 hover:bg-amber-50 hover:border-amber-200 transition-all shadow-sm">
+          <div className="p-4 bg-amber-100 rounded-2xl"><LayoutGrid size={32} /></div>
+          <div className="text-right flex-1">
+            <span className="text-2xl block mb-1">بطاقات تعليمية</span>
+            <span className="text-sm text-amber-500/80 font-bold">راجع الكلمات باستخدام البطاقات</span>
+          </div>
+        </button>
+        <button onClick={() => { setTargetGame('match'); setView('select-category'); }} className="p-8 bg-white border-2 border-emerald-100 text-emerald-600 rounded-[2rem] font-black flex items-center gap-6 hover:bg-emerald-50 hover:border-emerald-200 transition-all shadow-sm">
+          <div className="p-4 bg-emerald-100 rounded-2xl"><Gamepad2 size={32} /></div>
+          <div className="text-right flex-1">
+            <span className="text-2xl block mb-1">لعبة التوصيل</span>
+            <span className="text-sm text-emerald-500/80 font-bold">صل الكلمة بمعناها الصحيح</span>
+          </div>
+        </button>
+        <button onClick={() => { setTargetGame('quiz'); setView('select-category'); }} className="p-8 bg-white border-2 border-indigo-100 text-indigo-600 rounded-[2rem] font-black flex items-center gap-6 hover:bg-indigo-50 hover:border-indigo-200 transition-all shadow-sm">
+          <div className="p-4 bg-indigo-100 rounded-2xl"><GraduationCap size={32} /></div>
+          <div className="text-right flex-1">
+            <span className="text-2xl block mb-1">اختبر نفسك</span>
+            <span className="text-sm text-indigo-500/80 font-bold">اختبار خيارات متعددة للكلمات</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
+
   const renderCategory = () => (
     <div className="space-y-8">
       <div className="flex items-center gap-6">
@@ -670,20 +749,6 @@ export default function App() {
           <ChevronLeft size={24} />
         </button>
         <h2 className="text-3xl font-black text-slate-800">{selectedCategory}</h2>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        <button onClick={() => { setTargetGame(null); setView('flashcards'); }} className="p-8 bg-white border-2 border-amber-100 text-amber-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-amber-50 hover:border-amber-200 transition-all shadow-sm">
-          <div className="p-4 bg-amber-100 rounded-2xl"><LayoutGrid size={32} /></div>
-          <span className="text-lg">بطاقات تعليمية</span>
-        </button>
-        <button onClick={() => { setTargetGame(null); setView('match'); }} className="p-8 bg-white border-2 border-emerald-100 text-emerald-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-emerald-50 hover:border-emerald-200 transition-all shadow-sm">
-          <div className="p-4 bg-emerald-100 rounded-2xl"><Gamepad2 size={32} /></div>
-          <span className="text-lg">لعبة التوصيل</span>
-        </button>
-        <button onClick={() => { setTargetGame(null); setView('quiz'); }} className="p-8 bg-white border-2 border-indigo-100 text-indigo-600 rounded-[2rem] font-black flex flex-col items-center gap-4 hover:bg-indigo-50 hover:border-indigo-200 transition-all shadow-sm">
-          <div className="p-4 bg-indigo-100 rounded-2xl"><GraduationCap size={32} /></div>
-          <span className="text-lg">اختبر نفسك</span>
-        </button>
       </div>
       <div className="relative group">
         <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors" size={24} />
@@ -701,6 +766,40 @@ export default function App() {
             </div>
             <p className="text-3xl font-black text-indigo-600" dir="rtl">{word.arabic}</p>
           </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderGrammarList = () => (
+    <div className="space-y-8">
+      <div className="flex items-center gap-6">
+        <button onClick={() => setView('home')} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
+          <ChevronLeft size={24} />
+        </button>
+        <h2 className="text-3xl font-black text-slate-800">قواعد اللغة الإنجليزية</h2>
+      </div>
+      <div className="grid grid-cols-1 gap-4">
+        {allGrammarLessons.map((lesson, index) => (
+          <motion.button
+            key={lesson.id}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            onClick={() => {
+              setSelectedGrammarLesson(lesson);
+              setView('grammar-lesson');
+            }}
+            className="p-6 bg-white rounded-[2rem] shadow-sm flex items-center justify-between group hover:shadow-md hover:scale-[1.01] transition-all border-2 border-transparent hover:border-indigo-50 text-right"
+          >
+            <div className="p-4 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:scale-110 transition-transform">
+              <ChevronRight size={24} />
+            </div>
+            <div>
+              <p className="text-2xl font-black text-slate-800 tracking-tight">{lesson.title}</p>
+              <p className="text-sm font-bold text-slate-500 mt-1">{lesson.description}</p>
+            </div>
+          </motion.button>
         ))}
       </div>
     </div>
@@ -724,6 +823,31 @@ export default function App() {
         <AnimatePresence mode="wait">
           <motion.div key={view} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3, ease: "easeOut" }}>
             {view === 'home' && renderHome()}
+            {view === 'grammar-list' && renderGrammarList()}
+            {view === 'grammar-lesson' && selectedGrammarLesson && (
+              <GrammarLesson 
+                lesson={selectedGrammarLesson} 
+                onComplete={() => setView('grammar-quiz')} 
+                onBack={() => setView('grammar-list')} 
+              />
+            )}
+            {view === 'grammar-quiz' && selectedGrammarLesson && (
+              <GrammarQuiz 
+                questions={selectedGrammarLesson.quiz} 
+                onComplete={(score) => console.log('Quiz completed with score:', score)} 
+                onBack={() => setView('grammar-list')} 
+              />
+            )}
+            {view === 'global-grammar-quiz' && (
+              <GrammarQuiz 
+                questions={globalGrammarQuestions} 
+                onComplete={(score) => console.log('Global Quiz completed with score:', score)} 
+                onBack={() => setView('select-category')} 
+                backText="العودة لقائمة الاختبارات"
+                title="اختبار القواعد الشامل 🏆"
+              />
+            )}
+            {view === 'games-menu' && renderGamesMenu()}
             {view === 'select-category' && renderSelectCategory()}
             {view === 'category' && renderCategory()}
             {view === 'flashcards' && <FlashcardView words={filteredWords} onBack={handleBack} />}
@@ -746,10 +870,10 @@ export default function App() {
         <button onClick={() => setView('home')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'home' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
           <LayoutGrid size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الرئيسية</span>
         </button>
-        <button onClick={() => { setTargetGame('flashcards'); setView('select-category'); }} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'flashcards' || (view === 'select-category' && targetGame === 'flashcards') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
-          <BookOpen size={28} /><span className="text-[10px] font-black uppercase tracking-widest">البطاقات</span>
+        <button onClick={() => setView('grammar-list')} className={cn("flex flex-col items-center gap-1.5 transition-all", view.includes('grammar') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
+          <BookOpen size={28} /><span className="text-[10px] font-black uppercase tracking-widest">القواعد</span>
         </button>
-        <button onClick={() => { setTargetGame('quiz'); setView('select-category'); }} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'quiz' || (view === 'select-category' && targetGame === 'quiz') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
+        <button onClick={() => setView('games-menu')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'games-menu' || view === 'quiz' || view === 'flashcards' || view === 'match' || view === 'select-category' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
           <Trophy size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
         </button>
         <button onDoubleClick={() => setView('admin')} className="flex flex-col items-center gap-1.5 text-slate-200 hover:text-slate-400 transition-all opacity-20">
