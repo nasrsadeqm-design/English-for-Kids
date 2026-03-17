@@ -324,12 +324,24 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack }) => 
               </div>
             ) : mode === 'listening' ? (
               <div className="flex flex-col items-center gap-6">
-                <button 
-                  onClick={() => speak(current.word.english)}
-                  className="p-10 bg-indigo-50 rounded-full text-indigo-600 hover:scale-110 transition-all shadow-inner"
-                >
-                  <Volume2 size={64} />
-                </button>
+                <div className="flex gap-6">
+                  <button 
+                    onClick={() => speak(current.word.english, 'UK')}
+                    className="flex flex-col items-center gap-3 p-8 bg-indigo-50 rounded-[2rem] text-indigo-600 hover:scale-110 transition-all shadow-inner"
+                    title="British English"
+                  >
+                    <Volume2 size={48} />
+                    <span className="text-sm font-bold tracking-widest">UK</span>
+                  </button>
+                  <button 
+                    onClick={() => speak(current.word.english, 'US')}
+                    className="flex flex-col items-center gap-3 p-8 bg-rose-50 rounded-[2rem] text-rose-600 hover:scale-110 transition-all shadow-inner"
+                    title="American English"
+                  >
+                    <Volume2 size={48} />
+                    <span className="text-sm font-bold tracking-widest">US</span>
+                  </button>
+                </div>
                 <p className="text-slate-400 font-bold">استمع واكتب الكلمة</p>
               </div>
             ) : mode === 'sentence' ? (
@@ -389,8 +401,15 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack }) => 
             ) : (
               <div className="text-center space-y-4">
                 <h3 className="text-5xl font-black text-slate-800">{current.word.english}</h3>
-                <div className="flex justify-center">
-                  <button onClick={() => speak(current.word.english)} className="text-indigo-400 hover:text-indigo-600"><Volume2 size={24} /></button>
+                <div className="flex justify-center gap-4">
+                  <button onClick={() => speak(current.word.english, 'UK')} className="flex items-center gap-1 text-indigo-400 hover:text-indigo-600 transition-colors" title="British English">
+                    <Volume2 size={24} />
+                    <span className="text-xs font-bold">UK</span>
+                  </button>
+                  <button onClick={() => speak(current.word.english, 'US')} className="flex items-center gap-1 text-rose-400 hover:text-rose-600 transition-colors" title="American English">
+                    <Volume2 size={24} />
+                    <span className="text-xs font-bold">US</span>
+                  </button>
                 </div>
               </div>
             )}

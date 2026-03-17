@@ -34,7 +34,6 @@ export const words: Word[] = [
   { id: 'n30', english: 'camera', arabic: 'كاميرا', category: 'Nouns' },
   { id: 'n31', english: 'camp', arabic: 'مخيم', category: 'Nouns' },
   { id: 'n32', english: 'camping', arabic: 'تخييم', category: 'Nouns' },
-  { id: 'n33', english: 'cation', arabic: 'عطلة', category: 'Nouns' },
   { id: 'n34', english: 'celebration', arabic: 'احتفال', category: 'Nouns' },
   { id: 'n35', english: 'city', arabic: 'مدينة', category: 'Nouns' },
   { id: 'n36', english: 'class', arabic: 'صف / فصل', category: 'Nouns' },

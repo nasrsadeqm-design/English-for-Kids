@@ -25,15 +25,30 @@ export const Flashcard: React.FC<FlashcardProps> = ({ word, className }) => {
         {/* Front */}
         <div className="absolute inset-0 backface-hidden bg-white rounded-[2.5rem] shadow-xl border-8 border-indigo-50 flex flex-col items-center justify-center p-8">
           <h3 className="text-5xl font-black text-slate-800 mb-6 tracking-tight">{word.english}</h3>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              speak(word.english);
-            }}
-            className="p-5 bg-indigo-50 rounded-2xl text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-inner"
-          >
-            <Volume2 size={32} />
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                speak(word.english, 'UK');
+              }}
+              className="flex items-center gap-2 px-4 py-3 bg-indigo-50 rounded-2xl text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm group"
+              title="British English"
+            >
+              <Volume2 size={24} />
+              <span className="font-bold tracking-wider">UK</span>
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                speak(word.english, 'US');
+              }}
+              className="flex items-center gap-2 px-4 py-3 bg-rose-50 rounded-2xl text-rose-600 hover:bg-rose-600 hover:text-white transition-all shadow-sm group"
+              title="American English"
+            >
+              <Volume2 size={24} />
+              <span className="font-bold tracking-wider">US</span>
+            </button>
+          </div>
           <p className="mt-8 text-base text-slate-300 font-black uppercase tracking-[0.2em]">اضغط للقلب</p>
         </div>
 

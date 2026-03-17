@@ -125,12 +125,22 @@ export const Quiz: React.FC<QuizProps> = ({ words, onComplete, onRestart }) => {
         animate={{ x: 0, opacity: 1 }}
         className="bg-white rounded-[3rem] p-10 shadow-xl border-8 border-indigo-50"
       >
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center gap-4 mb-8">
           <button 
-            onClick={() => speak(currentQuestion.word.english)}
-            className="p-6 bg-indigo-50 rounded-[2rem] text-indigo-600 hover:scale-110 transition-all shadow-inner"
+            onClick={() => speak(currentQuestion.word.english, 'UK')}
+            className="flex flex-col items-center gap-2 p-4 bg-indigo-50 rounded-2xl text-indigo-600 hover:scale-105 transition-all shadow-inner"
+            title="British English"
           >
-            <Volume2 size={40} />
+            <Volume2 size={32} />
+            <span className="text-xs font-bold tracking-widest">UK</span>
+          </button>
+          <button 
+            onClick={() => speak(currentQuestion.word.english, 'US')}
+            className="flex flex-col items-center gap-2 p-4 bg-rose-50 rounded-2xl text-rose-600 hover:scale-105 transition-all shadow-inner"
+            title="American English"
+          >
+            <Volume2 size={32} />
+            <span className="text-xs font-bold tracking-widest">US</span>
           </button>
         </div>
         

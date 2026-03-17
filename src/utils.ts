@@ -5,17 +5,24 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function speak(text: string) {
+export function speak(text: string, dialect: 'US' | 'UK' = 'UK') {
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(text);
-    // Try to find a British English voice
     const voices = window.speechSynthesis.getVoices();
-    const britishVoice = voices.find(v => v.lang === 'en-GB' || v.lang.includes('GB'));
-    if (britishVoice) {
-      utterance.voice = britishVoice;
-    } else {
+    
+    let voice;
+    if (dialect === 'UK') {
+      voice = voices.find(v => v.lang === 'en-GB' || v.lang.includes('GB'));
       utterance.lang = 'en-GB';
+    } else {
+      voice = voices.find(v => v.lang === 'en-US' || v.lang.includes('US'));
+      utterance.lang = 'en-US';
     }
+
+    if (voice) {
+      utterance.voice = voice;
+    }
+    
     window.speechSynthesis.speak(utterance);
   } else {
     console.error('Speech synthesis not supported');

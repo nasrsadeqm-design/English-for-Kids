@@ -1326,28 +1326,336 @@ export const passiveVoiceLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'القاعدة العامة 🏗️',
-      icon: '🏗️',
+      title: 'فكرة سريعة قبل ما نبدأ 🌟',
+      icon: '🌟',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>نبني الجملة للمجهول عندما يكون الحدث أهم من الفاعل.</p>
-          <div className="bg-slate-50 p-3 rounded-xl mt-2 font-bold text-center">
-            المفعول به + Verb to Be (في نفس زمن الجملة) + التصريف الثالث (P.P)
+          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <p className="font-bold text-blue-800 mb-2">المعلوم (Active): الفاعل هو الذي يقوم بالفعل</p>
+            <p className="text-left font-mono text-blue-600" dir="ltr">👉 Ali wrote the lesson</p>
+          </div>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+            <p className="font-bold text-indigo-800 mb-2">المجهول (Passive): نهتم بالشيء الذي وقع عليه الفعل</p>
+            <p className="text-left font-mono text-indigo-600" dir="ltr">👉 The lesson was written (by Ali)</p>
           </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'أمثلة 🎨',
-      icon: '✨',
+      title: '1. المضارع البسيط (Present Simple) 🟢',
+      icon: '🟢',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4" dir="ltr">
-            <li><strong>Present Simple:</strong> The room <CText text="is cleaned" type="verb" /> every day.</li>
-            <li><strong>Past Simple:</strong> The car <CText text="was repaired" type="verb" /> yesterday.</li>
-            <li><strong>Future Simple:</strong> The homework <CText text="will be done" type="verb" /> tomorrow.</li>
-          </ul>
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">verb (s/es)</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">Ali eats the food</p>
+            <p className="text-sm text-slate-500 mt-1">👉 علي يأكل الطعام</p>
+          </div>
+          <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-emerald-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">am / is / are</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-emerald-600 font-bold" dir="ltr">The food is eaten (by Ali)</p>
+          </div>
+          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-wrap items-center gap-2">
+            <span>💡 <strong>الشرح:</strong></span>
+            <span>إذا الفاعل مفرد يأخذ</span>
+            <span dir="ltr" className="font-bold text-indigo-600">is</span>
+            <span>، وإذا كان جمع يأخذ</span>
+            <span dir="ltr" className="font-bold text-indigo-600">are</span>
+          </div>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>She cleans the room → <strong>The room is cleaned</strong></li>
+              <li>They play football → <strong>Football is played</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: '2. الماضي البسيط (Past Simple) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span>فعل ماضي</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">Ali wrote the lesson</p>
+          </div>
+          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-blue-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">was / were</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-blue-600 font-bold" dir="ltr">The lesson was written</p>
+          </div>
+          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-wrap items-center gap-2">
+            <span>💡 <strong>الشرح:</strong></span>
+            <span>إذا الفاعل مفرد يأخذ</span>
+            <span dir="ltr" className="font-bold text-indigo-600">was</span>
+            <span>، وإذا كان جمع يأخذ</span>
+            <span dir="ltr" className="font-bold text-indigo-600">were</span>
+          </div>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>He repaired the car → <strong>The car was repaired</strong></li>
+              <li>They built a house → <strong>A house was built</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '3. المضارع المستمر (Present Continuous) 🟡',
+      icon: '🟡',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">am / is / are</span>
+              <span>+</span>
+              <span dir="ltr">V-ing</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">She is cooking food</p>
+          </div>
+          <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-yellow-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">am / is / are</span>
+              <span>+</span>
+              <span dir="ltr">being</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-yellow-700 font-bold" dir="ltr">Food is being cooked</p>
+          </div>
+          <p className="bg-orange-50 p-3 rounded-lg text-sm">💡 <strong>الشرح:</strong> كلمة <strong>being</strong> مهمة جدًا هنا</p>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>They are building a school → <strong>A school is being built</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '4. الماضي المستمر (Past Continuous) 🟠',
+      icon: '🟠',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">was / were</span>
+              <span>+</span>
+              <span dir="ltr">V-ing</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">He was writing a letter</p>
+          </div>
+          <div className="bg-orange-50 p-4 rounded-xl border border-orange-200">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-orange-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">was / were</span>
+              <span>+</span>
+              <span dir="ltr">being</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-orange-700 font-bold" dir="ltr">A letter was being written</p>
+          </div>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>They were cleaning the room → <strong>The room was being cleaned</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '5. المستقبل (Future Simple) 🔴',
+      icon: '🔴',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">will</span>
+              <span>+</span>
+              <span>الفعل</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">She will cook the food</p>
+          </div>
+          <div className="bg-red-50 p-4 rounded-xl border border-red-200">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-red-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">will be</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-red-600 font-bold" dir="ltr">The food will be cooked</p>
+          </div>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>They will build a school → <strong>A school will be built</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '6. المضارع التام (Present Perfect) 🟣',
+      icon: '🟣',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">have / has</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">Ali has written the lesson</p>
+          </div>
+          <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-purple-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">have / has been</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-purple-600 font-bold" dir="ltr">The lesson has been written</p>
+          </div>
+          <div className="mt-4">
+            <p className="font-bold mb-2">أمثلة:</p>
+            <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
+              <li>They have finished the work → <strong>The work has been finished</strong></li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: '7. الماضي التام (Past Perfect) ⚫',
+      icon: '⚫',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl">
+            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
+              <span>🔹 المعلوم:</span>
+              <span>الفاعل</span>
+              <span>+</span>
+              <span dir="ltr">had</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+              <span>+</span>
+              <span>المفعول به</span>
+            </div>
+            <p className="text-left font-mono text-slate-600" dir="ltr">He had cleaned the room</p>
+          </div>
+          <div className="bg-gray-100 p-4 rounded-xl border border-gray-300">
+            <div className="flex flex-wrap items-center gap-2 font-bold text-gray-800 mb-2">
+              <span>🔹 المجهول:</span>
+              <span>المفعول به</span>
+              <span>+</span>
+              <span dir="ltr">had been</span>
+              <span>+</span>
+              <span dir="ltr">V3</span>
+            </div>
+            <p className="text-left font-mono text-gray-700 font-bold" dir="ltr">The room had been cleaned</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c9',
+      title: 'أهم قاعدة وملاحظات 🧠⚠️🔥',
+      icon: '🧠',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-indigo-600 text-white p-4 rounded-xl text-center shadow-lg">
+            <p className="font-black mb-2">👉 المجهول =</p>
+            <p className="text-xl">المفعول + فعل to be + التصريف الثالث (V3)</p>
+          </div>
+          
+          <div className="bg-red-50 p-4 rounded-xl border border-red-100 mt-4">
+            <p className="font-bold text-red-800 mb-2">⚠️ ملاحظات مهمة جدًا:</p>
+            <ol className="list-decimal list-inside space-y-2 text-sm">
+              <li><strong>لازم يكون في مفعول</strong> (❌ He sleeps → لا تتحول)</li>
+              <li><strong>التصريف الثالث مهم:</strong> write → written, eat → eaten, build → built</li>
+              <li><strong>(by) اختياري:</strong> The lesson was written by Ali (ممكن نحذفها)</li>
+            </ol>
+          </div>
+
+          <div className="bg-amber-50 p-4 rounded-xl border border-amber-200 mt-4">
+            <p className="font-bold text-amber-800 mb-2">🔥 طريقة سهلة تحفظ بها:</p>
+            <ul className="space-y-2 text-sm font-bold">
+              <li><span className="text-indigo-600">is / are</span> → مضارع</li>
+              <li><span className="text-indigo-600">was / were</span> → ماضي</li>
+              <li><span className="text-indigo-600">being</span> → مستمر</li>
+              <li><span className="text-indigo-600">been</span> → تام</li>
+              <li><span className="text-indigo-600">will be</span> → مستقبل</li>
+            </ul>
+          </div>
         </div>
       )
     }

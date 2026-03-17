@@ -651,27 +651,6 @@ export default function App() {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {targetGame === 'quiz' && (
-            <motion.button
-              onClick={() => {
-                const allQuestions = allGrammarLessons.flatMap(lesson => lesson.quiz);
-                const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 15);
-                setGlobalGrammarQuestions(shuffled);
-                setView('global-grammar-quiz');
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-lg shadow-indigo-200 hover:shadow-xl hover:scale-[1.02] col-span-1 sm:col-span-2"
-            >
-              <div className="p-4 rounded-2xl transition-all group-hover:scale-110 bg-white/20 text-white backdrop-blur-sm">
-                <Trophy size={24} />
-              </div>
-              <div className="space-y-1 text-white">
-                <p className="text-2xl font-black">اختبار القواعد الشامل</p>
-                <p className="text-sm font-bold opacity-90">أسئلة متنوعة تشمل جميع القواعد 🚀</p>
-              </div>
-            </motion.button>
-          )}
           {categories.map((cat, index) => {
             const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
             return (
@@ -700,6 +679,27 @@ export default function App() {
               </motion.button>
             );
           })}
+          {targetGame === 'quiz' && (
+            <motion.button
+              onClick={() => {
+                const allQuestions = allGrammarLessons.flatMap(lesson => lesson.quiz);
+                const shuffled = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 15);
+                setGlobalGrammarQuestions(shuffled);
+                setView('global-grammar-quiz');
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-lg shadow-indigo-200 hover:shadow-xl hover:scale-[1.02] col-span-1 sm:col-span-2"
+            >
+              <div className="p-4 rounded-2xl transition-all group-hover:scale-110 bg-white/20 text-white backdrop-blur-sm">
+                <Trophy size={24} />
+              </div>
+              <div className="space-y-1 text-white">
+                <p className="text-2xl font-black">اختبار القواعد الشامل</p>
+                <p className="text-sm font-bold opacity-90">أسئلة متنوعة تشمل جميع القواعد 🚀</p>
+              </div>
+            </motion.button>
+          )}
         </div>
       </div>
     );
@@ -758,7 +758,16 @@ export default function App() {
         {filteredWords.map((word) => (
           <motion.div key={word.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-6 bg-white rounded-[2rem] shadow-sm flex items-center justify-between group hover:shadow-md hover:scale-[1.01] transition-all border-2 border-transparent hover:border-indigo-50">
             <div className="flex items-center gap-5">
-              <button onClick={() => speak(word.english)} className="p-4 bg-indigo-50 rounded-2xl text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-inner"><Volume2 size={24} /></button>
+              <div className="flex flex-col gap-2">
+                <button onClick={() => speak(word.english, 'UK')} className="flex items-center justify-center gap-2 px-3 py-2 bg-indigo-50 rounded-xl text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm group/btn" title="British English">
+                  <Volume2 size={16} />
+                  <span className="text-xs font-bold tracking-wider">UK</span>
+                </button>
+                <button onClick={() => speak(word.english, 'US')} className="flex items-center justify-center gap-2 px-3 py-2 bg-rose-50 rounded-xl text-rose-600 hover:bg-rose-600 hover:text-white transition-all shadow-sm group/btn" title="American English">
+                  <Volume2 size={16} />
+                  <span className="text-xs font-bold tracking-wider">US</span>
+                </button>
+              </div>
               <div>
                 <p className="text-2xl font-black text-slate-800 tracking-tight">{word.english}</p>
                 <p className="text-xs font-black text-indigo-400 uppercase tracking-widest mt-0.5">{word.category}</p>

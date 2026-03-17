@@ -218,13 +218,24 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
                   <h4 className="text-4xl font-black tracking-tight" dir="rtl">{result.arabic}</h4>
                 </div>
 
-                <button 
-                  onClick={() => speak(result.english)}
-                  className="mt-4 p-4 bg-white/15 hover:bg-white/25 rounded-2xl transition-all flex items-center gap-3 group/btn"
-                >
-                  <Volume2 size={24} />
-                  <span className="font-bold">استمع للنطق</span>
-                </button>
+                <div className="flex items-center gap-3 mt-4">
+                  <button 
+                    onClick={() => speak(result.english, 'UK')}
+                    className="p-3 bg-white/15 hover:bg-white/25 rounded-2xl transition-all flex items-center gap-2 group/btn"
+                    title="British English"
+                  >
+                    <Volume2 size={20} />
+                    <span className="font-bold text-sm">UK</span>
+                  </button>
+                  <button 
+                    onClick={() => speak(result.english, 'US')}
+                    className="p-3 bg-white/15 hover:bg-white/25 rounded-2xl transition-all flex items-center gap-2 group/btn"
+                    title="American English"
+                  >
+                    <Volume2 size={20} />
+                    <span className="font-bold text-sm">US</span>
+                  </button>
+                </div>
 
                 {!result.isLocal && (
                   <span className="absolute bottom-4 right-6 text-[10px] font-black uppercase tracking-widest opacity-30">
