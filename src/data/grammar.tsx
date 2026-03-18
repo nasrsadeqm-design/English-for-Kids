@@ -1245,11 +1245,11 @@ export const conditionalsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <ul className="list-disc list-inside space-y-4">
             <li>
-              <strong>الحالة الصفرية (حقائق):</strong> <span dir="ltr" className="inline-block mx-1">If + مضارع بسيط ➔ مضارع بسيط</span>.
+              <div className="font-bold mb-1">الحالة الصفرية (حقائق):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + مضارع بسيط ➔ مضارع بسيط</div>
               <br/>(If you heat water, it boils).
             </li>
             <li>
-              <strong>الحالة الأولى (احتمال في المستقبل):</strong> <span dir="ltr" className="inline-block mx-1">If + مضارع بسيط ➔ will + المصدر</span>.
+              <div className="font-bold mb-1 mt-4">الحالة الأولى (احتمال في المستقبل):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + مضارع بسيط ➔ will + المصدر</div>
               <br/>(If he studies hard, he will pass).
             </li>
           </ul>
@@ -1264,7 +1264,7 @@ export const conditionalsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <ul className="list-disc list-inside space-y-4">
             <li>
-              <strong>الحالة الثانية (تخيل في الحاضر):</strong> <span dir="ltr" className="inline-block mx-1">If + ماضي بسيط ➔ would + المصدر</span>.
+              <div className="font-bold mb-1">الحالة الثانية (تخيل في الحاضر):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + ماضي بسيط ➔ would + المصدر</div>
               <br/>(If I had money, I would buy a car).
             </li>
             <li>
@@ -1348,25 +1348,29 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">verb (s/es)</span>
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">Ali eats the food</p>
             <p className="text-sm text-slate-500 mt-1">👉 علي يأكل الطعام</p>
           </div>
           <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-emerald-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-emerald-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-emerald-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-emerald-600 font-bold" dir="ltr">The food is eaten (by Ali)</p>
           </div>
@@ -1394,24 +1398,28 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span>فعل ماضي</span>
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">Ali wrote the lesson</p>
           </div>
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-blue-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-blue-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-blue-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-blue-600 font-bold" dir="ltr">The lesson was written</p>
           </div>
@@ -1439,8 +1447,9 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
@@ -1449,11 +1458,13 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">She is cooking food</p>
           </div>
           <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-yellow-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-yellow-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-yellow-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
@@ -1461,6 +1472,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">being</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-yellow-700 font-bold" dir="ltr">Food is being cooked</p>
           </div>
@@ -1481,8 +1493,9 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
@@ -1491,11 +1504,13 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">He was writing a letter</p>
           </div>
           <div className="bg-orange-50 p-4 rounded-xl border border-orange-200">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-orange-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-orange-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-orange-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
@@ -1503,6 +1518,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">being</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-orange-700 font-bold" dir="ltr">A letter was being written</p>
           </div>
@@ -1522,8 +1538,9 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">will</span>
@@ -1532,16 +1549,19 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">She will cook the food</p>
           </div>
           <div className="bg-red-50 p-4 rounded-xl border border-red-200">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-red-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-red-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-red-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">will be</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-red-600 font-bold" dir="ltr">The food will be cooked</p>
           </div>
@@ -1561,8 +1581,9 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">have / has</span>
@@ -1571,16 +1592,19 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">Ali has written the lesson</p>
           </div>
           <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-purple-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-purple-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-purple-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">have / has been</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-purple-600 font-bold" dir="ltr">The lesson has been written</p>
           </div>
@@ -1600,8 +1624,9 @@ export const passiveVoiceLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl">
-            <div className="flex flex-wrap items-center gap-2 font-bold mb-2">
-              <span>🔹 المعلوم:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-slate-800">🔹 المعلوم:</div>
+              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">had</span>
@@ -1610,16 +1635,19 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>+</span>
               <span>المفعول به</span>
             </div>
+            </div>
             <p className="text-left font-mono text-slate-600" dir="ltr">He had cleaned the room</p>
           </div>
           <div className="bg-gray-100 p-4 rounded-xl border border-gray-300">
-            <div className="flex flex-wrap items-center gap-2 font-bold text-gray-800 mb-2">
-              <span>🔹 المجهول:</span>
+            <div className="font-bold mb-2 space-y-2">
+              <div className="text-gray-800">🔹 المجهول:</div>
+              <div className="flex flex-wrap items-center gap-2 text-gray-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">had been</span>
               <span>+</span>
               <span dir="ltr">V3</span>
+            </div>
             </div>
             <p className="text-left font-mono text-gray-700 font-bold" dir="ltr">The room had been cleaned</p>
           </div>

@@ -17,6 +17,7 @@ import {
   ChevronLeft
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { BackButton } from './BackButton';
 import { Word } from '../types';
 import { speak, cn } from '../utils';
 
@@ -219,12 +220,7 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack }) => 
   const renderModeSelector = () => (
     <div className="space-y-8">
       <div className="flex justify-start">
-        <button 
-          onClick={onBack}
-          className="p-3 bg-white text-slate-400 rounded-2xl shadow-sm hover:text-indigo-600 transition-colors"
-        >
-          <ChevronLeft size={24} />
-        </button>
+        <BackButton onClick={onBack} />
       </div>
       <div className="text-center space-y-2">
         <h2 className="text-4xl font-black text-slate-800">اختر نوع الاختبار</h2>
@@ -278,9 +274,7 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack }) => 
     return (
       <div className="space-y-8">
         <div className="flex justify-between items-center px-2">
-          <button onClick={() => setMode(null)} className="p-3 bg-white text-slate-400 rounded-2xl shadow-sm">
-            <ChevronLeft size={24} />
-          </button>
+          <BackButton onClick={() => setMode(null)} />
           <div className="flex flex-col items-end">
             <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
               {mode === 'match' ? 'توصيل الكلمات' : `السؤال ${currentIndex + 1} / ${questions.length}`}

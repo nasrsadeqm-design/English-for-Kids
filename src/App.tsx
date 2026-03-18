@@ -17,7 +17,8 @@ import {
   Lock,
   Settings,
   Printer,
-  Download
+  Download,
+  LogOut
 } from 'lucide-react';
 import { words } from './data/words';
 import studentsDataRaw from './data/students.json';
@@ -39,6 +40,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { GrammarLesson } from './components/GrammarLesson';
 import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
+import { BackButton } from './components/BackButton';
 
 interface FlashcardViewProps {
   words: Word[];
@@ -65,12 +67,7 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
   return (
     <div className="space-y-10 max-w-md mx-auto">
       <div className="flex items-center justify-between px-2">
-        <button 
-          onClick={onBack} 
-          className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all"
-        >
-          <ChevronLeft size={24} />
-        </button>
+        <BackButton onClick={onBack} />
         <span className="font-black text-slate-400 text-lg">{currentIndex + 1} / {words.length}</span>
       </div>
 
@@ -409,9 +406,7 @@ export default function App() {
       <div className="min-h-screen p-6 bg-slate-50">
         <div className="max-w-5xl mx-auto space-y-8">
           <div className="flex items-center justify-between">
-            <button onClick={() => setView('home')} className="p-3 bg-white rounded-2xl shadow-sm text-slate-400">
-              <ChevronLeft size={24} />
-            </button>
+            <BackButton onClick={() => setView('home')} />
             <h2 className="text-2xl font-black text-slate-800">لوحة التحكم (Admin)</h2>
             <button 
               onClick={handlePrintCodes}
@@ -540,8 +535,25 @@ export default function App() {
             className="w-full py-4 sm:py-6 bg-white text-indigo-600 rounded-2xl sm:rounded-3xl font-black text-2xl sm:text-3xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.2)] hover:bg-indigo-50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
           >
             <span>دخول • Enter</span>
-            <ArrowRight size={24} className="sm:size-[32px] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => {
+              if (window.confirm('هل أنت متأكد أنك تريد الخروج من البرنامج؟')) {
+                window.close();
+                // Fallback if window.close() is blocked
+                document.body.innerHTML = '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#0f172a;color:white;font-family:system-ui;font-size:2rem;font-weight:900;">تم الخروج من البرنامج بنجاح. يمكنك إغلاق هذه النافذة.</div>';
+              }
+            }}
+            className="w-full py-3 sm:py-4 bg-transparent border-2 border-white/30 text-white rounded-2xl sm:rounded-3xl font-black text-xl sm:text-2xl hover:bg-white/10 hover:border-white/50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
+          >
+            <span>خروج • Exit</span>
+            <LogOut size={24} className="sm:size-[28px] group-hover:-translate-x-1 transition-transform" />
+          </motion.button>
+
           <p className="text-center text-indigo-200/80 font-medium text-xs sm:text-sm tracking-widest uppercase">
             Interactive Learning Experience
           </p>
@@ -552,23 +564,20 @@ export default function App() {
   );
 
   const renderHome = () => {
-    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string }> = {
-      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50', arabic: 'الأسماء' },
-      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50', arabic: 'الأفعال' },
-      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50', arabic: 'الصفات' },
-      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50', arabic: 'الظروف' },
-      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50', arabic: 'الأفعال المركبة' },
+    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string, text: string, subtext: string }> = {
+      'Nouns': { bg: 'bg-gradient-to-br from-blue-500 to-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-300', light: 'bg-white', arabic: 'الأسماء', text: 'text-white', subtext: 'text-blue-100' },
+      'Verbs': { bg: 'bg-gradient-to-br from-emerald-500 to-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-300', light: 'bg-white', arabic: 'الأفعال', text: 'text-white', subtext: 'text-emerald-100' },
+      'Adjectives': { bg: 'bg-gradient-to-br from-amber-500 to-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-300', light: 'bg-white', arabic: 'الصفات', text: 'text-white', subtext: 'text-amber-100' },
+      'Adverbs': { bg: 'bg-gradient-to-br from-rose-500 to-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-300', light: 'bg-white', arabic: 'الظروف', text: 'text-white', subtext: 'text-rose-100' },
+      'Phrasal Verbs': { bg: 'bg-gradient-to-br from-violet-500 to-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-300', light: 'bg-white', arabic: 'الأفعال المركبة', text: 'text-white', subtext: 'text-violet-100' },
     };
 
     return (
       <div className="space-y-10">
         <header className="flex flex-col items-center text-center space-y-4 relative">
-          <button 
-            onClick={handleBack}
-            className="absolute left-0 top-0 p-3 bg-white rounded-2xl shadow-sm text-slate-400 hover:text-indigo-600 transition-colors"
-          >
-            <ChevronLeft size={24} />
-          </button>
+          <div className="absolute left-0 top-0">
+            <BackButton onClick={handleBack} />
+          </div>
           
           <motion.div 
             initial={{ scale: 0.5, y: -20 }}
@@ -597,7 +606,7 @@ export default function App() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {categories.map((cat, index) => {
-              const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
+              const colors = categoryColors[cat] || { bg: 'bg-gradient-to-br from-indigo-500 to-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-300', light: 'bg-white', arabic: cat, text: 'text-white', subtext: 'text-indigo-100' };
               return (
                 <motion.button
                   key={cat}
@@ -610,7 +619,8 @@ export default function App() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={cn(
-                    "p-6 bg-white rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-sm",
+                    "p-6 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
+                    colors.bg,
                     colors.border
                   )}
                 >
@@ -618,8 +628,8 @@ export default function App() {
                     <ChevronRight size={24} />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-2xl font-black text-slate-800">{colors.arabic}</p>
-                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{cat} • {allWords.filter(w => w.category === cat).length} words</p>
+                    <p className={cn("text-2xl font-black", colors.text)}>{colors.arabic}</p>
+                    <p className={cn("text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat} • {allWords.filter(w => w.category === cat).length} words</p>
                   </div>
                 </motion.button>
               );
@@ -631,20 +641,18 @@ export default function App() {
   };
 
   const renderSelectCategory = () => {
-    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string }> = {
-      'Nouns': { bg: 'bg-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-200', light: 'bg-blue-50', arabic: 'الأسماء' },
-      'Verbs': { bg: 'bg-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-200', light: 'bg-emerald-50', arabic: 'الأفعال' },
-      'Adjectives': { bg: 'bg-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-200', light: 'bg-amber-50', arabic: 'الصفات' },
-      'Adverbs': { bg: 'bg-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-200', light: 'bg-rose-50', arabic: 'الظروف' },
-      'Phrasal Verbs': { bg: 'bg-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-200', light: 'bg-violet-50', arabic: 'الأفعال المركبة' },
+    const categoryColors: Record<string, { bg: string, icon: string, border: string, light: string, arabic: string, text: string, subtext: string }> = {
+      'Nouns': { bg: 'bg-gradient-to-br from-blue-500 to-blue-600', icon: 'text-blue-600', border: 'hover:border-blue-300', light: 'bg-white', arabic: 'الأسماء', text: 'text-white', subtext: 'text-blue-100' },
+      'Verbs': { bg: 'bg-gradient-to-br from-emerald-500 to-emerald-600', icon: 'text-emerald-600', border: 'hover:border-emerald-300', light: 'bg-white', arabic: 'الأفعال', text: 'text-white', subtext: 'text-emerald-100' },
+      'Adjectives': { bg: 'bg-gradient-to-br from-amber-500 to-amber-600', icon: 'text-amber-600', border: 'hover:border-amber-300', light: 'bg-white', arabic: 'الصفات', text: 'text-white', subtext: 'text-amber-100' },
+      'Adverbs': { bg: 'bg-gradient-to-br from-rose-500 to-rose-600', icon: 'text-rose-600', border: 'hover:border-rose-300', light: 'bg-white', arabic: 'الظروف', text: 'text-white', subtext: 'text-rose-100' },
+      'Phrasal Verbs': { bg: 'bg-gradient-to-br from-violet-500 to-violet-600', icon: 'text-violet-600', border: 'hover:border-violet-300', light: 'bg-white', arabic: 'الأفعال المركبة', text: 'text-white', subtext: 'text-violet-100' },
     };
     const gameTitle = targetGame === 'flashcards' ? 'البطاقات التعليمية' : targetGame === 'quiz' ? 'اختبار' : 'لعبة التوصيل';
     return (
       <div className="space-y-10">
         <div className="flex items-center gap-6">
-          <button onClick={handleBack} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
-            <ChevronLeft size={24} />
-          </button>
+          <BackButton onClick={handleBack} />
           <div className="text-right">
             <h2 className="text-3xl font-black text-slate-800">{gameTitle}</h2>
             <p className="text-slate-400 font-bold">اختر قسماً للبدء</p>
@@ -652,7 +660,7 @@ export default function App() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {categories.map((cat, index) => {
-            const colors = categoryColors[cat] || { bg: 'bg-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-200', light: 'bg-indigo-50', arabic: cat };
+            const colors = categoryColors[cat] || { bg: 'bg-gradient-to-br from-indigo-500 to-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-300', light: 'bg-white', arabic: cat, text: 'text-white', subtext: 'text-indigo-100' };
             return (
               <motion.button
                 key={cat}
@@ -665,7 +673,8 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={cn(
-                  "p-6 bg-white rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-sm",
+                  "p-6 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
+                  colors.bg,
                   colors.border
                 )}
               >
@@ -673,8 +682,8 @@ export default function App() {
                   <ChevronRight size={24} />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-2xl font-black text-slate-800">{colors.arabic}</p>
-                  <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{cat}</p>
+                  <p className={cn("text-2xl font-black", colors.text)}>{colors.arabic}</p>
+                  <p className={cn("text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat}</p>
                 </div>
               </motion.button>
             );
@@ -708,9 +717,7 @@ export default function App() {
   const renderGamesMenu = () => (
     <div className="space-y-8">
       <div className="flex items-center gap-6">
-        <button onClick={() => setView('home')} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
-          <ChevronLeft size={24} />
-        </button>
+        <BackButton onClick={() => setView('home')} />
         <div>
           <h2 className="text-3xl font-black text-slate-800">الاختبارات والألعاب</h2>
           <p className="text-slate-400 font-bold">اختر نوع التدريب للبدء</p>
@@ -745,9 +752,7 @@ export default function App() {
   const renderCategory = () => (
     <div className="space-y-8">
       <div className="flex items-center gap-6">
-        <button onClick={handleBack} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
-          <ChevronLeft size={24} />
-        </button>
+        <BackButton onClick={handleBack} />
         <h2 className="text-3xl font-black text-slate-800">{selectedCategory}</h2>
       </div>
       <div className="relative group">
@@ -780,39 +785,55 @@ export default function App() {
     </div>
   );
 
-  const renderGrammarList = () => (
-    <div className="space-y-8">
-      <div className="flex items-center gap-6">
-        <button onClick={() => setView('home')} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all">
-          <ChevronLeft size={24} />
-        </button>
-        <h2 className="text-3xl font-black text-slate-800">قواعد اللغة الإنجليزية</h2>
+  const renderGrammarList = () => {
+    const grammarColors = [
+      { bg: 'bg-gradient-to-br from-blue-500 to-blue-600', border: 'hover:border-blue-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-blue-100' },
+      { bg: 'bg-gradient-to-br from-emerald-500 to-emerald-600', border: 'hover:border-emerald-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-emerald-100' },
+      { bg: 'bg-gradient-to-br from-amber-500 to-amber-600', border: 'hover:border-amber-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-amber-100' },
+      { bg: 'bg-gradient-to-br from-rose-500 to-rose-600', border: 'hover:border-rose-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-rose-100' },
+      { bg: 'bg-gradient-to-br from-violet-500 to-violet-600', border: 'hover:border-violet-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-violet-100' },
+      { bg: 'bg-gradient-to-br from-cyan-500 to-cyan-600', border: 'hover:border-cyan-300', light: 'bg-white/20 text-white', text: 'text-white', subtext: 'text-cyan-100' },
+    ];
+
+    return (
+      <div className="space-y-8">
+        <div className="flex items-center gap-6">
+          <BackButton onClick={() => setView('home')} />
+          <h2 className="text-3xl font-black text-slate-800">قواعد اللغة الإنجليزية</h2>
+        </div>
+        <div className="grid grid-cols-1 gap-4">
+          {allGrammarLessons.map((lesson, index) => {
+            const colors = grammarColors[index % grammarColors.length];
+            return (
+              <motion.button
+                key={lesson.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => {
+                  setSelectedGrammarLesson(lesson);
+                  setView('grammar-lesson');
+                }}
+                className={cn(
+                  "p-6 rounded-[2rem] shadow-md flex items-center justify-between group hover:shadow-lg hover:scale-[1.01] transition-all border-2 border-transparent text-right",
+                  colors.bg,
+                  colors.border
+                )}
+              >
+                <div className={cn("p-4 rounded-2xl group-hover:scale-110 transition-transform", colors.light)}>
+                  <ChevronRight size={24} />
+                </div>
+                <div>
+                  <p className={cn("text-2xl font-black tracking-tight", colors.text)}>{lesson.title}</p>
+                  <p className={cn("text-sm font-bold mt-1", colors.subtext)}>{lesson.description}</p>
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-4">
-        {allGrammarLessons.map((lesson, index) => (
-          <motion.button
-            key={lesson.id}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            onClick={() => {
-              setSelectedGrammarLesson(lesson);
-              setView('grammar-lesson');
-            }}
-            className="p-6 bg-white rounded-[2rem] shadow-sm flex items-center justify-between group hover:shadow-md hover:scale-[1.01] transition-all border-2 border-transparent hover:border-indigo-50 text-right"
-          >
-            <div className="p-4 bg-indigo-50 rounded-2xl text-indigo-600 group-hover:scale-110 transition-transform">
-              <ChevronRight size={24} />
-            </div>
-            <div>
-              <p className="text-2xl font-black text-slate-800 tracking-tight">{lesson.title}</p>
-              <p className="text-sm font-bold text-slate-500 mt-1">{lesson.description}</p>
-            </div>
-          </motion.button>
-        ))}
-      </div>
-    </div>
-  );
+    );
+  };
 
   if (isActivated === null) {
     return (
@@ -863,7 +884,7 @@ export default function App() {
             {view === 'match' && (
               <div className="space-y-10">
                 <div className="flex items-center gap-6">
-                  <button onClick={handleBack} className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all"><ChevronLeft size={24} /></button>
+                  <BackButton onClick={handleBack} />
                   <h2 className="text-3xl font-black text-slate-800">لعبة التوصيل</h2>
                 </div>
                 <MatchGame words={filteredWords} onComplete={() => setView('category')} />

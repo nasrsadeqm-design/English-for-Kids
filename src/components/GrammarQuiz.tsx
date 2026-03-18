@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, XCircle, ChevronRight, ChevronLeft, Trophy, RefreshCw, AlertCircle } from 'lucide-react';
 import { GrammarQuizQuestion } from '../types';
+import { BackButton } from './BackButton';
 import { cn } from '../utils';
 
 interface GrammarQuizProps {
@@ -230,12 +231,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
     <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center gap-6">
-        <button 
-          onClick={onBack} 
-          className="p-3 bg-white hover:bg-indigo-50 text-indigo-600 rounded-2xl shadow-sm transition-all"
-        >
-          <ChevronRight size={24} />
-        </button>
+        <BackButton onClick={onBack} />
         <div className="flex-1 text-right">
           <h2 className="text-3xl font-black text-slate-800">{title}</h2>
           <p className="text-slate-500 font-bold mt-1">
