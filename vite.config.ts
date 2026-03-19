@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+        includeAssets: ['icon-192.png', 'icon-512.png'],
         manifest: {
           name: 'English for Kids - تعلم الإنجليزية للأطفال',
           short_name: 'الإنجليزية للأطفال',
@@ -23,13 +23,13 @@ export default defineConfig(({ mode }) => {
           orientation: 'portrait',
           icons: [
             {
-              src: 'https://picsum.photos/seed/learn/192/192',
+              src: '/icon-192.png',
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any maskable'
             },
             {
-              src: 'https://picsum.photos/seed/learn/512/512',
+              src: '/icon-512.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any maskable'
