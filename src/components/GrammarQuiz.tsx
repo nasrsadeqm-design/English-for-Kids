@@ -63,6 +63,15 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
     }
   };
 
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
+      setSelectedAnswer(null);
+      setArrangedWords([]);
+      setShowFeedback(false);
+    }
+  };
+
   if (isFinished) {
     return (
       <div className="text-center py-20 space-y-8">
@@ -163,11 +172,14 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
         );
 
       case 'arrange':
-        const words = (currentQuestion.question as string).split(' / ');
+        const words = currentQuestion.options || (currentQuestion.question as string).split(' / ');
         const isCorrectArrange = arrangedWords.join(' ') === (currentQuestion.correctAnswer as string[]).join(' ');
 
         return (
           <div className="space-y-8">
+            <h3 className="text-2xl font-black text-center text-slate-800" dir="rtl">
+              {currentQuestion.question as string}
+            </h3>
             <div className="min-h-[100px] p-6 bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl flex flex-wrap gap-3 items-center justify-center" dir="ltr">
               {arrangedWords.map((word, idx) => (
                 <motion.button
@@ -186,11 +198,14 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
 
             <div className="flex flex-wrap gap-3 justify-center" dir="ltr">
               {words.map((word, idx) => {
-                if (arrangedWords.includes(word)) return <div key={idx} className="px-4 py-2 opacity-0" />;
+                const countInArranged = arrangedWords.filter(w => w === word).length;
+                const countInSource = words.filter(w => w === word).length;
+                if (countInArranged >= countInSource) return null;
+                
                 return (
                   <motion.button
                     key={`src-${idx}`}
-                    layoutId={`word-${word}`}
+                    layoutId={`word-${word}-${idx}`}
                     onClick={() => handleArrangeWord(word)}
                     className="px-4 py-2 bg-white border-2 border-slate-200 text-slate-700 rounded-xl font-black text-lg shadow-sm hover:border-indigo-300 hover:bg-indigo-50 transition-colors"
                   >
@@ -245,7 +260,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
         <motion.div 
           className="h-full bg-indigo-500 rounded-full"
           initial={{ width: 0 }}
-          animate={{ width: `${((currentIndex) / questions.length) * 100}%` }}
+          animate={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
           transition={{ duration: 0.3 }}
         />
       </div>
@@ -274,24 +289,35 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
                 <div className="p-2 bg-white rounded-xl shadow-sm">
                   <AlertCircle className="text-indigo-500" size={24} />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h4 className="font-black text-slate-800 text-lg mb-1">توضيح:</h4>
                   <p className="text-slate-600 font-bold leading-relaxed">
                     {currentQuestion.explanation}
                   </p>
                 </div>
               </div>
-
-              <button
-                onClick={handleNext}
-                className="w-full mt-6 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black flex items-center justify-center gap-2 transition-all shadow-md"
-              >
-                {currentIndex < questions.length - 1 ? 'السؤال التالي' : 'إنهاء التحدي'}
-                <ChevronLeft size={24} />
-              </button>
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* Navigation Buttons */}
+        <div className="mt-10 flex gap-4">
+          <button
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            className="flex-1 py-4 bg-white border-2 border-slate-100 text-slate-600 rounded-2xl font-black flex items-center justify-center gap-2 transition-all hover:bg-slate-50 disabled:opacity-30"
+          >
+            <ChevronRight size={24} />
+            السابق
+          </button>
+          <button
+            onClick={handleNext}
+            className="flex-[2] py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black flex items-center justify-center gap-2 transition-all shadow-md"
+          >
+            {currentIndex < questions.length - 1 ? 'السؤال التالي' : 'إنهاء التحدي'}
+            <ChevronLeft size={24} />
+          </button>
+        </div>
       </div>
     </div>
   );

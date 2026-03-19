@@ -1238,40 +1238,304 @@ export const conditionalsLesson: GrammarLessonData = {
   description: 'Conditional Sentences 🔀',
   cards: [
     {
-      id: 'c1',
-      title: 'الحالة الصفرية والأولى 1️⃣',
-      icon: '1️⃣',
+      id: 'intro',
+      title: 'أنواع الجمل الشرطية 🧩',
+      icon: '🧩',
       content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <div className="font-bold mb-1">الحالة الصفرية (حقائق):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + مضارع بسيط ➔ مضارع بسيط</div>
-              <br/>(If you heat water, it boils).
-            </li>
-            <li>
-              <div className="font-bold mb-1 mt-4">الحالة الأولى (احتمال في المستقبل):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + مضارع بسيط ➔ will + المصدر</div>
-              <br/>(If he studies hard, he will pass).
-            </li>
-          </ul>
+        <div className="space-y-4 text-right" dir="rtl">
+          <p className="text-xl font-bold text-indigo-600">يوجد 4 أنواع رئيسية للجمل الشرطية في الإنجليزية:</p>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100 text-center">
+              <span className="block text-2xl mb-1">🟢</span>
+              <span className="font-bold text-emerald-700">النوع صفر</span>
+            </div>
+            <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 text-center">
+              <span className="block text-2xl mb-1">🔵</span>
+              <span className="font-bold text-blue-700">النوع الأول</span>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 text-center">
+              <span className="block text-2xl mb-1">🟡</span>
+              <span className="font-bold text-amber-700">النوع الثاني</span>
+            </div>
+            <div className="p-3 bg-red-50 rounded-xl border border-red-100 text-center">
+              <span className="block text-2xl mb-1">🔴</span>
+              <span className="font-bold text-red-700">النوع الثالث</span>
+            </div>
+          </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'الحالة الثانية والثالثة 2️⃣3️⃣',
-      icon: '2️⃣',
+      id: 'zero',
+      title: '🟢 النوع صفر (Zero Conditional)',
+      icon: '🟢',
       content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <div className="font-bold mb-1">الحالة الثانية (تخيل في الحاضر):</div><div dir="ltr" className="text-indigo-600 font-mono bg-indigo-50 p-2 rounded-lg inline-block">If + ماضي بسيط ➔ would + المصدر</div>
-              <br/>(If I had money, I would buy a car).
-            </li>
-            <li>
-              <strong>الحالة الثالثة (ندم في الماضي):</strong> <span dir="ltr" className="inline-block mx-1">If + ماضي تام ➔ would have + P.P.</span>
-              <br/>(If he had studied, he would have passed).
-            </li>
-          </ul>
+        <div className="space-y-6 text-right" dir="rtl">
+          <div>
+            <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> الاستخدام:
+            </h4>
+            <p className="text-slate-700 bg-emerald-50/50 p-3 rounded-lg border-r-4 border-emerald-400">
+              يستخدم للحقائق العامة أو الأشياء الثابتة (قوانين علمية، عادات)
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> القاعدة:
+            </h4>
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+              <span className="text-emerald-400 font-mono text-xl">If + Present Simple → Present Simple</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> أمثلة:
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-white border-2 border-emerald-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If you heat water, it boils.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا سخّنت الماء، فإنه يغلي.</p>
+              </div>
+              <div className="p-3 bg-white border-2 border-emerald-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If you don’t eat, you feel weak.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا لم تأكل، تشعر بالضعف.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 bg-amber-50 border-r-4 border-amber-400 rounded-r-lg">
+            <p className="text-sm font-bold text-amber-800">📌 ملاحظة:</p>
+            <p className="text-sm text-amber-700">هذا النوع دائمًا حقيقة ثابتة وليس احتمال.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'first',
+      title: '🔵 النوع الأول (First Conditional)',
+      icon: '🔵',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <div>
+            <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> الاستخدام:
+            </h4>
+            <p className="text-slate-700 bg-blue-50/50 p-3 rounded-lg border-r-4 border-blue-400">
+              يستخدم للأشياء الممكن حدوثها في المستقبل
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> القاعدة:
+            </h4>
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+              <span className="text-blue-400 font-mono text-xl">If + Present Simple → will + base verb</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> أمثلة:
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-white border-2 border-blue-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If you study hard, you will pass the exam.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا درست بجد، ستنجح في الامتحان.</p>
+              </div>
+              <div className="p-3 bg-white border-2 border-blue-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If it rains, we will stay at home.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا أمطرت، سنبقى في المنزل.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 bg-amber-50 border-r-4 border-amber-400 rounded-r-lg">
+            <p className="text-sm font-bold text-amber-800">📌 ملاحظة:</p>
+            <p className="text-sm text-amber-700">الجملة تعبر عن احتمال حقيقي في المستقبل</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'second',
+      title: '🟡 النوع الثاني (Second Conditional)',
+      icon: '🟡',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <div>
+            <h4 className="font-black text-amber-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> الاستخدام:
+            </h4>
+            <p className="text-slate-700 bg-amber-50/50 p-3 rounded-lg border-r-4 border-amber-400">
+              يستخدم للأشياء غير الواقعية أو الخيالية في الحاضر
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-black text-amber-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> القاعدة:
+            </h4>
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+              <span className="text-amber-400 font-mono text-xl">If + Past Simple → would + base verb</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-black text-amber-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> أمثلة:
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-white border-2 border-amber-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If I were rich, I would buy a big house.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو كنت غنياً، لاشتريت بيتًا كبيرًا.</p>
+              </div>
+              <div className="p-3 bg-white border-2 border-amber-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If he studied, he would pass.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو درس، لنجح.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 bg-amber-50 border-r-4 border-amber-400 rounded-r-lg space-y-1">
+            <p className="text-sm font-bold text-amber-800">📌 ملاحظات مهمة:</p>
+            <ul className="text-sm text-amber-700 list-disc list-inside">
+              <li>نستخدم were مع جميع الضمائر (I, he, she...)</li>
+              <li>هذا النوع خيالي أو غير حقيقي</li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'third',
+      title: '🔴 النوع الثالث (Third Conditional)',
+      icon: '🔴',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <div>
+            <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> الاستخدام:
+            </h4>
+            <p className="text-slate-700 bg-red-50/50 p-3 rounded-lg border-r-4 border-red-400">
+              يستخدم للندم أو الحديث عن شيء لم يحدث في الماضي
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> القاعدة:
+            </h4>
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+              <span className="text-red-400 font-mono text-xl">If + Past Perfect → would have + P.P</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">
+              <span>🔸</span> أمثلة:
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-white border-2 border-red-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If I had studied, I would have passed.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو كنت درست، لكنت نجحت.</p>
+              </div>
+              <div className="p-3 bg-white border-2 border-red-100 rounded-xl shadow-sm" dir="ltr">
+                <p className="text-lg font-bold text-slate-800">If they had left earlier, they would have caught the bus.</p>
+                <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو غادروا مبكرًا، لكانوا لحقوا الحافلة.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 bg-amber-50 border-r-4 border-amber-400 rounded-r-lg">
+            <p className="text-sm font-bold text-amber-800">📌 ملاحظة:</p>
+            <p className="text-sm text-amber-700">هذا النوع يتحدث عن الماضي المستحيل تغييره</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'notes',
+      title: '🔹 ملاحظات مهمة جداً 💡',
+      icon: '💡',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <div className="bg-indigo-50 p-4 rounded-2xl border-2 border-indigo-100">
+            <h4 className="font-black text-indigo-800 mb-2">1. يمكن تبديل ترتيب الجملة:</h4>
+            <div className="space-y-2" dir="ltr">
+              <p className="font-mono text-indigo-600">If you study, you will succeed.</p>
+              <p className="font-mono text-indigo-600">You will succeed if you study.</p>
+            </div>
+            <div className="mt-3 p-2 bg-white rounded-lg text-sm border border-indigo-100">
+              <p>📌 <strong>لكن:</strong></p>
+              <p>• إذا بدأت بـ <span className="font-bold">If</span> نضع فاصلة <span className="font-bold text-red-500">(,)</span></p>
+              <p>• إذا بدأت بالجملة الرئيسية لا نضع فاصلة</p>
+            </div>
+          </div>
+
+          <div className="bg-red-50 p-4 rounded-2xl border-2 border-red-100">
+            <h4 className="font-black text-red-800 mb-2">2. لا نستخدم "will" بعد if ❌</h4>
+            <div className="space-y-1" dir="ltr">
+              <p className="text-red-500 line-through">❌ If you will study, you will pass.</p>
+              <p className="text-emerald-600 font-bold">✔ If you study, you will pass.</p>
+            </div>
+          </div>
+
+          <div className="bg-emerald-50 p-4 rounded-2xl border-2 border-emerald-100">
+            <h4 className="font-black text-emerald-800 mb-2">3. كلمات بديلة لـ if:</h4>
+            <div className="grid grid-cols-1 gap-2">
+              <div className="flex justify-between items-center p-2 bg-white rounded-lg border border-emerald-100">
+                <span className="font-bold text-emerald-700">unless</span>
+                <span className="text-slate-400">=</span>
+                <span>إذا لم</span>
+              </div>
+              <div className="flex justify-between items-center p-2 bg-white rounded-lg border border-emerald-100">
+                <span className="font-bold text-emerald-700">when</span>
+                <span className="text-slate-400">=</span>
+                <span>عندما</span>
+              </div>
+              <div className="flex justify-between items-center p-2 bg-white rounded-lg border border-emerald-100">
+                <span className="font-bold text-emerald-700">as long as</span>
+                <span className="text-slate-400">=</span>
+                <span>طالما</span>
+              </div>
+            </div>
+            <div className="mt-3 p-2 bg-white rounded-lg text-sm border border-emerald-100" dir="ltr">
+              <p className="font-bold text-slate-800">📌 Example:</p>
+              <p className="text-indigo-600">Unless you study, you will fail.</p>
+              <p className="text-slate-500 text-right" dir="rtl">(إذا لم تدرس، سترسب)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'memory',
+      title: '🔹 طريقة سهلة للحفظ 🎯',
+      icon: '🎯',
+      content: (
+        <div className="p-6 bg-slate-900 rounded-3xl text-white text-center space-y-6 shadow-xl">
+          <h4 className="text-2xl font-black mb-4">اختصار القواعد 🚀</h4>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
+              <span className="text-3xl font-black text-emerald-400">0</span>
+              <span className="text-xl font-bold">حقيقة</span>
+            </div>
+            <div className="flex items-center justify-between bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
+              <span className="text-3xl font-black text-blue-400">1</span>
+              <span className="text-xl font-bold">ممكن يصير</span>
+            </div>
+            <div className="flex items-center justify-between bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
+              <span className="text-3xl font-black text-amber-400">2</span>
+              <span className="text-xl font-bold">خيال</span>
+            </div>
+            <div className="flex items-center justify-between bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10">
+              <span className="text-3xl font-black text-red-400">3</span>
+              <span className="text-xl font-bold">ندم</span>
+            </div>
+          </div>
         </div>
       )
     }
@@ -1280,41 +1544,98 @@ export const conditionalsLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'If it rains tomorrow, we _____ at home.',
-      options: ['stay', 'will stay', 'would stay', 'stayed'],
-      correctAnswer: 'will stay',
-      explanation: 'الحالة الأولى: احتمال في المستقبل (\u202AIf + مضارع بسيط ➔ will + المصدر\u202C).'
+      question: 'If I ______ more time, I would learn English better.',
+      options: ['have', 'had', 'will have', 'have had'],
+      correctAnswer: 'had',
+      explanation: 'الحالة الثانية (خيال): If + Past Simple → would + base verb.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'If you freeze water, it _____ into ice.',
-      options: ['turns', 'will turn', 'would turn', 'turned'],
-      correctAnswer: 'turns',
-      explanation: 'الحالة الصفرية (حقيقة علمية): \u202Aمضارع بسيط ➔ مضارع بسيط\u202C.'
+      question: 'If she studies hard, she ______ the exam.',
+      options: ['passes', 'passed', 'will pass', 'would pass'],
+      correctAnswer: 'will pass',
+      explanation: 'الحالة الأولى (ممكن): If + Present Simple → will + base verb.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'If I _____ a bird, I would fly.',
-      options: ['am', 'was', 'were', 'have been'],
-      correctAnswer: 'were',
-      explanation: 'الحالة الثانية (تخيل): نستخدم were مع جميع الضمائر في حالة If.'
+      question: 'If they had left earlier, they ______ the train.',
+      options: ['catch', 'will catch', 'would catch', 'would have caught'],
+      correctAnswer: 'would have caught',
+      explanation: 'الحالة الثالثة (ندم): If + Past Perfect → would have + P.P.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: 'If she had known the answer, she _____ told us.',
-      options: ['will have', 'would have', 'would', 'will'],
-      correctAnswer: 'would have',
-      explanation: 'الحالة الثالثة (ماضي تام): \u202AIf + had + P.P ➔ would have + P.P\u202C.'
+      question: 'If water ______ to 100°C, it boils.',
+      options: ['heats', 'heated', 'is heated', 'will heat'],
+      correctAnswer: 'is heated',
+      explanation: 'الحالة الصفرية (حقيقة): الماء يُسخَّن (مبني للمجهول) فيغلي.'
     },
     {
       id: 'q5',
+      type: 'multiple_choice',
+      question: 'If I were you, I ______ that job.',
+      options: ['take', 'will take', 'would take', 'took'],
+      correctAnswer: 'would take',
+      explanation: 'الحالة الثانية (نصيحة): نستخدم If I were you + would + مصدر.'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: If he will study, he will succeed.',
+      options: [
+        'If he studies, he will succeed.',
+        'If he studied, he will succeed.',
+        'If he will study, he succeeds.'
+      ],
+      correctAnswer: 'If he studies, he will succeed.',
+      explanation: 'لا نستخدم will بعد if مباشرة في الحالة الأولى.'
+    },
+    {
+      id: 'q7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: If I was rich, I would travel the world.',
+      options: [
+        'If I were rich, I would travel the world.',
+        'If I am rich, I would travel the world.',
+        'If I had been rich, I would travel the world.'
+      ],
+      correctAnswer: 'If I were rich, I would travel the world.',
+      explanation: 'في الحالة الثانية (التخيل)، نستخدم were مع جميع الضمائر.'
+    },
+    {
+      id: 'q8',
       type: 'arrange',
-      question: 'will / If / you / pass / study / you',
-      correctAnswer: ['If', 'you', 'study', 'you', 'will', 'pass'],
-      explanation: 'ترتيب الحالة الأولى: If + فاعل + فعل مضارع، فاعل + will + مصدر.'
+      question: 'ترجم: لو كنت درست، لنجحت.',
+      options: ['studied', 'would', 'If', 'passed', 'had', 'have', 'I', 'I'],
+      correctAnswer: ['If', 'I', 'had', 'studied', 'I', 'would', 'have', 'passed'],
+      explanation: 'هذا ندم على الماضي (الحالة الثالثة): If + Past Perfect -> would have + P.P.'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: إذا لم تذاكر، سترسب.',
+      options: ['you', 'Unless', 'fail', 'will', 'study', 'you'],
+      correctAnswer: ['Unless', 'you', 'study', 'you', 'will', 'fail'],
+      explanation: 'استخدام Unless (إذا لم) مع الحالة الأولى.'
+    },
+    {
+      id: 'q10',
+      type: 'arrange',
+      question: 'ترجم: إذا أمطرت، سأبقى في البيت.',
+      options: ['If', 'it', 'rains,', 'I', 'will', 'stay', 'at', 'home.'],
+      correctAnswer: ['If', 'it', 'rains,', 'I', 'will', 'stay', 'at', 'home.'],
+      explanation: 'الحالة الأولى (واقعية): If + Present Simple -> will + مصدر.'
+    },
+    {
+      id: 'q11',
+      type: 'arrange',
+      question: 'ترجم: لو كنت مكانك، لذهبت إلى الطبيب.',
+      options: ['If', 'I', 'were', 'you,', 'I', 'would', 'go', 'to', 'the', 'doctor.'],
+      correctAnswer: ['If', 'I', 'were', 'you,', 'I', 'would', 'go', 'to', 'the', 'doctor.'],
+      explanation: 'الحالة الثانية (نصيحة): If I were you + would + مصدر.'
     }
   ]
 };
@@ -2101,39 +2422,181 @@ export const questionTagsLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'القاعدة الأساسية ⚖️',
-      icon: '⚖️',
+      title: '1. ما هو Question Tag؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>السؤال المذيل يأتي في نهاية الجملة بمعنى (أليس كذلك؟). قاعدته الذهبية:</p>
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong><span dir="ltr" className="inline-block mx-1">جملة مثبتة ➔ سؤال منفي</span>:</strong>
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                He is a doctor, <CText text="isn't he?" type="verb" />
-              </div>
-            </li>
-            <li>
-              <strong><span dir="ltr" className="inline-block mx-1">جملة منفية ➔ سؤال مثبت</span>:</strong>
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                They didn't go, <CText text="did they?" type="verb" />
-              </div>
-            </li>
-          </ul>
+          <p className="font-bold text-indigo-600">تعريف بسيط:</p>
+          <p>هو سؤال قصير يُضاف في نهاية الجملة للتأكد أو طلب الموافقة.</p>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+            <p className="font-bold text-indigo-800 mb-2">مثال:</p>
+            <div className="bg-white p-3 rounded-lg shadow-sm" dir="ltr">
+              <p className="font-bold text-slate-800">You are a student, <CText text="aren’t you?" type="particle" /></p>
+              <p className="text-slate-500 text-sm" dir="rtl">أنت طالب، أليس كذلك؟</p>
+            </div>
+          </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'حالات خاصة (Exceptions) ⚠️',
-      icon: '⚠️',
+      title: '2. تركيب الجملة 🧩',
+      icon: '🧩',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4" dir="ltr">
-            <li>I am late, <CText text="aren't I?" type="verb" /></li>
-            <li>Let's go, <CText text="shall we?" type="verb" /></li>
-            <li>Open the door, <CText text="will you?" type="verb" /> (للأمر)</li>
+          <p>تتكون الجملة من جزئين:</p>
+          <div className="flex flex-col gap-2">
+            <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-center">
+              <p className="font-bold text-emerald-800">جملة خبرية (Statement)</p>
+            </div>
+            <div className="text-center text-slate-400">⬇️</div>
+            <div className="bg-amber-50 p-3 rounded-lg border border-amber-100 text-center">
+              <p className="font-bold text-amber-800">سؤال قصير (Tag)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: '3. القاعدة الأساسية 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-1 gap-4">
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-2">🟢 جملة مثبتة ➔ سؤال منفي</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+                You are happy, <span className="text-red-600 font-bold">aren’t you?</span>
+              </div>
+            </div>
+            <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+              <p className="font-bold text-rose-800 mb-2">🔴 جملة منفية ➔ سؤال مثبت</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+                He isn’t here, <span className="text-emerald-600 font-bold">is he?</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '4. تكوين Question Tag 🛠️',
+      icon: '🛠️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>نستخدم دائماً:</p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>نفس الفعل المساعد (Auxiliary Verb)</li>
+            <li>نفس الضمير (Subject Pronoun)</li>
           </ul>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">She <CText text="is" type="verb" /> tired, <CText text="isn’t she?" type="particle" /></p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">They <CText text="are" type="verb" /> playing, <CText text="aren’t they?" type="particle" /></p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '5. أهم الأفعال المستخدمة 📊',
+      icon: '📊',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white text-sm">
+                  <th className="p-2 border border-indigo-500">الجملة</th>
+                  <th className="p-2 border border-indigo-500">السؤال (Tag)</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white text-sm">
+                <tr><td className="p-2 border border-slate-100 font-bold">is</td><td className="p-2 border border-slate-100 text-red-600 font-bold">isn’t</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">are</td><td className="p-2 border border-slate-100 text-red-600 font-bold">aren’t</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">was</td><td className="p-2 border border-slate-100 text-red-600 font-bold">wasn’t</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">were</td><td className="p-2 border border-slate-100 text-red-600 font-bold">weren’t</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">can</td><td className="p-2 border border-slate-100 text-red-600 font-bold">can’t</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">will</td><td className="p-2 border border-slate-100 text-red-600 font-bold">won’t</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">should</td><td className="p-2 border border-slate-100 text-red-600 font-bold">shouldn’t</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '6. مع الفعل العادي (No Auxiliary) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>إذا لم يوجد فعل مساعد، نستخدم <span className="font-bold text-blue-600">do / does / did</span>:</p>
+          <div className="space-y-3" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">You like coffee, <CText text="don’t you?" type="particle" /></p>
+              <p className="text-slate-500 text-xs text-right" dir="rtl">أنت تحب القهوة، أليس كذلك؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">He plays football, <CText text="doesn’t he?" type="particle" /></p>
+              <p className="text-slate-500 text-xs text-right" dir="rtl">هو يلعب كرة القدم، أليس كذلك؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">They went home, <CText text="didn’t they?" type="particle" /></p>
+              <p className="text-slate-500 text-xs text-right" dir="rtl">هم ذهبوا إلى المنزل، أليس كذلك؟</p>
+            </div>
+          </div>
+          <div className="bg-rose-50 p-3 rounded-lg border border-rose-100 mt-2">
+            <p className="font-bold text-rose-800 mb-1">🔴 مع النفي:</p>
+            <p className="text-sm font-mono" dir="ltr">She doesn’t like tea, <span className="text-emerald-600 font-bold">does she?</span></p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '7. حالات خاصة مهمة جدًا 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-4">
+            <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+              <p className="font-bold text-amber-800 mb-1">1. I am ➔ aren’t I?</p>
+              <p className="text-sm font-mono" dir="ltr">I am late, <span className="text-red-600 font-bold">aren’t I?</span></p>
+              <p className="text-xs text-slate-500 mt-1">📌 مهمة جدًا في الامتحان!</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+              <p className="font-bold text-blue-800 mb-1">2. Let’s ➔ shall we?</p>
+              <p className="text-sm font-mono" dir="ltr">Let’s go, <span className="text-blue-600 font-bold">shall we?</span></p>
+            </div>
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <p className="font-bold text-slate-800 mb-1">3. الأمر (Imperative)</p>
+              <p className="text-sm font-mono" dir="ltr">Close the door, <span className="text-indigo-600 font-bold">will you?</span></p>
+              <p className="text-sm font-mono" dir="ltr">Don’t talk, <span className="text-indigo-600 font-bold">will you?</span></p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: '8. ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-indigo-600 text-white p-4 rounded-2xl shadow-lg">
+            <ul className="space-y-2 list-none">
+              <li className="flex items-center gap-2">✅ مثبت ➔ منفي</li>
+              <li className="flex items-center gap-2">❌ منفي ➔ مثبت</li>
+              <li className="flex items-center gap-2">🧩 نفس الفعل + نفس الضمير</li>
+              <li className="flex items-center gap-2">⚙️ لا يوجد فعل مساعد ➔ do / does / did</li>
+            </ul>
+          </div>
         </div>
       )
     }
@@ -2142,37 +2605,77 @@ export const questionTagsLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'She can speak English, _____?',
-      options: ['can she', 'can\'t she', 'does she', 'doesn\'t she'],
-      correctAnswer: 'can\'t she',
-      explanation: 'الجملة مثبتة (can)، فيكون السؤال المذيل منفياً (can\'t she).'
+      question: 'She is happy, ______?',
+      options: ['is she', 'isn’t she', 'doesn’t she', 'wasn’t she'],
+      correctAnswer: 'isn’t she',
+      explanation: 'الجملة مثبتة وبها is، لذا السؤال المذيل يكون isn’t she.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'You aren\'t tired, _____?',
-      options: ['are you', 'aren\'t you', 'do you', 'don\'t you'],
-      correctAnswer: 'are you',
-      explanation: 'الجملة منفية (aren\'t)، فيكون السؤال المذيل مثبتاً (are you).'
+      question: 'They play football, ______?',
+      options: ['don’t they', 'aren’t they', 'didn’t they', 'doesn’t they'],
+      correctAnswer: 'don’t they',
+      explanation: 'الجملة في المضارع البسيط المثبت ولا يوجد فعل مساعد، لذا نستخدم don’t they.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'He plays tennis, _____?',
-      options: ['does he', 'doesn\'t he', 'is he', 'isn\'t he'],
-      correctAnswer: 'doesn\'t he',
-      explanation: 'الجملة في المضارع البسيط المثبت (plays)، فنستخدم الفعل المساعد المنفي doesn\'t.'
+      question: 'He didn’t come, ______?',
+      options: ['didn’t he', 'does he', 'did he', 'is he'],
+      correctAnswer: 'did he',
+      explanation: 'الجملة منفية بـ didn’t، لذا السؤال المذيل يكون مثبتاً did he.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: 'They went to the cinema, _____?',
-      options: ['did they', 'didn\'t they', 'do they', 'don\'t they'],
-      correctAnswer: 'didn\'t they',
-      explanation: 'الجملة في الماضي البسيط المثبت (went)، فنستخدم الفعل المساعد المنفي didn\'t.'
+      question: 'I am late, ______?',
+      options: ['am I', 'aren’t I', 'isn’t I', 'don’t I'],
+      correctAnswer: 'aren’t I',
+      explanation: 'هذه حالة خاصة: I am تتحول إلى aren’t I في السؤال المذيل.'
     },
     {
       id: 'q5',
+      type: 'multiple_choice',
+      question: 'Let’s go, ______?',
+      options: ['will we', 'shall we', 'don’t we', 'do we'],
+      correctAnswer: 'shall we',
+      explanation: 'حالة خاصة: Let’s دائماً تأخذ shall we.'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: She is a teacher, is she?',
+      options: ['She is a teacher, isn’t she?', 'She is a teacher, doesn’t she?', 'She is a teacher, are she?'],
+      correctAnswer: 'She is a teacher, isn’t she?',
+      explanation: 'الجملة مثبتة، لذا يجب أن يكون السؤال المذيل منفياً.'
+    },
+    {
+      id: 'q7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: He likes coffee, doesn’t he not?',
+      options: ['He likes coffee, doesn’t he?', 'He likes coffee, does he?', 'He likes coffee, isn’t he?'],
+      correctAnswer: 'He likes coffee, doesn’t he?',
+      explanation: 'السؤال المذيل الصحيح هو doesn’t he بدون إضافة not مرة أخرى.'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'ترجم: أنت ذكي، أليس كذلك؟',
+      options: ['You', 'are', 'smart,', 'aren’t', 'you?'],
+      correctAnswer: ['You', 'are', 'smart,', 'aren’t', 'you?'],
+      explanation: 'الترجمة الصحيحة هي You are smart, aren’t you?'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: هو لم يذهب، أليس كذلك؟',
+      options: ['He', 'didn’t', 'go,', 'did', 'he?'],
+      correctAnswer: ['He', 'didn’t', 'go,', 'did', 'he?'],
+      explanation: 'الترجمة الصحيحة هي He didn’t go, did he?'
+    },
+    {
+      id: 'q10',
       type: 'true_false',
       question: 'I am your friend, am not I?',
       correctAnswer: false,
@@ -2188,32 +2691,217 @@ export const politeRequestsLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'الطلب المؤدب (Polite Requests) 🗣️',
-      icon: '🗣️',
+      title: '1. ما هو Requests & Offers؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>لطلب شيء من شخص بأدب، نستخدم:</p>
-          <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li><CText text="Could you" type="particle" /> help me, please?</li>
-            <li><CText text="Would you" type="particle" /> open the window?</li>
-            <li><CText text="Can you" type="particle" /> give me a pen?</li>
-            <li><CText text="Would you mind" type="particle" /> open<strong>ing</strong> the door? (يأتي بعدها v-ing)</li>
-          </ul>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+            <p className="font-bold text-indigo-800 mb-2">🔸 Requests (الطلبات المؤدبة)</p>
+            <p className="text-sm mb-2">هي طلب شيء من شخص بأدب واحترام.</p>
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              Can you help me?
+              <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك مساعدتي؟</p>
+            </div>
+          </div>
+          <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <p className="font-bold text-emerald-800 mb-2">🔸 Offers (العروض)</p>
+            <p className="text-sm mb-2">هي عرض مساعدة أو خدمة لشخص.</p>
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              Can I help you?
+              <p className="text-slate-500 text-xs" dir="rtl">هل يمكنني مساعدتك؟</p>
+            </div>
+          </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'العروض (Offers) 🎁',
+      title: '2. طلب مؤدب (Can / Could) 🟢',
+      icon: '🟢',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <p className="font-bold text-slate-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Can / Could + subject + base verb?</p>
+          </div>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Can" type="particle" /> you open the door?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك فتح الباب؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Could" type="particle" /> you help me?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك مساعدتي؟ (أكثر أدبًا)</p>
+            </div>
+          </div>
+          <p className="text-xs font-bold text-indigo-600 bg-indigo-50 p-2 rounded">📌 ملاحظة: Could أكثر تهذيبًا من Can</p>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: '3. طلب مؤدب (Will / Would) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <p className="font-bold text-blue-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Will / Would + subject + base verb?</p>
+          </div>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Will" type="particle" /> you close the window?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل ستغلق النافذة؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Would" type="particle" /> you pass the salt?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل يمكن أن تناولني الملح؟ (أكثر أدبًا)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '4. استخدام (...Do you mind) 🟡',
+      icon: '🟡',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+            <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Do / Would you mind + verb + ing?</p>
+          </div>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Do you mind" type="particle" /> opening the door?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل تمانع فتح الباب؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800"><CText text="Would you mind" type="particle" /> helping me?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل تمانع مساعدتي؟ (أكثر تهذيبًا)</p>
+            </div>
+          </div>
+          <div className="bg-slate-100 p-3 rounded-lg">
+            <p className="font-bold text-slate-700 text-sm mb-1">📌 الرد بالموافقة:</p>
+            <p className="font-mono text-emerald-600 text-sm" dir="ltr">No, not at all. (لا، لا أمانع)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '5. استخدام (...May I) 🔴',
+      icon: '🔴',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+            <p className="font-bold text-rose-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">May I + base verb?</p>
+          </div>
+          <p className="text-sm bg-slate-100 p-2 rounded">📌 هذا أسلوب رسمي جدًا (Formal).</p>
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <p className="font-bold text-slate-800"><CText text="May I" type="particle" /> come in?</p>
+            <p className="text-slate-500 text-xs" dir="rtl">هل يمكنني الدخول؟</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '6. تقديم العروض (Offers) 🎁',
       icon: '🎁',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>لعرض المساعدة أو تقديم شيء لشخص:</p>
-          <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li><CText text="Would you like" type="particle" /> some tea?</li>
-            <li><CText text="Shall I" type="particle" /> carry this bag for you?</li>
-            <li><CText text="I'll" type="particle" /> help you with your homework.</li>
-          </ul>
+          <div className="space-y-4">
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-1">Can I...?</p>
+              <p className="text-sm font-mono" dir="ltr">Can I help you?</p>
+              <p className="text-xs text-slate-500" dir="rtl">هل أستطيع مساعدتك؟</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+              <p className="font-bold text-blue-800 mb-1">Shall I...?</p>
+              <p className="text-xs text-blue-600 mb-2">📌 تُستخدم مع (I / we)</p>
+              <p className="text-sm font-mono" dir="ltr">Shall I open the door?</p>
+              <p className="text-xs text-slate-500" dir="rtl">هل أفتح الباب؟</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '7. استخدام (Would you like) ☕',
+      icon: '☕',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+            <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Would you like + noun / to + verb?</p>
+          </div>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">Would you like some tea?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل ترغب في بعض الشاي؟</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">Would you like to sit?</p>
+              <p className="text-slate-500 text-xs" dir="rtl">هل ترغب في الجلوس؟</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: '8. الردود المهمة 💬',
+      icon: '💬',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-2">✅ الموافقة:</p>
+              <ul className="text-sm space-y-1 font-mono" dir="ltr">
+                <li>Yes, please.</li>
+                <li>Sure.</li>
+                <li>Of course.</li>
+              </ul>
+            </div>
+            <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+              <p className="font-bold text-rose-800 mb-2">❌ الرفض بأدب:</p>
+              <ul className="text-sm space-y-1 font-mono" dir="ltr">
+                <li>No, thank you.</li>
+                <li>Sorry, I can’t.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c9',
+      title: '9. ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white text-xs">
+                  <th className="p-2 border border-indigo-500">التعبير</th>
+                  <th className="p-2 border border-indigo-500">الاستخدام</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white text-xs">
+                <tr><td className="p-2 border border-slate-100 font-bold">Can / Could</td><td className="p-2 border border-slate-100">طلب</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">Will / Would</td><td className="p-2 border border-slate-100">طلب</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">Do you mind</td><td className="p-2 border border-slate-100">طلب مهذب</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">May I</td><td className="p-2 border border-slate-100">طلب رسمي</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">Can I</td><td className="p-2 border border-slate-100">عرض</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">Shall I</td><td className="p-2 border border-slate-100">عرض</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">Would you like</td><td className="p-2 border border-slate-100">عرض</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )
     }
@@ -2222,41 +2910,81 @@ export const politeRequestsLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: '_____ you mind helping me with this box?',
-      options: ['Could', 'Can', 'Would', 'Should'],
-      correctAnswer: 'Would',
-      explanation: 'نستخدم Would مع you mind (Would you mind + v-ing).'
+      question: '______ you help me, please?',
+      options: ['May', 'Can', 'Shall', 'Must'],
+      correctAnswer: 'Can',
+      explanation: 'نستخدم Can لطلب المساعدة بشكل مؤدب.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: '_____ I open the window for you?',
-      options: ['Will', 'Shall', 'Would', 'Do'],
-      correctAnswer: 'Shall',
-      explanation: 'نستخدم Shall I لتقديم عرض بالمساعدة.'
+      question: 'Would you mind ______ the door?',
+      options: ['open', 'to open', 'opening', 'opened'],
+      correctAnswer: 'opening',
+      explanation: 'بعد Would you mind نستخدم الفعل مضافاً له ing.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'Would you mind _____ the door?',
-      options: ['close', 'to close', 'closing', 'closed'],
-      correctAnswer: 'closing',
-      explanation: 'بعد Would you mind يأتي الفعل مضافاً له ing.'
+      question: '______ I help you?',
+      options: ['Can', 'Would', 'Do', 'Did'],
+      correctAnswer: 'Can',
+      explanation: 'نستخدم Can I لتقديم عرض بالمساعدة.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: '_____ you like a cup of coffee?',
-      options: ['Do', 'Are', 'Would', 'Can'],
-      correctAnswer: 'Would',
-      explanation: 'نستخدم Would you like لتقديم عرض مهذب.'
+      question: 'Shall I ______ the window?',
+      options: ['opening', 'open', 'to open', 'opened'],
+      correctAnswer: 'open',
+      explanation: 'بعد Shall I نستخدم الفعل في المصدر بدون إضافات.'
     },
     {
       id: 'q5',
+      type: 'multiple_choice',
+      question: 'Would you like ______ some tea?',
+      options: ['drink', 'drinking', 'to drink', 'drank'],
+      correctAnswer: 'to drink',
+      explanation: 'نستخدم Would you like to + verb لتقديم عرض.'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: Would you mind open the door?',
+      options: ['Would you mind opening the door?', 'Would you mind to open the door?', 'Would you mind opens the door?'],
+      correctAnswer: 'Would you mind opening the door?',
+      explanation: 'يجب إضافة ing للفعل بعد mind.'
+    },
+    {
+      id: 'q7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: Shall I to help you?',
+      options: ['Shall I help you?', 'Shall I helping you?', 'Shall I helps you?'],
+      correctAnswer: 'Shall I help you?',
+      explanation: 'بعد Shall I نستخدم المصدر بدون to.'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'ترجم: هل يمكنك مساعدتي؟',
+      options: ['Can', 'you', 'help', 'me?'],
+      correctAnswer: ['Can', 'you', 'help', 'me?'],
+      explanation: 'الترجمة الصحيحة هي Can you help me?'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: هل تمانع فتح النافذة؟',
+      options: ['Would', 'you', 'mind', 'opening', 'the', 'window?'],
+      correctAnswer: ['Would', 'you', 'mind', 'opening', 'the', 'window?'],
+      explanation: 'الترجمة الصحيحة هي Would you mind opening the window?'
+    },
+    {
+      id: 'q10',
       type: 'true_false',
-      question: 'Could you to help me, please?',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. بعد Could you يأتي الفعل في المصدر بدون to (Could you help).'
+      question: 'Could you help me? is more polite than Can you help me?',
+      correctAnswer: true,
+      explanation: 'صح ✅. كلمة Could أكثر تهذيباً من Can في الطلب.'
     }
   ]
 };
@@ -2268,48 +2996,154 @@ export const givingAdviceLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'استخدام Should / Ought to 💡',
-      icon: '💡',
+      title: '1. ما هو Giving Advice؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>لإعطاء نصيحة، نستخدم الأفعال الناقصة التالية ويأتي بعدها الفعل في المصدر:</p>
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong>Should / Shouldn't:</strong> (يجب أن / لا يجب أن)
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                You <CText text="should" type="particle" /> study hard.
-              </div>
-            </li>
-            <li>
-              <strong>Ought to / Ought not to:</strong> (ينبغي أن)
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                You <CText text="ought to" type="particle" /> sleep early.
-              </div>
-            </li>
-          </ul>
+          <p className="font-bold text-indigo-600">تعريف بسيط:</p>
+          <p>هو استخدام عبارات لمساعدة شخص أو توجيهه ليفعل الشيء الصحيح.</p>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+            <p className="font-bold text-indigo-800 mb-2">مثال:</p>
+            <div className="bg-white p-3 rounded-lg shadow-sm" dir="ltr">
+              <p className="font-bold text-slate-800">You <CText text="should" type="particle" /> study.</p>
+              <p className="text-slate-500 text-sm" dir="rtl">يجب أن تذاكر</p>
+            </div>
+          </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'طرق أخرى للنصيحة 🌟',
-      icon: '🌟',
+      title: '2. استخدام (should) ✅',
+      icon: '✅',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong>Had better ('d better):</strong> (من الأفضل أن)
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                You <CText text="'d better" type="particle" /> see a doctor.
-              </div>
-            </li>
-            <li>
-              <strong>If I were you:</strong> (لو كنت مكانك) - حالة If الثانية.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                <CText text="If I were you," type="particle" /> I would apologize.
-              </div>
-            </li>
-          </ul>
+          <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+            <p className="font-bold text-emerald-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Subject + should + base verb</p>
+          </div>
+          <p>تُستخدم للنصيحة العامة.</p>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">You <CText text="should" type="particle" /> study hard.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">يجب أن تدرس بجد</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">He <CText text="should" type="particle" /> see a doctor.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">يجب عليه أن يزور الطبيب</p>
+            </div>
+          </div>
+          <div className="bg-rose-50 p-4 rounded-xl border border-rose-100 mt-4">
+            <p className="font-bold text-rose-800 mb-2">🔴 النفي (Negative):</p>
+            <p className="font-mono text-sm mb-2" dir="ltr">should not (shouldn’t)</p>
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              You <CText text="shouldn't" type="particle" /> eat too much sugar.
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: '3. استخدام (ought to) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <p className="font-bold text-blue-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Subject + ought to + base verb</p>
+          </div>
+          <p className="text-sm bg-slate-100 p-2 rounded">📌 نفس معنى should تقريبًا.</p>
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <p className="font-bold text-slate-800">You <CText text="ought to" type="particle" /> respect your parents.</p>
+            <p className="text-slate-500 text-xs" dir="rtl">يجب أن تحترم والديك</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '4. استخدام (had better) 🟡',
+      icon: '🟡',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+            <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Subject + had better + base verb</p>
+          </div>
+          <p className="text-sm font-bold text-amber-600">⚠️ نصيحة قوية (تحذير)</p>
+          <div className="space-y-2" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">You <CText text="had better" type="particle" /> study.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">من الأفضل أن تذاكر (وإلا ستندم)</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">You <CText text="had better not" type="particle" /> be late.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">من الأفضل ألا تتأخر</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '5. استخدام (?Why don’t you) 🟣',
+      icon: '🟣',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
+            <p className="font-bold text-purple-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">Why don’t you + base verb?</p>
+          </div>
+          <p>تُستخدم كاقتراح لطيف.</p>
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <p className="font-bold text-slate-800"><CText text="Why don’t you" type="particle" /> sleep early?</p>
+            <p className="text-slate-500 text-xs" dir="rtl">لماذا لا تنام مبكرًا؟</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '6. استخدام (...If I were you) 🟠',
+      icon: '🟠',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
+            <p className="font-bold text-orange-800 mb-2">القاعدة:</p>
+            <p className="font-mono text-sm" dir="ltr">If I were you, I would + base verb</p>
+          </div>
+          <p>نصيحة شخصية قوية.</p>
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <p className="font-bold text-slate-800"><CText text="If I were you," type="particle" /> I would study more.</p>
+            <p className="text-slate-500 text-xs" dir="rtl">لو كنت مكانك، لدرست أكثر</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '7. ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white text-sm">
+                  <th className="p-2 border border-indigo-500">الطريقة</th>
+                  <th className="p-2 border border-indigo-500">القوة / الاستخدام</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white text-sm">
+                <tr><td className="p-2 border border-slate-100 font-bold">should</td><td className="p-2 border border-slate-100">نصيحة عادية</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">ought to</td><td className="p-2 border border-slate-100">مثل should</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">had better</td><td className="p-2 border border-slate-100">تحذير</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">Why don’t you</td><td className="p-2 border border-slate-100">اقتراح</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">If I were you</td><td className="p-2 border border-slate-100">نصيحة قوية</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )
     }
@@ -2318,41 +3152,81 @@ export const givingAdviceLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'You look tired. You _____ go to bed.',
-      options: ['should', 'shouldn\'t', 'ought', 'better'],
+      question: 'You ______ study harder to pass the exam.',
+      options: ['should', 'should to', 'must to', 'are'],
       correctAnswer: 'should',
-      explanation: 'نستخدم should لإعطاء نصيحة إيجابية.'
+      explanation: 'نستخدم should لإعطاء نصيحة، ويأتي بعدها الفعل في المصدر بدون to.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'If I _____ you, I would study harder.',
-      options: ['am', 'was', 'were', 'be'],
-      correctAnswer: 'were',
-      explanation: 'نستخدم If I were you كتركيب ثابت لإعطاء النصيحة.'
+      question: 'You ______ eat too much fast food.',
+      options: ['should', 'shouldn’t', 'ought', 'had'],
+      correctAnswer: 'shouldn’t',
+      explanation: 'نستخدم shouldn’t للنصيحة بعدم فعل شيء ضار.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'You _____ better see a doctor.',
-      options: ['have', 'had', 'would', 'should'],
-      correctAnswer: 'had',
-      explanation: 'التركيب الصحيح هو had better (من الأفضل).'
+      question: 'You ______ see a doctor.',
+      options: ['ought', 'ought to', 'ought see', 'ought seeing'],
+      correctAnswer: 'ought to',
+      explanation: 'الفعل ought يأتي دائماً متبوعاً بـ to.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: 'You ought _____ apologize to him.',
-      options: ['to', 'for', 'that', 'in'],
-      correctAnswer: 'to',
-      explanation: 'الفعل ought يأخذ دائماً to بعده (ought to).'
+      question: 'You had better ______ early.',
+      options: ['to sleep', 'sleeping', 'sleep', 'slept'],
+      correctAnswer: 'sleep',
+      explanation: 'بعد had better نستخدم الفعل في المصدر بدون to.'
     },
     {
       id: 'q5',
+      type: 'multiple_choice',
+      question: 'If I were you, I ______ study more.',
+      options: ['will', 'would', 'should to', 'am'],
+      correctAnswer: 'would',
+      explanation: 'في حالة If الثانية للنصيحة، نستخدم would + المصدر.'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: You should to study hard.',
+      options: ['You should study hard.', 'You should studying hard.', 'You should to studying hard.'],
+      correctAnswer: 'You should study hard.',
+      explanation: 'لا نستخدم to بعد should.'
+    },
+    {
+      id: 'q7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: He ought see a doctor.',
+      options: ['He ought to see a doctor.', 'He ought seeing a doctor.', 'He oughts see a doctor.'],
+      correctAnswer: 'He ought to see a doctor.',
+      explanation: 'يجب استخدام to بعد ought.'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'ترجم: يجب أن تنام مبكرًا.',
+      options: ['You', 'should', 'sleep', 'early.'],
+      correctAnswer: ['You', 'should', 'sleep', 'early.'],
+      explanation: 'الترجمة الصحيحة هي You should sleep early.'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: لو كنت مكانك، لما ذهبت.',
+      options: ['If', 'I', 'were', 'you,', 'I', 'wouldn\'t', 'go.'],
+      correctAnswer: ['If', 'I', 'were', 'you,', 'I', 'wouldn\'t', 'go.'],
+      explanation: 'الترجمة الصحيحة هي If I were you, I wouldn\'t go.'
+    },
+    {
+      id: 'q10',
       type: 'true_false',
-      question: 'You shouldn\'t to smoke here.',
+      question: 'You had better to see a doctor.',
       correctAnswer: false,
-      explanation: 'خطأ ❌. بعد shouldn\'t يأتي الفعل في المصدر بدون to (shouldn\'t smoke).'
+      explanation: 'خطأ ❌. بعد had better نستخدم الفعل في المصدر بدون to.'
     }
   ]
 };
@@ -2364,52 +3238,217 @@ export const quantityLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'الكثير من (A lot of) 📦',
-      icon: '📦',
+      title: '1. ما هو التعبير عن الكمية؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>نستخدم <strong>a lot of / lots of</strong> بمعنى (الكثير من)، وتأتي مع الأسماء التي تعد والتي لا تعد في الجمل المثبتة.</p>
-          <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li>I have <CText text="a lot of" type="particle" /> friends. (معدود)</li>
-            <li>She drinks <CText text="a lot of" type="particle" /> water. (غير معدود)</li>
-          </ul>
+          <p className="font-bold text-indigo-600">تعريف بسيط:</p>
+          <p>هو استخدام كلمات تدل على كمية الشيء (كثير – قليل – بعض – لا شيء…)</p>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+            <p className="font-bold text-indigo-800 mb-2">أهم الكلمات:</p>
+            <div className="flex flex-wrap gap-2" dir="ltr">
+              {['some', 'any', 'much', 'many', 'a lot of', 'few', 'little'].map(word => (
+                <span key={word} className="px-3 py-1 bg-white rounded-lg shadow-sm text-indigo-600 font-mono font-bold">{word}</span>
+              ))}
+            </div>
+          </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'القليل (A few / A little) 🤏',
-      icon: '🤏',
+      title: '2. المعدود وغير المعدود 🍎💧',
+      icon: '🍎',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong>A few:</strong> (قليل ويكفي) تأتي مع الأسماء التي <strong>تعد</strong>.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                I have <CText text="a few" type="particle" /> apples. We can make a pie.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-2">Countable (أشياء تُعد)</p>
+              <p className="text-sm mb-2">يمكن عدّها مباشرة:</p>
+              <ul className="text-sm space-y-1">
+                <li>🍎 apples</li>
+                <li>📚 books</li>
+                <li>👨‍🎓 students</li>
+              </ul>
+              <p className="mt-2 text-xs font-bold text-emerald-600" dir="ltr">one apple, two apples</p>
+            </div>
+            <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+              <p className="font-bold text-amber-800 mb-2">Uncountable (أشياء لا تُعد)</p>
+              <p className="text-sm mb-2">لا يمكن عدّها مباشرة:</p>
+              <ul className="text-sm space-y-1">
+                <li>💧 water</li>
+                <li>🍚 rice</li>
+                <li>💰 money</li>
+              </ul>
+              <div className="mt-2 text-xs font-bold text-amber-600" dir="ltr">
+                <p className="text-red-500">❌ one water</p>
+                <p className="text-emerald-600">✅ a glass of water</p>
               </div>
-            </li>
-            <li>
-              <strong>A little:</strong> (قليل ويكفي) تأتي مع الأسماء التي <strong>لا تعد</strong>.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
-                I have <CText text="a little" type="particle" /> money. I can buy a sandwich.
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       )
     },
     {
       id: 'c3',
-      title: 'ملاحظة هامة (few vs a few) ⚠️',
-      icon: '⚠️',
+      title: '3. استخدام (some / any) ➕❓',
+      icon: '➕',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>إذا حذفنا حرف (a)، يتغير المعنى ليصبح (قليل ولا يكفي / يعطي معنى النفي):</p>
-          <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li>I have <strong>few</strong> friends. (أنا وحيد تقريباً)</li>
-            <li>I have <strong>little</strong> money. (لا أستطيع شراء شيء)</li>
-          </ul>
+          <div className="space-y-4">
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+              <p className="font-bold text-blue-800 mb-2">some (بعض)</p>
+              <p className="text-sm mb-2">تُستخدم في الجمل المثبتة:</p>
+              <div className="space-y-2" dir="ltr">
+                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                  <p className="font-bold">I have some money.</p>
+                  <p className="text-slate-500 text-xs" dir="rtl">لدي بعض المال</p>
+                </div>
+                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                  <p className="font-bold">She bought some apples.</p>
+                  <p className="text-slate-500 text-xs" dir="rtl">اشترت بعض التفاح</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+              <p className="font-bold text-rose-800 mb-2">any (أي)</p>
+              <p className="text-sm mb-2">تُستخدم في النفي والسؤال:</p>
+              <div className="space-y-2" dir="ltr">
+                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                  <p className="font-bold">I don’t have any money.</p>
+                  <p className="text-slate-500 text-xs" dir="rtl">ليس لدي أي مال</p>
+                </div>
+                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                  <p className="font-bold">Do you have any questions?</p>
+                  <p className="text-slate-500 text-xs" dir="rtl">هل لديك أي أسئلة؟</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '4. استخدام (much / many) 📈',
+      icon: '📈',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-4">
+            <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+              <p className="font-bold text-indigo-800 mb-1">many → مع المعدود</p>
+              <p className="text-sm mb-2">many students, many books</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+                There are many students.
+              </div>
+            </div>
+            <div className="bg-violet-50 p-4 rounded-xl border border-violet-100">
+              <p className="font-bold text-violet-800 mb-1">much → مع غير المعدود</p>
+              <p className="text-sm mb-2">much water, much money</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+                There isn’t much water.
+              </div>
+            </div>
+            <p className="text-xs font-bold text-slate-500 bg-slate-100 p-2 rounded">📌 ملاحظة: غالبًا تُستخدم في النفي والسؤال</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '5. (a lot of / lots of) 🌊',
+      icon: '🌊',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="font-bold text-indigo-600">تُستخدم مع الكل!</p>
+          <p>تأتي مع المعدود وغير المعدود في الجمل المثبتة.</p>
+          <div className="space-y-3" dir="ltr">
+            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">I have a lot of friends.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">لدي الكثير من الأصدقاء</p>
+            </div>
+            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+              <p className="font-bold text-slate-800">She drinks a lot of water.</p>
+              <p className="text-slate-500 text-xs" dir="rtl">تشرب الكثير من الماء</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '6. (few / little) 📉',
+      icon: '📉',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="text-sm text-rose-600 font-bold">⚠️ معناها سلبي (قليل جدًا ولا يكفي)</p>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <p className="font-bold text-slate-800 mb-1">few → للمعدود</p>
+              <p className="text-sm mb-2 font-mono" dir="ltr">Few students passed the exam.</p>
+              <p className="text-xs text-slate-500">عدد قليل جداً نجحوا (أقل من المتوقع)</p>
+            </div>
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <p className="font-bold text-slate-800 mb-1">little → لغير المعدود</p>
+              <p className="text-sm mb-2 font-mono" dir="ltr">There is little water.</p>
+              <p className="text-xs text-slate-500">يوجد القليل جداً من الماء (لا يكفي)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '7. (a few / a little) 👍',
+      icon: '👍',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="text-sm text-emerald-600 font-bold">✅ معناها إيجابي (بعض / كمية كافية)</p>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-1">a few → معدود</p>
+              <p className="text-sm mb-2 font-mono" dir="ltr">I have a few friends.</p>
+              <p className="text-xs text-emerald-600">لدي بعض الأصدقاء (كافٍ)</p>
+            </div>
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-800 mb-1">a little → غير معدود</p>
+              <p className="text-sm mb-2 font-mono" dir="ltr">I need a little help.</p>
+              <p className="text-xs text-emerald-600">أحتاج بعض المساعدة</p>
+            </div>
+          </div>
+          <p className="text-xs font-bold text-center bg-white p-2 rounded-full shadow-sm border border-slate-100">
+            الفرق: <span className="text-rose-500">few = قليل جداً ❌</span> | <span className="text-emerald-600">a few = بعض 👍</span>
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: '8. ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white text-sm">
+                  <th className="p-2 border border-indigo-500">الكلمة</th>
+                  <th className="p-2 border border-indigo-500">الاستخدام</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white text-sm">
+                <tr><td className="p-2 border border-slate-100 font-bold">some</td><td className="p-2 border border-slate-100">مثبت</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">any</td><td className="p-2 border border-slate-100">نفي + سؤال</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">many</td><td className="p-2 border border-slate-100">معدود</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">much</td><td className="p-2 border border-slate-100">غير معدود</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">a lot of</td><td className="p-2 border border-slate-100">الكل</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">few</td><td className="p-2 border border-slate-100">معدود (قليل جداً)</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">little</td><td className="p-2 border border-slate-100">غير معدود (قليل جداً)</td></tr>
+                <tr className="bg-slate-50"><td className="p-2 border border-slate-100 font-bold">a few</td><td className="p-2 border border-slate-100">معدود (بعض)</td></tr>
+                <tr><td className="p-2 border border-slate-100 font-bold">a little</td><td className="p-2 border border-slate-100">غير معدود (بعض)</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )
     }
@@ -2418,41 +3457,105 @@ export const quantityLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'I can\'t make tea. There is very _____ sugar left.',
-      options: ['few', 'a few', 'little', 'a little'],
-      correctAnswer: 'little',
-      explanation: 'السكر لا يعد، والكمية لا تكفي لصنع الشاي، فنستخدم little (بدون a).'
+      question: 'I have ______ friends in school.',
+      options: ['much', 'many', 'little', 'any'],
+      correctAnswer: 'many',
+      explanation: 'كلمة friends معدود، لذا نستخدم many.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'He has _____ books in his bag.',
-      options: ['a lot of', 'much', 'a little', 'little'],
-      correctAnswer: 'a lot of',
-      explanation: 'الكتب اسم يعد، و much/little تأتي مع غير المعدود، لذا a lot of هي الصحيحة.'
+      question: 'There isn’t ______ water in the bottle.',
+      options: ['many', 'much', 'few', 'a few'],
+      correctAnswer: 'much',
+      explanation: 'كلمة water غير معدود وفي حالة النفي نستخدم much.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'I have _____ friends in this city. I am not lonely.',
-      options: ['few', 'a few', 'little', 'a little'],
-      correctAnswer: 'a few',
-      explanation: 'friends معدود، والمعنى إيجابي (لست وحيداً)، فنستخدم a few.'
+      question: 'She bought ______ apples.',
+      options: ['some', 'any', 'much', 'little'],
+      correctAnswer: 'some',
+      explanation: 'الجملة مثبتة، لذا نستخدم some.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: 'We have _____ time left. Hurry up!',
-      options: ['few', 'a few', 'little', 'a little'],
-      correctAnswer: 'little',
-      explanation: 'time غير معدود، والمعنى سلبي (يجب أن نسرع)، فنستخدم little.'
+      question: 'Do you have ______ money?',
+      options: ['some', 'many', 'any', 'few'],
+      correctAnswer: 'any',
+      explanation: 'في السؤال نستخدم any.'
     },
     {
       id: 'q5',
+      type: 'multiple_choice',
+      question: 'There are ______ students in the class.',
+      options: ['much', 'little', 'many', 'a little'],
+      correctAnswer: 'many',
+      explanation: 'كلمة students معدود، لذا نستخدم many.'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: I have much friends.',
+      options: ['I have many friends.', 'I have little friends.', 'I have some friends.'],
+      correctAnswer: 'I have many friends.',
+      explanation: 'كلمة friends معدود، لذا يجب استخدام many بدلاً من much.'
+    },
+    {
+      id: 'q7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: There are little apples.',
+      options: ['There are few apples.', 'There are much apples.', 'There are any apples.'],
+      correctAnswer: 'There are few apples.',
+      explanation: 'كلمة apples معدود، لذا نستخدم few بدلاً من little.'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'ترجم: لدي بعض الماء.',
+      options: ['I', 'have', 'some', 'water'],
+      correctAnswer: ['I', 'have', 'some', 'water'],
+      explanation: 'الترجمة الصحيحة هي I have some water.'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: لا يوجد الكثير من الطلاب.',
+      options: ['There', 'aren\'t', 'many', 'students'],
+      correctAnswer: ['There', 'aren\'t', 'many', 'students'],
+      explanation: 'الترجمة الصحيحة هي There aren\'t many students.'
+    },
+    {
+      id: 'q10',
+      type: 'arrange',
+      question: 'ترجم: هل لديك أي أسئلة؟',
+      options: ['Do', 'you', 'have', 'any', 'questions?'],
+      correctAnswer: ['Do', 'you', 'have', 'any', 'questions?'],
+      explanation: 'في السؤال نستخدم Do ونستخدم any مع الأسماء المعدودة في صيغة الجمع.'
+    },
+    {
+      id: 'q11',
+      type: 'multiple_choice',
+      question: 'I have ______ money, so I can buy a sandwich.',
+      options: ['little', 'a little', 'few', 'a many'],
+      correctAnswer: 'a little',
+      explanation: 'نستخدم a little لأن المعنى إيجابي (لديه ما يكفي لشراء ساندوتش) ومع غير المعدود (money).'
+    },
+    {
+      id: 'q12',
+      type: 'multiple_choice',
+      question: 'There are ______ people at the party, it is very quiet.',
+      options: ['few', 'a few', 'little', 'much'],
+      correctAnswer: 'few',
+      explanation: 'نستخدم few لأن المعنى سلبي (عدد قليل جداً وغير كافٍ لجعل الحفلة صاخبة) ومع المعدود (people).'
+    },
+    {
+      id: 'q13',
       type: 'true_false',
-      question: 'She drinks a lot of waters every day.',
+      question: 'We use "any" in positive sentences.',
       correctAnswer: false,
-      explanation: 'خطأ ❌. كلمة water لا تجمع بـ s (She drinks a lot of water).'
+      explanation: 'خطأ ❌. نستخدم any في النفي والسؤال، بينما نستخدم some في الجمل المثبتة.'
     }
   ]
 };
@@ -2464,56 +3567,238 @@ export const reportedSpeechLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'الجملة الخبرية (Statements) 📝',
-      icon: '📝',
+      title: '1. الكلام المباشر (Direct Speech) 🗣️',
+      icon: '🗣️',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>عند نقل الكلام، نقوم بثلاث خطوات رئيسية:</p>
-          <ol className="list-decimal list-inside space-y-2">
-            <li>نغير فعل القول (<span dir="ltr" className="inline-block mx-1">say ➔ say / said ➔ said / said to ➔ told</span>).</li>
-            <li>نحذف الأقواس ونربط بـ (that) ويمكن حذفها.</li>
-            <li><strong>نغير الزمن إلى الماضي:</strong> (<span dir="ltr" className="inline-block mx-1">المضارع ➔ ماضي / الماضي ➔ ماضي تام</span>).</li>
-          </ol>
-          <div className="bg-slate-50 p-3 rounded-xl mt-4" dir="ltr">
-            <strong>Direct:</strong> Ali said, "I <CText text="play" type="verb" /> tennis."<br/>
-            <strong>Reported:</strong> Ali said that he <CText text="played" type="verb" /> tennis.
+          <p className="font-bold text-indigo-600">ما هو الكلام المباشر؟</p>
+          <p>هو نقل الكلام كما قيل حرفيًا باستخدام علامات التنصيص " "</p>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
+            <p className="font-bold text-indigo-800">الشكل:</p>
+            <p className="text-left font-mono text-indigo-600" dir="ltr">Subject + verb + " الكلام "</p>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold">أمثلة:</p>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">Ali said, "I am tired."</p>
+              <p className="text-right text-slate-500" dir="rtl">قال علي: "أنا متعب"</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">Sara said, "I will go to school."</p>
+              <p className="text-right text-slate-500" dir="rtl">قالت سارة: "سأذهب إلى المدرسة"</p>
+            </div>
           </div>
         </div>
       )
     },
     {
       id: 'c2',
-      title: 'السؤال (Questions) ❓',
-      icon: '❓',
+      title: '2. الكلام غير المباشر (Indirect Speech) 🔄',
+      icon: '🔄',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>عند نقل السؤال:</p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>نستخدم أفعال مثل (asked, wanted to know).</li>
-            <li>إذا كان السؤال بـ (هل - فعل مساعد)، نربط بـ <strong>if</strong> أو <strong>whether</strong>.</li>
-            <li>إذا كان السؤال بأداة استفهام (Wh-)، نربط بنفس الأداة.</li>
-            <li><strong>الأهم:</strong> نحول السؤال إلى جملة عادية (الفاعل قبل الفعل).</li>
-          </ul>
-          <div className="bg-slate-50 p-3 rounded-xl mt-4" dir="ltr">
-            <strong>Direct:</strong> "Where <CText text="do you live" type="verb" />?" he asked.<br/>
-            <strong>Reported:</strong> He asked me where <CText text="I lived" type="verb" />.
+          <p className="font-bold text-indigo-600">ما هو الكلام غير المباشر؟</p>
+          <p>هو نقل الكلام بالمعنى بدون علامات تنصيص، مع تغيير بعض الكلمات</p>
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
+            <p className="font-bold text-indigo-800">الشكل:</p>
+            <p className="text-left font-mono text-indigo-600" dir="ltr">Subject + said (that) + sentence</p>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold">أمثلة:</p>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">Ali said that he was tired.</p>
+              <p className="text-right text-slate-500" dir="rtl">قال علي إنه كان متعبًا</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">Sara said that she would go to school.</p>
+              <p className="text-right text-slate-500" dir="rtl">قالت سارة إنها ستذهب إلى المدرسة</p>
+            </div>
           </div>
         </div>
       )
     },
     {
       id: 'c3',
-      title: 'تغيير الكلمات الدالة ⏱️',
-      icon: '⏱️',
+      title: '3. تغيير الأزمنة (Tenses) ⏳',
+      icon: '⏳',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>بعض الكلمات تتغير عند نقل الكلام:</p>
-          <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li><span dir="ltr" className="inline-block mx-1">now ➔ then</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">today ➔ that day</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">tomorrow ➔ the next day</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">yesterday ➔ the day before</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">here ➔ there</span></li>
+          <p className="font-bold text-indigo-600">القاعدة الذهبية:</p>
+          <p>عند التحويل من مباشر إلى غير مباشر، نرجع الزمن خطوة للخلف 👇</p>
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3 border border-indigo-500">مباشر</th>
+                  <th className="p-3 border border-indigo-500">غير مباشر</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Present Simple</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Past Simple</td>
+                </tr>
+                <tr className="bg-slate-50">
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Present Continuous</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Past Continuous</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Present Perfect</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Past Perfect</td>
+                </tr>
+                <tr className="bg-slate-50">
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Past Simple</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">Past Perfect</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">will</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">would</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold">أمثلة:</p>
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+              "I eat food." ➔ He said that he ate food.
+            </div>
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+              "I am studying." ➔ He said that he was studying.
+            </div>
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+              "I will travel." ➔ He said that he would travel.
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: '4. تغيير الضمائر (Pronouns) 👤',
+      icon: '👤',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>نغيّر الضمير حسب المتكلم</p>
+          <div className="space-y-3">
+            <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
+              <p className="text-left font-mono text-amber-800" dir="ltr">"I am happy," said Ali</p>
+              <p className="text-left font-mono font-bold text-amber-900" dir="ltr">➔ Ali said that he was happy</p>
+            </div>
+            <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
+              <p className="text-left font-mono text-emerald-800" dir="ltr">"We are ready," they said</p>
+              <p className="text-left font-mono font-bold text-emerald-900" dir="ltr">➔ They said that they were ready</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: '5. كلمات الزمن والمكان 📍',
+      icon: '📍',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-center border-collapse">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3 border border-indigo-500">مباشر</th>
+                  <th className="p-3 border border-indigo-500">غير مباشر</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">now</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">then</td>
+                </tr>
+                <tr className="bg-slate-50">
+                  <td className="p-3 border border-slate-100 font-mono text-sm">today</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">that day</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">tomorrow</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">the next day</td>
+                </tr>
+                <tr className="bg-slate-50">
+                  <td className="p-3 border border-slate-100 font-mono text-sm">yesterday</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">the day before</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">here</td>
+                  <td className="p-3 border border-slate-100 font-mono text-sm">there</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold">أمثلة:</p>
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+              "I will go tomorrow." ➔ He said that he would go the next day.
+            </div>
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+              "I am here now." ➔ He said that he was there then.
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: '6. الأسئلة (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-4">
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+              <p className="font-bold text-blue-800 mb-2">أ) نعم/لا (Yes/No Question)</p>
+              <p className="mb-2">نستخدم: <span dir="ltr" className="font-mono font-bold">asked if / whether</span></p>
+              <p className="text-left font-mono text-blue-600" dir="ltr">"Are you happy?" ➔ He asked if I was happy.</p>
+            </div>
+            <div className="bg-violet-50 p-4 rounded-xl border border-violet-100">
+              <p className="font-bold text-violet-800 mb-2">ب) سؤال بكلمة استفهام (WH Question)</p>
+              <p className="mb-2">نحتفظ بالكلمة (what, where, why...)</p>
+              <p className="text-left font-mono text-violet-600" dir="ltr">"Where do you live?" ➔ He asked where I lived.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: '7. الأوامر (Commands) 📢',
+      icon: '📢',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
+            <p className="font-bold text-indigo-800">القاعدة:</p>
+            <p className="text-left font-mono text-indigo-600" dir="ltr">told / asked + person + to + verb</p>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold">أمثلة:</p>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">"Close the door."</p>
+              <p className="text-left text-slate-500">➔ He told me to close the door.</p>
+            </div>
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+              <p className="text-left font-bold text-slate-800">"Don’t talk."</p>
+              <p className="text-left text-slate-500">➔ He told me not to talk.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: '8. ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <ul className="space-y-2">
+            <li className="flex items-center gap-2">✅ نحذف علامات التنصيص " "</li>
+            <li className="flex items-center gap-2">✅ نستخدم that (اختياري)</li>
+            <li className="flex items-center gap-2">✅ نرجع الزمن خطوة للخلف</li>
+            <li className="flex items-center gap-2">✅ نغير الضمائر حسب المتكلم</li>
+            <li className="flex items-center gap-2">✅ نغير كلمات الزمن والمكان</li>
           </ul>
         </div>
       )
@@ -2523,41 +3808,82 @@ export const reportedSpeechLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: '\u202AHe said, "I am happy." ➔ He said that he _____ happy.\u202C',
-      options: ['is', 'was', 'were', 'has been'],
+      question: '"I am tired," he said. ➔ He said that he ______ tired.',
+      options: ['is', 'was', 'will be', 'be'],
       correctAnswer: 'was',
-      explanation: 'نحول الزمن من المضارع (am) إلى الماضي (was).'
+      explanation: 'نحول المضارع (am) إلى الماضي (was) في الكلام المنقول.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: '\u202AShe asked me, "Do you like fish?" ➔ She asked me _____ I liked fish.\u202C',
-      options: ['that', 'what', 'if', 'to'],
-      correctAnswer: 'if',
-      explanation: 'لأن السؤال يبدأ بفعل مساعد (Do) بمعنى هل، نربط بـ if.'
+      question: '"I will travel tomorrow," she said. ➔ She said that she ______ travel the next day.',
+      options: ['will', 'would', 'can', 'is'],
+      correctAnswer: 'would',
+      explanation: 'نحول will إلى would في الكلام المنقول.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: '\u202AAli said, "I will go tomorrow." ➔ Ali said that he _____ go the next day.\u202C',
-      options: ['will', 'would', 'can', 'could'],
-      correctAnswer: 'would',
-      explanation: 'نحول will إلى الماضي would.'
+      question: '"We are playing," they said. ➔ They said that they ______ playing.',
+      options: ['are', 'were', 'was', 'be'],
+      correctAnswer: 'were',
+      explanation: 'نحول are إلى were لأن الفاعل جمع (they) والزمن يعود للماضي.'
     },
     {
       id: 'q4',
       type: 'multiple_choice',
-      question: '\u202AHe asked, "Where is the post office?" ➔ He asked where the post office _____.\u202C',
-      options: ['is', 'was', 'were', 'has been'],
-      correctAnswer: 'was',
-      explanation: 'نحول السؤال إلى جملة (الفاعل قبل الفعل) ونحول is إلى was.'
+      question: '"Do you like coffee?" he said. ➔ He asked if I ______ coffee.',
+      options: ['like', 'liked', 'will like', 'am liking'],
+      correctAnswer: 'liked',
+      explanation: 'في السؤال المنقول، نحول المضارع البسيط إلى ماضي بسيط.'
     },
     {
       id: 'q5',
-      type: 'true_false',
-      question: 'She said to me that she was tired.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. لا نستخدم said to me، بل نستخدم told me (She told me that...).'
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: He said that he is tired.',
+      options: ['He said that he was tired.', 'He said that he will be tired.', 'He said that he tired.'],
+      correctAnswer: 'He said that he was tired.',
+      explanation: 'يجب تحويل الفعل إلى الماضي (was) بدلاً من المضارع (is).'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: She said that she will go tomorrow.',
+      options: ['She said that she would go the next day.', 'She said that she goes tomorrow.', 'She said that she went tomorrow.'],
+      correctAnswer: 'She said that she would go the next day.',
+      explanation: 'يجب تحويل will إلى would وتغيير tomorrow إلى the next day.'
+    },
+    {
+      id: 'q7',
+      type: 'arrange',
+      question: 'ترجم: قال: "أنا سأدرس"',
+      options: ['He', 'said', 'that', 'he', 'would', 'study'],
+      correctAnswer: ['He', 'said', 'that', 'he', 'would', 'study'],
+      explanation: 'نحول "I will study" إلى "he would study".'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'ترجم: قال: "أين تسكن؟"',
+      options: ['He', 'asked', 'where', 'I', 'lived'],
+      correctAnswer: ['He', 'asked', 'where', 'I', 'lived'],
+      explanation: 'في السؤال المنقول، نستخدم asked ونحول الفعل للماضي (lived).'
+    },
+    {
+      id: 'q9',
+      type: 'arrange',
+      question: 'ترجم: قال إنه كان متعبًا.',
+      options: ['He', 'said', 'that', 'he', 'was', 'tired'],
+      correctAnswer: ['He', 'said', 'that', 'he', 'was', 'tired'],
+      explanation: 'نحول "I am tired" إلى "he was tired".'
+    },
+    {
+      id: 'q10',
+      type: 'arrange',
+      question: 'ترجم: قالت إنها ستذهب إلى المدرسة.',
+      options: ['She', 'said', 'that', 'she', 'would', 'go', 'to', 'school'],
+      correctAnswer: ['She', 'said', 'that', 'she', 'would', 'go', 'to', 'school'],
+      explanation: 'نحول "I will go" إلى "she would go".'
     }
   ]
 };
