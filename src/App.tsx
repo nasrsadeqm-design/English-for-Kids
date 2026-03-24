@@ -16,6 +16,7 @@ import {
   AlertCircle,
   Lock,
   Settings,
+  Sparkles,
   Printer,
   Download,
   LogOut
@@ -25,6 +26,7 @@ import studentsDataRaw from './data/students.json';
 import { Category, Word } from './types';
 import { speak, cn } from './utils';
 import { Flashcard } from './components/Flashcard';
+import { EducationalCard } from './components/EducationalCard';
 import { AdvancedQuiz as Quiz } from './components/AdvancedQuiz';
 import { MatchGame } from './components/MatchGame';
 import { DictionaryTool } from './components/DictionaryTool';
@@ -40,6 +42,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { GrammarLesson } from './components/GrammarLesson';
 import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
+import { situationalWords } from './data/situations';
 import { BackButton } from './components/BackButton';
 
 interface FlashcardViewProps {
@@ -49,6 +52,7 @@ interface FlashcardViewProps {
 
 const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isModern, setIsModern] = useState(true);
   
   if (words.length === 0) {
     return (
@@ -65,45 +69,70 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
   const currentWord = words[currentIndex];
 
   return (
-    <div className="space-y-10 max-w-md mx-auto">
+    <div className="space-y-10 max-w-2xl mx-auto">
       <div className="flex items-center justify-between px-2">
         <BackButton onClick={onBack} />
-        <span className="font-black text-slate-400 text-lg">{currentIndex + 1} / {words.length}</span>
+        
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setIsModern(!isModern)}
+            className={cn(
+              "px-4 py-2 rounded-xl text-xs font-black transition-all border-2",
+              isModern 
+                ? "bg-indigo-600 text-white border-indigo-600" 
+                : "bg-white text-slate-400 border-slate-100"
+            )}
+          >
+            {isModern ? 'الوضع الحديث ✨' : 'الوضع الكلاسيكي 🃏'}
+          </button>
+          <span className="font-black text-slate-400 text-lg">{currentIndex + 1} / {words.length}</span>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentIndex}
+          key={`${currentIndex}-${isModern}`}
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -50, opacity: 0 }}
           className="perspective-1000"
         >
-          <Flashcard word={currentWord} />
+          {isModern ? (
+            <EducationalCard 
+              word={currentWord} 
+              onNext={() => currentIndex < words.length - 1 && setCurrentIndex(c => c + 1)}
+              onPrev={() => currentIndex > 0 && setCurrentIndex(c => c - 1)}
+              isFirst={currentIndex === 0}
+              isLast={currentIndex === words.length - 1}
+            />
+          ) : (
+            <div className="space-y-10 max-w-md mx-auto">
+              <Flashcard word={currentWord} />
+              <div className="flex gap-5">
+                <button 
+                  disabled={currentIndex === 0}
+                  onClick={() => setCurrentIndex(c => c - 1)}
+                  className="flex-1 py-5 bg-white rounded-[2rem] font-black text-xl text-slate-600 shadow-sm border-2 border-transparent hover:border-indigo-100 disabled:opacity-30 transition-all"
+                >
+                  السابق
+                </button>
+                <button 
+                  disabled={currentIndex === words.length - 1}
+                  onClick={() => setCurrentIndex(c => c + 1)}
+                  className="flex-1 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all"
+                >
+                  التالي <ArrowRight size={24} />
+                </button>
+              </div>
+            </div>
+          )}
         </motion.div>
       </AnimatePresence>
-
-      <div className="flex gap-5">
-        <button 
-          disabled={currentIndex === 0}
-          onClick={() => setCurrentIndex(c => c - 1)}
-          className="flex-1 py-5 bg-white rounded-[2rem] font-black text-xl text-slate-600 shadow-sm border-2 border-transparent hover:border-indigo-100 disabled:opacity-30 transition-all"
-        >
-          السابق
-        </button>
-        <button 
-          disabled={currentIndex === words.length - 1}
-          onClick={() => setCurrentIndex(c => c + 1)}
-          className="flex-1 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl flex items-center justify-center gap-3 shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all"
-        >
-          التالي <ArrowRight size={24} />
-        </button>
-      </div>
     </div>
   );
 };
 
-type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin' | 'grammar-list' | 'grammar-lesson' | 'grammar-quiz' | 'global-grammar-quiz' | 'games-menu';
+type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin' | 'grammar-list' | 'grammar-lesson' | 'grammar-quiz' | 'global-grammar-quiz' | 'games-menu' | 'situations';
 
 export default function App() {
   const [view, setView] = useState<View>('home'); // Default to home, but logic below will override
@@ -602,6 +631,24 @@ export default function App() {
         <DictionaryTool localWords={allWords} onAddWord={handleAddWord} />
 
         <div className="pt-4">
+          <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تعلم بأسلوب جديد ✨</h3>
+          <div className="grid grid-cols-1 gap-6 mb-10">
+            <motion.button
+              onClick={() => setView('situations')}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-[3rem] text-white text-right flex items-center justify-between group shadow-xl shadow-indigo-100 hover:scale-[1.02] transition-all border-4 border-white/20"
+            >
+              <div className="p-5 bg-white/20 rounded-3xl backdrop-blur-md group-hover:scale-110 transition-transform">
+                <Sparkles size={32} />
+              </div>
+              <div className="space-y-1">
+                <p className="text-3xl font-black">الإنجليزية في مواقف 🎭</p>
+                <p className="text-sm font-bold opacity-90">تعلم الكلمات حسب المواقف الحقيقية بأسلوب تفاعلي</p>
+              </div>
+            </motion.button>
+          </div>
+
           <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تصفح حسب الأقسام</h3>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -835,6 +882,24 @@ export default function App() {
     );
   };
 
+  const renderSituations = () => {
+    return (
+      <div className="space-y-8">
+        <div className="flex items-center gap-6">
+          <BackButton onClick={() => setView('home')} />
+          <h2 className="text-3xl font-black text-slate-800 tracking-tight">الإنجليزية في مواقف 🎭</h2>
+        </div>
+        <div className="p-6 bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-100 rounded-[3rem] shadow-sm mb-8">
+          <p className="text-lg text-indigo-900 font-bold text-right" dir="rtl">
+            تعلم الكلمات والجمل الأكثر استخداماً في مواقف الحياة اليومية المختلفة. 
+            <span className="block text-sm text-indigo-400 mt-1">استخدم البطاقات التعليمية الحديثة لتثبيت المعلومة!</span>
+          </p>
+        </div>
+        <FlashcardView words={situationalWords} onBack={() => setView('home')} />
+      </div>
+    );
+  };
+
   if (isActivated === null) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-indigo-50">
@@ -868,6 +933,7 @@ export default function App() {
                 onBack={() => setView('grammar-list')} 
               />
             )}
+            {view === 'situations' && renderSituations()}
             {view === 'global-grammar-quiz' && (
               <GrammarQuiz 
                 questions={globalGrammarQuestions} 

@@ -3889,6 +3889,123 @@ export const reportedSpeechLesson: GrammarLessonData = {
 };
 
 
+export const sentenceBuildingLesson: GrammarLessonData = {
+  id: 'sentence-building',
+  title: 'فن بناء الجملة (Sentence Building)',
+  description: 'تعلم كيف تبني جملة احترافية بكل سهولة! 🏗️',
+  cards: [
+    {
+      id: 'sb1',
+      title: 'مكونات الجملة الأساسية 🧩',
+      icon: '🏛️',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <p className="text-lg text-slate-700 leading-relaxed">
+            الجملة في الإنجليزية مثل البناء، تحتاج إلى أساس قوي! تتكون الجملة البسيطة من:
+          </p>
+          <div className="grid grid-cols-1 gap-4">
+            <div className="p-6 bg-blue-50 border-2 border-blue-200 rounded-3xl flex items-center justify-between group hover:scale-[1.02] transition-all cursor-default">
+              <div className="text-4xl">👤</div>
+              <div className="flex-1 mr-6">
+                <h4 className="text-xl font-black text-blue-700">الفاعل (Subject)</h4>
+                <p className="text-sm text-blue-600/80 font-bold">هو من يقوم بالفعل (I, He, She, Ali...)</p>
+              </div>
+            </div>
+            <div className="p-6 bg-rose-50 border-2 border-rose-200 rounded-3xl flex items-center justify-between group hover:scale-[1.02] transition-all cursor-default">
+              <div className="text-4xl">⚡</div>
+              <div className="flex-1 mr-6">
+                <h4 className="text-xl font-black text-rose-700">الفعل (Verb)</h4>
+                <p className="text-sm text-rose-600/80 font-bold">هو الحركة أو الحالة (play, eat, is...)</p>
+              </div>
+            </div>
+            <div className="p-6 bg-emerald-50 border-2 border-emerald-200 rounded-3xl flex items-center justify-between group hover:scale-[1.02] transition-all cursor-default">
+              <div className="text-4xl">📦</div>
+              <div className="flex-1 mr-6">
+                <h4 className="text-xl font-black text-emerald-700">المفعول (Object)</h4>
+                <p className="text-sm text-emerald-600/80 font-bold">هو ما وقع عليه الفعل (football, apple...)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'sb2',
+      title: 'النمط الذهبي (S-V-O) ✨',
+      icon: '📏',
+      content: (
+        <div className="space-y-8 text-center">
+          <div className="inline-flex items-center gap-4 p-6 bg-slate-900 rounded-[2.5rem] shadow-2xl border-4 border-slate-800">
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl mb-2">S</div>
+              <span className="text-xs text-blue-300 font-bold uppercase tracking-widest">Subject</span>
+            </div>
+            <div className="text-slate-600 text-2xl font-black">→</div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-rose-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl mb-2">V</div>
+              <span className="text-xs text-rose-300 font-bold uppercase tracking-widest">Verb</span>
+            </div>
+            <div className="text-slate-600 text-2xl font-black">→</div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-2xl mb-2">O</div>
+              <span className="text-xs text-emerald-300 font-bold uppercase tracking-widest">Object</span>
+            </div>
+          </div>
+          
+          <div className="p-8 bg-white border-4 border-indigo-50 rounded-[3rem] shadow-inner space-y-4">
+            <p className="text-4xl font-black text-slate-800 tracking-tight">
+              <span className="text-blue-600">Ali</span> <span className="text-rose-600">eats</span> <span className="text-emerald-600">an apple</span>.
+            </p>
+            <div className="h-1 w-24 bg-indigo-100 mx-auto rounded-full" />
+            <p className="text-xl font-bold text-slate-400" dir="rtl">علي يأكل تفاحة.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'sb3',
+      title: 'تحدي التركيب! 🏗️',
+      icon: '🎮',
+      content: (
+        <div className="space-y-6 text-right" dir="rtl">
+          <p className="text-lg text-slate-700 font-bold">انظر كيف تتغير الجملة بإضافة تفاصيل بسيطة:</p>
+          <div className="space-y-4">
+            <div className="p-5 bg-white border-2 border-slate-100 rounded-2xl shadow-sm">
+              <p className="text-sm text-slate-400 mb-1">المستوى 1: جملة بسيطة</p>
+              <p className="text-2xl font-black text-slate-800">I read a book.</p>
+            </div>
+            <div className="p-5 bg-indigo-50 border-2 border-indigo-100 rounded-2xl shadow-sm">
+              <p className="text-sm text-indigo-400 mb-1">المستوى 2: إضافة وصف (Adjective)</p>
+              <p className="text-2xl font-black text-slate-800">I read an <span className="text-indigo-600 underline decoration-wavy">interesting</span> book.</p>
+            </div>
+            <div className="p-5 bg-amber-50 border-2 border-amber-100 rounded-2xl shadow-sm">
+              <p className="text-sm text-amber-500 mb-1">المستوى 3: إضافة زمان (Time)</p>
+              <p className="text-2xl font-black text-slate-800">I read an interesting book <span className="text-amber-600 underline decoration-wavy">every night</span>.</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  ],
+  quiz: [
+    {
+      id: 'q1',
+      type: 'arrange',
+      question: 'رتب الجملة التالية بشكل صحيح:',
+      correctAnswer: ['I', 'play', 'football', 'well'],
+      explanation: 'نبدأ بالفاعل (I) ثم الفعل (play) ثم المفعول (football) ثم الحال (well).'
+    },
+    {
+      id: 'q2',
+      type: 'multiple_choice',
+      question: 'أي من الكلمات التالية تعتبر "Subject" في هذه الجملة: "The cat sleeps on the sofa."',
+      options: ['The cat', 'sleeps', 'on', 'the sofa'],
+      correctAnswer: 'The cat',
+      explanation: 'القطة هي من تقوم بفعل النوم، لذا فهي الفاعل.'
+    }
+  ]
+};
+
 export const allGrammarLessons: GrammarLessonData[] = [
   presentSimpleLesson,
   presentContinuousLesson,
@@ -3909,5 +4026,6 @@ export const allGrammarLessons: GrammarLessonData[] = [
   politeRequestsLesson,
   givingAdviceLesson,
   quantityLesson,
-  reportedSpeechLesson
+  reportedSpeechLesson,
+  sentenceBuildingLesson
 ];

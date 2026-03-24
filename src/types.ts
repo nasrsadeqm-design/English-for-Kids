@@ -1,12 +1,15 @@
 import React from 'react';
 
-export type Category = 'Nouns' | 'Verbs' | 'Adjectives' | 'Adverbs' | 'Phrasal Verbs';
+export type Category = 'Nouns' | 'Verbs' | 'Adjectives' | 'Adverbs' | 'Phrasal Verbs' | 'At the Airport' | 'At the Restaurant' | 'Shopping';
 
 export interface Word {
   id: string;
   english: string;
   arabic: string;
   category: Category;
+  example?: string;
+  image?: string;
+  fact?: string;
 }
 
 export interface QuizQuestion {

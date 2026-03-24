@@ -126,7 +126,10 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
     'Verbs': 'فعل (Verb)',
     'Adjectives': 'صفة (Adjective)',
     'Adverbs': 'ظرف (Adverb)',
-    'Phrasal Verbs': 'فعل مركب (Phrasal Verb)'
+    'Phrasal Verbs': 'فعل مركب (Phrasal Verb)',
+    'At the Airport': 'في المطار (Airport)',
+    'At the Restaurant': 'في المطعم (Restaurant)',
+    'Shopping': 'التسوق (Shopping)'
   };
 
   return (
