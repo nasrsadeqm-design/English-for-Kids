@@ -53,25 +53,25 @@ export const presentSimpleLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-emerald-50 border-2 border-emerald-100 rounded-2xl">
             <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">✅ الإثبات (Positive)</h4>
-            <div className="space-y-2" dir="ltr">
-              <p className="text-xl"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb (بدون إضافة)" type="verb" /></p>
-              <p className="text-xl"><CText text="👤 He/She/It" type="subject" /> + <CText text="Verb + s/es" type="verb" /></p>
+            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb (بدون إضافة)" type="verb" /></p>
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👤 He/She/It" type="subject" /> + <CText text="Verb + s/es" type="verb" /></p>
             </div>
           </div>
 
           <div className="p-4 bg-red-50 border-2 border-red-100 rounded-2xl">
             <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">❌ النفي (Negative)</h4>
-            <div className="space-y-2" dir="ltr">
-              <p className="text-xl"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="don't" type="particle" /> + <CText text="Verb" type="verb" /></p>
-              <p className="text-xl"><CText text="👤 He/She/It" type="subject" /> + <CText text="doesn't" type="particle" /> + <CText text="Verb" type="verb" /></p>
+            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="don't" type="particle" /> + <CText text="Verb" type="verb" /></p>
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👤 He/She/It" type="subject" /> + <CText text="doesn't" type="particle" /> + <CText text="Verb" type="verb" /></p>
             </div>
           </div>
 
           <div className="p-4 bg-blue-50 border-2 border-blue-100 rounded-2xl">
             <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">❓ السؤال (Question)</h4>
-            <div className="space-y-2" dir="ltr">
-              <p className="text-xl"><CText text="Do" type="particle" /> + <CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb" type="verb" />?</p>
-              <p className="text-xl"><CText text="Does" type="particle" /> + <CText text="👤 He/She/It" type="subject" /> + <CText text="Verb" type="verb" />?</p>
+            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="Do" type="particle" /> + <CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb" type="verb" />?</p>
+              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="Does" type="particle" /> + <CText text="👤 He/She/It" type="subject" /> + <CText text="Verb" type="verb" />?</p>
             </div>
           </div>
         </div>
@@ -82,21 +82,21 @@ export const presentSimpleLesson: GrammarLessonData = {
       title: 'أمثلة ملونة 🎨',
       icon: '📝',
       content: (
-        <div className="space-y-4 text-2xl" dir="ltr">
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm">
+        <div className="space-y-4 text-2xl whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="I" type="subject" />
             <CText text="play" type="verb" />
             <CText text="football" type="complement" />
             <CText text="every day." type="particle" />
             <p className="text-sm text-slate-400 mt-2 text-right" dir="rtl">أنا ألعب كرة القدم كل يوم.</p>
           </div>
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm">
+          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="She" type="subject" />
             <CText text="likes" type="verb" />
             <CText text="apples." type="complement" />
             <p className="text-sm text-slate-400 mt-2 text-right" dir="rtl">هي تحب التفاح. (لاحظ إضافة s للفعل لأن الفاعل مفرد)</p>
           </div>
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm">
+          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="We" type="subject" />
             <CText text="don't" type="particle" />
             <CText text="go" type="verb" />
@@ -114,7 +114,7 @@ export const presentSimpleLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-right" dir="rtl">
           <p className="text-lg text-slate-700">إذا رأيت هذه الكلمات في الجملة، فاعلم أننا غالباً نستخدم المضارع البسيط:</p>
-          <div className="flex flex-wrap gap-3" dir="ltr">
+          <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-3" dir="ltr">
             <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">always (دائماً)</span>
             <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">usually (عادةً)</span>
             <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">often (غالباً)</span>
@@ -134,7 +134,7 @@ export const presentSimpleLesson: GrammarLessonData = {
           <div className="p-4 bg-amber-50 border-2 border-amber-200 rounded-2xl">
             <p className="text-lg text-slate-800 font-bold mb-2">متى نضيف (es) بدلاً من (s) مع المفرد (He/She/It)؟</p>
             <p className="text-slate-700">إذا انتهى الفعل بأحد هذه الحروف: <strong>o, ch, sh, ss, x</strong></p>
-            <div className="mt-3 space-y-2" dir="ltr">
+            <div className="mt-3 space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-xl font-black text-slate-800">go ➡️ go<span className="text-red-500">es</span></p>
               <p className="text-xl font-black text-slate-800">watch ➡️ watch<span className="text-red-500">es</span></p>
               <p className="text-xl font-black text-slate-800">wash ➡️ wash<span className="text-red-500">es</span></p>
@@ -250,7 +250,7 @@ export const pastSimpleLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="الفعل في التصريف الثاني (ed أو شاذ)" type="verb" />
@@ -260,7 +260,7 @@ export const pastSimpleLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="didn't" type="particle" />
@@ -270,7 +270,7 @@ export const pastSimpleLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="Did" type="particle" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="الفاعل" type="subject" />
@@ -287,19 +287,19 @@ export const pastSimpleLesson: GrammarLessonData = {
       title: 'أمثلة ملونة 🎨',
       icon: '✨',
       content: (
-        <div className="space-y-4 text-2xl text-left font-medium" dir="ltr">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="He" type="subject" />
             <CText text="played" type="verb" />
             <CText text="football yesterday." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="We" type="subject" />
             <CText text="didn't" type="particle" />
             <CText text="go" type="verb" />
             <CText text="to school." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="Did" type="particle" />
             <CText text="she" type="subject" />
             <CText text="see" type="verb" />
@@ -315,7 +315,7 @@ export const pastSimpleLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>عندما ترى هذه الكلمات، فغالباً الجملة في الماضي البسيط:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4" dir="ltr">
+          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">yesterday</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">last (week/year)</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">ago</div>
@@ -334,8 +334,8 @@ export const pastSimpleLesson: GrammarLessonData = {
             هناك نوعان من الأفعال في الماضي:
           </p>
           <ul className="list-disc list-inside space-y-2">
-            <li><strong>أفعال منتظمة (Regular):</strong> نضيف لها ed (مثل: <span dir="ltr" className="inline-block mx-1">play ➔ played</span>).</li>
-            <li><strong>أفعال شاذة (Irregular):</strong> يتغير شكلها ويجب حفظها (مثل: <span dir="ltr" className="inline-block mx-1">go ➔ went, see ➔ saw</span>).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>أفعال منتظمة (Regular):</strong> نضيف لها ed (مثل: <span dir="ltr" className="inline-block mx-1 whitespace-nowrap">play ➔ played</span>).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>أفعال شاذة (Irregular):</strong> يتغير شكلها ويجب حفظها (مثل: <span dir="ltr" className="inline-block mx-1 whitespace-nowrap">go ➔ went, see ➔ saw</span>).</li>
           </ul>
         </div>
       )
@@ -444,7 +444,7 @@ export const presentContinuousLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="am / is / are" type="particle" />
@@ -454,7 +454,7 @@ export const presentContinuousLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="am not / isn't / aren't" type="particle" />
@@ -464,7 +464,7 @@ export const presentContinuousLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="Am / Is / Are" type="particle" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="الفاعل" type="subject" />
@@ -481,20 +481,20 @@ export const presentContinuousLesson: GrammarLessonData = {
       title: 'أمثلة ملونة 🎨',
       icon: '✨',
       content: (
-        <div className="space-y-4 text-2xl text-left font-medium" dir="ltr">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="He" type="subject" />
             <CText text="is" type="particle" />
             <CText text="playing" type="verb" />
             <CText text="football now." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="We" type="subject" />
             <CText text="aren't" type="particle" />
             <CText text="watching" type="verb" />
             <CText text="TV." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="Is" type="particle" />
             <CText text="she" type="subject" />
             <CText text="reading" type="verb" />
@@ -510,7 +510,7 @@ export const presentContinuousLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>عندما ترى هذه الكلمات، فغالباً الجملة في المضارع المستمر:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4" dir="ltr">
+          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">now</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">at the moment</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">Look!</div>
@@ -640,7 +640,7 @@ export const futureSimpleLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="will" type="particle" />
@@ -650,7 +650,7 @@ export const futureSimpleLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="won't" type="particle" />
@@ -660,7 +660,7 @@ export const futureSimpleLesson: GrammarLessonData = {
           </div>
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="Will" type="particle" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="الفاعل" type="subject" />
@@ -677,20 +677,20 @@ export const futureSimpleLesson: GrammarLessonData = {
       title: 'أمثلة ملونة 🎨',
       icon: '✨',
       content: (
-        <div className="space-y-4 text-2xl text-left font-medium" dir="ltr">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="He" type="subject" />
             <CText text="will" type="particle" />
             <CText text="play" type="verb" />
             <CText text="football tomorrow." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="We" type="subject" />
             <CText text="won't" type="particle" />
             <CText text="go" type="verb" />
             <CText text="to school." type="complement" />
           </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="Will" type="particle" />
             <CText text="she" type="subject" />
             <CText text="see" type="verb" />
@@ -706,7 +706,7 @@ export const futureSimpleLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>عندما ترى هذه الكلمات، فغالباً الجملة في المستقبل البسيط:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4" dir="ltr">
+          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">tomorrow</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">next (week/year)</div>
             <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">soon</div>
@@ -724,7 +724,7 @@ export const futureSimpleLesson: GrammarLessonData = {
           <p>
             يمكننا أيضاً استخدام <strong>(am/is/are going to)</strong> للتعبير عن المستقبل، ولكن نستخدمها عندما نكون قد خططنا للشيء مسبقاً.
           </p>
-          <p className="text-left bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+          <p className="text-left bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             I am <strong>going to</strong> visit my grandma tomorrow. (مخطط لذلك)
           </p>
         </div>
@@ -819,7 +819,7 @@ export const pastContinuousLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
               <CText text="الفاعل" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="was / were" type="particle" />
@@ -839,13 +839,13 @@ export const pastContinuousLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>While / As / Just as (بينما):</strong> يأتي بعدها (ماضي مستمر)، والحدث القاطع (ماضي بسيط).
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 <CText text="While" type="particle" /> I <CText text="was studying" type="verb" />, the phone <CText text="rang" type="verb" />.
               </div>
             </li>
             <li>
               <strong>When (عندما):</strong> يأتي بعدها غالباً (ماضي بسيط)، والحدث الآخر (ماضي مستمر).
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 <CText text="When" type="particle" /> the phone <CText text="rang" type="verb" />, I <CText text="was studying" type="verb" />.
               </div>
             </li>
@@ -917,12 +917,12 @@ export const presentPerfectLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl" dir="ltr">
+              <CText text="Subject" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="have / has" type="particle" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="التصريف الثالث (P.P)" type="verb" />
+              <CText text="V3 (P.P)" type="verb" />
             </div>
           </div>
         </div>
@@ -1007,12 +1007,12 @@ export const pastPerfectLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
             <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
-            <div className="flex flex-wrap gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl" dir="ltr">
+              <CText text="Subject" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="had" type="particle" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="التصريف الثالث (P.P)" type="verb" />
+              <CText text="V3 (P.P)" type="verb" />
             </div>
           </div>
         </div>
@@ -1093,7 +1093,7 @@ export const futureFormsLesson: GrammarLessonData = {
             <li><strong>الخطط والنوايا:</strong> أشياء قررنا فعلها مسبقاً.</li>
             <li><strong>تنبؤ بدليل:</strong> (السماء غائمة، سوف تمطر).</li>
           </ul>
-          <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+          <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             I am <CText text="going to" type="particle" /> <CText text="visit" type="verb" /> my uncle.
           </div>
         </div>
@@ -1106,7 +1106,7 @@ export const futureFormsLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>نستخدم المضارع المستمر (am/is/are + v-ing) للتعبير عن <strong>ترتيبات مستقبلية مؤكدة</strong> (مثل حجز التذاكر).</p>
-          <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+          <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             I <CText text="am traveling" type="verb" /> to London tomorrow. (I have the tickets)
           </div>
         </div>
@@ -1284,7 +1284,7 @@ export const conditionalsLesson: GrammarLessonData = {
             <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">
               <span>🔸</span> القاعدة:
             </h4>
-            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner whitespace-nowrap overflow-x-auto custom-scrollbar">
               <span className="text-emerald-400 font-mono text-xl">If + Present Simple → Present Simple</span>
             </div>
           </div>
@@ -1295,11 +1295,11 @@ export const conditionalsLesson: GrammarLessonData = {
             </h4>
             <div className="space-y-3">
               <div className="p-3 bg-white border-2 border-emerald-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If you heat water, it boils.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If you heat water, it boils.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا سخّنت الماء، فإنه يغلي.</p>
               </div>
               <div className="p-3 bg-white border-2 border-emerald-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If you don’t eat, you feel weak.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If you don’t eat, you feel weak.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا لم تأكل، تشعر بالضعف.</p>
               </div>
             </div>
@@ -1331,7 +1331,7 @@ export const conditionalsLesson: GrammarLessonData = {
             <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">
               <span>🔸</span> القاعدة:
             </h4>
-            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner whitespace-nowrap overflow-x-auto custom-scrollbar">
               <span className="text-blue-400 font-mono text-xl">If + Present Simple → will + base verb</span>
             </div>
           </div>
@@ -1342,11 +1342,11 @@ export const conditionalsLesson: GrammarLessonData = {
             </h4>
             <div className="space-y-3">
               <div className="p-3 bg-white border-2 border-blue-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If you study hard, you will pass the exam.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If you study hard, you will pass the exam.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا درست بجد، ستنجح في الامتحان.</p>
               </div>
               <div className="p-3 bg-white border-2 border-blue-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If it rains, we will stay at home.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If it rains, we will stay at home.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">إذا أمطرت، سنبقى في المنزل.</p>
               </div>
             </div>
@@ -1378,7 +1378,7 @@ export const conditionalsLesson: GrammarLessonData = {
             <h4 className="font-black text-amber-700 mb-2 flex items-center gap-2">
               <span>🔸</span> القاعدة:
             </h4>
-            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner whitespace-nowrap overflow-x-auto custom-scrollbar">
               <span className="text-amber-400 font-mono text-xl">If + Past Simple → would + base verb</span>
             </div>
           </div>
@@ -1389,11 +1389,11 @@ export const conditionalsLesson: GrammarLessonData = {
             </h4>
             <div className="space-y-3">
               <div className="p-3 bg-white border-2 border-amber-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If I were rich, I would buy a big house.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If I were rich, I would buy a big house.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو كنت غنياً، لاشتريت بيتًا كبيرًا.</p>
               </div>
               <div className="p-3 bg-white border-2 border-amber-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If he studied, he would pass.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If he studied, he would pass.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو درس، لنجح.</p>
               </div>
             </div>
@@ -1428,7 +1428,7 @@ export const conditionalsLesson: GrammarLessonData = {
             <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">
               <span>🔸</span> القاعدة:
             </h4>
-            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner">
+            <div dir="ltr" className="text-center p-4 bg-slate-900 rounded-2xl shadow-inner whitespace-nowrap overflow-x-auto custom-scrollbar">
               <span className="text-red-400 font-mono text-xl">If + Past Perfect → would have + P.P</span>
             </div>
           </div>
@@ -1439,11 +1439,11 @@ export const conditionalsLesson: GrammarLessonData = {
             </h4>
             <div className="space-y-3">
               <div className="p-3 bg-white border-2 border-red-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If I had studied, I would have passed.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If I had studied, I would have passed.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو كنت درست، لكنت نجحت.</p>
               </div>
               <div className="p-3 bg-white border-2 border-red-100 rounded-xl shadow-sm" dir="ltr">
-                <p className="text-lg font-bold text-slate-800">If they had left earlier, they would have caught the bus.</p>
+                <p className="text-lg font-bold text-slate-800 whitespace-nowrap overflow-x-auto custom-scrollbar">If they had left earlier, they would have caught the bus.</p>
                 <p className="text-sm text-slate-500 mt-1 text-right" dir="rtl">لو غادروا مبكرًا، لكانوا لحقوا الحافلة.</p>
               </div>
             </div>
@@ -1464,7 +1464,7 @@ export const conditionalsLesson: GrammarLessonData = {
         <div className="space-y-6 text-right" dir="rtl">
           <div className="bg-indigo-50 p-4 rounded-2xl border-2 border-indigo-100">
             <h4 className="font-black text-indigo-800 mb-2">1. يمكن تبديل ترتيب الجملة:</h4>
-            <div className="space-y-2" dir="ltr">
+            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="font-mono text-indigo-600">If you study, you will succeed.</p>
               <p className="font-mono text-indigo-600">You will succeed if you study.</p>
             </div>
@@ -1477,7 +1477,7 @@ export const conditionalsLesson: GrammarLessonData = {
 
           <div className="bg-red-50 p-4 rounded-2xl border-2 border-red-100">
             <h4 className="font-black text-red-800 mb-2">2. لا نستخدم "will" بعد if ❌</h4>
-            <div className="space-y-1" dir="ltr">
+            <div className="space-y-1 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-red-500 line-through">❌ If you will study, you will pass.</p>
               <p className="text-emerald-600 font-bold">✔ If you study, you will pass.</p>
             </div>
@@ -1502,7 +1502,7 @@ export const conditionalsLesson: GrammarLessonData = {
                 <span>طالما</span>
               </div>
             </div>
-            <div className="mt-3 p-2 bg-white rounded-lg text-sm border border-emerald-100" dir="ltr">
+            <div className="mt-3 p-2 bg-white rounded-lg text-sm border border-emerald-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="font-bold text-slate-800">📌 Example:</p>
               <p className="text-indigo-600">Unless you study, you will fail.</p>
               <p className="text-slate-500 text-right" dir="rtl">(إذا لم تدرس، سترسب)</p>
@@ -1653,11 +1653,11 @@ export const passiveVoiceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
             <p className="font-bold text-blue-800 mb-2">المعلوم (Active): الفاعل هو الذي يقوم بالفعل</p>
-            <p className="text-left font-mono text-blue-600" dir="ltr">👉 Ali wrote the lesson</p>
+            <p className="text-left font-mono text-blue-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">👉 Ali wrote the lesson</p>
           </div>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
             <p className="font-bold text-indigo-800 mb-2">المجهول (Passive): نهتم بالشيء الذي وقع عليه الفعل</p>
-            <p className="text-left font-mono text-indigo-600" dir="ltr">👉 The lesson was written (by Ali)</p>
+            <p className="text-left font-mono text-indigo-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">👉 The lesson was written (by Ali)</p>
           </div>
         </div>
       )
@@ -1671,7 +1671,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">verb (s/es)</span>
@@ -1679,13 +1679,13 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">Ali eats the food</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Ali eats the food</p>
             <p className="text-sm text-slate-500 mt-1">👉 علي يأكل الطعام</p>
           </div>
           <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-emerald-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-emerald-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-emerald-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
@@ -1693,20 +1693,20 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-emerald-600 font-bold" dir="ltr">The food is eaten (by Ali)</p>
+            <p className="text-left font-mono text-emerald-600 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">The food is eaten (by Ali)</p>
           </div>
-          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-wrap items-center gap-2">
+          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2">
             <span>💡 <strong>الشرح:</strong></span>
             <span>إذا الفاعل مفرد يأخذ</span>
-            <span dir="ltr" className="font-bold text-indigo-600">is</span>
+            <span dir="ltr" className="font-bold text-indigo-600 whitespace-nowrap">is</span>
             <span>، وإذا كان جمع يأخذ</span>
-            <span dir="ltr" className="font-bold text-indigo-600">are</span>
+            <span dir="ltr" className="font-bold text-indigo-600 whitespace-nowrap">are</span>
           </div>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>She cleans the room → <strong>The room is cleaned</strong></li>
-              <li>They play football → <strong>Football is played</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">She cleans the room → <strong>The room is cleaned</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They play football → <strong>Football is played</strong></li>
             </ul>
           </div>
         </div>
@@ -1721,7 +1721,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span>فعل ماضي</span>
@@ -1729,12 +1729,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">Ali wrote the lesson</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Ali wrote the lesson</p>
           </div>
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-blue-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-blue-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-blue-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
@@ -1742,20 +1742,20 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-blue-600 font-bold" dir="ltr">The lesson was written</p>
+            <p className="text-left font-mono text-blue-600 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">The lesson was written</p>
           </div>
-          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-wrap items-center gap-2">
+          <div className="bg-yellow-50 p-3 rounded-lg text-sm flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2">
             <span>💡 <strong>الشرح:</strong></span>
             <span>إذا الفاعل مفرد يأخذ</span>
-            <span dir="ltr" className="font-bold text-indigo-600">was</span>
+            <span dir="ltr" className="font-bold text-indigo-600 whitespace-nowrap">was</span>
             <span>، وإذا كان جمع يأخذ</span>
-            <span dir="ltr" className="font-bold text-indigo-600">were</span>
+            <span dir="ltr" className="font-bold text-indigo-600 whitespace-nowrap">were</span>
           </div>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>He repaired the car → <strong>The car was repaired</strong></li>
-              <li>They built a house → <strong>A house was built</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">He repaired the car → <strong>The car was repaired</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They built a house → <strong>A house was built</strong></li>
             </ul>
           </div>
         </div>
@@ -1770,7 +1770,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
@@ -1780,12 +1780,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">She is cooking food</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">She is cooking food</p>
           </div>
           <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-yellow-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-yellow-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-yellow-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">am / is / are</span>
@@ -1795,13 +1795,13 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-yellow-700 font-bold" dir="ltr">Food is being cooked</p>
+            <p className="text-left font-mono text-yellow-700 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Food is being cooked</p>
           </div>
           <p className="bg-orange-50 p-3 rounded-lg text-sm">💡 <strong>الشرح:</strong> كلمة <strong>being</strong> مهمة جدًا هنا</p>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>They are building a school → <strong>A school is being built</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They are building a school → <strong>A school is being built</strong></li>
             </ul>
           </div>
         </div>
@@ -1816,7 +1816,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
@@ -1826,12 +1826,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">He was writing a letter</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">He was writing a letter</p>
           </div>
           <div className="bg-orange-50 p-4 rounded-xl border border-orange-200">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-orange-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-orange-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-orange-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">was / were</span>
@@ -1841,12 +1841,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-orange-700 font-bold" dir="ltr">A letter was being written</p>
+            <p className="text-left font-mono text-orange-700 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">A letter was being written</p>
           </div>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>They were cleaning the room → <strong>The room was being cleaned</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They were cleaning the room → <strong>The room was being cleaned</strong></li>
             </ul>
           </div>
         </div>
@@ -1861,7 +1861,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">will</span>
@@ -1871,12 +1871,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">She will cook the food</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">She will cook the food</p>
           </div>
           <div className="bg-red-50 p-4 rounded-xl border border-red-200">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-red-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-red-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-red-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">will be</span>
@@ -1884,12 +1884,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-red-600 font-bold" dir="ltr">The food will be cooked</p>
+            <p className="text-left font-mono text-red-600 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">The food will be cooked</p>
           </div>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>They will build a school → <strong>A school will be built</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They will build a school → <strong>A school will be built</strong></li>
             </ul>
           </div>
         </div>
@@ -1904,7 +1904,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">have / has</span>
@@ -1914,12 +1914,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">Ali has written the lesson</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Ali has written the lesson</p>
           </div>
           <div className="bg-purple-50 p-4 rounded-xl border border-purple-200">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-purple-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-purple-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-purple-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">have / has been</span>
@@ -1927,12 +1927,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-purple-600 font-bold" dir="ltr">The lesson has been written</p>
+            <p className="text-left font-mono text-purple-600 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">The lesson has been written</p>
           </div>
           <div className="mt-4">
             <p className="font-bold mb-2">أمثلة:</p>
             <ul className="list-disc list-inside space-y-2 text-left" dir="ltr">
-              <li>They have finished the work → <strong>The work has been finished</strong></li>
+              <li className="whitespace-nowrap overflow-x-auto custom-scrollbar">They have finished the work → <strong>The work has been finished</strong></li>
             </ul>
           </div>
         </div>
@@ -1947,7 +1947,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
           <div className="bg-slate-50 p-4 rounded-xl">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-slate-800">🔹 المعلوم:</div>
-              <div className="flex flex-wrap items-center gap-2 text-slate-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-slate-700" dir="rtl">
               <span>الفاعل</span>
               <span>+</span>
               <span dir="ltr">had</span>
@@ -1957,12 +1957,12 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span>المفعول به</span>
             </div>
             </div>
-            <p className="text-left font-mono text-slate-600" dir="ltr">He had cleaned the room</p>
+            <p className="text-left font-mono text-slate-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">He had cleaned the room</p>
           </div>
           <div className="bg-gray-100 p-4 rounded-xl border border-gray-300">
             <div className="font-bold mb-2 space-y-2">
               <div className="text-gray-800">🔹 المجهول:</div>
-              <div className="flex flex-wrap items-center gap-2 text-gray-700" dir="rtl">
+              <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar items-center gap-2 text-gray-700" dir="rtl">
               <span>المفعول به</span>
               <span>+</span>
               <span dir="ltr">had been</span>
@@ -1970,7 +1970,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
               <span dir="ltr">V3</span>
             </div>
             </div>
-            <p className="text-left font-mono text-gray-700 font-bold" dir="ltr">The room had been cleaned</p>
+            <p className="text-left font-mono text-gray-700 font-bold whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">The room had been cleaned</p>
           </div>
         </div>
       )
@@ -1983,7 +1983,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-indigo-600 text-white p-4 rounded-xl text-center shadow-lg">
             <p className="font-black mb-2">👉 المجهول =</p>
-            <p className="text-xl">المفعول + فعل to be + التصريف الثالث (V3)</p>
+            <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar">المفعول + فعل to be + التصريف الثالث (V3)</p>
           </div>
           
           <div className="bg-red-50 p-4 rounded-xl border border-red-100 mt-4">
@@ -2063,10 +2063,10 @@ export const modalsLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <ul className="list-disc list-inside space-y-2">
-            <li><strong>Must:</strong> إلزام داخلي أو قانون (You must wear a seatbelt).</li>
-            <li><strong>Have to:</strong> إلزام خارجي مفروض عليك (I have to go to work at 8).</li>
-            <li><strong>Mustn't:</strong> منع وتحريم (You mustn't smoke here).</li>
-            <li><strong>Don't have to:</strong> ليس من الضروري (You don't have to get up early on Friday).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Must:</strong> إلزام داخلي أو قانون (You must wear a seatbelt).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Have to:</strong> إلزام خارجي مفروض عليك (I have to go to work at 8).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Mustn't:</strong> منع وتحريم (You mustn't smoke here).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Don't have to:</strong> ليس من الضروري (You don't have to get up early on Friday).</li>
           </ul>
         </div>
       )
@@ -2078,9 +2078,9 @@ export const modalsLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <ul className="list-disc list-inside space-y-2">
-            <li><strong>Must be:</strong> أكيد (He has 3 cars. He must be rich).</li>
-            <li><strong>Can't be:</strong> مستحيل (He is eating. He can't be sleeping).</li>
-            <li><strong>Might be:</strong> ربما (I don't know. He might be at home).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Must be:</strong> أكيد (He has 3 cars. He must be rich).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Can't be:</strong> مستحيل (He is eating. He can't be sleeping).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Might be:</strong> ربما (I don't know. He might be at home).</li>
           </ul>
         </div>
       )
@@ -2141,10 +2141,10 @@ export const relativeClausesLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <ul className="list-disc list-inside space-y-2">
-            <li><strong>Who / That:</strong> للعاقل (The man who lives here is a doctor).</li>
-            <li><strong>Which / That:</strong> لغير العاقل (The book which I read was great).</li>
-            <li><strong>Where:</strong> للمكان (This is the school where I learn).</li>
-            <li><strong>Whose:</strong> للملكية (The boy whose father is a teacher is my friend).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Who / That:</strong> للعاقل (The man who lives here is a doctor).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Which / That:</strong> لغير العاقل (The book which I read was great).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Where:</strong> للمكان (This is the school where I learn).</li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Whose:</strong> للملكية (The boy whose father is a teacher is my friend).</li>
           </ul>
         </div>
       )
@@ -2207,13 +2207,13 @@ export const linkingWordsLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>And (و):</strong> لربط فكرتين متشابهتين أو إضافة معلومات.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 I like apples <CText text="and" type="particle" /> I like bananas.
               </div>
             </li>
             <li>
               <strong>But (لكن):</strong> لربط فكرتين متناقضتين.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 He is rich, <CText text="but" type="particle" /> he is not happy.
               </div>
             </li>
@@ -2230,13 +2230,13 @@ export const linkingWordsLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>Because (لأن):</strong> يتبعها السبب.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 I stayed at home <CText text="because" type="particle" /> it was raining.
               </div>
             </li>
             <li>
               <strong>So (لذلك):</strong> يتبعها النتيجة.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 It was raining, <CText text="so" type="particle" /> I stayed at home.
               </div>
             </li>
@@ -2253,7 +2253,7 @@ export const linkingWordsLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>Although / Even though (بالرغم من):</strong> يتبعها جملة كاملة وتعبر عن مفاجأة أو تناقض.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 <CText text="Although" type="particle" /> he was sick, he went to school.
               </div>
             </li>
@@ -2319,13 +2319,13 @@ export const comparativesLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>المقارنة بين اثنين (Comparative):</strong> نضيف (er) للصفة + than.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 Ali is <CText text="taller than" type="verb" /> Ahmed.
               </div>
             </li>
             <li>
               <strong>التفضيل (Superlative):</strong> نضع (the) قبل الصفة ونضيف (est).
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 Ali is <CText text="the tallest" type="verb" /> boy in the class.
               </div>
             </li>
@@ -2342,13 +2342,13 @@ export const comparativesLesson: GrammarLessonData = {
           <ul className="list-disc list-inside space-y-4">
             <li>
               <strong>المقارنة بين اثنين:</strong> نستخدم (more) قبل الصفة + than.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 Gold is <CText text="more expensive than" type="verb" /> silver.
               </div>
             </li>
             <li>
               <strong>التفضيل:</strong> نستخدم (the most) قبل الصفة.
-              <div className="bg-slate-50 p-3 rounded-xl mt-2" dir="ltr">
+              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 This is <CText text="the most interesting" type="verb" /> book.
               </div>
             </li>
@@ -2364,9 +2364,9 @@ export const comparativesLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>هذه الصفات لا تتبع القاعدة ويجب حفظها:</p>
           <ul className="list-disc list-inside space-y-2" dir="ltr">
-            <li><span dir="ltr" className="inline-block mx-1">good ➔ better than ➔ the best</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">bad ➔ worse than ➔ the worst</span></li>
-            <li><span dir="ltr" className="inline-block mx-1">far ➔ farther than ➔ the farthest</span></li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><span dir="ltr" className="inline-block mx-1 whitespace-nowrap">good ➔ better than ➔ the best</span></li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><span dir="ltr" className="inline-block mx-1 whitespace-nowrap">bad ➔ worse than ➔ the worst</span></li>
+            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><span dir="ltr" className="inline-block mx-1 whitespace-nowrap">far ➔ farther than ➔ the farthest</span></li>
           </ul>
         </div>
       )
@@ -2430,7 +2430,7 @@ export const questionTagsLesson: GrammarLessonData = {
           <p>هو سؤال قصير يُضاف في نهاية الجملة للتأكد أو طلب الموافقة.</p>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
             <p className="font-bold text-indigo-800 mb-2">مثال:</p>
-            <div className="bg-white p-3 rounded-lg shadow-sm" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="font-bold text-slate-800">You are a student, <CText text="aren’t you?" type="particle" /></p>
               <p className="text-slate-500 text-sm" dir="rtl">أنت طالب، أليس كذلك؟</p>
             </div>
@@ -2465,14 +2465,14 @@ export const questionTagsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="grid grid-cols-1 gap-4">
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-              <p className="font-bold text-emerald-800 mb-2">🟢 جملة مثبتة ➔ سؤال منفي</p>
-              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              <p className="font-bold text-emerald-800 mb-2 whitespace-nowrap overflow-x-auto custom-scrollbar">🟢 جملة مثبتة ➔ سؤال منفي</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 You are happy, <span className="text-red-600 font-bold">aren’t you?</span>
               </div>
             </div>
             <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
-              <p className="font-bold text-rose-800 mb-2">🔴 جملة منفية ➔ سؤال مثبت</p>
-              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              <p className="font-bold text-rose-800 mb-2 whitespace-nowrap overflow-x-auto custom-scrollbar">🔴 جملة منفية ➔ سؤال مثبت</p>
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 He isn’t here, <span className="text-emerald-600 font-bold">is he?</span>
               </div>
             </div>
@@ -2537,23 +2537,23 @@ export const questionTagsLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p>إذا لم يوجد فعل مساعد، نستخدم <span className="font-bold text-blue-600">do / does / did</span>:</p>
-          <div className="space-y-3" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-3 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">You like coffee, <CText text="don’t you?" type="particle" /></p>
               <p className="text-slate-500 text-xs text-right" dir="rtl">أنت تحب القهوة، أليس كذلك؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">He plays football, <CText text="doesn’t he?" type="particle" /></p>
               <p className="text-slate-500 text-xs text-right" dir="rtl">هو يلعب كرة القدم، أليس كذلك؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">They went home, <CText text="didn’t they?" type="particle" /></p>
               <p className="text-slate-500 text-xs text-right" dir="rtl">هم ذهبوا إلى المنزل، أليس كذلك؟</p>
             </div>
           </div>
-          <div className="bg-rose-50 p-3 rounded-lg border border-rose-100 mt-2">
+          <div className="bg-rose-50 p-3 rounded-lg border border-rose-100 mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <p className="font-bold text-rose-800 mb-1">🔴 مع النفي:</p>
-            <p className="text-sm font-mono" dir="ltr">She doesn’t like tea, <span className="text-emerald-600 font-bold">does she?</span></p>
+            <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">She doesn’t like tea, <span className="text-emerald-600 font-bold">does she?</span></p>
           </div>
         </div>
       )
@@ -2566,18 +2566,18 @@ export const questionTagsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="space-y-4">
             <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
-              <p className="font-bold text-amber-800 mb-1">1. I am ➔ aren’t I?</p>
-              <p className="text-sm font-mono" dir="ltr">I am late, <span className="text-red-600 font-bold">aren’t I?</span></p>
+              <p className="font-bold text-amber-800 mb-1 whitespace-nowrap overflow-x-auto custom-scrollbar">1. I am ➔ aren’t I?</p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">I am late, <span className="text-red-600 font-bold">aren’t I?</span></p>
               <p className="text-xs text-slate-500 mt-1">📌 مهمة جدًا في الامتحان!</p>
             </div>
             <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
-              <p className="font-bold text-blue-800 mb-1">2. Let’s ➔ shall we?</p>
-              <p className="text-sm font-mono" dir="ltr">Let’s go, <span className="text-blue-600 font-bold">shall we?</span></p>
+              <p className="font-bold text-blue-800 mb-1 whitespace-nowrap overflow-x-auto custom-scrollbar">2. Let’s ➔ shall we?</p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Let’s go, <span className="text-blue-600 font-bold">shall we?</span></p>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <p className="font-bold text-slate-800 mb-1">3. الأمر (Imperative)</p>
-              <p className="text-sm font-mono" dir="ltr">Close the door, <span className="text-indigo-600 font-bold">will you?</span></p>
-              <p className="text-sm font-mono" dir="ltr">Don’t talk, <span className="text-indigo-600 font-bold">will you?</span></p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Close the door, <span className="text-indigo-600 font-bold">will you?</span></p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Don’t talk, <span className="text-indigo-600 font-bold">will you?</span></p>
             </div>
           </div>
         </div>
@@ -2698,7 +2698,7 @@ export const politeRequestsLesson: GrammarLessonData = {
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
             <p className="font-bold text-indigo-800 mb-2">🔸 Requests (الطلبات المؤدبة)</p>
             <p className="text-sm mb-2">هي طلب شيء من شخص بأدب واحترام.</p>
-            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               Can you help me?
               <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك مساعدتي؟</p>
             </div>
@@ -2706,7 +2706,7 @@ export const politeRequestsLesson: GrammarLessonData = {
           <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
             <p className="font-bold text-emerald-800 mb-2">🔸 Offers (العروض)</p>
             <p className="text-sm mb-2">هي عرض مساعدة أو خدمة لشخص.</p>
-            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               Can I help you?
               <p className="text-slate-500 text-xs" dir="rtl">هل يمكنني مساعدتك؟</p>
             </div>
@@ -2722,14 +2722,14 @@ export const politeRequestsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
             <p className="font-bold text-slate-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Can / Could + subject + base verb?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Can / Could + subject + base verb?</p>
           </div>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Can" type="particle" /> you open the door?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك فتح الباب؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Could" type="particle" /> you help me?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل يمكنك مساعدتي؟ (أكثر أدبًا)</p>
             </div>
@@ -2746,14 +2746,14 @@ export const politeRequestsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
             <p className="font-bold text-blue-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Will / Would + subject + base verb?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Will / Would + subject + base verb?</p>
           </div>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Will" type="particle" /> you close the window?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل ستغلق النافذة؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Would" type="particle" /> you pass the salt?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل يمكن أن تناولني الملح؟ (أكثر أدبًا)</p>
             </div>
@@ -2769,21 +2769,21 @@ export const politeRequestsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
             <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Do / Would you mind + verb + ing?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Do / Would you mind + verb + ing?</p>
           </div>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Do you mind" type="particle" /> opening the door?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل تمانع فتح الباب؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800"><CText text="Would you mind" type="particle" /> helping me?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل تمانع مساعدتي؟ (أكثر تهذيبًا)</p>
             </div>
           </div>
           <div className="bg-slate-100 p-3 rounded-lg">
             <p className="font-bold text-slate-700 text-sm mb-1">📌 الرد بالموافقة:</p>
-            <p className="font-mono text-emerald-600 text-sm" dir="ltr">No, not at all. (لا، لا أمانع)</p>
+            <p className="font-mono text-emerald-600 text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">No, not at all. (لا، لا أمانع)</p>
           </div>
         </div>
       )
@@ -2796,10 +2796,10 @@ export const politeRequestsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
             <p className="font-bold text-rose-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">May I + base verb?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">May I + base verb?</p>
           </div>
           <p className="text-sm bg-slate-100 p-2 rounded">📌 هذا أسلوب رسمي جدًا (Formal).</p>
-          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <p className="font-bold text-slate-800"><CText text="May I" type="particle" /> come in?</p>
             <p className="text-slate-500 text-xs" dir="rtl">هل يمكنني الدخول؟</p>
           </div>
@@ -2815,13 +2815,13 @@ export const politeRequestsLesson: GrammarLessonData = {
           <div className="space-y-4">
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
               <p className="font-bold text-emerald-800 mb-1">Can I...?</p>
-              <p className="text-sm font-mono" dir="ltr">Can I help you?</p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Can I help you?</p>
               <p className="text-xs text-slate-500" dir="rtl">هل أستطيع مساعدتك؟</p>
             </div>
             <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
               <p className="font-bold text-blue-800 mb-1">Shall I...?</p>
               <p className="text-xs text-blue-600 mb-2">📌 تُستخدم مع (I / we)</p>
-              <p className="text-sm font-mono" dir="ltr">Shall I open the door?</p>
+              <p className="text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Shall I open the door?</p>
               <p className="text-xs text-slate-500" dir="rtl">هل أفتح الباب؟</p>
             </div>
           </div>
@@ -2836,14 +2836,14 @@ export const politeRequestsLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
             <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Would you like + noun / to + verb?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Would you like + noun / to + verb?</p>
           </div>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">Would you like some tea?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل ترغب في بعض الشاي؟</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">Would you like to sit?</p>
               <p className="text-slate-500 text-xs" dir="rtl">هل ترغب في الجلوس؟</p>
             </div>
@@ -3004,7 +3004,7 @@ export const givingAdviceLesson: GrammarLessonData = {
           <p>هو استخدام عبارات لمساعدة شخص أو توجيهه ليفعل الشيء الصحيح.</p>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
             <p className="font-bold text-indigo-800 mb-2">مثال:</p>
-            <div className="bg-white p-3 rounded-lg shadow-sm" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="font-bold text-slate-800">You <CText text="should" type="particle" /> study.</p>
               <p className="text-slate-500 text-sm" dir="rtl">يجب أن تذاكر</p>
             </div>
@@ -3020,23 +3020,23 @@ export const givingAdviceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
             <p className="font-bold text-emerald-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Subject + should + base verb</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Subject + should + base verb</p>
           </div>
           <p>تُستخدم للنصيحة العامة.</p>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">You <CText text="should" type="particle" /> study hard.</p>
               <p className="text-slate-500 text-xs" dir="rtl">يجب أن تدرس بجد</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">He <CText text="should" type="particle" /> see a doctor.</p>
               <p className="text-slate-500 text-xs" dir="rtl">يجب عليه أن يزور الطبيب</p>
             </div>
           </div>
           <div className="bg-rose-50 p-4 rounded-xl border border-rose-100 mt-4">
             <p className="font-bold text-rose-800 mb-2">🔴 النفي (Negative):</p>
-            <p className="font-mono text-sm mb-2" dir="ltr">should not (shouldn’t)</p>
-            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+            <p className="font-mono text-sm mb-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">should not (shouldn’t)</p>
+            <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               You <CText text="shouldn't" type="particle" /> eat too much sugar.
             </div>
           </div>
@@ -3051,10 +3051,10 @@ export const givingAdviceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
             <p className="font-bold text-blue-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Subject + ought to + base verb</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Subject + ought to + base verb</p>
           </div>
           <p className="text-sm bg-slate-100 p-2 rounded">📌 نفس معنى should تقريبًا.</p>
-          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <p className="font-bold text-slate-800">You <CText text="ought to" type="particle" /> respect your parents.</p>
             <p className="text-slate-500 text-xs" dir="rtl">يجب أن تحترم والديك</p>
           </div>
@@ -3069,15 +3069,15 @@ export const givingAdviceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
             <p className="font-bold text-amber-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Subject + had better + base verb</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Subject + had better + base verb</p>
           </div>
           <p className="text-sm font-bold text-amber-600">⚠️ نصيحة قوية (تحذير)</p>
-          <div className="space-y-2" dir="ltr">
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+          <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">You <CText text="had better" type="particle" /> study.</p>
               <p className="text-slate-500 text-xs" dir="rtl">من الأفضل أن تذاكر (وإلا ستندم)</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">You <CText text="had better not" type="particle" /> be late.</p>
               <p className="text-slate-500 text-xs" dir="rtl">من الأفضل ألا تتأخر</p>
             </div>
@@ -3093,10 +3093,10 @@ export const givingAdviceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-purple-50 p-4 rounded-xl border border-purple-100">
             <p className="font-bold text-purple-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">Why don’t you + base verb?</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Why don’t you + base verb?</p>
           </div>
           <p>تُستخدم كاقتراح لطيف.</p>
-          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <p className="font-bold text-slate-800"><CText text="Why don’t you" type="particle" /> sleep early?</p>
             <p className="text-slate-500 text-xs" dir="rtl">لماذا لا تنام مبكرًا؟</p>
           </div>
@@ -3111,10 +3111,10 @@ export const givingAdviceLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
             <p className="font-bold text-orange-800 mb-2">القاعدة:</p>
-            <p className="font-mono text-sm" dir="ltr">If I were you, I would + base verb</p>
+            <p className="font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">If I were you, I would + base verb</p>
           </div>
           <p>نصيحة شخصية قوية.</p>
-          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+          <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
             <p className="font-bold text-slate-800"><CText text="If I were you," type="particle" /> I would study more.</p>
             <p className="text-slate-500 text-xs" dir="rtl">لو كنت مكانك، لدرست أكثر</p>
           </div>
@@ -3246,7 +3246,7 @@ export const quantityLesson: GrammarLessonData = {
           <p>هو استخدام كلمات تدل على كمية الشيء (كثير – قليل – بعض – لا شيء…)</p>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
             <p className="font-bold text-indigo-800 mb-2">أهم الكلمات:</p>
-            <div className="flex flex-wrap gap-2" dir="ltr">
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2" dir="ltr">
               {['some', 'any', 'much', 'many', 'a lot of', 'few', 'little'].map(word => (
                 <span key={word} className="px-3 py-1 bg-white rounded-lg shadow-sm text-indigo-600 font-mono font-bold">{word}</span>
               ))}
@@ -3270,7 +3270,7 @@ export const quantityLesson: GrammarLessonData = {
                 <li>📚 books</li>
                 <li>👨‍🎓 students</li>
               </ul>
-              <p className="mt-2 text-xs font-bold text-emerald-600" dir="ltr">one apple, two apples</p>
+              <p className="mt-2 text-xs font-bold text-emerald-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">one apple, two apples</p>
             </div>
             <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
               <p className="font-bold text-amber-800 mb-2">Uncountable (أشياء لا تُعد)</p>
@@ -3280,7 +3280,7 @@ export const quantityLesson: GrammarLessonData = {
                 <li>🍚 rice</li>
                 <li>💰 money</li>
               </ul>
-              <div className="mt-2 text-xs font-bold text-amber-600" dir="ltr">
+              <div className="mt-2 text-xs font-bold text-amber-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 <p className="text-red-500">❌ one water</p>
                 <p className="text-emerald-600">✅ a glass of water</p>
               </div>
@@ -3296,29 +3296,29 @@ export const quantityLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="space-y-4">
-            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-blue-800 mb-2">some (بعض)</p>
               <p className="text-sm mb-2">تُستخدم في الجمل المثبتة:</p>
-              <div className="space-y-2" dir="ltr">
-                <div className="bg-white p-2 rounded shadow-sm text-sm">
+              <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                <div className="bg-white p-2 rounded shadow-sm text-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
                   <p className="font-bold">I have some money.</p>
                   <p className="text-slate-500 text-xs" dir="rtl">لدي بعض المال</p>
                 </div>
-                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                <div className="bg-white p-2 rounded shadow-sm text-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
                   <p className="font-bold">She bought some apples.</p>
                   <p className="text-slate-500 text-xs" dir="rtl">اشترت بعض التفاح</p>
                 </div>
               </div>
             </div>
-            <div className="bg-rose-50 p-4 rounded-xl border border-rose-100">
+            <div className="bg-rose-50 p-4 rounded-xl border border-rose-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-rose-800 mb-2">any (أي)</p>
               <p className="text-sm mb-2">تُستخدم في النفي والسؤال:</p>
-              <div className="space-y-2" dir="ltr">
-                <div className="bg-white p-2 rounded shadow-sm text-sm">
+              <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                <div className="bg-white p-2 rounded shadow-sm text-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
                   <p className="font-bold">I don’t have any money.</p>
                   <p className="text-slate-500 text-xs" dir="rtl">ليس لدي أي مال</p>
                 </div>
-                <div className="bg-white p-2 rounded shadow-sm text-sm">
+                <div className="bg-white p-2 rounded shadow-sm text-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
                   <p className="font-bold">Do you have any questions?</p>
                   <p className="text-slate-500 text-xs" dir="rtl">هل لديك أي أسئلة؟</p>
                 </div>
@@ -3334,18 +3334,18 @@ export const quantityLesson: GrammarLessonData = {
       icon: '📈',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <div className="space-y-4">
-            <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+          <div className="space-y-4 whitespace-nowrap overflow-x-auto custom-scrollbar">
+            <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-indigo-800 mb-1">many → مع المعدود</p>
               <p className="text-sm mb-2">many students, many books</p>
-              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 There are many students.
               </div>
             </div>
-            <div className="bg-violet-50 p-4 rounded-xl border border-violet-100">
+            <div className="bg-violet-50 p-4 rounded-xl border border-violet-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-violet-800 mb-1">much → مع غير المعدود</p>
               <p className="text-sm mb-2">much water, much money</p>
-              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono" dir="ltr">
+              <div className="bg-white p-2 rounded shadow-sm text-sm font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
                 There isn’t much water.
               </div>
             </div>
@@ -3362,12 +3362,12 @@ export const quantityLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <p className="font-bold text-indigo-600">تُستخدم مع الكل!</p>
           <p>تأتي مع المعدود وغير المعدود في الجمل المثبتة.</p>
-          <div className="space-y-3" dir="ltr">
-            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+          <div className="space-y-3 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">I have a lot of friends.</p>
               <p className="text-slate-500 text-xs" dir="rtl">لدي الكثير من الأصدقاء</p>
             </div>
-            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+            <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
               <p className="font-bold text-slate-800">She drinks a lot of water.</p>
               <p className="text-slate-500 text-xs" dir="rtl">تشرب الكثير من الماء</p>
             </div>
@@ -3385,12 +3385,12 @@ export const quantityLesson: GrammarLessonData = {
           <div className="grid grid-cols-1 gap-4">
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <p className="font-bold text-slate-800 mb-1">few → للمعدود</p>
-              <p className="text-sm mb-2 font-mono" dir="ltr">Few students passed the exam.</p>
+              <p className="text-sm mb-2 font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Few students passed the exam.</p>
               <p className="text-xs text-slate-500">عدد قليل جداً نجحوا (أقل من المتوقع)</p>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
               <p className="font-bold text-slate-800 mb-1">little → لغير المعدود</p>
-              <p className="text-sm mb-2 font-mono" dir="ltr">There is little water.</p>
+              <p className="text-sm mb-2 font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">There is little water.</p>
               <p className="text-xs text-slate-500">يوجد القليل جداً من الماء (لا يكفي)</p>
             </div>
           </div>
@@ -3407,12 +3407,12 @@ export const quantityLesson: GrammarLessonData = {
           <div className="grid grid-cols-1 gap-4">
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
               <p className="font-bold text-emerald-800 mb-1">a few → معدود</p>
-              <p className="text-sm mb-2 font-mono" dir="ltr">I have a few friends.</p>
+              <p className="text-sm mb-2 font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">I have a few friends.</p>
               <p className="text-xs text-emerald-600">لدي بعض الأصدقاء (كافٍ)</p>
             </div>
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
               <p className="font-bold text-emerald-800 mb-1">a little → غير معدود</p>
-              <p className="text-sm mb-2 font-mono" dir="ltr">I need a little help.</p>
+              <p className="text-sm mb-2 font-mono whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">I need a little help.</p>
               <p className="text-xs text-emerald-600">أحتاج بعض المساعدة</p>
             </div>
           </div>
@@ -3575,15 +3575,15 @@ export const reportedSpeechLesson: GrammarLessonData = {
           <p>هو نقل الكلام كما قيل حرفيًا باستخدام علامات التنصيص " "</p>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
             <p className="font-bold text-indigo-800">الشكل:</p>
-            <p className="text-left font-mono text-indigo-600" dir="ltr">Subject + verb + " الكلام "</p>
+            <p className="text-left font-mono text-indigo-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Subject + verb + " الكلام "</p>
           </div>
           <div className="space-y-3">
             <p className="font-bold">أمثلة:</p>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">Ali said, "I am tired."</p>
               <p className="text-right text-slate-500" dir="rtl">قال علي: "أنا متعب"</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">Sara said, "I will go to school."</p>
               <p className="text-right text-slate-500" dir="rtl">قالت سارة: "سأذهب إلى المدرسة"</p>
             </div>
@@ -3601,15 +3601,15 @@ export const reportedSpeechLesson: GrammarLessonData = {
           <p>هو نقل الكلام بالمعنى بدون علامات تنصيص، مع تغيير بعض الكلمات</p>
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
             <p className="font-bold text-indigo-800">الشكل:</p>
-            <p className="text-left font-mono text-indigo-600" dir="ltr">Subject + said (that) + sentence</p>
+            <p className="text-left font-mono text-indigo-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">Subject + said (that) + sentence</p>
           </div>
           <div className="space-y-3">
             <p className="font-bold">أمثلة:</p>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">Ali said that he was tired.</p>
               <p className="text-right text-slate-500" dir="rtl">قال علي إنه كان متعبًا</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">Sara said that she would go to school.</p>
               <p className="text-right text-slate-500" dir="rtl">قالت سارة إنها ستذهب إلى المدرسة</p>
             </div>
@@ -3659,13 +3659,13 @@ export const reportedSpeechLesson: GrammarLessonData = {
           </div>
           <div className="space-y-2">
             <p className="font-bold">أمثلة:</p>
-            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               "I eat food." ➔ He said that he ate food.
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               "I am studying." ➔ He said that he was studying.
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               "I will travel." ➔ He said that he would travel.
             </div>
           </div>
@@ -3681,12 +3681,12 @@ export const reportedSpeechLesson: GrammarLessonData = {
           <p>نغيّر الضمير حسب المتكلم</p>
           <div className="space-y-3">
             <div className="bg-amber-50 p-4 rounded-xl border border-amber-100">
-              <p className="text-left font-mono text-amber-800" dir="ltr">"I am happy," said Ali</p>
-              <p className="text-left font-mono font-bold text-amber-900" dir="ltr">➔ Ali said that he was happy</p>
+              <p className="text-left font-mono text-amber-800 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">"I am happy," said Ali</p>
+              <p className="text-left font-mono font-bold text-amber-900 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">➔ Ali said that he was happy</p>
             </div>
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-100">
-              <p className="text-left font-mono text-emerald-800" dir="ltr">"We are ready," they said</p>
-              <p className="text-left font-mono font-bold text-emerald-900" dir="ltr">➔ They said that they were ready</p>
+              <p className="text-left font-mono text-emerald-800 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">"We are ready," they said</p>
+              <p className="text-left font-mono font-bold text-emerald-900 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">➔ They said that they were ready</p>
             </div>
           </div>
         </div>
@@ -3732,10 +3732,10 @@ export const reportedSpeechLesson: GrammarLessonData = {
           </div>
           <div className="space-y-2">
             <p className="font-bold">أمثلة:</p>
-            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               "I will go tomorrow." ➔ He said that he would go the next day.
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm" dir="ltr">
+            <div className="bg-slate-50 p-3 rounded-lg font-mono text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               "I am here now." ➔ He said that he was there then.
             </div>
           </div>
@@ -3752,12 +3752,12 @@ export const reportedSpeechLesson: GrammarLessonData = {
             <div className="bg-blue-50 p-4 rounded-xl border border-blue-100">
               <p className="font-bold text-blue-800 mb-2">أ) نعم/لا (Yes/No Question)</p>
               <p className="mb-2">نستخدم: <span dir="ltr" className="font-mono font-bold">asked if / whether</span></p>
-              <p className="text-left font-mono text-blue-600" dir="ltr">"Are you happy?" ➔ He asked if I was happy.</p>
+              <p className="text-left font-mono text-blue-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">"Are you happy?" ➔ He asked if I was happy.</p>
             </div>
             <div className="bg-violet-50 p-4 rounded-xl border border-violet-100">
               <p className="font-bold text-violet-800 mb-2">ب) سؤال بكلمة استفهام (WH Question)</p>
               <p className="mb-2">نحتفظ بالكلمة (what, where, why...)</p>
-              <p className="text-left font-mono text-violet-600" dir="ltr">"Where do you live?" ➔ He asked where I lived.</p>
+              <p className="text-left font-mono text-violet-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">"Where do you live?" ➔ He asked where I lived.</p>
             </div>
           </div>
         </div>
@@ -3771,15 +3771,15 @@ export const reportedSpeechLesson: GrammarLessonData = {
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
           <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-100 space-y-2">
             <p className="font-bold text-indigo-800">القاعدة:</p>
-            <p className="text-left font-mono text-indigo-600" dir="ltr">told / asked + person + to + verb</p>
+            <p className="text-left font-mono text-indigo-600 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">told / asked + person + to + verb</p>
           </div>
           <div className="space-y-3">
             <p className="font-bold">أمثلة:</p>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">"Close the door."</p>
               <p className="text-left text-slate-500">➔ He told me to close the door.</p>
             </div>
-            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100" dir="ltr">
+            <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
               <p className="text-left font-bold text-slate-800">"Don’t talk."</p>
               <p className="text-left text-slate-500">➔ He told me not to talk.</p>
             </div>
