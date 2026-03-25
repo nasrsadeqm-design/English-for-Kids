@@ -512,14 +512,13 @@ export default function App() {
   };
 
   const renderLanding = () => (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-white">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="w-full max-w-lg min-h-[580px] sm:aspect-[3/4.2] bg-indigo-600 rounded-[2.5rem] sm:rounded-[3rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.3)] relative overflow-hidden flex flex-col items-center justify-between p-8 sm:p-14 text-white border-[10px] sm:border-[16px] border-indigo-700"
+        className="w-full max-w-lg min-h-[580px] sm:aspect-[3/4.2] bg-indigo-600 rounded-[2.5rem] sm:rounded-[3rem] shadow-xl relative overflow-hidden flex flex-col items-center justify-between p-8 sm:p-14 text-white border-[10px] sm:border-[16px] border-indigo-700"
       >
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-400/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
+        {/* Removed glowing circles for matte look */}
         
         <div className="relative z-10 text-center space-y-6 sm:space-y-8 w-full">
           <motion.div 
@@ -561,7 +560,7 @@ export default function App() {
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => setView('home')}
-            className="w-full py-4 sm:py-6 bg-white text-indigo-600 rounded-2xl sm:rounded-3xl font-black text-2xl sm:text-3xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.2)] hover:bg-indigo-50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
+            className="w-full py-4 sm:py-6 bg-white text-indigo-600 rounded-2xl sm:rounded-3xl font-black text-2xl sm:text-3xl shadow-lg hover:bg-indigo-50 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
           >
             <span>دخول • Enter</span>
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
