@@ -538,9 +538,9 @@ export default function App() {
           
           <div className="space-y-3 sm:space-y-4">
             <div className="space-y-1 flex flex-col items-center">
-              <h2 className="text-lg sm:text-2xl font-bold text-indigo-200 uppercase tracking-[0.2em] sm:tracking-[0.3em]">English Vocabulary</h2>
+              <h2 className="text-lg sm:text-2xl font-bold text-indigo-200 uppercase tracking-[0.2em] sm:tracking-[0.3em]">English Summary</h2>
               <h1 className="text-2xl sm:text-6xl font-black leading-[1.2] sm:leading-[1.15] tracking-tight drop-shadow-md whitespace-nowrap text-center" dir="rtl">
-                كلمات اللغة الانجليزية
+                ملخص اللغة الانجليزية
                 <span className="block text-lg sm:text-4xl mt-1 sm:mt-3 font-bold text-indigo-200">للصف الأول الثانوي</span>
               </h1>
             </div>

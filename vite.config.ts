@@ -14,9 +14,9 @@ export default defineConfig(({ mode }) => {
         registerType: 'autoUpdate',
         includeAssets: ['icon-192.png', 'icon-512.png'],
         manifest: {
-          name: 'English for Kids - تعلم الإنجليزية للأطفال',
-          short_name: 'الإنجليزية للأطفال',
-          description: 'تطبيق تفاعلي لتعلم اللغة الإنجليزية للمبتدئين والأطفال مع نطق بريطاني وألعاب تعليمية.',
+          name: 'English Summary - ملخص اللغة الإنجليزية',
+          short_name: 'ملخص الإنجليزية',
+          description: 'ملخص شامل لمفردات وقواعد اللغة الإنجليزية للصف الأول الثانوي مع نطق بريطاني وأمريكي وألعاب تعليمية.',
           background_color: '#ffffff',
           theme_color: '#4f46e5',
           display: 'standalone',
