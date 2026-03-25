@@ -150,6 +150,25 @@ export default function App() {
   const [allWords, setAllWords] = useState<Word[]>(words);
   const [selectedGrammarLesson, setSelectedGrammarLesson] = useState<any>(null);
   const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+    }
+  };
 
   // Generate 2000 students if the JSON is just a sample
   const studentsData = useMemo(() => {
@@ -414,6 +433,16 @@ export default function App() {
             {isVerifying ? 'جاري التحقق...' : 'تفعيل الآن'}
             {!isVerifying && <ArrowRight size={24} />}
           </button>
+
+          {deferredPrompt && (
+            <button
+              onClick={handleInstallClick}
+              className="w-full py-4 bg-slate-100 text-indigo-600 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3"
+            >
+              <Download size={20} />
+              <span>تثبيت التطبيق على الجهاز</span>
+            </button>
+          )}
         </div>
 
         <p className="text-xs text-slate-400 font-bold leading-relaxed">
@@ -565,6 +594,18 @@ export default function App() {
             <span>دخول • Enter</span>
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
+
+          {deferredPrompt && (
+            <motion.button
+              whileHover={{ scale: 1.03, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={handleInstallClick}
+              className="w-full py-3 sm:py-4 bg-indigo-500 text-white rounded-2xl sm:rounded-3xl font-black text-xl sm:text-2xl shadow-lg hover:bg-indigo-400 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
+            >
+              <span>تثبيت التطبيق • Install App</span>
+              <Download size={24} className="sm:size-[28px] group-hover:-translate-y-1 transition-transform" />
+            </motion.button>
+          )}
 
           <motion.button
             whileHover={{ scale: 1.03, y: -2 }}
