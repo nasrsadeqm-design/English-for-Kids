@@ -19,193 +19,428 @@ export const presentSimpleLesson: GrammarLessonData = {
   description: 'هيا بنا نتعلم كيف تحكي عن يومك وعاداتك! 🕐',
   cards: [
     {
-      id: 'c1',
-      title: 'مرحباً بك يا بطل! 👋',
-      icon: '🚀',
+      id: 'ps1',
+      title: 'أولاً: ما هو المضارع البسيط؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هيا بنا نتعلم كيف تحكي عن يومك وعاداتك! 
-            نستخدم <strong>المضارع البسيط</strong> عندما نتحدث عن أشياء نفعلها كل يوم (عادات)، أو حقائق ثابتة لا تتغير (مثل: الشمس تشرق من الشرق ☀️).
-          </p>
+          <p className="font-bold text-indigo-600">المضارع البسيط هو زمن نستخدمه للتعبير عن:</p>
+          <div className="space-y-4">
+            <div className="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <p className="font-black text-indigo-700 mb-1">1. الأشياء التي تحدث بشكل متكرر (روتين)</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I go to school every day</p>
+              <p className="text-xs text-slate-400">(أنا أذهب إلى المدرسة كل يوم)</p>
+            </div>
+            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
+              <p className="font-black text-emerald-700 mb-1">2. الحقائق العامة</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">The sun rises in the east</p>
+              <p className="text-xs text-slate-400">(الشمس تشرق من الشرق)</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100 shadow-sm">
+              <p className="font-black text-blue-700 mb-1">3. العادات</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I drink coffee every morning</p>
+              <p className="text-xs text-slate-400">(أنا أشرب القهوة كل صباح)</p>
+            </div>
+          </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'متى نستخدم القاعدة؟ 🕐',
-      icon: '💡',
+      id: 'ps2',
+      title: 'ثانياً: الضمائر (Subjects) 👥',
+      icon: '👥',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>العادات اليومية:</strong> أشياء تفعلها دائماً (أنا أستيقظ مبكراً).</li>
-            <li><strong>الحقائق الثابتة:</strong> أشياء لا تتغير (الماء يغلي عند 100 درجة).</li>
-            <li><strong>المواعيد الثابتة:</strong> (القطار يغادر الساعة 7).</li>
-          </ul>
+          <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table className="w-full text-right border-collapse" dir="rtl">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3 border border-indigo-500">الضمير</th>
+                  <th className="p-3 border border-indigo-500">المعنى</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-indigo-50">
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">I</td>
+                  <td className="p-3 border border-indigo-100">أنا</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">You</td>
+                  <td className="p-3 border border-indigo-100">أنت</td>
+                </tr>
+                <tr className="bg-indigo-50">
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">We</td>
+                  <td className="p-3 border border-indigo-100">نحن</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">They</td>
+                  <td className="p-3 border border-indigo-100">هم</td>
+                </tr>
+                <tr className="bg-amber-50">
+                  <td className="p-3 border border-amber-100 font-bold" dir="ltr">He</td>
+                  <td className="p-3 border border-amber-100">هو</td>
+                </tr>
+                <tr className="bg-amber-50">
+                  <td className="p-3 border border-amber-100 font-bold" dir="ltr">She</td>
+                  <td className="p-3 border border-amber-100">هي</td>
+                </tr>
+                <tr className="bg-amber-50">
+                  <td className="p-3 border border-amber-100 font-bold" dir="ltr">It</td>
+                  <td className="p-3 border border-amber-100">هو/هي لغير العاقل</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 bg-amber-100 rounded-2xl border border-amber-200 text-amber-800 text-sm font-bold flex items-center gap-3">
+            <span className="text-2xl">⚠️</span>
+            <p>مهم جداً: He / She / It لهم قاعدة خاصة (سنراها الآن)</p>
+          </div>
         </div>
       )
     },
     {
-      id: 'c3',
-      title: 'كيف نبني الجملة؟ 🧩',
-      icon: '🛠️',
+      id: 'ps3',
+      title: 'ثالثاً: تكوين الجملة (الإثبات) ✅',
+      icon: '✅',
       content: (
-        <div className="space-y-6 text-right" dir="rtl">
-          <div className="p-4 bg-emerald-50 border-2 border-emerald-100 rounded-2xl">
-            <h4 className="font-black text-emerald-700 mb-2 flex items-center gap-2">✅ الإثبات (Positive)</h4>
-            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb (بدون إضافة)" type="verb" /></p>
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👤 He/She/It" type="subject" /> + <CText text="Verb + s/es" type="verb" /></p>
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+            <p className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest text-center">القاعدة الذهبية</p>
+            <div className="space-y-4">
+              {/* Rule 1 */}
+              <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between gap-4" dir="ltr">
+                <div className="flex-1 text-center">
+                  <span className="block text-[10px] text-slate-400 mb-1 font-bold">SUBJECT</span>
+                  <span className="font-black text-indigo-600 text-sm">I, You, We, They</span>
+                </div>
+                <div className="text-indigo-300 text-xl font-black">➜</div>
+                <div className="flex-1 text-center" dir="rtl">
+                  <span className="block text-[10px] text-slate-400 mb-1 font-bold">VERB</span>
+                  <span className="font-bold text-slate-700 text-xs">الفعل كما هو</span>
+                </div>
+              </div>
+              {/* Rule 2 */}
+              <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between gap-4" dir="ltr">
+                <div className="flex-1 text-center">
+                  <span className="block text-[10px] text-slate-400 mb-1 font-bold">SUBJECT</span>
+                  <span className="font-black text-indigo-600 text-sm">He, She, It</span>
+                </div>
+                <div className="text-indigo-300 text-xl font-black">➜</div>
+                <div className="flex-1 text-center" dir="rtl">
+                  <span className="block text-[10px] text-slate-400 mb-1 font-bold">VERB</span>
+                  <span className="font-bold text-slate-700 text-xs">نضيف (s) أو (es)</span>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="p-4 bg-red-50 border-2 border-red-100 rounded-2xl">
-            <h4 className="font-black text-red-700 mb-2 flex items-center gap-2">❌ النفي (Negative)</h4>
-            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👥 I/You/We/They" type="subject" /> + <CText text="don't" type="particle" /> + <CText text="Verb" type="verb" /></p>
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="👤 He/She/It" type="subject" /> + <CText text="doesn't" type="particle" /> + <CText text="Verb" type="verb" /></p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+              <h4 className="font-black text-indigo-600 mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-indigo-600 rounded-full"></span>
+                ✳️ بدون s:
+              </h4>
+              <div className="space-y-3" dir="ltr">
+                <div className="p-2 bg-slate-50 rounded-lg">
+                  <p className="text-sm"><CText text="I" type="subject" /><CText text="play" type="verb" /><CText text="football" type="complement" /></p>
+                  <p className="text-[10px] text-slate-400 mt-1" dir="rtl">أنا ألعب كرة القدم</p>
+                </div>
+                <div className="p-2 bg-slate-50 rounded-lg">
+                  <p className="text-sm"><CText text="They" type="subject" /><CText text="eat" type="verb" /><CText text="rice" type="complement" /></p>
+                  <p className="text-[10px] text-slate-400 mt-1" dir="rtl">هم يأكلون الأرز</p>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="p-4 bg-blue-50 border-2 border-blue-100 rounded-2xl">
-            <h4 className="font-black text-blue-700 mb-2 flex items-center gap-2">❓ السؤال (Question)</h4>
-            <div className="space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="Do" type="particle" /> + <CText text="👥 I/You/We/They" type="subject" /> + <CText text="Verb" type="verb" />?</p>
-              <p className="text-xl whitespace-nowrap overflow-x-auto custom-scrollbar"><CText text="Does" type="particle" /> + <CText text="👤 He/She/It" type="subject" /> + <CText text="Verb" type="verb" />?</p>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
+              <h4 className="font-black text-amber-600 mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-amber-600 rounded-full"></span>
+                ✳️ مع s:
+              </h4>
+              <div className="space-y-3" dir="ltr">
+                <div className="p-2 bg-amber-50/50 rounded-lg border border-amber-100">
+                  <p className="text-sm"><CText text="He" type="subject" /><CText text="plays" type="verb" /><CText text="football" type="complement" /></p>
+                  <p className="text-[10px] text-slate-400 mt-1" dir="rtl">هو يلعب كرة القدم</p>
+                </div>
+                <div className="p-2 bg-amber-50/50 rounded-lg border border-amber-100">
+                  <p className="text-sm"><CText text="She" type="subject" /><CText text="eats" type="verb" /><CText text="rice" type="complement" /></p>
+                  <p className="text-[10px] text-slate-400 mt-1" dir="rtl">هي تأكل الأرز</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c4',
-      title: 'أمثلة ملونة 🎨',
-      icon: '📝',
+      id: 'ps4',
+      title: 'متى نضيف (es) بدل (s)؟ 🔴',
+      icon: '🔴',
       content: (
-        <div className="space-y-4 text-2xl whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="I" type="subject" />
-            <CText text="play" type="verb" />
-            <CText text="football" type="complement" />
-            <CText text="every day." type="particle" />
-            <p className="text-sm text-slate-400 mt-2 text-right" dir="rtl">أنا ألعب كرة القدم كل يوم.</p>
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="font-bold text-indigo-600">إذا انتهى الفعل بـ:</p>
+          <div className="flex flex-wrap justify-center gap-2 py-4">
+            {['ch', 'sh', 's', 'x', 'o'].map(suffix => (
+              <span key={suffix} className="px-4 py-2 bg-indigo-600 text-white rounded-xl font-black text-xl shadow-lg shadow-indigo-200">
+                {suffix}
+              </span>
+            ))}
           </div>
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="She" type="subject" />
-            <CText text="likes" type="verb" />
-            <CText text="apples." type="complement" />
-            <p className="text-sm text-slate-400 mt-2 text-right" dir="rtl">هي تحب التفاح. (لاحظ إضافة s للفعل لأن الفاعل مفرد)</p>
+          <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table className="w-full text-center border-collapse" dir="ltr">
+              <thead>
+                <tr className="bg-slate-50">
+                  <th className="p-3 border border-slate-100 text-slate-500 text-xs">الفعل</th>
+                  <th className="p-3 border border-slate-100 text-slate-500 text-xs">بعد الإضافة</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-3 border border-slate-50">go</td>
+                  <td className="p-3 border border-slate-50 font-bold text-red-600">goes</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-50">watch</td>
+                  <td className="p-3 border border-slate-50 font-bold text-red-600">watches</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-slate-50">wash</td>
+                  <td className="p-3 border border-slate-50 font-bold text-red-600">washes</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div className="p-4 bg-white border-2 border-slate-100 rounded-2xl shadow-sm whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="We" type="subject" />
-            <CText text="don't" type="particle" />
-            <CText text="go" type="verb" />
-            <CText text="to school" type="complement" />
-            <CText text="on Friday." type="particle" />
-            <p className="text-sm text-slate-400 mt-2 text-right" dir="rtl">نحن لا نذهب إلى المدرسة يوم الجمعة.</p>
+          <div className="p-3 bg-indigo-50 rounded-xl border border-indigo-100 text-center">
+            <p className="text-sm text-slate-600 italic" dir="ltr">Example: <span className="font-bold text-indigo-600">He goes to school</span></p>
+            <p className="text-xs text-slate-400 mt-1">(هو يذهب إلى المدرسة)</p>
           </div>
         </div>
       )
     },
     {
-      id: 'c5',
-      title: 'الكلمات الدالة (Keywords) 🗝️',
+      id: 'ps5',
+      title: 'رابعاً: النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-red-50 rounded-3xl border-2 border-dashed border-red-100 text-center">
+            <p className="text-xs font-bold text-red-500 mb-2 uppercase tracking-widest">قاعدة النفي</p>
+            <div className="space-y-2">
+              <p className="text-sm font-bold text-red-700" dir="ltr">I / You / We / They ➜ do not (don’t)</p>
+              <p className="text-sm font-bold text-red-700" dir="ltr">He / She / It ➜ does not (doesn’t)</p>
+            </div>
+          </div>
+          <div className="p-4 bg-amber-100 rounded-2xl border border-amber-200 text-amber-800 text-sm font-bold flex items-center gap-3">
+            <span className="text-2xl">⚠️</span>
+            <p>بعد does نرجع الفعل بدون s (المصدر)</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-red-500">I do not</span> like coffee.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(أنا لا أحب القهوة)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-red-500">He does not</span> like coffee.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو لا يحب القهوة)</p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center gap-6 py-2">
+            <div className="text-center">
+              <p className="text-red-500 line-through text-xs" dir="ltr">He does not likes</p>
+              <span className="text-[10px] text-red-400">❌ خطأ</span>
+            </div>
+            <div className="text-center">
+              <p className="text-emerald-600 font-bold text-xs" dir="ltr">He does not like</p>
+              <span className="text-[10px] text-emerald-500">✔️ صح</span>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps6',
+      title: 'خامساً: السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-blue-50 rounded-3xl border-2 border-dashed border-blue-100 text-center">
+            <p className="text-xs font-bold text-blue-500 mb-2 uppercase tracking-widest">تكوين السؤال</p>
+            <div className="space-y-2">
+              <p className="text-sm font-bold text-blue-700" dir="ltr">Do + (I, You, We, They)</p>
+              <p className="text-sm font-bold text-blue-700" dir="ltr">Does + (He, She, It)</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Do</span> you play football?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل تلعب كرة القدم؟)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Does</span> he play football?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل هو يلعب كرة القدم؟)</p>
+            </div>
+          </div>
+          <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+            <p className="font-bold text-blue-400 mb-3 text-sm">💡 كيف تجيب؟</p>
+            <div className="grid grid-cols-2 gap-3 text-[10px] font-bold" dir="ltr">
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, I do / No, I don’t</div>
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, he does / No, he doesn’t</div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps7',
+      title: 'سادساً: الكلمات الدالة 🗝️',
       icon: '🗝️',
       content: (
-        <div className="space-y-4 text-right" dir="rtl">
-          <p className="text-lg text-slate-700">إذا رأيت هذه الكلمات في الجملة، فاعلم أننا غالباً نستخدم المضارع البسيط:</p>
-          <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-3" dir="ltr">
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">always (دائماً)</span>
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">usually (عادةً)</span>
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">often (غالباً)</span>
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">sometimes (أحياناً)</span>
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">never (أبداً)</span>
-            <span className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full font-black text-lg">every... (كل...)</span>
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'always', ar: 'دائماً' },
+              { en: 'usually', ar: 'عادةً' },
+              { en: 'often', ar: 'غالباً' },
+              { en: 'sometimes', ar: 'أحياناً' },
+              { en: 'never', ar: 'أبداً' },
+              { en: 'every day', ar: 'كل يوم' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-indigo-50 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center shadow-sm">
+                <span className="font-black text-indigo-700" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-indigo-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center mt-4">
+            <p className="text-xs text-slate-500 italic" dir="ltr">Example: <span className="font-bold text-indigo-600">I always wake up early</span></p>
+            <p className="text-[10px] text-slate-400 mt-1">(أنا دائماً أستيقظ مبكراً)</p>
           </div>
         </div>
       )
     },
     {
-      id: 'c6',
-      title: 'ملاحظات واستثناءات هامة ⚠️',
-      icon: '⚠️',
+      id: 'ps8',
+      title: 'سابعاً: ملخص سريع 🔥',
+      icon: '🔥',
       content: (
-        <div className="space-y-4 text-right" dir="rtl">
-          <div className="p-4 bg-amber-50 border-2 border-amber-200 rounded-2xl">
-            <p className="text-lg text-slate-800 font-bold mb-2">متى نضيف (es) بدلاً من (s) مع المفرد (He/She/It)؟</p>
-            <p className="text-slate-700">إذا انتهى الفعل بأحد هذه الحروف: <strong>o, ch, sh, ss, x</strong></p>
-            <div className="mt-3 space-y-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-              <p className="text-xl font-black text-slate-800">go ➡️ go<span className="text-red-500">es</span></p>
-              <p className="text-xl font-black text-slate-800">watch ➡️ watch<span className="text-red-500">es</span></p>
-              <p className="text-xl font-black text-slate-800">wash ➡️ wash<span className="text-red-500">es</span></p>
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black shrink-0">1</div>
+              <p className="text-sm font-bold">He/She/It ➜ نضيف s للفعل</p>
             </div>
+            <div className="flex items-center gap-3 bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black shrink-0">2</div>
+              <p className="text-sm font-bold">في النفي والسؤال ➜ نستخدم do / does</p>
+            </div>
+            <div className="flex items-center gap-3 bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black shrink-0">3</div>
+              <p className="text-sm font-bold">بعد does ➜ الفعل يعود للمصدر بدون s</p>
+            </div>
+          </div>
+          <div className="mt-8 p-5 bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+            <p className="text-sm font-black text-indigo-400 mb-3 flex items-center gap-2">
+              <span className="text-xl">✍️</span> تحدي الكتابة:
+            </p>
+            <p className="text-xs leading-relaxed text-slate-300">
+              اكتب 5 جمل عن يومك باستخدام الكلمات الدالة:
+              <br />
+              <span className="text-indigo-200 font-mono">(always, usually, never)</span>
+              <br />
+              وشاركها مع زملائك في الفصل!
+            </p>
           </div>
         </div>
       )
     }
   ],
   quiz: [
-    // True / False
     {
-      id: 'q1',
-      type: 'true_false',
-      question: 'He play football every day.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. الفاعل مفرد (He) لذلك يجب أن نضيف s للفعل ليصبح plays.'
-    },
-    {
-      id: 'q2',
-      type: 'true_false',
-      question: 'We don\'t like fish.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. نستخدم don\'t للنفي مع الضمير We.'
-    },
-    {
-      id: 'q3',
-      type: 'true_false',
-      question: 'Does she goes to school?',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. في السؤال مع Does، يعود الفعل لحالته الأصلية بدون إضافات (go).'
-    },
-    // Multiple Choice
-    {
-      id: 'q4',
+      id: 'psq1',
       type: 'multiple_choice',
-      question: 'She _____ to school every day.',
-      options: ['go', 'goes', 'went', 'going'],
+      question: 'He ____ to school every day.',
+      options: ['go', 'goes', 'going'],
       correctAnswer: 'goes',
-      explanation: 'لأن الفاعل مفرد (She) والجملة في المضارع البسيط (every day).'
+      explanation: 'مع He نضيف s أو es للفعل.'
     },
     {
-      id: 'q5',
+      id: 'psq2',
       type: 'multiple_choice',
-      question: 'They _____ play tennis.',
-      options: ['doesn\'t', 'aren\'t', 'don\'t', 'isn\'t'],
-      correctAnswer: 'don\'t',
-      explanation: 'نستخدم don\'t لنفي المضارع البسيط مع الضمير الجمع (They).'
+      question: 'They ____ football.',
+      options: ['plays', 'play', 'playing'],
+      correctAnswer: 'play',
+      explanation: 'مع They يبقى الفعل كما هو بدون إضافات.'
     },
     {
-      id: 'q6',
+      id: 'psq3',
       type: 'multiple_choice',
-      question: '_____ you like pizza?',
-      options: ['Do', 'Does', 'Are', 'Is'],
-      correctAnswer: 'Do',
-      explanation: 'نسأل بـ Do مع الضمير you.'
-    },
-    // Arrange
-    {
-      id: 'q7',
-      type: 'arrange',
-      question: 'every / plays / Friday / He / football',
-      correctAnswer: ['He', 'plays', 'football', 'every', 'Friday'],
-      explanation: 'الفاعل (He) ثم الفعل (plays) ثم المفعول به (football) ثم ظرف الزمان (every Friday).'
+      question: 'She ____ not like milk.',
+      options: ['do', 'does', 'is'],
+      correctAnswer: 'does',
+      explanation: 'نستخدم does للنفي مع She.'
     },
     {
-      id: 'q8',
+      id: 'psq4',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: He go to school.',
+      options: ['He go to school.', 'He goes to school.', 'He going to school.'],
+      correctAnswer: 'He goes to school.',
+      explanation: 'يجب إضافة es للفعل go مع الفاعل المفرد He.'
+    },
+    {
+      id: 'psq5',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: She don’t like tea.',
+      options: ['She doesn\'t like tea.', 'She don\'t like tea.', 'She not like tea.'],
+      correctAnswer: 'She doesn\'t like tea.',
+      explanation: 'نستخدم doesn\'t مع She.'
+    },
+    {
+      id: 'psq6',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: Does he plays football?',
+      options: ['Does he plays football?', 'Does he play football?', 'Do he play football?'],
+      correctAnswer: 'Does he play football?',
+      explanation: 'بعد does نستخدم الفعل بدون s.'
+    },
+    {
+      id: 'psq7',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (you / like coffee):',
+      options: ['Do you like coffee?', 'Does you like coffee?', 'Are you like coffee?'],
+      correctAnswer: 'Do you like coffee?',
+      explanation: 'نستخدم Do مع You لتكوين السؤال.'
+    },
+    {
+      id: 'psq8',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (he / play football):',
+      options: ['Do he play football?', 'Does he play football?', 'Is he play football?'],
+      correctAnswer: 'Does he play football?',
+      explanation: 'نستخدم Does مع He لتكوين السؤال.'
+    },
+    {
+      id: 'psq9',
       type: 'arrange',
-      question: 'usually / I / early / wake up',
-      correctAnswer: ['I', 'usually', 'wake up', 'early'],
-      explanation: 'ظرف التكرار (usually) يأتي قبل الفعل الأساسي (wake up).'
+      question: 'أنا أدرس كل يوم.',
+      options: ['study', 'I', 'every', 'day.'],
+      correctAnswer: ['I', 'study', 'every', 'day.'],
+      explanation: 'الترجمة الصحيحة: I study every day.'
+    },
+    {
+      id: 'psq10',
+      type: 'arrange',
+      question: 'هو لا يحب الشاي.',
+      options: ['He', 'doesn\'t', 'like', 'tea.'],
+      correctAnswer: ['He', 'doesn\'t', 'like', 'tea.'],
+      explanation: 'الترجمة الصحيحة: He doesn\'t like tea.'
+    },
+    {
+      id: 'psq11',
+      type: 'arrange',
+      question: 'هل هم يذهبون إلى المدرسة؟',
+      options: ['Do', 'they', 'go', 'to', 'school?'],
+      correctAnswer: ['Do', 'they', 'go', 'to', 'school?'],
+      explanation: 'الترجمة الصحيحة: Do they go to school?'
     }
   ]
 };
@@ -216,190 +451,361 @@ export const pastSimpleLesson: GrammarLessonData = {
   description: 'أحداث بدأت وانتهت في الماضي ⏳',
   cards: [
     {
-      id: 'c1',
-      title: 'مرحباً بك يا بطل! 👋',
-      icon: '🚀',
+      id: 'ps1',
+      title: 'أولاً: ما هو الماضي البسيط؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هيا بنا نتعلم كيف نتحدث عن الماضي! 
-            نستخدم <strong>الماضي البسيط</strong> عندما نتحدث عن أشياء حدثت وانتهت في الماضي (مثل: أنا لعبت الكرة أمس ⚽).
-          </p>
-        </div>
-      )
-    },
-    {
-      id: 'c2',
-      title: 'متى نستخدم القاعدة؟ 🕐',
-      icon: '💡',
-      content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>أحداث منتهية:</strong> شيء حدث وانتهى (سافرت إلى مصر العام الماضي).</li>
-            <li><strong>عادات في الماضي:</strong> أشياء كنت تفعلها في الماضي (كنت ألعب التنس عندما كنت صغيراً).</li>
-            <li><strong>قصص:</strong> لسرد أحداث قصة في الماضي.</li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      id: 'c3',
-      title: 'كيف نبني الجملة؟ 🧩',
-      icon: '🏗️',
-      content: (
-        <div className="space-y-6 text-right" dir="rtl">
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في التصريف الثاني (ed أو شاذ)" type="verb" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="باقي الجملة" type="complement" />
+          <p className="font-bold text-indigo-600">الماضي البسيط هو زمن نستخدمه للتعبير عن:</p>
+          <div className="space-y-4">
+            <div className="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <p className="font-black text-indigo-700 mb-1">1. حدث انتهى في الماضي</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I visited my friend yesterday</p>
+              <p className="text-xs text-slate-400">(أنا زرت صديقي أمس)</p>
             </div>
-          </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="didn't" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في المصدر" type="verb" />
-            </div>
-          </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="Did" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في المصدر" type="verb" />
-              <span className="text-slate-400 font-black">?</span>
+            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
+              <p className="font-black text-emerald-700 mb-1">2. حدث حصل مرة واحدة وانتهى</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">She watched a movie last night</p>
+              <p className="text-xs text-slate-400">(هي شاهدت فيلم أمس)</p>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c4',
-      title: 'أمثلة ملونة 🎨',
-      icon: '✨',
+      id: 'ps2',
+      title: 'ثانياً: القاعدة الأساسية 🧩',
+      icon: '🧩',
       content: (
-        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="He" type="subject" />
-            <CText text="played" type="verb" />
-            <CText text="football yesterday." type="complement" />
-          </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="We" type="subject" />
-            <CText text="didn't" type="particle" />
-            <CText text="go" type="verb" />
-            <CText text="to school." type="complement" />
-          </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="Did" type="particle" />
-            <CText text="she" type="subject" />
-            <CText text="see" type="verb" />
-            <CText text="the movie?" type="complement" />
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+            <p className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest text-center">التركيب (Structure)</p>
+            <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-wrap items-center justify-center gap-3 text-center" dir="ltr">
+              <div className="px-3 py-1 bg-blue-50 rounded-lg border border-blue-100">
+                <span className="block text-[10px] text-blue-400 font-bold">SUBJECT</span>
+                <span className="font-black text-blue-600">Subject</span>
+              </div>
+              <span className="text-slate-300 font-black">+</span>
+              <div className="px-3 py-1 bg-red-50 rounded-lg border border-red-100">
+                <span className="block text-[10px] text-red-400 font-bold">VERB</span>
+                <span className="font-black text-red-600">verb (past)</span>
+              </div>
+            </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c5',
-      title: 'الكلمات الدالة 🗝️',
-      icon: '🔑',
+      id: 'ps3',
+      title: 'ثالثاً: أنواع الأفعال في الماضي 🔄',
+      icon: '🔄',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>عندما ترى هذه الكلمات، فغالباً الجملة في الماضي البسيط:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">yesterday</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">last (week/year)</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">ago</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">in 2010</div>
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <p className="font-bold text-indigo-700 mb-2">1️⃣ أفعال منتظمة (Regular verbs):</p>
+            <p className="text-sm mb-3">نضيف (ed) للفعل.</p>
+            <div className="grid grid-cols-3 gap-2 text-center" dir="ltr">
+              <div className="p-2 bg-white rounded-xl text-[10px] font-bold">play ➜ played</div>
+              <div className="p-2 bg-white rounded-xl text-[10px] font-bold">watch ➜ watched</div>
+              <div className="p-2 bg-white rounded-xl text-[10px] font-bold">clean ➜ cleaned</div>
+            </div>
+            <div className="mt-4 p-3 bg-white/50 rounded-xl border border-indigo-100">
+              <p className="font-bold text-indigo-600 text-xs mb-2">🔴 ملاحظات مهمة:</p>
+              <ul className="text-[10px] space-y-1 list-disc list-inside">
+                <li>إذا انتهى بـ (e): نضيف (d) فقط (live ➜ lived).</li>
+                <li>إذا انتهى بـ (y) وقبله حرف ساكن: نغير y إلى i ثم ed (study ➜ studied).</li>
+                <li>إذا كان الفعل قصير: نكرر الحرف الأخير (stop ➜ stopped).</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100">
+            <p className="font-bold text-amber-700 mb-2">2️⃣ أفعال غير منتظمة (Irregular verbs):</p>
+            <p className="text-sm mb-3">ليس لها قاعدة، يجب حفظها ❗</p>
+            <div className="overflow-x-auto rounded-xl border border-amber-200">
+              <table className="w-full text-center text-[10px]" dir="ltr">
+                <thead className="bg-amber-600 text-white">
+                  <tr>
+                    <th className="p-2">المضارع</th>
+                    <th className="p-2">الماضي</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="bg-white">
+                    <td className="p-2 border-b border-amber-100">go</td>
+                    <td className="p-2 border-b border-amber-100 font-bold text-amber-700">went</td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border-b border-amber-100">eat</td>
+                    <td className="p-2 border-b border-amber-100 font-bold text-amber-700">ate</td>
+                  </tr>
+                  <tr className="bg-white">
+                    <td className="p-2 border-b border-amber-100">see</td>
+                    <td className="p-2 border-b border-amber-100 font-bold text-amber-700">saw</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c6',
-      title: 'ملاحظات هامة ⚠️',
-      icon: '⭐',
+      id: 'ps4',
+      title: 'رابعاً: الإثبات (Positive) ✅',
+      icon: '✅',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هناك نوعان من الأفعال في الماضي:
-          </p>
-          <ul className="list-disc list-inside space-y-2">
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>أفعال منتظمة (Regular):</strong> نضيف لها ed (مثل: <span dir="ltr" className="inline-block mx-1 whitespace-nowrap">play ➔ played</span>).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>أفعال شاذة (Irregular):</strong> يتغير شكلها ويجب حفظها (مثل: <span dir="ltr" className="inline-block mx-1 whitespace-nowrap">go ➔ went, see ➔ saw</span>).</li>
-          </ul>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="I" type="subject" /><CText text="played" type="verb" /><CText text="football" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(أنا لعبت كرة القدم)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="He" type="subject" /><CText text="went" type="verb" /><CText text="to school" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو ذهب إلى المدرسة)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps5',
+      title: 'خامساً: النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-red-50 rounded-3xl border-2 border-dashed border-red-100 text-center">
+            <p className="text-xs font-bold text-red-500 mb-2 uppercase tracking-widest">قاعدة النفي</p>
+            <p className="text-sm font-bold text-red-700" dir="ltr">Subject + <span className="underline">did not (didn’t)</span> + verb (base)</p>
+          </div>
+          <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-2">
+            <span className="text-xl">⚠️</span>
+            <p className="text-[10px] font-bold text-amber-700 leading-tight">الفعل يرجع كما هو (بدون ed) عند استخدام didn't.</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">I <span className="text-red-500">did not play</span>.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(أنا لم ألعب)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">He <span className="text-red-500">did not go</span>.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو لم يذهب)</p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center gap-6 py-2">
+            <div className="text-center">
+              <p className="text-red-500 line-through text-[10px]" dir="ltr">He didn’t went</p>
+              <span className="text-[8px] text-red-400">❌ خطأ</span>
+            </div>
+            <div className="text-center">
+              <p className="text-emerald-600 font-bold text-[10px]" dir="ltr">He didn’t go</p>
+              <span className="text-[8px] text-emerald-500">✔️ صح</span>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps6',
+      title: 'سادساً: السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-blue-50 rounded-3xl border-2 border-dashed border-blue-100 text-center">
+            <p className="text-xs font-bold text-blue-500 mb-2 uppercase tracking-widest">تكوين السؤال</p>
+            <p className="text-sm font-bold text-blue-700" dir="ltr"><span className="underline">Did</span> + subject + verb (base)?</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Did</span> you play football?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل لعبت كرة القدم؟)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Did</span> he go to school?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل ذهب إلى المدرسة؟)</p>
+            </div>
+          </div>
+          <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+            <p className="font-bold text-blue-400 mb-3 text-sm">💡 الإجابة:</p>
+            <div className="grid grid-cols-2 gap-3 text-[10px] font-bold" dir="ltr">
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, I did / No, I didn’t</div>
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, he did / No, he didn’t</div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps7',
+      title: 'سابعاً: كلمات تدل على الماضي البسيط 🗝️',
+      icon: '🗝️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'yesterday', ar: 'أمس' },
+              { en: 'last night', ar: 'الليلة الماضية' },
+              { en: 'last week', ar: 'الأسبوع الماضي' },
+              { en: 'ago', ar: 'منذ' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-indigo-50 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center shadow-sm">
+                <span className="font-black text-indigo-700" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-indigo-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center mt-4">
+            <p className="text-xs text-slate-500 italic" dir="ltr">Example: <span className="font-bold text-indigo-600">I studied English yesterday</span></p>
+            <p className="text-[10px] text-slate-400 mt-1">(أنا درست الإنجليزية أمس)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps8',
+      title: 'ثامناً: الفرق بين الماضي والمضارع ⚖️',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table className="w-full text-center border-collapse" dir="ltr">
+              <thead>
+                <tr className="bg-slate-800 text-white text-xs">
+                  <th className="p-3 border border-slate-700">المضارع (Present)</th>
+                  <th className="p-3 border border-slate-700">الماضي (Past)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-white">
+                  <td className="p-3 border border-slate-100 font-bold">I play</td>
+                  <td className="p-3 border border-slate-100 font-bold text-indigo-600">I played</td>
+                </tr>
+                <tr className="bg-slate-50">
+                  <td className="p-3 border border-slate-100 font-bold">I go</td>
+                  <td className="p-3 border border-slate-100 font-bold text-amber-600">I went</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ps9',
+      title: 'تاسعاً: ملخص سريع 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-1 gap-3">
+            <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-3">
+              <span className="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">1</span>
+              <p className="text-xs font-bold text-emerald-700">الأفعال العادية ➜ نضيف ed</p>
+            </div>
+            <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100 flex items-center gap-3">
+              <span className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">2</span>
+              <p className="text-xs font-bold text-blue-700">الأفعال الشاذة ➜ يجب حفظها</p>
+            </div>
+            <div className="p-3 bg-red-50 rounded-2xl border border-red-100 flex items-center gap-3">
+              <span className="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">3</span>
+              <p className="text-xs font-bold text-red-700">في النفي ➜ did + فعل بدون ed</p>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-2xl border border-amber-100 flex items-center gap-3">
+              <span className="bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">4</span>
+              <p className="text-xs font-bold text-amber-700">في السؤال ➜ Did + فعل بدون ed</p>
+            </div>
+          </div>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
-      type: 'true_false',
-      question: 'He played football yesterday.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. الجملة في الماضي البسيط (yesterday) والفعل مضاف له ed.'
-    },
-    {
-      id: 'q2',
-      type: 'true_false',
-      question: 'We didn\'t went to school.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. بعد didn\'t يجب أن يأتي الفعل في المصدر (go) وليس (went).'
-    },
-    {
-      id: 'q3',
-      type: 'true_false',
-      question: 'Did she saw the movie?',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. في السؤال مع Did، يعود الفعل لحالته الأصلية في المصدر (see).'
-    },
-    {
-      id: 'q4',
+      id: 'psq1',
       type: 'multiple_choice',
-      question: 'She _____ to school yesterday.',
-      options: ['go', 'goes', 'went', 'going'],
+      question: 'He ____ to school yesterday.',
+      options: ['go', 'went', 'goes'],
       correctAnswer: 'went',
-      explanation: 'لأن الجملة في الماضي (yesterday)، نستخدم التصريف الثاني للفعل go وهو went.'
+      explanation: 'نستخدم التصريف الثاني (went) لأن الجملة في الماضي (yesterday).'
     },
     {
-      id: 'q5',
+      id: 'psq2',
       type: 'multiple_choice',
-      question: 'They _____ play tennis last week.',
-      options: ['didn\'t', 'don\'t', 'doesn\'t', 'aren\'t'],
-      correctAnswer: 'didn\'t',
-      explanation: 'نستخدم didn\'t لنفي الماضي البسيط (last week).'
+      question: 'They ____ football last week.',
+      options: ['played', 'play', 'plays'],
+      correctAnswer: 'played',
+      explanation: 'نستخدم الفعل مضاف له ed لأن الجملة في الماضي (last week).'
     },
     {
-      id: 'q6',
+      id: 'psq3',
       type: 'multiple_choice',
-      question: '_____ you like the pizza yesterday?',
-      options: ['Do', 'Does', 'Did', 'Are'],
-      correctAnswer: 'Did',
+      question: 'I ____ not eat rice.',
+      options: ['did', 'do', 'am'],
+      correctAnswer: 'did',
+      explanation: 'نستخدم did لنفي الماضي البسيط.'
+    },
+    {
+      id: 'psq4',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: He go to school yesterday.',
+      options: ['He goes to school yesterday.', 'He went to school yesterday.', 'He go to school yesterday.'],
+      correctAnswer: 'He went to school yesterday.',
+      explanation: 'يجب استخدام الماضي (went) مع كلمة yesterday.'
+    },
+    {
+      id: 'psq5',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: She didn’t went.',
+      options: ['She didn’t go.', 'She didn’t went.', 'She doesn’t go.'],
+      correctAnswer: 'She didn’t go.',
+      explanation: 'بعد didn’t يعود الفعل للمصدر (go).'
+    },
+    {
+      id: 'psq6',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: Did he went to school?',
+      options: ['Did he go to school?', 'Did he went to school?', 'Does he go to school?'],
+      correctAnswer: 'Did he go to school?',
+      explanation: 'في السؤال مع Did، يعود الفعل للمصدر (go).'
+    },
+    {
+      id: 'psq7',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (you / play football yesterday):',
+      options: ['Did you play football yesterday?', 'Do you play football yesterday?', 'Are you play football yesterday?'],
+      correctAnswer: 'Did you play football yesterday?',
       explanation: 'نسأل بـ Did في الماضي البسيط.'
     },
     {
-      id: 'q7',
-      type: 'arrange',
-      question: 'yesterday / played / He / football',
-      correctAnswer: ['He', 'played', 'football', 'yesterday'],
-      explanation: 'الفاعل (He) ثم الفعل (played) ثم المفعول به (football) ثم ظرف الزمان (yesterday).'
+      id: 'psq8',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (he / go to school):',
+      options: ['Did he go to school?', 'Does he go to school?', 'Did he went to school?'],
+      correctAnswer: 'Did he go to school?',
+      explanation: 'نسأل بـ Did ونستخدم المصدر go.'
     },
     {
-      id: 'q8',
+      id: 'psq9',
       type: 'arrange',
-      question: 'didn\'t / I / early / wake up',
-      correctAnswer: ['I', 'didn\'t', 'wake up', 'early'],
-      explanation: 'أداة النفي (didn\'t) تأتي قبل الفعل الأساسي (wake up).'
+      question: 'أنا درست أمس.',
+      options: ['studied', 'I', 'yesterday.'],
+      correctAnswer: ['I', 'studied', 'yesterday.'],
+      explanation: 'الترجمة الصحيحة: I studied yesterday.'
+    },
+    {
+      id: 'psq10',
+      type: 'arrange',
+      question: 'هو لم يلعب.',
+      options: ['He', 'did', 'not', 'play.'],
+      correctAnswer: ['He', 'did', 'not', 'play.'],
+      explanation: 'الترجمة الصحيحة: He did not play.'
+    },
+    {
+      id: 'psq11',
+      type: 'arrange',
+      question: 'هل أكلت الأرز؟',
+      options: ['Did', 'you', 'eat', 'rice?'],
+      correctAnswer: ['Did', 'you', 'eat', 'rice?'],
+      explanation: 'الترجمة الصحيحة: Did you eat rice?'
     }
   ]
 };
@@ -410,192 +816,343 @@ export const presentContinuousLesson: GrammarLessonData = {
   description: 'أحداث تقع الآن في لحظة الكلام 🏃‍♂️',
   cards: [
     {
-      id: 'c1',
-      title: 'مرحباً بك يا بطل! 👋',
-      icon: '🚀',
+      id: 'pc1',
+      title: 'أولاً: ما هو المضارع المستمر؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هيا بنا نتعلم كيف نتحدث عما نفعله الآن! 
-            نستخدم <strong>المضارع المستمر</strong> عندما نتحدث عن أشياء تحدث الآن في هذه اللحظة ولم تنتهِ بعد (مثل: أنا أقرأ كتاباً الآن 📖).
-          </p>
-        </div>
-      )
-    },
-    {
-      id: 'c2',
-      title: 'متى نستخدم القاعدة؟ 🕐',
-      icon: '💡',
-      content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>أحداث تقع الآن:</strong> شيء يحدث في لحظة الكلام (إنها تمطر الآن).</li>
-            <li><strong>أحداث مؤقتة:</strong> شيء تفعله هذه الأيام فقط (أنا أدرس الفرنسية هذا الشهر).</li>
-            <li><strong>خطط مستقبلية مؤكدة:</strong> (سأسافر غداً).</li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      id: 'c3',
-      title: 'كيف نبني الجملة؟ 🧩',
-      icon: '🏗️',
-      content: (
-        <div className="space-y-6 text-right" dir="rtl">
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="am / is / are" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل + ing" type="verb" />
+          <p className="font-bold text-indigo-600">المضارع المستمر هو زمن نستخدمه للتعبير عن:</p>
+          <div className="space-y-4">
+            <div className="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <p className="font-black text-indigo-700 mb-1">1. شيء يحدث الآن (في هذه اللحظة)</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I am studying now</p>
+              <p className="text-xs text-slate-400">(أنا أدرس الآن)</p>
             </div>
-          </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="am not / isn't / aren't" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل + ing" type="verb" />
+            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
+              <p className="font-black text-emerald-700 mb-1">2. شيء مؤقت (ليس عادة)</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I am living in Sana'a this month</p>
+              <p className="text-xs text-slate-400">(أنا أعيش في صنعاء هذا الشهر)</p>
             </div>
-          </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="Am / Is / Are" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل + ing" type="verb" />
-              <span className="text-slate-400 font-black">?</span>
+            <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100 shadow-sm">
+              <p className="font-black text-blue-700 mb-1">3. حدث يحدث الآن أثناء الكلام</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">She is talking on the phone</p>
+              <p className="text-xs text-slate-400">(هي تتحدث على الهاتف)</p>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c4',
-      title: 'أمثلة ملونة 🎨',
-      icon: '✨',
+      id: 'pc2',
+      title: 'ثانياً: القاعدة الذهبية 🌟',
+      icon: '🌟',
       content: (
-        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="He" type="subject" />
-            <CText text="is" type="particle" />
-            <CText text="playing" type="verb" />
-            <CText text="football now." type="complement" />
-          </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="We" type="subject" />
-            <CText text="aren't" type="particle" />
-            <CText text="watching" type="verb" />
-            <CText text="TV." type="complement" />
-          </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="Is" type="particle" />
-            <CText text="she" type="subject" />
-            <CText text="reading" type="verb" />
-            <CText text="a book?" type="complement" />
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="font-bold text-indigo-600">هذه هي القاعدة التي يجب أن تحفظها جيداً:</p>
+          <div className="p-6 bg-gradient-to-br from-indigo-50 to-blue-50 rounded-3xl border-2 border-indigo-100 shadow-inner">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-center" dir="ltr">
+              <div className="group relative">
+                <div className="px-4 py-2 bg-white rounded-2xl border-2 border-indigo-200 shadow-sm group-hover:border-indigo-400 transition-colors">
+                  <span className="block text-[10px] text-indigo-400 font-black uppercase tracking-tighter">Subject</span>
+                  <span className="font-black text-indigo-700 text-xl">I / He / They...</span>
+                </div>
+              </div>
+              <span className="text-indigo-300 font-black text-2xl">+</span>
+              <div className="group relative">
+                <div className="px-4 py-2 bg-white rounded-2xl border-2 border-amber-200 shadow-sm group-hover:border-amber-400 transition-colors">
+                  <span className="block text-[10px] text-amber-400 font-black uppercase tracking-tighter">Helping Verb</span>
+                  <span className="font-black text-amber-700 text-xl">am / is / are</span>
+                </div>
+              </div>
+              <span className="text-indigo-300 font-black text-2xl">+</span>
+              <div className="group relative">
+                <div className="px-4 py-2 bg-white rounded-2xl border-2 border-emerald-200 shadow-sm group-hover:border-emerald-400 transition-colors">
+                  <span className="block text-[10px] text-emerald-400 font-black uppercase tracking-tighter">Main Verb</span>
+                  <span className="font-black text-emerald-700 text-xl">verb + ing</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c5',
-      title: 'الكلمات الدالة 🗝️',
-      icon: '🔑',
+      id: 'pc3',
+      title: 'ثالثاً: الضمائر مع الفعل المساعد 👥',
+      icon: '👥',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>عندما ترى هذه الكلمات، فغالباً الجملة في المضارع المستمر:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">now</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">at the moment</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">Look!</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">Listen!</div>
+          <p className="text-sm text-slate-500 mb-4">كل ضمير له "صديق" محدد من الأفعال المساعدة:</p>
+          <div className="grid gap-3">
+            <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" dir="ltr">
+              <span className="text-2xl font-black text-indigo-600">I</span>
+              <span className="text-slate-300">➜</span>
+              <span className="text-2xl font-black text-indigo-700 bg-indigo-50 px-4 py-1 rounded-xl">am</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" dir="ltr">
+              <span className="text-2xl font-black text-amber-600">He / She / It</span>
+              <span className="text-slate-300">➜</span>
+              <span className="text-2xl font-black text-amber-700 bg-amber-50 px-4 py-1 rounded-xl">is</span>
+            </div>
+            <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow" dir="ltr">
+              <span className="text-2xl font-black text-emerald-600">You / We / They</span>
+              <span className="text-slate-300">➜</span>
+              <span className="text-2xl font-black text-emerald-700 bg-emerald-50 px-4 py-1 rounded-xl">are</span>
+            </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c6',
-      title: 'ملاحظات هامة ⚠️',
-      icon: '⭐',
+      id: 'pc4',
+      title: 'رابعاً: تكوين الفعل + ing ✍️',
+      icon: '✍️',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هناك أفعال تسمى (أفعال الحالة Stative Verbs) لا نستخدمها عادة في المضارع المستمر، بل نستخدمها في المضارع البسيط حتى لو كانت تحدث الآن.
-          </p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>أفعال الشعور: like, love, hate</li>
-            <li>أفعال الإدراك: know, understand, believe</li>
-            <li>أفعال الحواس: see, hear, smell</li>
-          </ul>
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <p className="font-bold text-indigo-700 mb-2">✳️ القاعدة العامة:</p>
+            <p className="text-sm">نضيف (ing) للفعل مباشرة.</p>
+            <div className="grid grid-cols-3 gap-2 mt-3 text-center" dir="ltr">
+              <div className="p-2 bg-white rounded-xl text-xs font-bold">play ➜ playing</div>
+              <div className="p-2 bg-white rounded-xl text-xs font-bold">eat ➜ eating</div>
+              <div className="p-2 bg-white rounded-xl text-xs font-bold">read ➜ reading</div>
+            </div>
+          </div>
+          <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100">
+            <p className="font-bold text-amber-700 mb-2">🔴 ملاحظات مهمة:</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-bold">1. إذا انتهى الفعل بـ (e) نحذفها:</p>
+                <p className="text-xs italic" dir="ltr">make ➜ making | write ➜ writing</p>
+              </div>
+              <div className="h-px bg-amber-200"></div>
+              <div>
+                <p className="text-xs font-bold">2. إذا كان الفعل قصير وينتهي بحرف ساكن (نكرر الحرف الأخير):</p>
+                <p className="text-xs italic" dir="ltr">run ➜ running | sit ➜ sitting</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc5',
+      title: 'خامساً: الإثبات (Positive) ✅',
+      icon: '✅',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="I" type="subject" /><CText text="am" type="particle" /><CText text="studying" type="verb" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(أنا أدرس الآن)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="He" type="subject" /><CText text="is" type="particle" /><CText text="playing" type="verb" /><CText text="football" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو يلعب كرة القدم الآن)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="They" type="subject" /><CText text="are" type="particle" /><CText text="watching" type="verb" /><CText text="TV" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هم يشاهدون التلفاز)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc6',
+      title: 'سادساً: النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-red-50 rounded-3xl border-2 border-dashed border-red-100 text-center">
+            <p className="text-xs font-bold text-red-500 mb-2 uppercase tracking-widest">قاعدة النفي</p>
+            <p className="text-sm font-bold text-red-700" dir="ltr">Subject + am / is / are + <span className="underline">not</span> + verb + ing</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">I <span className="text-red-500">am not</span> studying.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(أنا لا أدرس الآن)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">He <span className="text-red-500">is not</span> playing.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو لا يلعب الآن)</p>
+            </div>
+          </div>
+          <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+            <p className="font-bold text-red-400 mb-3 text-sm">✂️ الاختصارات (Contractions):</p>
+            <div className="grid grid-cols-2 gap-3 text-[10px] font-bold" dir="ltr">
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">is not ➜ isn’t</div>
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">are not ➜ aren’t</div>
+            </div>
+            <p className="text-[8px] text-slate-400 mt-2">* am not (لا تختصر غالباً)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc7',
+      title: 'سابعاً: السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-blue-50 rounded-3xl border-2 border-dashed border-blue-100 text-center">
+            <p className="text-xs font-bold text-blue-500 mb-2 uppercase tracking-widest">تكوين السؤال</p>
+            <p className="text-sm font-bold text-blue-700" dir="ltr"><span className="underline">Am / Is / Are</span> + Subject + verb + ing?</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Are</span> you studying now?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل أنت تدرس الآن؟)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Is</span> he playing football?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل هو يلعب؟)</p>
+            </div>
+          </div>
+          <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+            <p className="font-bold text-blue-400 mb-3 text-sm">💡 الإجابة:</p>
+            <div className="grid grid-cols-2 gap-3 text-[10px] font-bold" dir="ltr">
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, I am / No, I’m not</div>
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, he is / No, he isn’t</div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc8',
+      title: 'ثامناً: كلمات تدل على المضارع المستمر 🗝️',
+      icon: '🗝️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="text-sm text-slate-500 mb-2">عندما ترى هذه الكلمات، فغالباً الزمن هو مضارع مستمر:</p>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'now', ar: 'الآن' },
+              { en: 'at the moment', ar: 'في هذه اللحظة' },
+              { en: 'Look!', ar: 'انظر!' },
+              { en: 'Listen!', ar: 'اسمع!' },
+              { en: 'currently', ar: 'حالياً' },
+              { en: 'right now', ar: 'الآن' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-indigo-50 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center shadow-sm hover:bg-indigo-100 transition-colors">
+                <span className="font-black text-indigo-700" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-indigo-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc9',
+      title: 'تاسعاً: الفرق بينه وبين المضارع البسيط ⚖️',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table className="w-full text-right border-collapse" dir="rtl">
+              <thead>
+                <tr className="bg-slate-800 text-white text-xs">
+                  <th className="p-3 border border-slate-700">المضارع البسيط</th>
+                  <th className="p-3 border border-slate-700">المضارع المستمر</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="text-[10px]">
+                  <td className="p-3 border border-slate-100 font-bold">عادة / روتين</td>
+                  <td className="p-3 border border-slate-100 font-bold">الآن (في هذه اللحظة)</td>
+                </tr>
+                <tr className="bg-slate-50 text-[10px]" dir="ltr">
+                  <td className="p-3 border border-slate-100">I play</td>
+                  <td className="p-3 border border-slate-100">I am playing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <p className="font-bold text-indigo-700 mb-2 text-xs">✳️ مثال توضيحي:</p>
+            <div className="space-y-2">
+              <div>
+                <p className="text-[10px] italic" dir="ltr">I play football every day</p>
+                <p className="text-[8px] text-slate-500">أنا ألعب يومياً (عادة)</p>
+              </div>
+              <div className="h-px bg-indigo-200"></div>
+              <div>
+                <p className="text-[10px] italic" dir="ltr">I am playing football now</p>
+                <p className="text-[8px] text-slate-500">أنا ألعب الآن (في هذه اللحظة)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'pc10',
+      title: 'عاشراً: أفعال لا تستخدم مع المستمر ❗',
+      icon: '❗',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="text-sm">بعض الأفعال لا تأخذ (ing) لأنها تعبر عن حالة وليس حركة:</p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {['like (يحب)', 'want (يريد)', 'know (يعرف)'].map(verb => (
+              <span key={verb} className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-[10px] font-bold border border-red-100">{verb}</span>
+            ))}
+          </div>
+          <div className="flex justify-center items-center gap-6 py-2">
+            <div className="text-center">
+              <p className="text-red-500 line-through text-[10px]" dir="ltr">I am liking pizza</p>
+              <span className="text-[8px] text-red-400">❌ خطأ</span>
+            </div>
+            <div className="text-center">
+              <p className="text-emerald-600 font-bold text-[10px]" dir="ltr">I like pizza</p>
+              <span className="text-[8px] text-emerald-500">✔️ صح</span>
+            </div>
+          </div>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
-      type: 'true_false',
-      question: 'He is playing football now.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. الجملة في المضارع المستمر (now) والفعل مضاف له ing ويسبقه is.'
-    },
-    {
-      id: 'q2',
-      type: 'true_false',
-      question: 'We are play tennis.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. يجب إضافة ing للفعل بعد are ليصبح playing.'
-    },
-    {
-      id: 'q3',
-      type: 'true_false',
-      question: 'Is she watching TV?',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. هذا سؤال صحيح في المضارع المستمر.'
-    },
-    {
-      id: 'q4',
+      id: 'pcq1',
       type: 'multiple_choice',
-      question: 'She _____ to school now.',
-      options: ['is going', 'go', 'goes', 'going'],
-      correctAnswer: 'is going',
-      explanation: 'لأن الجملة تحدث الآن (now)، نستخدم is + v-ing.'
+      question: 'He ____ playing football.',
+      options: ['is', 'am', 'are'],
+      correctAnswer: 'is',
+      explanation: 'He تأخذ is في المضارع المستمر.'
     },
     {
-      id: 'q5',
+      id: 'pcq2',
       type: 'multiple_choice',
-      question: 'They _____ playing tennis at the moment.',
-      options: ['aren\'t', 'don\'t', 'doesn\'t', 'didn\'t'],
-      correctAnswer: 'aren\'t',
-      explanation: 'نستخدم aren\'t لنفي المضارع المستمر مع الضمير الجمع (They).'
+      question: 'They ____ watching TV at the moment.',
+      options: ['is', 'am', 'are'],
+      correctAnswer: 'are',
+      explanation: 'They تأخذ are في المضارع المستمر.'
     },
     {
-      id: 'q6',
+      id: 'pcq3',
       type: 'multiple_choice',
-      question: '_____ you watching the movie?',
-      options: ['Are', 'Do', 'Does', 'Did'],
-      correctAnswer: 'Are',
-      explanation: 'نسأل بـ Are في المضارع المستمر مع الضمير you.'
+      question: 'I ____ not studying now.',
+      options: ['is', 'am', 'are'],
+      correctAnswer: 'am',
+      explanation: 'I تأخذ am في المضارع المستمر.'
     },
     {
-      id: 'q7',
-      type: 'arrange',
-      question: 'now / is / He / playing / football',
-      correctAnswer: ['He', 'is', 'playing', 'football', 'now'],
-      explanation: 'الفاعل (He) ثم (is) ثم الفعل (playing) ثم المفعول به (football) ثم ظرف الزمان (now).'
+      id: 'pcq4',
+      type: 'multiple_choice',
+      question: '____ she coming to the party?',
+      options: ['Is', 'Am', 'Are'],
+      correctAnswer: 'Is',
+      explanation: 'نسأل بـ Is مع She في المضارع المستمر.'
     },
     {
-      id: 'q8',
-      type: 'arrange',
-      question: 'aren\'t / We / TV / watching',
-      correctAnswer: ['We', 'aren\'t', 'watching', 'TV'],
-      explanation: 'الفاعل (We) ثم أداة النفي (aren\'t) ثم الفعل (watching) ثم المفعول به (TV).'
+      id: 'pcq5',
+      type: 'multiple_choice',
+      question: 'Look! The cat ____ climbing the tree.',
+      options: ['is', 'am', 'are'],
+      correctAnswer: 'is',
+      explanation: 'The cat (It) تأخذ is في المضارع المستمر.'
     }
   ]
 };
@@ -606,67 +1163,417 @@ export const futureSimpleLesson: GrammarLessonData = {
   description: 'أحداث سوف تقع في المستقبل 🚀',
   cards: [
     {
-      id: 'c1',
-      title: 'مرحباً بك يا بطل! 👋',
-      icon: '🚀',
+      id: 'fs1',
+      title: 'أولاً: ما هو المستقبل البسيط؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            هيا بنا نتعلم كيف نتحدث عن المستقبل! 
-            نستخدم <strong>المستقبل البسيط</strong> عندما نتحدث عن أشياء سوف تحدث في المستقبل (مثل: أنا سوف أسافر غداً ✈️).
-          </p>
+          <p className="font-bold text-indigo-600">المستقبل البسيط هو زمن نستخدمه للتعبير عن:</p>
+          <div className="space-y-4">
+            <div className="bg-indigo-50 p-4 rounded-2xl border border-indigo-100 shadow-sm">
+              <p className="font-black text-indigo-700 mb-1">1. حدث سيحدث في المستقبل</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I will go to school tomorrow</p>
+              <p className="text-xs text-slate-400">(سأذهب إلى المدرسة غداً)</p>
+            </div>
+            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 shadow-sm">
+              <p className="font-black text-emerald-700 mb-1">2. وعد أو قرار لحظي</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">I will help you with your homework</p>
+              <p className="text-xs text-slate-400">(سأساعدك في واجبك)</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100 shadow-sm">
+              <p className="font-black text-blue-700 mb-1">3. توقعات مستقبلية</p>
+              <p className="text-sm text-slate-600 italic" dir="ltr">It will rain tomorrow</p>
+              <p className="text-xs text-slate-400">(ستُمطر غداً)</p>
+            </div>
+          </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'متى نستخدم القاعدة؟ 🕐',
-      icon: '💡',
+      id: 'fs2',
+      title: 'ثانياً: القاعدة الأساسية 🧩',
+      icon: '🧩',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200">
+            <p className="text-xs font-bold text-slate-500 mb-6 uppercase tracking-widest text-center">التركيب (Structure)</p>
+            <div className="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex flex-wrap items-center justify-center gap-3 text-center" dir="ltr">
+              <div className="px-3 py-1 bg-blue-50 rounded-lg border border-blue-100">
+                <span className="block text-[10px] text-blue-400 font-bold">SUBJECT</span>
+                <span className="font-black text-blue-600">Subject</span>
+              </div>
+              <span className="text-slate-300 font-black">+</span>
+              <div className="px-3 py-1 bg-indigo-50 rounded-lg border border-indigo-100">
+                <span className="block text-[10px] text-indigo-400 font-bold">PARTICLE</span>
+                <span className="font-black text-indigo-600">will</span>
+              </div>
+              <span className="text-slate-300 font-black">+</span>
+              <div className="px-3 py-1 bg-red-50 rounded-lg border border-red-100">
+                <span className="block text-[10px] text-red-400 font-bold">VERB</span>
+                <span className="font-black text-red-600">verb (base form)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs3',
+      title: 'ثالثاً: الضمائر مع will 👥',
+      icon: '👥',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>تنبؤات:</strong> أعتقد أنها ستمطر غداً.</li>
-            <li><strong>قرارات سريعة:</strong> الباب يطرق، أنا سأفتحه!</li>
-            <li><strong>وعود:</strong> أعدك أنني سأساعدك.</li>
+          <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-2 mb-4">
+            <span className="text-xl">⚠️</span>
+            <p className="text-[10px] font-bold text-amber-700 leading-tight">ملاحظة: will ثابت لجميع الضمائر، لا تتغير أبداً.</p>
+          </div>
+          <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-sm">
+            <table className="w-full text-center border-collapse" dir="ltr">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3 border border-indigo-500">الضمير</th>
+                  <th className="p-3 border border-indigo-500">المثال</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { sub: 'I', ex: 'I will go' },
+                  { sub: 'You', ex: 'You will study' },
+                  { sub: 'He', ex: 'He will play' },
+                  { sub: 'She', ex: 'She will eat' },
+                  { sub: 'It', ex: 'It will rain' },
+                  { sub: 'We', ex: 'We will travel' },
+                  { sub: 'They', ex: 'They will watch' }
+                ].map((item, idx) => (
+                  <tr key={item.sub} className={idx % 2 === 0 ? 'bg-indigo-50' : 'bg-white'}>
+                    <td className="p-2 border border-indigo-100 font-bold">{item.sub}</td>
+                    <td className="p-2 border border-indigo-100 font-black text-indigo-600">{item.ex}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs4',
+      title: 'رابعاً: الإثبات (Positive) ✅',
+      icon: '✅',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="I" type="subject" /><CText text="will" type="particle" /><CText text="study" type="verb" /><CText text="tomorrow" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(سأدرس غداً)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="He" type="subject" /><CText text="will" type="particle" /><CText text="play" type="verb" /><CText text="football next week" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(سيلعب كرة القدم الأسبوع المقبل)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><CText text="They" type="subject" /><CText text="will" type="particle" /><CText text="watch" type="verb" /><CText text="a movie tonight" type="complement" /></p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(سيشاهدون فيلماً الليلة)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs5',
+      title: 'خامساً: النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-red-50 rounded-3xl border-2 border-dashed border-red-100 text-center">
+            <p className="text-xs font-bold text-red-500 mb-2 uppercase tracking-widest">قاعدة النفي</p>
+            <p className="text-sm font-bold text-red-700" dir="ltr">Subject + <span className="underline">will not (won’t)</span> + verb (base)</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">I <span className="text-red-500">will not (won’t)</span> go.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(لن أذهب)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">He <span className="text-red-500">will not (won’t)</span> play.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هو لن يلعب)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700">They <span className="text-red-500">will not (won’t)</span> watch TV.</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هم لن يشاهدوا التلفاز)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs6',
+      title: 'سادساً: السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-5 bg-blue-50 rounded-3xl border-2 border-dashed border-blue-100 text-center">
+            <p className="text-xs font-bold text-blue-500 mb-2 uppercase tracking-widest">تكوين السؤال</p>
+            <p className="text-sm font-bold text-blue-700" dir="ltr"><span className="underline">Will</span> + subject + verb (base)?</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Will</span> you study tomorrow?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل ستدرس غداً؟)</p>
+            </div>
+            <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm" dir="ltr">
+              <p className="text-sm font-bold text-slate-700"><span className="text-blue-500">Will</span> he play football next week?</p>
+              <p className="text-[10px] text-slate-400 mt-1" dir="rtl">(هل سيلعب كرة القدم الأسبوع المقبل؟)</p>
+            </div>
+          </div>
+          <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-xl">
+            <p className="font-bold text-blue-400 mb-3 text-sm">💡 الإجابة:</p>
+            <div className="grid grid-cols-2 gap-3 text-[10px] font-bold" dir="ltr">
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, I will / No, I won’t</div>
+              <div className="bg-white/10 p-2 rounded-xl border border-white/10">Yes, he will / No, he won’t</div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs7',
+      title: 'سابعاً: كلمات تدل على المستقبل البسيط 🗝️',
+      icon: '🗝️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'tomorrow', ar: 'غداً' },
+              { en: 'next week', ar: 'الأسبوع المقبل' },
+              { en: 'soon', ar: 'قريباً' },
+              { en: 'in 2 days', ar: 'بعد يومين' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-indigo-50 rounded-2xl border border-indigo-100 flex flex-col items-center justify-center shadow-sm">
+                <span className="font-black text-indigo-700" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-indigo-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm text-center mt-4">
+            <p className="text-xs text-slate-500 italic" dir="ltr">Example: <span className="font-bold text-indigo-600">I will visit my friend tomorrow</span></p>
+            <p className="text-[10px] text-slate-400 mt-1">(سأزور صديقي غداً)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'fs8',
+      title: 'ثامناً: ملخص سريع 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-1 gap-3">
+            <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center gap-3">
+              <span className="bg-emerald-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">1</span>
+              <p className="text-xs font-bold text-emerald-700">will ثابت لجميع الضمائر</p>
+            </div>
+            <div className="p-3 bg-red-50 rounded-2xl border border-red-100 flex items-center gap-3">
+              <span className="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">2</span>
+              <p className="text-xs font-bold text-red-700">في النفي ➜ will not / won’t + verb</p>
+            </div>
+            <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100 flex items-center gap-3">
+              <span className="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">3</span>
+              <p className="text-xs font-bold text-blue-700">في السؤال ➜ Will + subject + verb</p>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-2xl border border-amber-100 flex items-center gap-3">
+              <span className="bg-amber-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-xs">4</span>
+              <p className="text-xs font-bold text-amber-700">كلمات المستقبل: tomorrow, next week, soon</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  ],
+  quiz: [
+    {
+      id: 'fsq1',
+      type: 'multiple_choice',
+      question: 'She ____ go to the market tomorrow.',
+      options: ['goes', 'will', 'going'],
+      correctAnswer: 'will',
+      explanation: 'نستخدم will للتعبير عن المستقبل البسيط.'
+    },
+    {
+      id: 'fsq2',
+      type: 'multiple_choice',
+      question: 'They ____ watch a movie next week.',
+      options: ['watch', 'will', 'will watch'],
+      correctAnswer: 'will',
+      explanation: 'نستخدم will قبل الفعل في المصدر للتعبير عن المستقبل.'
+    },
+    {
+      id: 'fsq3',
+      type: 'multiple_choice',
+      question: 'I ____ not help him.',
+      options: ['will', 'am', 'do'],
+      correctAnswer: 'will',
+      explanation: 'نستخدم will not (won’t) لنفي المستقبل البسيط.'
+    },
+    {
+      id: 'fsq4',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: Will he goes to school?',
+      options: ['Will he go to school?', 'Will he goes to school?', 'Does he go to school?'],
+      correctAnswer: 'Will he go to school?',
+      explanation: 'بعد Will يجب أن يكون الفعل في المصدر بدون (s).'
+    },
+    {
+      id: 'fsq5',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: I won’t goes tomorrow.',
+      options: ['I won’t go tomorrow.', 'I won’t goes tomorrow.', 'I don’t go tomorrow.'],
+      correctAnswer: 'I won’t go tomorrow.',
+      explanation: 'بعد won’t يجب أن يكون الفعل في المصدر.'
+    },
+    {
+      id: 'fsq6',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: She will plays football.',
+      options: ['She will play football.', 'She will plays football.', 'She plays football.'],
+      correctAnswer: 'She will play football.',
+      explanation: 'بعد will يجب أن يكون الفعل في المصدر بدون (s).'
+    },
+    {
+      id: 'fsq7',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (you / help me tomorrow):',
+      options: ['Will you help me tomorrow?', 'Do you help me tomorrow?', 'Are you help me tomorrow?'],
+      correctAnswer: 'Will you help me tomorrow?',
+      explanation: 'نسأل بـ Will في المستقبل البسيط.'
+    },
+    {
+      id: 'fsq8',
+      type: 'multiple_choice',
+      question: 'اختر السؤال الصحيح لـ (he / come to the party):',
+      options: ['Will he come to the party?', 'Does he come to the party?', 'Will he comes to the party?'],
+      correctAnswer: 'Will he come to the party?',
+      explanation: 'نسأل بـ Will ونستخدم المصدر come.'
+    },
+    {
+      id: 'fsq9',
+      type: 'arrange',
+      question: 'سأدرس غداً.',
+      options: ['study', 'I', 'will', 'tomorrow.'],
+      correctAnswer: ['I', 'will', 'study', 'tomorrow.'],
+      explanation: 'الترجمة الصحيحة: I will study tomorrow.'
+    },
+    {
+      id: 'fsq10',
+      type: 'arrange',
+      question: 'هو لن يلعب الأسبوع المقبل.',
+      options: ['He', 'won’t', 'play', 'next week.'],
+      correctAnswer: ['He', 'won’t', 'play', 'next week.'],
+      explanation: 'الترجمة الصحيحة: He won’t play next week.'
+    },
+    {
+      id: 'fsq11',
+      type: 'arrange',
+      question: 'هل ستسافر قريباً؟',
+      options: ['Will', 'you', 'travel', 'soon?'],
+      correctAnswer: ['Will', 'you', 'travel', 'soon?'],
+      explanation: 'الترجمة الصحيحة: Will you travel soon?'
+    }
+  ]
+};
+
+export const pastContinuousLesson: GrammarLessonData = {
+  id: 'past-continuous',
+  title: 'الماضي المستمر (Past Continuous)',
+  description: 'وصف أحداث كانت مستمرة في وقت معين في الماضي ⏳',
+  cards: [
+    {
+      id: 'c1',
+      title: 'ما هو الماضي المستمر؟ 🤔',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>نستخدم الماضي المستمر للتعبير عن:</p>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">1.</span>
+              <span>حدث كان يحدث في وقت معين في الماضي:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">I was studying at 7 PM yesterday.</span>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">2.</span>
+              <span>حدث كان مستمراً بينما حدث آخر حصل فجأة:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">I was watching TV when he called.</span>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">3.</span>
+              <span>وصف حالة أو نشاط مستمر في الماضي:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">It was raining all day yesterday.</span>
+              </span>
+            </li>
           </ul>
         </div>
       )
     },
     {
-      id: 'c3',
-      title: 'كيف نبني الجملة؟ 🧩',
+      id: 'c2',
+      title: 'القاعدة الأساسية 🏗️',
       icon: '🏗️',
       content: (
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">1. الإثبات (Positive) ✅</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
+            <h4 className="font-black text-slate-800 mb-3 text-xl">التركيب ✅</h4>
+            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl" dir="ltr">
+              <CText text="Subject" type="subject" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="will" type="particle" />
+              <CText text="was / were" type="particle" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في المصدر" type="verb" />
+              <CText text="verb + ing" type="verb" />
             </div>
           </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">2. النفي (Negative) ❌</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="won't" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في المصدر" type="verb" />
+
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <h4 className="font-black text-indigo-800 mb-3">الضمائر مع was / were 👥</h4>
+            <div className="grid grid-cols-2 gap-2 text-center">
+              <div className="bg-white p-2 rounded-lg shadow-sm">
+                <span className="font-bold text-indigo-600">was</span>
+                <div className="text-sm text-slate-500">I / He / She / It</div>
+              </div>
+              <div className="bg-white p-2 rounded-lg shadow-sm">
+                <span className="font-bold text-indigo-600">were</span>
+                <div className="text-sm text-slate-500">You / We / They</div>
+              </div>
             </div>
           </div>
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">3. السؤال (Question) ❓</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="Will" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل في المصدر" type="verb" />
-              <span className="text-slate-400 font-black">?</span>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: 'تكوين الفعل + ing 📝',
+      icon: '✍️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="font-bold text-indigo-600">القاعدة العامة: نضيف (ing) للفعل</p>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="p-3 bg-rose-50 rounded-xl border border-rose-100">
+              <p className="text-sm font-bold text-rose-700 mb-1">إذا انتهى الفعل بـ (e) نحذفها:</p>
+              <div className="flex justify-between items-center px-4" dir="ltr">
+                <span className="line-through text-slate-400">make</span>
+                <span className="text-rose-600 font-black">making</span>
+              </div>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+              <p className="text-sm font-bold text-amber-700 mb-1">إذا كان الفعل قصيراً وينتهي بحرف ساكن نكرره:</p>
+              <div className="flex justify-between items-center px-4" dir="ltr">
+                <span className="text-slate-400">sit</span>
+                <span className="text-amber-600 font-black">sitting</span>
+              </div>
             </div>
           </div>
         </div>
@@ -679,177 +1586,116 @@ export const futureSimpleLesson: GrammarLessonData = {
       content: (
         <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
           <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
+            <CText text="I" type="subject" />
+            <CText text="was" type="particle" />
+            <CText text="studying" type="verb" />
+            <CText text="at 8 PM" type="complement" />
+          </div>
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
             <CText text="He" type="subject" />
-            <CText text="will" type="particle" />
-            <CText text="play" type="verb" />
-            <CText text="football tomorrow." type="complement" />
+            <CText text="was" type="particle" />
+            <CText text="playing" type="verb" />
+            <CText text="football" type="complement" />
           </div>
           <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="We" type="subject" />
-            <CText text="won't" type="particle" />
-            <CText text="go" type="verb" />
-            <CText text="to school." type="complement" />
-          </div>
-          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
-            <CText text="Will" type="particle" />
-            <CText text="she" type="subject" />
-            <CText text="see" type="verb" />
-            <CText text="the movie?" type="complement" />
+            <CText text="They" type="subject" />
+            <CText text="were" type="particle" />
+            <CText text="watching" type="verb" />
+            <CText text="TV" type="complement" />
           </div>
         </div>
       )
     },
     {
       id: 'c5',
-      title: 'الكلمات الدالة 🗝️',
-      icon: '🔑',
+      title: 'النفي (Negative) ❌',
+      icon: '❌',
       content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>عندما ترى هذه الكلمات، فغالباً الجملة في المستقبل البسيط:</p>
-          <div className="grid grid-cols-2 gap-4 text-center font-bold text-xl mt-4 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">tomorrow</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">next (week/year)</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">soon</div>
-            <div className="bg-indigo-50 text-indigo-700 p-3 rounded-xl">in the future</div>
-          </div>
-        </div>
-      )
-    },
-    {
-      id: 'c6',
-      title: 'ملاحظات هامة ⚠️',
-      icon: '⭐',
-      content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            يمكننا أيضاً استخدام <strong>(am/is/are going to)</strong> للتعبير عن المستقبل، ولكن نستخدمها عندما نكون قد خططنا للشيء مسبقاً.
-          </p>
-          <p className="text-left bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            I am <strong>going to</strong> visit my grandma tomorrow. (مخطط لذلك)
-          </p>
-        </div>
-      )
-    }
-  ],
-  quiz: [
-    {
-      id: 'q1',
-      type: 'true_false',
-      question: 'He will play football tomorrow.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. الجملة في المستقبل (tomorrow) والفعل في المصدر بعد will.'
-    },
-    {
-      id: 'q2',
-      type: 'true_false',
-      question: 'We won\'t went to school.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. بعد won\'t يجب أن يأتي الفعل في المصدر (go) وليس (went).'
-    },
-    {
-      id: 'q3',
-      type: 'true_false',
-      question: 'Will she see the movie?',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. هذا سؤال صحيح في المستقبل البسيط.'
-    },
-    {
-      id: 'q4',
-      type: 'multiple_choice',
-      question: 'She _____ to school tomorrow.',
-      options: ['will go', 'go', 'goes', 'going'],
-      correctAnswer: 'will go',
-      explanation: 'لأن الجملة في المستقبل (tomorrow)، نستخدم will + المصدر.'
-    },
-    {
-      id: 'q5',
-      type: 'multiple_choice',
-      question: 'They _____ play tennis next week.',
-      options: ['won\'t', 'don\'t', 'doesn\'t', 'didn\'t'],
-      correctAnswer: 'won\'t',
-      explanation: 'نستخدم won\'t لنفي المستقبل البسيط (next week).'
-    },
-    {
-      id: 'q6',
-      type: 'multiple_choice',
-      question: '_____ you like the pizza tomorrow?',
-      options: ['Will', 'Do', 'Does', 'Are'],
-      correctAnswer: 'Will',
-      explanation: 'نسأل بـ Will في المستقبل البسيط.'
-    },
-    {
-      id: 'q7',
-      type: 'arrange',
-      question: 'tomorrow / will / He / play / football',
-      correctAnswer: ['He', 'will', 'play', 'football', 'tomorrow'],
-      explanation: 'الفاعل (He) ثم (will) ثم الفعل (play) ثم المفعول به (football) ثم ظرف الزمان (tomorrow).'
-    },
-    {
-      id: 'q8',
-      type: 'arrange',
-      question: 'won\'t / I / early / wake up',
-      correctAnswer: ['I', 'won\'t', 'wake up', 'early'],
-      explanation: 'أداة النفي (won\'t) تأتي قبل الفعل الأساسي (wake up).'
-    }
-  ]
-};
-
-export const pastContinuousLesson: GrammarLessonData = {
-  id: 'past-continuous',
-  title: 'الماضي المستمر (Past Continuous)',
-  description: 'حدث كان مستمراً في الماضي عندما قطعه حدث آخر ⏳',
-  cards: [
-    {
-      id: 'c1',
-      title: 'مرحباً بك! 👋',
-      icon: '🚀',
-      content: (
-        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>
-            نستخدم <strong>الماضي المستمر</strong> للتحدث عن حدث كان مستمراً لفترة في الماضي، وغالباً ما يقطعه حدث آخر (ماضي بسيط).
-          </p>
-        </div>
-      )
-    },
-    {
-      id: 'c2',
-      title: 'كيف نبني الجملة؟ 🧩',
-      icon: '🏗️',
-      content: (
-        <div className="space-y-6 text-right" dir="rtl">
-          <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
-            <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl">
-              <CText text="الفاعل" type="subject" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="was / were" type="particle" />
-              <span className="text-slate-400 font-black">+</span>
-              <CText text="الفعل + ing" type="verb" />
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Subject" type="subject" />
+              <CText text="wasn't / weren't" type="particle" />
+              <CText text="verb + ing" type="verb" />
+            </div>
+            <div className="space-y-2 text-left" dir="ltr">
+              <p className="text-slate-600">I <span className="text-rose-500 font-bold">wasn't</span> sleeping.</p>
+              <p className="text-slate-600">They <span className="text-rose-500 font-bold">weren't</span> watching TV.</p>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c3',
-      title: 'أدوات الربط (when / while) 🔗',
-      icon: '🔗',
+      id: 'c6',
+      title: 'السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Was / Were" type="particle" />
+              <CText text="subject" type="subject" />
+              <CText text="verb + ing" type="verb" />
+              <span className="text-indigo-400 font-black">?</span>
+            </div>
+            <div className="space-y-3 text-left" dir="ltr">
+              <div>
+                <p className="text-indigo-700 font-medium">Were you studying at 7 PM?</p>
+                <p className="text-xs text-slate-500">Yes, I was / No, I wasn't</p>
+              </div>
+              <div>
+                <p className="text-indigo-700 font-medium">Was he playing football?</p>
+                <p className="text-xs text-slate-500">Yes, he was / No, he wasn't</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: 'كلمات تدل على الزمن 🗝️',
+      icon: '🗝️',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong>While / As / Just as (بينما):</strong> يأتي بعدها (ماضي مستمر)، والحدث القاطع (ماضي بسيط).
-              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-                <CText text="While" type="particle" /> I <CText text="was studying" type="verb" />, the phone <CText text="rang" type="verb" />.
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'at 7 PM yesterday', ar: 'الساعة 7 مساء أمس' },
+              { en: 'all day yesterday', ar: 'طوال اليوم أمس' },
+              { en: 'while', ar: 'بينما' },
+              { en: 'when', ar: 'عندما' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+                <span className="font-black text-indigo-600" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-slate-400">{item.ar}</span>
               </div>
-            </li>
-            <li>
-              <strong>When (عندما):</strong> يأتي بعدها غالباً (ماضي بسيط)، والحدث الآخر (ماضي مستمر).
-              <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-                <CText text="When" type="particle" /> the phone <CText text="rang" type="verb" />, I <CText text="was studying" type="verb" />.
-              </div>
-            </li>
-          </ul>
+            ))}
+          </div>
+          <div className="p-3 bg-slate-50 rounded-xl text-sm italic" dir="ltr">
+            He was sleeping <span className="text-indigo-600 font-bold">when</span> I called him.
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: 'الفرق بين الماضي البسيط والمستمر 🧠',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100">
+              <h5 className="font-bold text-blue-700 mb-2">الماضي البسيط</h5>
+              <p className="text-xs text-blue-600">حدث انتهى تماماً</p>
+              <p className="text-sm mt-2" dir="ltr">I played football.</p>
+            </div>
+            <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100">
+              <h5 className="font-bold text-purple-700 mb-2">الماضي المستمر</h5>
+              <p className="text-xs text-purple-600">حدث كان مستمراً</p>
+              <p className="text-sm mt-2" dir="ltr">I was playing football.</p>
+            </div>
+          </div>
         </div>
       )
     }
@@ -858,48 +1704,88 @@ export const pastContinuousLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'While I _____ TV, my father came.',
-      options: ['watch', 'watched', 'was watching', 'am watching'],
-      correctAnswer: 'was watching',
-      explanation: 'بعد While نستخدم الماضي المستمر (was/were + v-ing).'
+      question: 'He ____ playing football at 5 PM yesterday.',
+      options: ['was', 'were', 'is'],
+      correctAnswer: 'was',
+      explanation: 'الفاعل He يأخذ was في الماضي المستمر.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'When she _____, we were sleeping.',
-      options: ['arrives', 'arrived', 'was arriving', 'arrive'],
-      correctAnswer: 'arrived',
-      explanation: 'بعد When نستخدم الماضي البسيط (arrived).'
-    },
-    {
-      id: 'q3',
-      type: 'true_false',
-      question: 'While he was reading, the light went out.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. الحدث المستمر (was reading) قطعه حدث مفاجئ (went out).'
-    },
-    {
-      id: 'q4',
-      type: 'multiple_choice',
-      question: 'They _____ playing football when it started to rain.',
-      options: ['was', 'were', 'are', 'have'],
+      question: 'They ____ watching TV all night.',
+      options: ['was', 'were', 'am'],
       correctAnswer: 'were',
       explanation: 'الفاعل They يأخذ were في الماضي المستمر.'
     },
     {
+      id: 'q3',
+      type: 'multiple_choice',
+      question: 'I ____ studying when he called.',
+      options: ['was', 'were', 'am'],
+      correctAnswer: 'was',
+      explanation: 'الفاعل I يأخذ was في الماضي المستمر.'
+    },
+    {
+      id: 'q4',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: He were playing yesterday.',
+      options: ['He was playing yesterday.', 'He were playing yesterday.', 'He is playing yesterday.'],
+      correctAnswer: 'He was playing yesterday.',
+      explanation: 'الفاعل He يأخذ was وليس were.'
+    },
+    {
       id: 'q5',
-      type: 'arrange',
-      question: 'was / I / sleeping / when / you / called',
-      correctAnswer: ['I', 'was', 'sleeping', 'when', 'you', 'called'],
-      explanation: 'الحدث المستمر (I was sleeping) ثم أداة الربط (when) ثم الحدث القاطع (you called).'
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: I wasn\'t study at 8 PM.',
+      options: ['I wasn\'t studying at 8 PM.', 'I wasn\'t study at 8 PM.', 'I didn\'t studying at 8 PM.'],
+      correctAnswer: 'I wasn\'t studying at 8 PM.',
+      explanation: 'في الماضي المستمر يجب إضافة ing للفعل بعد was/were.'
     },
     {
       id: 'q6',
       type: 'multiple_choice',
-      question: 'Just as we _____ the house, the phone rang.',
-      options: ['leave', 'left', 'were leaving', 'are leaving'],
-      correctAnswer: 'were leaving',
-      explanation: 'Just as تعمل مثل While ويأتي بعدها ماضي مستمر.'
+      question: 'صحح الخطأ: Were she sleeping?',
+      options: ['Was she sleeping?', 'Were she sleeping?', 'Is she sleeping?'],
+      correctAnswer: 'Was she sleeping?',
+      explanation: 'الفاعل she يأخذ was في السؤال.'
+    },
+    {
+      id: 'q7',
+      type: 'arrange',
+      question: 'you / watch TV / yesterday evening',
+      correctAnswer: ['Were', 'you', 'watching', 'TV', 'yesterday', 'evening', '?'],
+      explanation: 'تكوين السؤال: Were + you + watching + TV...'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'he / play football / yesterday',
+      correctAnswer: ['Was', 'he', 'playing', 'football', 'yesterday', '?'],
+      explanation: 'تكوين السؤال: Was + he + playing + football...'
+    },
+    {
+      id: 'q9',
+      type: 'multiple_choice',
+      question: 'ترجمة: كنت أدرس الساعة 7 مساءً',
+      options: ['I was studying at 7 PM.', 'I am studying at 7 PM.', 'I studied at 7 PM.'],
+      correctAnswer: 'I was studying at 7 PM.',
+      explanation: 'الترجمة الصحيحة تستخدم الماضي المستمر لوجود وقت محدد.'
+    },
+    {
+      id: 'q10',
+      type: 'multiple_choice',
+      question: 'ترجمة: هو لم يكن يلعب أمس',
+      options: ['He wasn\'t playing yesterday.', 'He didn\'t playing yesterday.', 'He isn\'t playing yesterday.'],
+      correctAnswer: 'He wasn\'t playing yesterday.',
+      explanation: 'نستخدم wasn\'t للنفي في الماضي المستمر.'
+    },
+    {
+      id: 'q11',
+      type: 'multiple_choice',
+      question: 'ترجمة: هل كانوا يشاهدون التلفاز؟',
+      options: ['Were they watching TV?', 'Was they watching TV?', 'Are they watching TV?'],
+      correctAnswer: 'Were they watching TV?',
+      explanation: 'نبدأ بـ Were لأن الفاعل they.'
     }
   ]
 };
@@ -907,39 +1793,221 @@ export const pastContinuousLesson: GrammarLessonData = {
 export const presentPerfectLesson: GrammarLessonData = {
   id: 'present-perfect',
   title: 'المضارع التام (Present Perfect)',
-  description: 'حدث تم في الماضي وله أثر في الحاضر 🌉',
+  description: 'حدث بدأ في الماضي وله أثر في الحاضر أو تجربة حياتية 🌉',
   cards: [
     {
       id: 'c1',
-      title: 'كيف نبني الجملة؟ 🧩',
+      title: 'ما هو المضارع التام؟ 🤔',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>المضارع التام يُستخدم للتعبير عن:</p>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">1.</span>
+              <span>حدث بدأ في الماضي وما زال مستمراً أو له تأثير على الحاضر:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">I have lived in Sana'a for 5 years.</span>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">2.</span>
+              <span>خبر أو تجربة حدثت في الماضي دون تحديد وقت محدد:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">She has visited London.</span>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">3.</span>
+              <span>أحداث تكررت في الماضي ولها تأثير الآن:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">I have seen that movie three times.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'c2',
+      title: 'القاعدة الأساسية 🏗️',
       icon: '🏗️',
       content: (
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
+            <h4 className="font-black text-slate-800 mb-3 text-xl">التركيب ✅</h4>
             <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl" dir="ltr">
               <CText text="Subject" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="have / has" type="particle" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="V3 (P.P)" type="verb" />
+              <CText text="V3 (Past Participle)" type="verb" />
+            </div>
+          </div>
+
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <h4 className="font-black text-indigo-800 mb-3">الضمائر مع have / has 👥</h4>
+            <div className="grid grid-cols-2 gap-2 text-center">
+              <div className="bg-white p-2 rounded-lg shadow-sm">
+                <span className="font-bold text-indigo-600">has</span>
+                <div className="text-sm text-slate-500">He / She / It</div>
+              </div>
+              <div className="bg-white p-2 rounded-lg shadow-sm">
+                <span className="font-bold text-indigo-600">have</span>
+                <div className="text-sm text-slate-500">I / You / We / They</div>
+              </div>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'الكلمات الدالة 🗝️',
-      icon: '🔑',
+      id: 'c3',
+      title: 'تصريف الفعل (V3) 📝',
+      icon: '✍️',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>Since:</strong> يتبعها بداية المدة (since 2010, since Monday).</li>
-            <li><strong>For:</strong> يتبعها طول المدة (for 3 years, for a week).</li>
-            <li><strong>Just / Already:</strong> تأتي بين (have/has) والتصريف الثالث.</li>
-            <li><strong>Yet:</strong> تأتي في نهاية الجملة المنفية والسؤال.</li>
-          </ul>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+              <p className="text-sm font-bold text-emerald-700 mb-2">أفعال منتظمة (Regular) → + ed</p>
+              <div className="grid grid-cols-2 gap-2 text-center text-sm" dir="ltr">
+                <div className="bg-white p-1 rounded">play → <span className="text-emerald-600 font-bold">played</span></div>
+                <div className="bg-white p-1 rounded">watch → <span className="text-emerald-600 font-bold">watched</span></div>
+              </div>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+              <p className="text-sm font-bold text-amber-700 mb-2">أفعال غير منتظمة (Irregular) → حفظ التصريف الثالث</p>
+              <div className="grid grid-cols-2 gap-2 text-center text-sm" dir="ltr">
+                <div className="bg-white p-1 rounded">go → <span className="text-amber-600 font-bold">gone</span></div>
+                <div className="bg-white p-1 rounded">eat → <span className="text-amber-600 font-bold">eaten</span></div>
+                <div className="bg-white p-1 rounded">see → <span className="text-amber-600 font-bold">seen</span></div>
+                <div className="bg-white p-1 rounded">take → <span className="text-amber-600 font-bold">taken</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c4',
+      title: 'أمثلة ملونة 🎨',
+      icon: '✨',
+      content: (
+        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
+            <CText text="I" type="subject" />
+            <CText text="have" type="particle" />
+            <CText text="finished" type="verb" />
+            <CText text="my homework" type="complement" />
+          </div>
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
+            <CText text="She" type="subject" />
+            <CText text="has" type="particle" />
+            <CText text="visited" type="verb" />
+            <CText text="Paris" type="complement" />
+          </div>
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100 whitespace-nowrap overflow-x-auto custom-scrollbar">
+            <CText text="They" type="subject" />
+            <CText text="have" type="particle" />
+            <CText text="seen" type="verb" />
+            <CText text="this movie" type="complement" />
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: 'النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Subject" type="subject" />
+              <CText text="haven't / hasn't" type="particle" />
+              <CText text="V3" type="verb" />
+            </div>
+            <div className="space-y-2 text-left" dir="ltr">
+              <p className="text-slate-600">I <span className="text-rose-500 font-bold">haven't</span> finished yet.</p>
+              <p className="text-slate-600">He <span className="text-rose-500 font-bold">hasn't</span> visited Paris.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: 'السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Have / Has" type="particle" />
+              <CText text="subject" type="subject" />
+              <CText text="V3" type="verb" />
+              <span className="text-indigo-400 font-black">?</span>
+            </div>
+            <div className="space-y-3 text-left" dir="ltr">
+              <div>
+                <p className="text-indigo-700 font-medium">Have you finished your homework?</p>
+                <p className="text-xs text-slate-500">Yes, I have / No, I haven't</p>
+              </div>
+              <div>
+                <p className="text-indigo-700 font-medium">Has he visited Paris?</p>
+                <p className="text-xs text-slate-500">Yes, he has / No, he hasn't</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: 'كلمات تدل على الزمن 🗝️',
+      icon: '🗝️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'already', ar: 'بالفعل' },
+              { en: 'yet', ar: 'بعد / حتى الآن' },
+              { en: 'just', ar: 'للتو' },
+              { en: 'ever', ar: 'أبداً (سؤال)' },
+              { en: 'never', ar: 'أبداً (نفي)' },
+              { en: 'for', ar: 'لمدة' },
+              { en: 'since', ar: 'منذ' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+                <span className="font-black text-indigo-600" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-slate-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-3 bg-slate-50 rounded-xl text-sm italic" dir="ltr">
+            I have lived here <span className="text-indigo-600 font-bold">for</span> 5 years.
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: 'الفرق بين الماضي البسيط والمضارع التام 🧠',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100">
+              <h5 className="font-bold text-blue-700 mb-2">الماضي البسيط</h5>
+              <p className="text-xs text-blue-600">حدث محدد وانتهى</p>
+              <p className="text-sm mt-2" dir="ltr">I visited Paris last year.</p>
+            </div>
+            <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100">
+              <h5 className="font-bold text-purple-700 mb-2">المضارع التام</h5>
+              <p className="text-xs text-purple-600">تجربة أو حدث مهم للآن</p>
+              <p className="text-sm mt-2" dir="ltr">I have visited Paris.</p>
+            </div>
+          </div>
         </div>
       )
     }
@@ -948,48 +2016,88 @@ export const presentPerfectLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'I have lived here _____ 2015.',
-      options: ['for', 'since', 'ago', 'in'],
-      correctAnswer: 'since',
-      explanation: 'نستخدم since لأن 2015 هي نقطة بداية الحدث.'
+      question: 'She ____ seen this movie before.',
+      options: ['have', 'has', 'is'],
+      correctAnswer: 'has',
+      explanation: 'الفاعل She يأخذ has في المضارع التام.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'She hasn\'t finished her homework _____.',
-      options: ['just', 'already', 'yet', 'since'],
-      correctAnswer: 'yet',
-      explanation: 'نستخدم yet في نهاية الجملة المنفية في المضارع التام.'
+      question: 'I ____ just finished my homework.',
+      options: ['have', 'has', 'am'],
+      correctAnswer: 'have',
+      explanation: 'الفاعل I يأخذ have في المضارع التام.'
     },
     {
       id: 'q3',
       type: 'multiple_choice',
-      question: 'We have known each other _____ five years.',
-      options: ['since', 'for', 'from', 'in'],
-      correctAnswer: 'for',
-      explanation: 'نستخدم for لأن five years هي مدة زمنية كاملة.'
+      question: 'They ____ not visited London yet.',
+      options: ['have', 'has', 'are'],
+      correctAnswer: 'have',
+      explanation: 'الفاعل They يأخذ have في المضارع التام.'
     },
     {
       id: 'q4',
-      type: 'true_false',
-      question: 'He has just left the building.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. just تأتي بين has والتصريف الثالث (left).'
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: She have finished her work.',
+      options: ['She has finished her work.', 'She have finished her work.', 'She is finished her work.'],
+      correctAnswer: 'She has finished her work.',
+      explanation: 'الفاعل She يأخذ has وليس have.'
     },
     {
       id: 'q5',
-      type: 'arrange',
-      question: 'have / I / already / seen / that movie',
-      correctAnswer: ['I', 'have', 'already', 'seen', 'that movie'],
-      explanation: 'already تأتي بين have والتصريف الثالث (seen).'
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: I has eaten lunch.',
+      options: ['I have eaten lunch.', 'I has eaten lunch.', 'I am eaten lunch.'],
+      correctAnswer: 'I have eaten lunch.',
+      explanation: 'الفاعل I يأخذ have وليس has.'
     },
     {
       id: 'q6',
       type: 'multiple_choice',
-      question: '_____ you ever been to Paris?',
-      options: ['Do', 'Did', 'Have', 'Has'],
-      correctAnswer: 'Have',
-      explanation: 'نسأل بـ Have في المضارع التام مع الفاعل you.'
+      question: 'صحح الخطأ: Have he ever been to Paris?',
+      options: ['Has he ever been to Paris?', 'Have he ever been to Paris?', 'Is he ever been to Paris?'],
+      correctAnswer: 'Has he ever been to Paris?',
+      explanation: 'الفاعل he يأخذ Has في السؤال.'
+    },
+    {
+      id: 'q7',
+      type: 'arrange',
+      question: 'you / ever / eat sushi',
+      correctAnswer: ['Have', 'you', 'ever', 'eaten', 'sushi', '?'],
+      explanation: 'تكوين السؤال: Have + you + ever + V3 (eaten)...'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'he / just / arrive',
+      correctAnswer: ['He', 'has', 'just', 'arrived'],
+      explanation: 'تكوين الجملة: He + has + just + V3 (arrived).'
+    },
+    {
+      id: 'q9',
+      type: 'multiple_choice',
+      question: 'ترجمة: لقد زرت صنعاء من قبل',
+      options: ['I have visited Sana\'a before.', 'I visited Sana\'a before.', 'I am visiting Sana\'a before.'],
+      correctAnswer: 'I have visited Sana\'a before.',
+      explanation: 'نستخدم المضارع التام للتعبير عن تجربة سابقة بدون تحديد وقت.'
+    },
+    {
+      id: 'q10',
+      type: 'multiple_choice',
+      question: 'ترجمة: لم أنهِ واجبي بعد',
+      options: ['I haven\'t finished my homework yet.', 'I didn\'t finish my homework yet.', 'I haven\'t finish my homework yet.'],
+      correctAnswer: 'I haven\'t finished my homework yet.',
+      explanation: 'نستخدم haven\'t + V3 مع yet في النفي.'
+    },
+    {
+      id: 'q11',
+      type: 'multiple_choice',
+      question: 'ترجمة: هل سبق أن شاهدت هذا الفيلم؟',
+      options: ['Have you ever seen this movie?', 'Did you ever see this movie?', 'Have you ever see this movie?'],
+      correctAnswer: 'Have you ever seen this movie?',
+      explanation: 'نستخدم Have you ever + V3 للسؤال عن التجارب.'
     }
   ]
 };
@@ -1001,37 +2109,205 @@ export const pastPerfectLesson: GrammarLessonData = {
   cards: [
     {
       id: 'c1',
-      title: 'كيف نبني الجملة؟ 🧩',
+      title: 'ما هو الماضي التام؟ 🤔',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p>الماضي التام يُستخدم للتعبير عن:</p>
+          <ul className="space-y-3">
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">1.</span>
+              <span>حدث حدث قبل حدث آخر في الماضي:
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">I had finished my homework before he came.</span>
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-500 font-bold">2.</span>
+              <span>ترتيب الأحداث في الماضي (لتوضيح أي حدث حدث أولاً):
+                <br />
+                <span className="text-sm text-slate-500" dir="ltr">She had left when I arrived.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'c2',
+      title: 'القاعدة الأساسية 🏗️',
       icon: '🏗️',
       content: (
         <div className="space-y-6 text-right" dir="rtl">
           <div className="p-4 bg-white rounded-2xl border-2 border-slate-100 shadow-sm">
-            <h4 className="font-black text-slate-800 mb-3 text-xl">الإثبات ✅</h4>
+            <h4 className="font-black text-slate-800 mb-3 text-xl">التركيب ✅</h4>
             <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden custom-scrollbar gap-2 text-xl items-center bg-slate-50 p-3 rounded-xl" dir="ltr">
               <CText text="Subject" type="subject" />
               <span className="text-slate-400 font-black">+</span>
               <CText text="had" type="particle" />
               <span className="text-slate-400 font-black">+</span>
-              <CText text="V3 (P.P)" type="verb" />
+              <CText text="V3 (Past Participle)" type="verb" />
+            </div>
+          </div>
+          <div className="p-4 bg-amber-50 rounded-2xl border border-amber-100 text-amber-800 text-sm font-bold flex items-center gap-3">
+            <span className="text-2xl">⚠️</span>
+            <p>لاحظ: had ثابت لجميع الضمائر (I, He, She, It, We, You, They)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c3',
+      title: 'تصريف الفعل (V3) 📝',
+      icon: '✍️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-1 gap-3">
+            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+              <p className="text-sm font-bold text-emerald-700 mb-2">أفعال منتظمة (Regular) → + ed</p>
+              <div className="grid grid-cols-2 gap-2 text-center text-sm" dir="ltr">
+                <div className="bg-white p-1 rounded">play → <span className="text-emerald-600 font-bold">played</span></div>
+                <div className="bg-white p-1 rounded">watch → <span className="text-emerald-600 font-bold">watched</span></div>
+                <div className="bg-white p-1 rounded">clean → <span className="text-emerald-600 font-bold">cleaned</span></div>
+              </div>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+              <p className="text-sm font-bold text-amber-700 mb-2">أفعال غير منتظمة (Irregular) → حفظ التصريف الثالث</p>
+              <div className="grid grid-cols-2 gap-2 text-center text-sm" dir="ltr">
+                <div className="bg-white p-1 rounded">go → <span className="text-amber-600 font-bold">gone</span></div>
+                <div className="bg-white p-1 rounded">eat → <span className="text-amber-600 font-bold">eaten</span></div>
+                <div className="bg-white p-1 rounded">see → <span className="text-amber-600 font-bold">seen</span></div>
+                <div className="bg-white p-1 rounded">take → <span className="text-amber-600 font-bold">taken</span></div>
+              </div>
             </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'أدوات الربط 🔗',
-      icon: '🔗',
+      id: 'c4',
+      title: 'الإثبات (Positive) ✨',
+      icon: '✨',
+      content: (
+        <div className="space-y-4 text-2xl text-left font-medium whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+            <CText text="I" type="subject" />
+            <CText text="had" type="particle" />
+            <CText text="finished" type="verb" />
+            <CText text="my homework" type="complement" />
+            <p className="text-xs text-slate-400 mt-1">before dinner</p>
+          </div>
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+            <CText text="She" type="subject" />
+            <CText text="had" type="particle" />
+            <CText text="visited" type="verb" />
+            <CText text="Paris" type="complement" />
+            <p className="text-xs text-slate-400 mt-1">before she moved to London</p>
+          </div>
+          <div className="p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+            <CText text="They" type="subject" />
+            <CText text="had" type="particle" />
+            <CText text="seen" type="verb" />
+            <CText text="that movie" type="complement" />
+            <p className="text-xs text-slate-400 mt-1">before last week</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c5',
+      title: 'النفي (Negative) ❌',
+      icon: '❌',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Subject" type="subject" />
+              <CText text="had not (hadn't)" type="particle" />
+              <CText text="V3" type="verb" />
+            </div>
+            <div className="space-y-2 text-left" dir="ltr">
+              <p className="text-slate-600">I <span className="text-rose-500 font-bold">had not</span> finished my homework before he came.</p>
+              <p className="text-slate-600">She <span className="text-rose-500 font-bold">hadn't</span> visited Paris before she moved.</p>
+              <p className="text-slate-600">They <span className="text-rose-500 font-bold">hadn't</span> seen that movie before last week.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c6',
+      title: 'السؤال (Questions) ❓',
+      icon: '❓',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <div className="flex flex-nowrap overflow-x-auto gap-2 text-xl items-center mb-4" dir="ltr">
+              <CText text="Had" type="particle" />
+              <CText text="subject" type="subject" />
+              <CText text="V3" type="verb" />
+              <span className="text-indigo-400 font-black">?</span>
+            </div>
+            <div className="space-y-3 text-left" dir="ltr">
+              <div>
+                <p className="text-indigo-700 font-medium">Had you finished your homework before dinner?</p>
+                <p className="text-xs text-slate-500">Yes, I had / No, I hadn't</p>
+              </div>
+              <div>
+                <p className="text-indigo-700 font-medium">Had she visited Paris before she moved to London?</p>
+                <p className="text-xs text-slate-500">Yes, she had / No, she hadn't</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c7',
+      title: 'كلمات تدل على الزمن 🗝️',
+      icon: '🗝️',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-4">
-            <li>
-              <strong>After / As soon as:</strong> (بعد) يتبعها الحدث الأول (ماضي تام)، ثم الحدث الثاني (ماضي بسيط).
-            </li>
-            <li>
-              <strong>Before / By the time:</strong> (قبل) يتبعها الحدث الثاني (ماضي بسيط)، ثم الحدث الأول (ماضي تام).
-            </li>
-          </ul>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { en: 'before', ar: 'قبل' },
+              { en: 'after', ar: 'بعد' },
+              { en: 'by the time', ar: 'بحلول الوقت الذي' },
+              { en: 'already', ar: 'بالفعل' },
+              { en: 'just', ar: 'للتو' }
+            ].map(item => (
+              <div key={item.en} className="p-3 bg-white rounded-2xl border border-slate-100 shadow-sm flex flex-col items-center">
+                <span className="font-black text-indigo-600" dir="ltr">{item.en}</span>
+                <span className="text-[10px] text-slate-400">{item.ar}</span>
+              </div>
+            ))}
+          </div>
+          <div className="space-y-2 text-left text-sm italic" dir="ltr">
+            <p>I had <span className="text-indigo-600 font-bold">already</span> eaten before he arrived.</p>
+            <p>She had left <span className="text-indigo-600 font-bold">by the time</span> I arrived.</p>
+            <p>They had <span className="text-indigo-600 font-bold">just</span> finished their work.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'c8',
+      title: 'الفرق بين الماضي البسيط والماضي التام 🧠',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-right" dir="rtl">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-3 bg-blue-50 rounded-2xl border border-blue-100">
+              <h5 className="font-bold text-blue-700 mb-2">الماضي البسيط</h5>
+              <p className="text-xs text-blue-600">حدث واحد في الماضي</p>
+              <p className="text-sm mt-2" dir="ltr">I ate dinner.</p>
+            </div>
+            <div className="p-3 bg-purple-50 rounded-2xl border border-purple-100">
+              <h5 className="font-bold text-purple-700 mb-2">الماضي التام</h5>
+              <p className="text-xs text-purple-600">حدث قبل حدث آخر</p>
+              <p className="text-sm mt-2" dir="ltr">I had eaten before he came.</p>
+            </div>
+          </div>
         </div>
       )
     }
@@ -1040,40 +2316,88 @@ export const pastPerfectLesson: GrammarLessonData = {
     {
       id: 'q1',
       type: 'multiple_choice',
-      question: 'After he _____ his homework, he went out.',
-      options: ['finishes', 'finished', 'has finished', 'had finished'],
-      correctAnswer: 'had finished',
-      explanation: 'بعد After نستخدم الماضي التام (الحدث الأول).'
+      question: 'She ____ finished her homework before dinner.',
+      options: ['has', 'had', 'have'],
+      correctAnswer: 'had',
+      explanation: 'نستخدم had في الماضي التام مع جميع الضمائر.'
     },
     {
       id: 'q2',
       type: 'multiple_choice',
-      question: 'Before I arrived, the train _____.',
-      options: ['leaves', 'left', 'has left', 'had left'],
-      correctAnswer: 'had left',
-      explanation: 'بعد Before يأتي ماضي بسيط، والحدث الآخر يكون ماضي تام (الحدث الذي وقع أولاً).'
+      question: 'They ____ already left when I arrived.',
+      options: ['had', 'has', 'have'],
+      correctAnswer: 'had',
+      explanation: 'الحدث الأول (المغادرة) يكون في الماضي التام (had + V3).'
     },
     {
       id: 'q3',
-      type: 'true_false',
-      question: 'By the time she came, we had eaten dinner.',
-      correctAnswer: true,
-      explanation: 'صحيح ✅. By the time يتبعها ماضي بسيط (came) والحدث الآخر ماضي تام (had eaten).'
+      type: 'multiple_choice',
+      question: 'I ____ not seen that movie before last week.',
+      options: ['had', 'has', 'have'],
+      correctAnswer: 'had',
+      explanation: 'النفي في الماضي التام يكون بـ had not.'
     },
     {
       id: 'q4',
-      type: 'arrange',
-      question: 'had / I / TV / watched / before / I / slept',
-      correctAnswer: ['I', 'had', 'watched', 'TV', 'before', 'I', 'slept'],
-      explanation: 'الحدث الأول (I had watched TV) ثم أداة الربط (before) ثم الحدث الثاني (I slept).'
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: She have finished her work before dinner.',
+      options: ['She had finished her work before dinner.', 'She has finished her work before dinner.', 'She is finished her work before dinner.'],
+      correctAnswer: 'She had finished her work before dinner.',
+      explanation: 'يجب استخدام had بدلاً من have في الماضي التام.'
     },
     {
       id: 'q5',
       type: 'multiple_choice',
-      question: 'As soon as he _____ the news, he called me.',
-      options: ['hears', 'heard', 'had heard', 'hearing'],
-      correctAnswer: 'had heard',
-      explanation: 'As soon as تعمل مثل After، ويتبعها ماضي تام.'
+      question: 'صحح الخطأ: I hadn\'t went to school before 8 AM.',
+      options: ['I hadn\'t gone to school before 8 AM.', 'I hadn\'t go to school before 8 AM.', 'I hadn\'t goes to school before 8 AM.'],
+      correctAnswer: 'I hadn\'t gone to school before 8 AM.',
+      explanation: 'يجب استخدام التصريف الثالث (gone) بدلاً من الماضي البسيط (went).'
+    },
+    {
+      id: 'q6',
+      type: 'multiple_choice',
+      question: 'صحح الخطأ: Had he saw that movie before?',
+      options: ['Had he seen that movie before?', 'Had he see that movie before?', 'Had he sees that movie before?'],
+      correctAnswer: 'Had he seen that movie before?',
+      explanation: 'في السؤال نستخدم التصريف الثالث (seen).'
+    },
+    {
+      id: 'q7',
+      type: 'arrange',
+      question: 'you / finish your homework before he came',
+      correctAnswer: ['Had', 'you', 'finished', 'your', 'homework', 'before', 'he', 'came', '?'],
+      explanation: 'تكوين السؤال: Had + subject + V3...'
+    },
+    {
+      id: 'q8',
+      type: 'arrange',
+      question: 'she / leave when I arrived',
+      correctAnswer: ['Had', 'she', 'left', 'when', 'I', 'arrived', '?'],
+      explanation: 'تكوين السؤال: Had + subject + V3...'
+    },
+    {
+      id: 'q9',
+      type: 'multiple_choice',
+      question: 'ترجمة: كنت قد أكلت قبل أن يصل هو',
+      options: ['I had eaten before he arrived.', 'I have eaten before he arrived.', 'I ate before he arrived.'],
+      correctAnswer: 'I had eaten before he arrived.',
+      explanation: 'الحدث الأول (الأكل) يكون في الماضي التام.'
+    },
+    {
+      id: 'q10',
+      type: 'multiple_choice',
+      question: 'ترجمة: هي لم تكن قد غادرت بعد',
+      options: ['She hadn\'t left yet.', 'She hasn\'t left yet.', 'She didn\'t leave yet.'],
+      correctAnswer: 'She hadn\'t left yet.',
+      explanation: 'نستخدم had not + V3 للنفي في الماضي التام.'
+    },
+    {
+      id: 'q11',
+      type: 'multiple_choice',
+      question: 'ترجمة: هل كنت قد أنهيت واجبك قبل العشاء؟',
+      options: ['Had you finished your homework before dinner?', 'Have you finished your homework before dinner?', 'Did you finish your homework before dinner?'],
+      correctAnswer: 'Had you finished your homework before dinner?',
+      explanation: 'نبدأ السؤال بـ Had في الماضي التام.'
     }
   ]
 };
@@ -1084,73 +2408,296 @@ export const futureFormsLesson: GrammarLessonData = {
   description: 'طرق مختلفة للتعبير عن المستقبل 🔮',
   cards: [
     {
-      id: 'c1',
-      title: 'متى نستخدم (going to)؟ 🎯',
-      icon: '🎯',
+      id: 'ff1',
+      title: 'ما هو Future Forms؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>الخطط والنوايا:</strong> أشياء قررنا فعلها مسبقاً.</li>
-            <li><strong>تنبؤ بدليل:</strong> (السماء غائمة، سوف تمطر).</li>
-          </ul>
-          <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            I am <CText text="going to" type="particle" /> <CText text="visit" type="verb" /> my uncle.
+          <p className="font-bold text-indigo-600">هي طرق مختلفة للتعبير عن أحداث ستحدث في المستقبل باستخدام صيغ متعددة:</p>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">⚡</span> will
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">🎯</span> going to
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">📅</span> present continuous
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">⏰</span> present simple
+            </div>
           </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'المضارع المستمر للمستقبل 📅',
-      icon: '📅',
+      id: 'ff2',
+      title: '1. استخدام (Will) 🟢',
+      icon: '🟢',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <p>نستخدم المضارع المستمر (am/is/are + v-ing) للتعبير عن <strong>ترتيبات مستقبلية مؤكدة</strong> (مثل حجز التذاكر).</p>
-          <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
-            I <CText text="am traveling" type="verb" /> to London tomorrow. (I have the tickets)
+          <div className="p-3 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 text-center">
+            <p className="text-xs font-bold text-slate-500 mb-1">القاعدة:</p>
+            <p className="text-lg font-black text-indigo-600" dir="ltr">Subject + will + base verb</p>
           </div>
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 الاستخدام:</p>
+            <ul className="list-disc list-inside text-slate-600">
+              <li>قرار لحظي (Instant decision)</li>
+              <li>توقع (Prediction)</li>
+              <li>وعد (Promise)</li>
+            </ul>
+          </div>
+          <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-100 shadow-sm" dir="ltr">
+            <p className="text-sm"><span className="font-bold text-indigo-500">• I will study now.</span> (سأدرس الآن)</p>
+            <p className="text-sm"><span className="font-bold text-indigo-500">• It will rain tomorrow.</span> (ستمطر غدًا)</p>
+            <p className="text-sm"><span className="font-bold text-indigo-500">• I will help you.</span> (سأساعدك)</p>
+          </div>
+          <div className="p-3 bg-red-50 rounded-xl border border-red-100">
+            <p className="font-bold text-red-700">🔴 النفي: will not = won’t</p>
+            <p className="text-sm text-red-600 italic" dir="ltr">Example: I won’t go. (لن أذهب)</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ff3',
+      title: '2. استخدام (Going to) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-3 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 text-center">
+            <p className="text-xs font-bold text-slate-500 mb-1">القاعدة:</p>
+            <p className="text-lg font-black text-indigo-600" dir="ltr">Subject + am/is/are + going to + base verb</p>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 الاستخدام:</p>
+            <ul className="list-disc list-inside text-slate-600">
+              <li>خطة مسبقة (Prior plan)</li>
+              <li>توقع مع دليل (Prediction with evidence)</li>
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <div className="p-3 bg-blue-50 rounded-xl border border-blue-100" dir="ltr">
+              <p className="text-sm font-bold text-blue-700">I am going to travel.</p>
+              <p className="text-xs text-blue-600" dir="rtl">(أنا ذاهب للسفر - خطة)</p>
+            </div>
+            <div className="p-3 bg-blue-50 rounded-xl border border-blue-100" dir="ltr">
+              <p className="text-sm font-bold text-blue-700">Look at the sky! It is going to rain.</p>
+              <p className="text-xs text-blue-600" dir="rtl">(انظر إلى السماء! ستمطر - دليل واضح)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ff4',
+      title: '3. المضارع المستمر والمستقبل 🟡',
+      icon: '🟡',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-3 bg-slate-50 rounded-xl border-2 border-dashed border-slate-200 text-center">
+            <p className="text-xs font-bold text-slate-500 mb-1">القاعدة:</p>
+            <p className="text-lg font-black text-indigo-600" dir="ltr">Subject + am/is/are + verb + ing</p>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 الاستخدام:</p>
+            <p className="text-slate-600">ترتيبات مؤكدة في المستقبل (Fixed arrangements)</p>
+          </div>
+          <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-100 shadow-sm" dir="ltr">
+            <p className="text-sm"><span className="font-bold text-indigo-500">• I am meeting my friend tomorrow.</span></p>
+            <p className="text-sm"><span className="font-bold text-indigo-500">• She is traveling next week.</span></p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ff5',
+      title: '4. المضارع البسيط والمستقبل 🟣',
+      icon: '🟣',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 الاستخدام:</p>
+            <p className="text-slate-600">الجداول والمواعيد الرسمية (Timetables / Schedules)</p>
+          </div>
+          <div className="space-y-3">
+            <div className="p-3 bg-purple-50 rounded-xl border border-purple-100" dir="ltr">
+              <p className="text-sm font-bold text-purple-700">The train leaves at 8 p.m.</p>
+              <p className="text-xs text-purple-600" dir="rtl">(القطار يغادر الساعة 8 مساءً)</p>
+            </div>
+            <div className="p-3 bg-purple-50 rounded-xl border border-purple-100" dir="ltr">
+              <p className="text-sm font-bold text-purple-700">The exam starts tomorrow.</p>
+              <p className="text-xs text-purple-600" dir="rtl">(الامتحان يبدأ غدًا)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ff6',
+      title: 'الفرق المهم 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-3">
+            <p className="font-bold text-indigo-600">🔸 will vs going to</p>
+            <div className="grid grid-cols-2 gap-2 text-center text-sm">
+              <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                <p className="font-black text-indigo-600">will</p>
+                <p className="text-xs">قرار لحظي / توقع عام</p>
+              </div>
+              <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                <p className="font-black text-indigo-600">going to</p>
+                <p className="text-xs">خطة مسبقة / توقع بدليل</p>
+              </div>
+            </div>
+            <div className="text-xs text-slate-500 italic space-y-1" dir="ltr">
+              <p>• I will call him. (الآن قررت)</p>
+              <p>• I am going to call him. (كنت مخطط)</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold text-indigo-600">🔸 going to vs present continuous</p>
+            <div className="grid grid-cols-2 gap-2 text-center text-sm">
+              <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                <p className="font-black text-indigo-600">going to</p>
+                <p className="text-xs">نية (Intention)</p>
+              </div>
+              <div className="p-2 bg-slate-50 rounded-lg border border-slate-200">
+                <p className="font-black text-indigo-600">present continuous</p>
+                <p className="text-xs">ترتيب محدد (Arrangement)</p>
+              </div>
+            </div>
+            <div className="text-xs text-slate-500 italic space-y-1" dir="ltr">
+              <p>• I am going to travel. (نية)</p>
+              <p>• I am traveling tomorrow. (حجز مؤكد)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'ff7',
+      title: 'ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="overflow-x-auto">
+          <table className="w-full text-right border-collapse" dir="rtl">
+            <thead>
+              <tr className="bg-indigo-600 text-white">
+                <th className="p-3 border border-indigo-500">الشكل</th>
+                <th className="p-3 border border-indigo-500">الاستخدام</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">will</td>
+                <td className="p-3 border border-indigo-100">قرار / توقع</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">going to</td>
+                <td className="p-3 border border-indigo-100">خطة / دليل</td>
+              </tr>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">present continuous</td>
+                <td className="p-3 border border-indigo-100">ترتيب</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">present simple</td>
+                <td className="p-3 border border-indigo-100">جدول</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
+      id: 'ffq1',
       type: 'multiple_choice',
-      question: 'Look at those dark clouds! It _____ rain.',
-      options: ['will', 'is going to', 'rains', 'raining'],
-      correctAnswer: 'is going to',
-      explanation: 'نستخدم is going to لوجود دليل (السحب الداكنة).'
+      question: 'I ______ call you later.',
+      options: ['am going', 'will', 'am', 'do'],
+      correctAnswer: 'will',
+      explanation: 'نستخدم will للقرارات اللحظية أو الوعود.'
     },
     {
-      id: 'q2',
+      id: 'ffq2',
       type: 'multiple_choice',
-      question: 'I _____ my friends tonight. We arranged it yesterday.',
-      options: ['will meet', 'meet', 'am meeting', 'met'],
+      question: 'She ______ travel next week.',
+      options: ['is going to', 'will going', 'going to', 'is go'],
+      correctAnswer: 'is going to',
+      explanation: 'نستخدم is going to للتعبير عن الخطط المستقبلية.'
+    },
+    {
+      id: 'ffq3',
+      type: 'multiple_choice',
+      question: 'Look at the sky! It ______ rain.',
+      options: ['will', 'is going to', 'is', 'goes'],
+      correctAnswer: 'is going to',
+      explanation: 'نستخدم is going to لوجود دليل واضح (Look at the sky).'
+    },
+    {
+      id: 'ffq4',
+      type: 'multiple_choice',
+      question: 'I ______ my friend tomorrow.',
+      options: ['meet', 'am meeting', 'will meeting', 'meets'],
       correctAnswer: 'am meeting',
-      explanation: 'نستخدم المضارع المستمر للترتيبات المؤكدة (arranged).'
+      explanation: 'نستخدم المضارع المستمر للترتيبات المؤكدة.'
     },
     {
-      id: 'q3',
-      type: 'true_false',
-      question: 'I think it is going to rain tomorrow.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. مع I think (تنبؤ بدون دليل) نستخدم will (I think it will rain).'
-    },
-    {
-      id: 'q4',
+      id: 'ffq5',
       type: 'multiple_choice',
-      question: 'She _____ study medicine next year. That is her plan.',
-      options: ['will', 'is going to', 'studies', 'studying'],
-      correctAnswer: 'is going to',
-      explanation: 'نستخدم is going to للتعبير عن الخطط والنوايا (plan).'
+      question: 'The train ______ at 6 p.m.',
+      options: ['leaves', 'leaving', 'will leaves', 'is leave'],
+      correctAnswer: 'leaves',
+      explanation: 'نستخدم المضارع البسيط لمواعيد الجداول الرسمية.'
     },
     {
-      id: 'q5',
+      id: 'ffq6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: I will going to study.',
+      options: ['I am going to study.', 'I will study.', 'كلاهما صحيح حسب المعنى'],
+      correctAnswer: 'كلاهما صحيح حسب المعنى',
+      explanation: 'لا يجوز الجمع بين will و going to. نستخدم أحدهما فقط.'
+    },
+    {
+      id: 'ffq7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: She is go to travel.',
+      options: ['She is going to travel.', 'She will travel.', 'She goes to travel.'],
+      correctAnswer: 'She is going to travel.',
+      explanation: 'القاعدة الصحيحة لـ going to هي am/is/are + going to + verb.'
+    },
+    {
+      id: 'ffq8',
       type: 'arrange',
-      question: 'are / We / traveling / to / Egypt / tomorrow',
-      correctAnswer: ['We', 'are', 'traveling', 'to', 'Egypt', 'tomorrow'],
-      explanation: 'ترتيب مستقبلي مؤكد باستخدام المضارع المستمر.'
+      question: 'سأساعدك غدًا.',
+      options: ['help', 'will', 'I', 'tomorrow.', 'you'],
+      correctAnswer: ['I', 'will', 'help', 'you', 'tomorrow.'],
+      explanation: 'الترجمة الصحيحة: I will help you tomorrow.'
+    },
+    {
+      id: 'ffq9',
+      type: 'arrange',
+      question: 'أنا ذاهب لشراء سيارة.',
+      options: ['am', 'going', 'I', 'buy', 'to', 'a', 'car.'],
+      correctAnswer: ['I', 'am', 'going', 'to', 'buy', 'a', 'car.'],
+      explanation: 'الترجمة الصحيحة: I am going to buy a car.'
+    },
+    {
+      id: 'ffq10',
+      type: 'multiple_choice',
+      question: 'اختر الجملة الصحيحة:',
+      options: [
+        'A) I am going to meet him yesterday.',
+        'B) I am meeting him tomorrow.',
+        'C) I will meeting him tomorrow.'
+      ],
+      correctAnswer: 'B) I am meeting him tomorrow.',
+      explanation: 'الجملة B صحيحة لأنها تستخدم المضارع المستمر للمستقبل بشكل سليم.'
     }
   ]
 };
@@ -1161,73 +2708,336 @@ export const countableUncountableLesson: GrammarLessonData = {
   description: 'Countable & Uncountable Nouns 🍎💧',
   cards: [
     {
-      id: 'c1',
-      title: 'الفرق الأساسي ⚖️',
-      icon: '⚖️',
+      id: 'cu1',
+      title: 'ما هي Countable & Uncountable؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>الأسماء التي تعد (Countable):</strong> لها مفرد وجمع (<span dir="ltr" className="inline-block mx-1">apple ➔ apples</span>). تأخذ (a/an).</li>
-            <li><strong>الأسماء التي لا تعد (Uncountable):</strong> ليس لها جمع، وتعامل معاملة المفرد (water, information, money). لا تأخذ (a/an).</li>
-          </ul>
+          <p className="font-bold text-indigo-600">هي تقسيم للأسماء حسب إمكانية عدّها:</p>
+          <div className="grid grid-cols-1 gap-3">
+            <div className="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">🍎</span>
+                <div>
+                  <p className="font-black text-emerald-700">Countable Nouns</p>
+                  <p className="text-sm text-emerald-600">أسماء يمكن عدّها</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">💧</span>
+                <div>
+                  <p className="font-black text-blue-700">Uncountable Nouns</p>
+                  <p className="text-sm text-blue-600">أسماء لا يمكن عدّها مباشرة</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'أدوات التجزئة 🍰',
-      icon: '🍰',
+      id: 'cu2',
+      title: 'أولاً: Countable Nouns (المعدودة) 🟢',
+      icon: '🟢',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li><strong>Some:</strong> (بعض) في الإثبات والعرض والطلب.</li>
-            <li><strong>Any:</strong> (أي) في النفي والسؤال.</li>
-            <li><strong>Much:</strong> (كثير) مع الذي لا يعد.</li>
-            <li><strong>Many:</strong> (كثير) مع الذي يعد.</li>
-          </ul>
+          <div className="space-y-2">
+            <p className="font-bold text-emerald-600">🔸 التعريف: أسماء يمكن عدّها بالأرقام</p>
+            <div className="grid grid-cols-3 gap-2 text-center" dir="ltr">
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">🍎</span>
+                <span className="text-xs font-bold">apple</span>
+              </div>
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">📚</span>
+                <span className="text-xs font-bold">book</span>
+              </div>
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">👨‍🎓</span>
+                <span className="text-xs font-bold">student</span>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+            <p className="text-sm font-bold text-slate-500 mb-2">📌 نقول:</p>
+            <p className="text-lg font-bold text-indigo-600" dir="ltr">one apple / two apples</p>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-emerald-600">🔸 مفرد وجمع:</p>
+            <div className="flex items-center justify-center gap-4 font-black text-slate-700" dir="ltr">
+              <span>book ➔ books</span>
+              <span className="text-slate-300">|</span>
+              <span>car ➔ cars</span>
+            </div>
+            <p className="text-sm text-slate-500 mt-2">مثال: <span dir="ltr" className="font-bold text-indigo-600">I have three books.</span></p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'cu3',
+      title: 'ثانيًا: Uncountable Nouns (غير المعدودة) 🔵',
+      icon: '🔵',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-2">
+            <p className="font-bold text-blue-600">🔸 التعريف: أسماء لا يمكن عدّها مباشرة</p>
+            <div className="grid grid-cols-4 gap-2 text-center" dir="ltr">
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">💧</span>
+                <span className="text-[10px] font-bold">water</span>
+              </div>
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">🍚</span>
+                <span className="text-[10px] font-bold">rice</span>
+              </div>
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">🍬</span>
+                <span className="text-[10px] font-bold">sugar</span>
+              </div>
+              <div className="p-2 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <span className="block text-xl">💰</span>
+                <span className="text-[10px] font-bold">money</span>
+              </div>
+            </div>
+          </div>
+          <div className="p-4 bg-red-50 rounded-2xl border border-red-100">
+            <p className="text-sm font-bold text-red-500 mb-2">📌 لا نقول:</p>
+            <p className="text-lg font-bold text-red-700" dir="ltr">❌ one water</p>
+            <p className="text-lg font-bold text-emerald-700" dir="ltr">✔ a glass of water (كوب ماء)</p>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-blue-600">🔸 خصائصها:</p>
+            <ul className="list-disc list-inside text-slate-600 space-y-1">
+              <li>لا تُجمع (دائماً مفرد)</li>
+              <li>لا نستخدم معها <span className="font-bold text-indigo-500">a / an</span></li>
+            </ul>
+            <p className="text-sm text-slate-500 mt-2">مثال: <span dir="ltr" className="font-bold text-indigo-600">I need water.</span></p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'cu4',
+      title: 'كيف نعدّ الأسماء غير المعدودة؟ 🔴',
+      icon: '🔴',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <p className="font-bold text-indigo-600">نستخدم كلمات قياس (Quantifiers):</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-right border-collapse" dir="rtl">
+              <thead>
+                <tr className="bg-indigo-600 text-white">
+                  <th className="p-3 border border-indigo-500">الكلمة</th>
+                  <th className="p-3 border border-indigo-500">المثال</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-indigo-50">
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">a piece of</td>
+                  <td className="p-3 border border-indigo-100" dir="ltr">a piece of bread</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">a cup of</td>
+                  <td className="p-3 border border-indigo-100" dir="ltr">a cup of tea</td>
+                </tr>
+                <tr className="bg-indigo-50">
+                  <td className="p-3 border border-indigo-100 font-bold" dir="ltr">a bottle of</td>
+                  <td className="p-3 border border-indigo-100" dir="ltr">a bottle of water</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-slate-500 mt-2">مثال: <span dir="ltr" className="font-bold text-indigo-600">I drank a cup of tea.</span></p>
+        </div>
+      )
+    },
+    {
+      id: 'cu5',
+      title: 'الكلمات التي تُستخدم مع كل نوع 🟡',
+      icon: '🟡',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
+            <h4 className="font-black text-emerald-700 mb-2">🔸 مع Countable:</h4>
+            <div className="flex gap-4 font-black text-indigo-600 mb-2" dir="ltr">
+              <span>many</span>
+              <span>a few</span>
+              <span>few</span>
+            </div>
+            <p className="text-sm text-slate-600 italic" dir="ltr">Example: I have many friends.</p>
+          </div>
+          <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+            <h4 className="font-black text-blue-700 mb-2">🔸 مع Uncountable:</h4>
+            <div className="flex gap-4 font-black text-indigo-600 mb-2" dir="ltr">
+              <span>much</span>
+              <span>a little</span>
+              <span>little</span>
+            </div>
+            <p className="text-sm text-slate-600 italic" dir="ltr">Example: I have little money.</p>
+          </div>
+          <div className="p-4 bg-purple-50 rounded-2xl border border-purple-100">
+            <h4 className="font-black text-purple-700 mb-2">🔸 مع الاثنين:</h4>
+            <div className="flex gap-4 font-black text-indigo-600 mb-2" dir="ltr">
+              <span>some</span>
+              <span>any</span>
+              <span>a lot of</span>
+            </div>
+            <div className="text-sm text-slate-600 italic space-y-1" dir="ltr">
+              <p>• I have some water.</p>
+              <p>• I have some apples.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'cu6',
+      title: 'الفرق المهم 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <h4 className="font-black text-indigo-700 mb-3 text-center">few vs little</h4>
+            <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="space-y-1">
+                <p className="font-black text-indigo-600 text-2xl" dir="ltr">few</p>
+                <p className="text-sm text-slate-500">معدود</p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-black text-indigo-600 text-2xl" dir="ltr">little</p>
+                <p className="text-sm text-slate-500">غير معدود</p>
+              </div>
+            </div>
+          </div>
+          <div className="space-y-2 text-sm text-slate-600" dir="ltr">
+            <p className="bg-white p-2 rounded-lg border border-slate-100 shadow-sm">
+              <span className="font-bold text-indigo-500">📌 Example:</span> Few students came.
+            </p>
+            <p className="bg-white p-2 rounded-lg border border-slate-100 shadow-sm">
+              <span className="font-bold text-indigo-500">📌 Example:</span> Little water is left.
+            </p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'cu7',
+      title: 'ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="overflow-x-auto">
+          <table className="w-full text-right border-collapse" dir="rtl">
+            <thead>
+              <tr className="bg-indigo-600 text-white">
+                <th className="p-3 border border-indigo-500">النوع</th>
+                <th className="p-3 border border-indigo-500">مثال</th>
+                <th className="p-3 border border-indigo-500">يُستخدم معه</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-emerald-50">
+                <td className="p-3 border border-emerald-100 font-bold">Countable</td>
+                <td className="p-3 border border-emerald-100" dir="ltr">books</td>
+                <td className="p-3 border border-emerald-100" dir="ltr">many, few</td>
+              </tr>
+              <tr className="bg-blue-50">
+                <td className="p-3 border border-blue-100 font-bold">Uncountable</td>
+                <td className="p-3 border border-blue-100" dir="ltr">water</td>
+                <td className="p-3 border border-blue-100" dir="ltr">much, little</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
+      id: 'cuq1',
       type: 'multiple_choice',
-      question: 'I don\'t have _____ money.',
-      options: ['some', 'any', 'many', 'a'],
-      correctAnswer: 'any',
-      explanation: 'نستخدم any في الجملة المنفية.'
-    },
-    {
-      id: 'q2',
-      type: 'multiple_choice',
-      question: 'Would you like _____ tea?',
-      options: ['some', 'any', 'many', 'few'],
-      correctAnswer: 'some',
-      explanation: 'نستخدم some في حالة العرض (Offer).'
-    },
-    {
-      id: 'q3',
-      type: 'multiple_choice',
-      question: 'How _____ apples do you need?',
-      options: ['much', 'many', 'some', 'any'],
+      question: 'I have ______ apples.',
+      options: ['much', 'many', 'little', 'any'],
       correctAnswer: 'many',
-      explanation: 'apples اسم يعد (جمع)، لذا نستخدم How many.'
+      explanation: 'نستخدم many مع الأسماء المعدودة (apples).'
     },
     {
-      id: 'q4',
+      id: 'cuq2',
       type: 'multiple_choice',
-      question: 'There is too _____ sugar in my coffee.',
-      options: ['many', 'much', 'few', 'a'],
+      question: 'There isn’t ______ water.',
+      options: ['many', 'few', 'much', 'a few'],
       correctAnswer: 'much',
-      explanation: 'sugar اسم لا يعد، لذا نستخدم much.'
+      explanation: 'نستخدم much مع الأسماء غير المعدودة (water) في النفي.'
     },
     {
-      id: 'q5',
-      type: 'true_false',
-      question: 'The word "information" is a countable noun.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. كلمة information (معلومات) لا تعد في اللغة الإنجليزية.'
+      id: 'cuq3',
+      type: 'multiple_choice',
+      question: 'She has ______ money.',
+      options: ['many', 'much', 'few', 'a few'],
+      correctAnswer: 'much',
+      explanation: 'نستخدم much مع الأسماء غير المعدودة (money).'
+    },
+    {
+      id: 'cuq4',
+      type: 'multiple_choice',
+      question: 'I need ______ information.',
+      options: ['many', 'a few', 'much', 'few'],
+      correctAnswer: 'much',
+      explanation: 'كلمة information لا تعد، لذا نستخدم much.'
+    },
+    {
+      id: 'cuq5',
+      type: 'multiple_choice',
+      question: 'There are ______ students in the class.',
+      options: ['much', 'little', 'many', 'a little'],
+      correctAnswer: 'many',
+      explanation: 'نستخدم many مع الأسماء المعدودة (students).'
+    },
+    {
+      id: 'cuq6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: I have many water.',
+      options: ['I have much water.', 'I have few water.', 'I have many waters.'],
+      correctAnswer: 'I have much water.',
+      explanation: 'water لا يعد، لذا نستخدم much وليس many.'
+    },
+    {
+      id: 'cuq7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: She bought a bread.',
+      options: ['She bought some bread.', 'She bought a piece of bread.', 'كلاهما صحيح'],
+      correctAnswer: 'كلاهما صحيح',
+      explanation: 'bread لا يعد، لذا لا نستخدم a. نستخدم some أو a piece of.'
+    },
+    {
+      id: 'cuq8',
+      type: 'arrange',
+      question: 'لدي بعض المال.',
+      options: ['have', 'I', 'money.', 'some'],
+      correctAnswer: ['I', 'have', 'some', 'money.'],
+      explanation: 'الترجمة الصحيحة: I have some money.'
+    },
+    {
+      id: 'cuq9',
+      type: 'arrange',
+      question: 'يوجد الكثير من الطلاب.',
+      options: ['are', 'many', 'There', 'students.'],
+      correctAnswer: ['There', 'are', 'many', 'students.'],
+      explanation: 'الترجمة الصحيحة: There are many students.'
+    },
+    {
+      id: 'cuq10',
+      type: 'multiple_choice',
+      question: 'اختر الجملة الصحيحة:',
+      options: [
+        'A) I have a little apples.',
+        'B) I have a few apples.',
+        'C) I have few water.'
+      ],
+      correctAnswer: 'B) I have a few apples.',
+      explanation: 'الجملة B صحيحة لأن apples معدود ونستخدم معه a few.'
     }
   ]
 };
@@ -2057,74 +3867,295 @@ export const modalsLesson: GrammarLessonData = {
   description: 'الضرورة، المنع، والاستنتاج 🚦',
   cards: [
     {
-      id: 'c1',
-      title: 'الضرورة والمنع 🛑',
-      icon: '🛑',
+      id: 'm1',
+      title: 'ما هي Modal Verbs؟ 🤔',
+      icon: '🤔',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Must:</strong> إلزام داخلي أو قانون (You must wear a seatbelt).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Have to:</strong> إلزام خارجي مفروض عليك (I have to go to work at 8).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Mustn't:</strong> منع وتحريم (You mustn't smoke here).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Don't have to:</strong> ليس من الضروري (You don't have to get up early on Friday).</li>
-          </ul>
+          <p className="font-bold text-indigo-600">هي أفعال مساعدة تُستخدم للتعبير عن:</p>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">💪</span> القدرة
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">🎲</span> الاحتمال
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">🔑</span> الإذن
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2">
+              <span className="text-indigo-500">💡</span> النصيحة
+            </div>
+            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-100 flex items-center gap-2 col-span-2">
+              <span className="text-indigo-500">⚖️</span> الالتزام
+            </div>
+          </div>
+          <div className="mt-4 p-4 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200">
+            <p className="text-sm font-bold text-slate-500 mb-2">📌 مثل:</p>
+            <p className="text-xl font-black text-indigo-600 tracking-wide" dir="ltr">
+              can, could, may, might, must, should, will, would
+            </p>
+          </div>
         </div>
       )
     },
     {
-      id: 'c2',
-      title: 'الاستنتاج (Deduction) 🕵️‍♂️',
-      icon: '🕵️‍♂️',
+      id: 'm2',
+      title: 'خصائص Modal Verbs 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="space-y-3">
+            <p className="font-bold text-indigo-600">1️⃣ يأتي بعدها الفعل في المصدر (base verb):</p>
+            <div className="flex flex-col gap-2" dir="ltr">
+              <div className="bg-emerald-50 text-emerald-700 p-2 rounded-lg border border-emerald-100">✔ He can swim</div>
+              <div className="bg-red-50 text-red-700 p-2 rounded-lg border border-red-100">❌ He can swims</div>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold text-indigo-600">2️⃣ لا تأخذ (s) مع he/she/it:</p>
+            <div className="flex flex-col gap-2" dir="ltr">
+              <div className="bg-emerald-50 text-emerald-700 p-2 rounded-lg border border-emerald-100">✔ She can swim</div>
+              <div className="bg-red-50 text-red-700 p-2 rounded-lg border border-red-100">❌ She cans swim</div>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="font-bold text-indigo-600">3️⃣ لا نستخدم معها (to):</p>
+            <div className="flex flex-col gap-2" dir="ltr">
+              <div className="bg-red-50 text-red-700 p-2 rounded-lg border border-red-100">❌ He must to go</div>
+              <div className="bg-emerald-50 text-emerald-700 p-2 rounded-lg border border-emerald-100">✔ He must go</div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'm3',
+      title: 'أهم الأفعال واستخداماتها 🟢',
+      icon: '🟢',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
+            <h4 className="font-black text-emerald-700 mb-2">1. (Can / Could)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: القدرة (ability) / الطلب (request)</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• I can swim. (أستطيع السباحة)</p>
+              <p>• Could you help me? (هل يمكنك مساعدتي؟ - أكثر أدبًا)</p>
+            </div>
+          </div>
+          <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+            <h4 className="font-black text-blue-700 mb-2">2. (May / Might)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: الاحتمال</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• It may rain today. (قد تمطر اليوم)</p>
+              <p>• He might come late. (ربما يأتي متأخرًا)</p>
+            </div>
+            <p className="text-xs mt-2 text-blue-600">📌 (might أضعف احتمالًا)</p>
+          </div>
+          <div className="p-4 bg-yellow-50 rounded-2xl border border-yellow-100">
+            <h4 className="font-black text-yellow-700 mb-2">3. (Must)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: الالتزام / الضرورة</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• You must study. (يجب أن تذاكر)</p>
+            </div>
+            <div className="mt-2 p-2 bg-red-50 rounded-lg text-red-700">
+              <p className="font-bold">🔴 النفي: mustn’t = ممنوع</p>
+              <p dir="ltr">• You mustn’t smoke. (ممنوع التدخين)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'm4',
+      title: 'بقية الأفعال الناقصة 🟣',
+      icon: '🟣',
+      content: (
+        <div className="space-y-6 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-4 bg-purple-50 rounded-2xl border border-purple-100">
+            <h4 className="font-black text-purple-700 mb-2">4. (Have to)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: ضرورة (مثل must لكن بسبب خارجي)</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• I have to wake up early. (يجب أن أستيقظ مبكرًا)</p>
+            </div>
+          </div>
+          <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+            <h4 className="font-black text-orange-700 mb-2">5. (Should)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: النصيحة</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• You should study. (يجب أن تذاكر)</p>
+            </div>
+          </div>
+          <div className="p-4 bg-sky-50 rounded-2xl border border-sky-100">
+            <h4 className="font-black text-sky-700 mb-2">6. (Will / Would)</h4>
+            <p className="text-sm mb-2">🔸 الاستخدام: المستقبل / الطلب</p>
+            <div className="space-y-1 text-slate-600" dir="ltr">
+              <p>• I will go tomorrow. (سأذهب غدًا)</p>
+              <p>• Would you like tea? (هل ترغب في شاي؟)</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'm5',
+      title: 'الفرق المهم 🔥',
+      icon: '🔥',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Must be:</strong> أكيد (He has 3 cars. He must be rich).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Can't be:</strong> مستحيل (He is eating. He can't be sleeping).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Might be:</strong> ربما (I don't know. He might be at home).</li>
-          </ul>
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 must vs have to</p>
+            <ul className="list-disc list-inside text-slate-600">
+              <li><span className="font-bold text-indigo-500">must</span> → من المتكلم (إلزام داخلي)</li>
+              <li><span className="font-bold text-indigo-500">have to</span> → من الظروف (إلزام خارجي)</li>
+            </ul>
+          </div>
+          <div className="space-y-2">
+            <p className="font-bold text-indigo-600">🔸 can vs could</p>
+            <ul className="list-disc list-inside text-slate-600">
+              <li><span className="font-bold text-indigo-500">can</span> → عادي</li>
+              <li><span className="font-bold text-indigo-500">could</span> → أكثر أدبًا</li>
+            </ul>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'm6',
+      title: 'ملخص سريع 🎯',
+      icon: '🎯',
+      content: (
+        <div className="overflow-x-auto">
+          <table className="w-full text-right border-collapse" dir="rtl">
+            <thead>
+              <tr className="bg-indigo-600 text-white">
+                <th className="p-3 border border-indigo-500">الفعل</th>
+                <th className="p-3 border border-indigo-500">الاستخدام</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">can</td>
+                <td className="p-3 border border-indigo-100">قدرة</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">could</td>
+                <td className="p-3 border border-indigo-100">طلب مؤدب</td>
+              </tr>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">may/might</td>
+                <td className="p-3 border border-indigo-100">احتمال</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">must</td>
+                <td className="p-3 border border-indigo-100">إلزام</td>
+              </tr>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">have to</td>
+                <td className="p-3 border border-indigo-100">ضرورة</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">should</td>
+                <td className="p-3 border border-indigo-100">نصيحة</td>
+              </tr>
+              <tr className="bg-indigo-50">
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">will</td>
+                <td className="p-3 border border-indigo-100">مستقبل</td>
+              </tr>
+              <tr>
+                <td className="p-3 border border-indigo-100 font-bold" dir="ltr">would</td>
+                <td className="p-3 border border-indigo-100">عرض / طلب</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
+      id: 'mq1',
       type: 'multiple_choice',
-      question: 'You _____ park here. It is not allowed.',
-      options: ['must', 'mustn\'t', 'don\'t have to', 'should'],
-      correctAnswer: 'mustn\'t',
-      explanation: 'نستخدم mustn\'t للتعبير عن المنع والتحريم.'
+      question: 'I ______ swim very well.',
+      options: ['must', 'can', 'should', 'may'],
+      correctAnswer: 'can',
+      explanation: 'نستخدم can للتعبير عن القدرة (ability).'
     },
     {
-      id: 'q2',
+      id: 'mq2',
       type: 'multiple_choice',
-      question: 'Today is Friday. I _____ go to school.',
-      options: ['mustn\'t', 'don\'t have to', 'must', 'have to'],
-      correctAnswer: 'don\'t have to',
-      explanation: 'ليس من الضروري الذهاب للمدرسة يوم الجمعة (don\'t have to).'
+      question: 'You ______ study hard to pass.',
+      options: ['might', 'should', 'can', 'may'],
+      correctAnswer: 'should',
+      explanation: 'نستخدم should لتقديم النصيحة (advice).'
     },
     {
-      id: 'q3',
+      id: 'mq3',
       type: 'multiple_choice',
-      question: 'He has been working all day. He _____ be tired.',
-      options: ['can\'t', 'must', 'might', 'should'],
-      correctAnswer: 'must',
-      explanation: 'استنتاج مؤكد بالإيجاب (أكيد أنه متعب).'
+      question: 'It ______ rain tomorrow.',
+      options: ['must', 'can', 'might', 'should'],
+      correctAnswer: 'might',
+      explanation: 'نستخدم might للتعبير عن الاحتمال الضعيف.'
     },
     {
-      id: 'q4',
+      id: 'mq4',
       type: 'multiple_choice',
-      question: 'That _____ be Ali. Ali is in London right now.',
-      options: ['must', 'might', 'can\'t', 'should'],
-      correctAnswer: 'can\'t',
-      explanation: 'استنتاج مؤكد بالنفي (مستحيل أن يكون علي لأنه في لندن).'
+      question: 'You ______ smoke here.',
+      options: ['must', 'mustn’t', 'should', 'can'],
+      correctAnswer: 'mustn’t',
+      explanation: 'نستخدم mustn’t للتعبير عن المنع والتحريم.'
     },
     {
-      id: 'q5',
-      type: 'true_false',
-      question: 'You must to wear a uniform at school.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. كلمة must يأتي بعدها الفعل في المصدر بدون to (You must wear).'
+      id: 'mq5',
+      type: 'multiple_choice',
+      question: 'I ______ wake up early every day.',
+      options: ['have to', 'might', 'could', 'may'],
+      correctAnswer: 'have to',
+      explanation: 'نستخدم have to للتعبير عن الضرورة الخارجية.'
+    },
+    {
+      id: 'mq6',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: He can to swim.',
+      options: ['He can swim.', 'He can swims.', 'He cans swim.'],
+      correctAnswer: 'He can swim.',
+      explanation: 'الأفعال الناقصة لا يأتي بعدها to.'
+    },
+    {
+      id: 'mq7',
+      type: 'multiple_choice',
+      question: 'صحّح الخطأ: She must goes to school.',
+      options: ['She must go to school.', 'She must to go to school.', 'She must going to school.'],
+      correctAnswer: 'She must go to school.',
+      explanation: 'الأفعال الناقصة يأتي بعدها المصدر بدون إضافات.'
+    },
+    {
+      id: 'mq8',
+      type: 'arrange',
+      question: 'يجب أن تدرس بجد.',
+      options: ['study', 'must', 'You', 'hard.'],
+      correctAnswer: ['You', 'must', 'study', 'hard.'],
+      explanation: 'الترجمة الصحيحة: You must study hard.'
+    },
+    {
+      id: 'mq9',
+      type: 'arrange',
+      question: 'ربما يأتي غدًا.',
+      options: ['come', 'He', 'might', 'tomorrow.'],
+      correctAnswer: ['He', 'might', 'come', 'tomorrow.'],
+      explanation: 'الترجمة الصحيحة: He might come tomorrow.'
+    },
+    {
+      id: 'mq10',
+      type: 'multiple_choice',
+      question: 'اختر الجملة الصحيحة:',
+      options: [
+        'A) He must to go now.',
+        'B) He must go now.',
+        'C) He must going now.'
+      ],
+      correctAnswer: 'B) He must go now.',
+      explanation: 'الجملة B هي الصحيحة لأن must يتبعها المصدر مباشرة.'
     }
   ]
 };
@@ -2132,63 +4163,220 @@ export const modalsLesson: GrammarLessonData = {
 export const relativeClausesLesson: GrammarLessonData = {
   id: 'relative-clauses',
   title: 'ضمائر الوصل (Relative Clauses)',
-  description: 'ربط الجمل ببعضها 🔗',
+  description: 'ربط الجمل بمعلومات إضافية 🔗',
   cards: [
     {
-      id: 'c1',
-      title: 'أهم ضمائر الوصل 🔗',
+      id: 'rc1',
+      title: '🔹 أولاً: ما هي Relative Clauses؟',
       icon: '🔗',
       content: (
         <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
-          <ul className="list-disc list-inside space-y-2">
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Who / That:</strong> للعاقل (The man who lives here is a doctor).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Which / That:</strong> لغير العاقل (The book which I read was great).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Where:</strong> للمكان (This is the school where I learn).</li>
-            <li className="whitespace-nowrap overflow-x-auto custom-scrollbar"><strong>Whose:</strong> للملكية (The boy whose father is a teacher is my friend).</li>
-          </ul>
+          <p>هي جمل نستخدمها لإعطاء معلومات إضافية عن شخص أو شيء، وتبدأ بـ ضمائر الوصل مثل:</p>
+          <div className="flex flex-wrap justify-center gap-3 my-4 font-bold text-indigo-600">
+            <span className="bg-indigo-100 p-2 rounded-lg">who</span>
+            <span className="bg-indigo-100 p-2 rounded-lg">which</span>
+            <span className="bg-indigo-100 p-2 rounded-lg">that</span>
+            <span className="bg-indigo-100 p-2 rounded-lg">where</span>
+            <span className="bg-indigo-100 p-2 rounded-lg">whose</span>
+          </div>
+          <p className="font-bold text-indigo-600">📌 مثال:</p>
+          <div className="bg-slate-50 p-3 rounded-xl mt-2 whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+            The boy <CText text="who" type="particle" /> is playing is my brother.
+          </div>
+          <p className="text-slate-500 text-sm" dir="rtl">الولد الذي يلعب هو أخي</p>
+        </div>
+      )
+    },
+    {
+      id: 'rc2',
+      title: '🔹 ثانيًا: أهم ضمائر الوصل',
+      icon: '⭐',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+              <p className="font-bold text-emerald-600 mb-2">🟢 1. (who) → للعاقل (الناس)</p>
+              <p className="text-sm mb-2">🔸 الاستخدام: نستخدمها للحديث عن الأشخاص</p>
+              <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                The man <CText text="who" type="particle" /> works here is kind.
+              </div>
+              <p className="text-slate-500 text-xs mt-1" dir="rtl">الرجل الذي يعمل هنا طيب</p>
+            </div>
+            <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+              <p className="font-bold text-blue-600 mb-2">🔵 2. (which) → لغير العاقل (الأشياء)</p>
+              <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                The book <CText text="which" type="particle" /> is on the table is mine.
+              </div>
+              <p className="text-slate-500 text-xs mt-1" dir="rtl">الكتاب الذي على الطاولة لي</p>
+            </div>
+            <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+              <p className="font-bold text-amber-600 mb-2">🟡 3. (that) → للعاقل وغير العاقل</p>
+              <p className="text-sm mb-2">📌 يمكن استخدامها بدل who أو which</p>
+              <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                The boy <CText text="that" type="particle" /> is playing is my friend
+              </div>
+            </div>
+            <div className="p-3 bg-rose-50 rounded-xl border border-rose-100">
+              <p className="font-bold text-rose-600 mb-2">🔴 4. (where) → للمكان</p>
+              <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                This is the place <CText text="where" type="particle" /> I live.
+              </div>
+              <p className="text-slate-500 text-xs mt-1" dir="rtl">هذا هو المكان الذي أعيش فيه</p>
+            </div>
+            <div className="p-3 bg-violet-50 rounded-xl border border-violet-100 md:col-span-2">
+              <p className="font-bold text-violet-600 mb-2">🟣 5. (whose) → للملكية</p>
+              <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+                The boy <CText text="whose" type="particle" /> car is red is my friend
+              </div>
+              <p className="text-slate-500 text-xs mt-1" dir="rtl">الولد الذي سيارته حمراء هو صديقي</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'rc3',
+      title: '🔹 أنواع الجمل الوصلية',
+      icon: '⚖️',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div>
+            <p className="font-bold text-emerald-600 mb-2">🟢 1. Defining Relative Clause (مهمة)</p>
+            <p className="mb-2">تعطي معلومات ضرورية، بدونها الجملة غير واضحة.</p>
+            <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              The student <CText text="who" type="particle" /> studies hard will pass.
+            </div>
+          </div>
+          <div>
+            <p className="font-bold text-blue-600 mb-2">🔵 2. Non-defining Relative Clause (غير مهمة)</p>
+            <p className="mb-2">تعطي معلومات إضافية فقط، وتوضع بين فواصل (, ,).</p>
+            <div className="bg-blue-50 p-3 rounded-lg border border-blue-100 text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              Ali, <CText text="who" type="particle" /> is my friend, is smart.
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'rc4',
+      title: '🔹 ملاحظات مهمة 🔥',
+      icon: '🔥',
+      content: (
+        <div className="space-y-4 text-lg text-slate-700 leading-relaxed text-right" dir="rtl">
+          <div className="p-3 bg-amber-50 rounded-xl border border-amber-100">
+            <p className="font-bold text-amber-600 mb-2">🔸 1. يمكن حذف who / which / that أحيانًا</p>
+            <p className="mb-2">إذا كانت مفعول به (Object).</p>
+            <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              The book (that) I read was good.
+            </div>
+          </div>
+          <div className="p-3 bg-rose-50 rounded-xl border border-rose-100">
+            <p className="font-bold text-rose-600 mb-2">🔸 2. لا نستخدم "he / she / it" بعد ضمير الوصل ❌</p>
+            <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar mb-2" dir="ltr">
+              ❌ The boy <CText text="who" type="particle" /> he is playing
+            </div>
+            <div className="bg-white p-2 rounded-lg text-sm whitespace-nowrap overflow-x-auto custom-scrollbar" dir="ltr">
+              ✔ The boy <CText text="who" type="particle" /> is playing
+            </div>
+          </div>
         </div>
       )
     }
   ],
   quiz: [
     {
-      id: 'q1',
+      id: 'rcq1',
       type: 'multiple_choice',
-      question: 'This is the hospital _____ I was born.',
-      options: ['which', 'who', 'where', 'whose'],
-      correctAnswer: 'where',
-      explanation: 'نستخدم where للإشارة إلى المكان.'
-    },
-    {
-      id: 'q2',
-      type: 'multiple_choice',
-      question: 'The man _____ is standing there is my uncle.',
+      question: 'The boy _____ is playing is my brother.',
       options: ['which', 'who', 'where', 'whose'],
       correctAnswer: 'who',
-      explanation: 'نستخدم who للإشارة إلى العاقل (The man).'
+      explanation: 'نستخدم who للعاقل (الولد).'      
     },
     {
-      id: 'q3',
+      id: 'rcq2',
       type: 'multiple_choice',
-      question: 'I bought a car _____ is very fast.',
+      question: 'The book _____ I read was interesting.',
       options: ['who', 'where', 'which', 'whose'],
       correctAnswer: 'which',
-      explanation: 'نستخدم which للإشارة إلى غير العاقل (a car).'
+      explanation: 'نستخدم which لغير العاقل (الكتاب).'
     },
     {
-      id: 'q4',
+      id: 'rcq3',
       type: 'multiple_choice',
-      question: 'That is the boy _____ father is a doctor.',
+      question: 'This is the place _____ I live.',
+      options: ['who', 'which', 'where', 'whose'],
+      correctAnswer: 'where',
+      explanation: 'نستخدم where للمكان.'
+    },
+    {
+      id: 'rcq4',
+      type: 'multiple_choice',
+      question: 'The girl _____ father is a doctor is smart.',
       options: ['who', 'which', 'whose', 'where'],
       correctAnswer: 'whose',
-      explanation: 'نستخدم whose للملكية (والد الولد).'
+      explanation: 'نستخدم whose للملكية (والد الفتاة).'      
     },
     {
-      id: 'q5',
-      type: 'true_false',
-      question: 'The book who I read was interesting.',
-      correctAnswer: false,
-      explanation: 'خطأ ❌. الكتاب غير عاقل، يجب استخدام which أو that.'
+      id: 'rcq5',
+      type: 'multiple_choice',
+      question: 'The car _____ I bought is new.',
+      options: ['who', 'which', 'where', 'whose'],
+      correctAnswer: 'which',
+      explanation: 'نستخدم which لغير العاقل (السيارة).'
+    },
+    {
+      id: 'rcq6',
+      type: 'multiple_choice',
+      question: '🔹 صحّح الخطأ: The man who he works here is kind.',
+      options: [
+        'The man who works here is kind.',
+        'The man which works here is kind.',
+        'The man who he works here is kind.',
+        'The man whose works here is kind.'
+      ],
+      correctAnswer: 'The man who works here is kind.',
+      explanation: 'لا نستخدم ضمير فاعل (he) بعد ضمير الوصل (who).'
+    },
+    {
+      id: 'rcq7',
+      type: 'multiple_choice',
+      question: '🔹 صحّح الخطأ: The book who is on the table is mine.',
+      options: [
+        'The book who is on the table is mine.',
+        'The book where is on the table is mine.',
+        'The book which is on the table is mine.',
+        'The book whose is on the table is mine.'
+      ],
+      correctAnswer: 'The book which is on the table is mine.',
+      explanation: 'نستخدم which لغير العاقل (الكتاب) وليس who.'
+    },
+    {
+      id: 'rcq8',
+      type: 'arrange',
+      question: 'الطالب الذي يدرس بجد سينجح.',
+      options: ['studies', 'The', 'who', 'hard', 'student', 'pass.', 'will'],
+      correctAnswer: ['The', 'student', 'who', 'studies', 'hard', 'will', 'pass.'],
+      explanation: 'الترجمة الصحيحة: The student who studies hard will pass.'
+    },
+    {
+      id: 'rcq9',
+      type: 'arrange',
+      question: 'هذا هو المكان الذي أعمل فيه.',
+      options: ['place', 'This', 'where', 'is', 'the', 'work.', 'I'],
+      correctAnswer: ['This', 'is', 'the', 'place', 'where', 'I', 'work.'],
+      explanation: 'الترجمة الصحيحة: This is the place where I work.'
+    },
+    {
+      id: 'rcq10',
+      type: 'multiple_choice',
+      question: 'اختر الجملة الصحيحة:',
+      options: [
+        'A) The boy who he is playing is happy.',
+        'B) The boy who is playing is happy.',
+        'C) The boy which is playing is happy.'
+      ],
+      correctAnswer: 'B) The boy who is playing is happy.',
+      explanation: 'الجملة B هي الصحيحة لأننا نستخدم who للعاقل ولا نكرر الفاعل (he).'
     }
   ]
 };

@@ -37,8 +37,9 @@ import {
   saveLicense, 
   generateLicenseToken 
 } from './utils/activation';
-import { db } from './firebase';
+import { db, auth } from './firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { GrammarLesson } from './components/GrammarLesson';
 import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
@@ -170,23 +171,8 @@ export default function App() {
     }
   };
 
-  // Generate 2000 students if the JSON is just a sample
-  const studentsData = useMemo(() => {
-    if (studentsDataRaw.length >= 2000) return studentsDataRaw;
-    
-    const fullList = [...studentsDataRaw];
-    const existingCount = studentsDataRaw.length;
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    
-    for (let i = existingCount; i < 2000; i++) {
-      const segment = () => Array.from({ length: 4 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
-      fullList.push({
-        student: `STU-${(i + 1).toString().padStart(4, '0')}`,
-        code: `ENG-${segment()}-${segment()}-${segment()}`
-      });
-    }
-    return fullList;
-  }, []);
+  // Use the 5000 students from the JSON file
+  const studentsData = studentsDataRaw;
 
   // Activation Check
   useEffect(() => {
@@ -208,6 +194,60 @@ export default function App() {
     };
     checkActivation();
   }, []);
+
+  const [adminClickCount, setAdminClickCount] = useState(0);
+  const [showAdminAuth, setShowAdminAuth] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [isAdminLoading, setIsAdminLoading] = useState(false);
+  const [adminError, setAdminError] = useState('');
+
+  const handleLogoClick = () => {
+    setAdminClickCount(prev => {
+      const newCount = prev + 1;
+      if (newCount >= 10) {
+        setShowAdminAuth(true);
+        setAdminError('');
+        return 0;
+      }
+      return newCount;
+    });
+  };
+
+  const handleAdminLogin = async () => {
+    setIsAdminLoading(true);
+    setAdminError('');
+    try {
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
+      
+      const result = await signInWithPopup(auth, provider);
+      
+      // Double checking email for safety
+      if (result.user.email === 'nasrsadeqm@gmail.com') {
+        setIsAdminAuthenticated(true);
+        setView('admin');
+        setShowAdminAuth(false);
+      } else {
+        setAdminError('عذراً، هذا الحساب غير مصرح له بالدخول للوحة التحكم.');
+        await auth.signOut();
+      }
+    } catch (err: any) {
+      console.error('Admin Login Error:', err);
+      if (err.code === 'auth/popup-blocked') {
+        setAdminError('تم حظر النافذة المنبثقة. يرجى السماح بالمنبثقات في متصفحك.');
+      } else {
+        setAdminError('حدث خطأ أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى.');
+      }
+    } finally {
+      setIsAdminLoading(false);
+    }
+  };
+
+  const handleAdminLogout = async () => {
+    await auth.signOut();
+    setIsAdminAuthenticated(false);
+    setView('home');
+  };
 
   const handleActivate = async () => {
     const finalStudentId = studentId?.trim().toUpperCase();
@@ -454,6 +494,8 @@ export default function App() {
   );
 
   const renderAdmin = () => {
+    if (!isAdminAuthenticated) return renderHome();
+
     const usedCodes = JSON.parse(localStorage.getItem('used_activation_codes') || '[]');
     const filteredStudents = studentsData.filter(s => 
       s.student.toLowerCase().includes(adminSearch.toLowerCase()) || 
@@ -464,15 +506,26 @@ export default function App() {
       <div className="min-h-screen p-6 bg-slate-50">
         <div className="max-w-5xl mx-auto space-y-8">
           <div className="flex items-center justify-between">
-            <BackButton onClick={() => setView('home')} />
-            <h2 className="text-2xl font-black text-slate-800">لوحة التحكم (Admin)</h2>
-            <button 
-              onClick={handlePrintCodes}
-              className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-black shadow-lg shadow-indigo-100"
-            >
-              <Printer size={20} />
-              <span>طباعة الـ 2000 كود</span>
-            </button>
+            <div className="flex items-center gap-4">
+              <BackButton onClick={() => setView('home')} />
+              <h2 className="text-2xl font-black text-slate-800">لوحة التحكم (Admin)</h2>
+            </div>
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={handleAdminLogout}
+                className="flex items-center gap-2 px-4 py-3 bg-rose-50 text-rose-600 rounded-xl font-black hover:bg-rose-100 transition-colors"
+              >
+                <LogOut size={20} />
+                <span>خروج</span>
+              </button>
+              <button 
+                onClick={handlePrintCodes}
+                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-xl font-black shadow-lg shadow-indigo-100"
+              >
+                <Printer size={20} />
+                <span>طباعة الـ 5000 كود</span>
+              </button>
+            </div>
           </div>
 
           <div className="relative">
@@ -554,7 +607,8 @@ export default function App() {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 100 }}
-            className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2"
+            className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
+            onClick={handleLogoClick}
           >
             <img 
               src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
@@ -643,7 +697,7 @@ export default function App() {
 
     return (
       <div className="space-y-10">
-        <header className="flex flex-col items-center text-center space-y-4 relative">
+        <header className="flex flex-col items-center text-center space-y-3 relative">
           <div className="absolute left-0 top-0">
             <BackButton onClick={handleBack} />
           </div>
@@ -651,7 +705,8 @@ export default function App() {
           <motion.div 
             initial={{ scale: 0.5, y: -20 }}
             animate={{ scale: 1, y: 0 }}
-            className="w-32 h-32 md:w-40 md:h-40 flex items-center justify-center mb-2"
+            className="w-28 h-28 md:w-40 md:h-40 flex items-center justify-center mb-1 cursor-pointer active:scale-95 transition-transform"
+            onClick={handleLogoClick}
           >
             <img 
               src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
@@ -662,36 +717,18 @@ export default function App() {
           </motion.div>
           
           <div className="space-y-1">
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">مرحباً بك يا بطل!</h1>
-            <p className="text-lg text-slate-500 font-bold">Welcome! Challenge yourself</p>
-            <p className="text-sm text-indigo-500 font-bold mt-2" dir="rtl">كل تحدٍ تجتازه اليوم يجعلك أقرب لإتقان الإنجليزية غداً.. استمر! 🌟</p>
+            <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight whitespace-nowrap">مرحباً بك يا بطل!</h1>
+            <p className="text-base md:text-lg text-slate-500 font-bold whitespace-nowrap">Welcome! Challenge yourself</p>
+            <p className="text-xs md:text-sm text-indigo-500 font-bold mt-1" dir="rtl">كل تحدٍ تجتازه اليوم يجعلك أقرب لإتقان الإنجليزية غداً.. استمر! 🌟</p>
           </div>
         </header>
 
         <DictionaryTool localWords={allWords} onAddWord={handleAddWord} />
 
-        <div className="pt-4">
-          <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تعلم بأسلوب جديد ✨</h3>
-          <div className="grid grid-cols-1 gap-6 mb-10">
-            <motion.button
-              onClick={() => setView('situations')}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-[3rem] text-white text-right flex items-center justify-between group shadow-xl shadow-indigo-100 hover:scale-[1.02] transition-all border-4 border-white/20"
-            >
-              <div className="p-5 bg-white/20 rounded-3xl backdrop-blur-md group-hover:scale-110 transition-transform">
-                <Sparkles size={32} />
-              </div>
-              <div className="space-y-1">
-                <p className="text-3xl font-black">الإنجليزية في مواقف 🎭</p>
-                <p className="text-sm font-bold opacity-90">تعلم الكلمات حسب المواقف الحقيقية بأسلوب تفاعلي</p>
-              </div>
-            </motion.button>
-          </div>
-
-          <h3 className="text-2xl font-black text-slate-800 mb-6 px-2">تصفح حسب الأقسام</h3>
+        <div className="pt-2">
+          <h3 className="text-xl md:text-2xl font-black text-slate-800 mb-4 px-2 whitespace-nowrap">تصفح حسب الأقسام</h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {categories.map((cat, index) => {
               const colors = categoryColors[cat] || { bg: 'bg-gradient-to-br from-indigo-500 to-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-300', light: 'bg-white', arabic: cat, text: 'text-white', subtext: 'text-indigo-100' };
               return (
@@ -706,17 +743,17 @@ export default function App() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={cn(
-                    "p-6 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
+                    "p-5 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
                     colors.bg,
                     colors.border
                   )}
                 >
-                  <div className={cn("p-4 rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
-                    <ChevronRight size={24} />
+                  <div className={cn("p-3 md:p-4 rounded-xl md:rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
+                    <ChevronRight size={20} className="md:w-6 md:h-6" />
                   </div>
-                  <div className="space-y-1">
-                    <p className={cn("text-2xl font-black", colors.text)}>{colors.arabic}</p>
-                    <p className={cn("text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat} • {allWords.filter(w => w.category === cat).length} words</p>
+                  <div className="space-y-0.5">
+                    <p className={cn("text-xl md:text-2xl font-black whitespace-nowrap", colors.text)}>{colors.arabic}</p>
+                    <p className={cn("text-[10px] md:text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat} • {allWords.filter(w => w.category === cat).length} words</p>
                   </div>
                 </motion.button>
               );
@@ -738,14 +775,14 @@ export default function App() {
     const gameTitle = targetGame === 'flashcards' ? 'البطاقات التعليمية' : targetGame === 'quiz' ? 'اختبار' : 'لعبة التوصيل';
     return (
       <div className="space-y-10">
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           <BackButton onClick={handleBack} />
           <div className="text-right">
-            <h2 className="text-3xl font-black text-slate-800">{gameTitle}</h2>
-            <p className="text-slate-400 font-bold">اختر قسماً للبدء</p>
+            <h2 className="text-2xl md:text-3xl font-black text-slate-800 whitespace-nowrap">{gameTitle}</h2>
+            <p className="text-sm md:text-base text-slate-400 font-bold">اختر قسماً للبدء</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {categories.map((cat, index) => {
             const colors = categoryColors[cat] || { bg: 'bg-gradient-to-br from-indigo-500 to-indigo-600', icon: 'text-indigo-600', border: 'hover:border-indigo-300', light: 'bg-white', arabic: cat, text: 'text-white', subtext: 'text-indigo-100' };
             return (
@@ -760,17 +797,17 @@ export default function App() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={cn(
-                  "p-6 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
+                  "p-5 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-md hover:shadow-lg hover:scale-[1.02]",
                   colors.bg,
                   colors.border
                 )}
               >
-                <div className={cn("p-4 rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
-                  <ChevronRight size={24} />
+                <div className={cn("p-3 md:p-4 rounded-xl md:rounded-2xl transition-all group-hover:scale-110", colors.light, colors.icon)}>
+                  <ChevronRight size={20} className="md:w-6 md:h-6" />
                 </div>
-                <div className="space-y-1">
-                  <p className={cn("text-2xl font-black", colors.text)}>{colors.arabic}</p>
-                  <p className={cn("text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat}</p>
+                <div className="space-y-0.5">
+                  <p className={cn("text-xl md:text-2xl font-black whitespace-nowrap", colors.text)}>{colors.arabic}</p>
+                  <p className={cn("text-[10px] md:text-xs font-black uppercase tracking-widest", colors.subtext)}>{cat}</p>
                 </div>
               </motion.button>
             );
@@ -785,14 +822,14 @@ export default function App() {
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-lg shadow-indigo-200 hover:shadow-xl hover:scale-[1.02] col-span-1 sm:col-span-2"
+              className="p-5 md:p-6 bg-gradient-to-r from-indigo-600 to-violet-600 rounded-[2rem] md:rounded-[2.5rem] border-2 border-transparent transition-all text-right flex items-center justify-between group shadow-lg shadow-indigo-200 hover:shadow-xl hover:scale-[1.02] col-span-1 sm:col-span-2"
             >
-              <div className="p-4 rounded-2xl transition-all group-hover:scale-110 bg-white/20 text-white backdrop-blur-sm">
-                <Trophy size={24} />
+              <div className="p-3 md:p-4 rounded-xl md:rounded-2xl transition-all group-hover:scale-110 bg-white/20 text-white backdrop-blur-sm">
+                <Trophy size={20} className="md:w-6 md:h-6" />
               </div>
-              <div className="space-y-1 text-white">
-                <p className="text-2xl font-black">اختبار القواعد الشامل</p>
-                <p className="text-sm font-bold opacity-90">أسئلة متنوعة تشمل جميع القواعد 🚀</p>
+              <div className="space-y-0.5 text-white">
+                <p className="text-xl md:text-2xl font-black whitespace-nowrap">اختبار القواعد الشامل</p>
+                <p className="text-xs md:text-sm font-bold opacity-90">أسئلة متنوعة تشمل جميع القواعد 🚀</p>
               </div>
             </motion.button>
           )}
@@ -1001,6 +1038,56 @@ export default function App() {
             )}
           </motion.div>
         </AnimatePresence>
+
+        {showAdminAuth && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white rounded-[2.5rem] p-8 max-w-sm w-full text-center space-y-6 shadow-2xl"
+            >
+              <div className="w-20 h-20 bg-indigo-100 rounded-3xl mx-auto flex items-center justify-center text-indigo-600">
+                {isAdminLoading ? (
+                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-600"></div>
+                ) : (
+                  <Lock size={40} />
+                )}
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-black text-slate-800">دخول المسؤول</h3>
+                <p className="text-slate-500 font-bold">هذه المنطقة محمية. يرجى تسجيل الدخول للمتابعة.</p>
+              </div>
+              
+              {adminError && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-rose-500 bg-rose-50 p-3 rounded-xl text-sm font-bold"
+                >
+                  {adminError}
+                </motion.div>
+              )}
+
+              <button 
+                onClick={handleAdminLogin}
+                disabled={isAdminLoading}
+                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-indigo-700 transition-all disabled:opacity-50"
+              >
+                <span>{isAdminLoading ? 'جاري التحقق...' : 'تسجيل الدخول بجوجل'}</span>
+              </button>
+              <button 
+                onClick={() => {
+                  setShowAdminAuth(false);
+                  setAdminError('');
+                }}
+                disabled={isAdminLoading}
+                className="text-slate-400 font-bold hover:text-slate-600 transition-colors"
+              >
+                إلغاء
+              </button>
+            </motion.div>
+          </div>
+        )}
       </div>
       <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-8 py-5 flex justify-around items-center z-50">
         <button onClick={() => setView('home')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'home' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
@@ -1011,9 +1098,6 @@ export default function App() {
         </button>
         <button onClick={() => setView('games-menu')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'games-menu' || view === 'quiz' || view === 'flashcards' || view === 'match' || view === 'select-category' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
           <Trophy size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
-        </button>
-        <button onDoubleClick={() => setView('admin')} className="flex flex-col items-center gap-1.5 text-slate-200 hover:text-slate-400 transition-all opacity-20">
-          <Settings size={28} /><span className="text-[10px] font-black uppercase tracking-widest">Admin</span>
         </button>
       </nav>
     </div>

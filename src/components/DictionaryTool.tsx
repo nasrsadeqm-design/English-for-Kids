@@ -133,19 +133,19 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-6">
-      <div className="bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-xl shadow-indigo-100/50 border-4 border-indigo-50">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="p-3 bg-indigo-100 rounded-2xl text-indigo-600">
-            <Languages size={28} />
+    <div className="w-full max-w-2xl mx-auto space-y-4 md:space-y-6">
+      <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-5 md:p-8 shadow-xl shadow-indigo-100/50 border-4 border-indigo-50">
+        <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+          <div className="p-2.5 md:p-3 bg-indigo-100 rounded-xl md:rounded-2xl text-indigo-600">
+            <Languages size={24} className="md:w-7 md:h-7" />
           </div>
           <div className="text-right">
-            <h3 className="text-2xl font-black text-slate-800 tracking-tight">المترجم السريع</h3>
-            <p className="text-sm font-bold text-slate-400">Bidirectional Translator & Auto-Saver</p>
+            <h3 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight whitespace-nowrap">المترجم السريع</h3>
+            <p className="text-[10px] md:text-sm font-bold text-slate-400">Bidirectional Translator & Auto-Saver</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
           {/* English Input */}
           <div className="relative group">
             <input 
@@ -153,14 +153,14 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
               value={englishInput}
               onChange={(e) => setEnglishInput(e.target.value)}
               placeholder="English word..."
-              className="w-full pl-6 pr-12 py-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-indigo-500 focus:bg-white outline-none transition-all font-bold"
+              className="w-full pl-4 md:pl-6 pr-10 md:pr-12 py-3 md:py-4 bg-slate-50 rounded-xl md:rounded-2xl border-2 border-transparent focus:border-indigo-500 focus:bg-white outline-none transition-all font-bold text-sm md:text-base"
             />
             <button 
               onClick={() => handleTranslate('en')}
               disabled={isLoading || !englishInput.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all disabled:opacity-30"
+              className="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-indigo-600 text-white rounded-lg md:rounded-xl hover:bg-indigo-700 transition-all disabled:opacity-30"
             >
-              <ArrowRight size={20} />
+              <ArrowRight size={18} className="md:w-5 md:h-5" />
             </button>
           </div>
 
@@ -172,21 +172,21 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
               onChange={(e) => setArabicInput(e.target.value)}
               placeholder="كلمة عربية..."
               dir="rtl"
-              className="w-full pr-6 pl-12 py-4 bg-slate-50 rounded-2xl border-2 border-transparent focus:border-indigo-500 focus:bg-white outline-none transition-all font-bold text-right"
+              className="w-full pr-4 md:pr-6 pl-10 md:pl-12 py-3 md:py-4 bg-slate-50 rounded-xl md:rounded-2xl border-2 border-transparent focus:border-indigo-500 focus:bg-white outline-none transition-all font-bold text-right text-sm md:text-base"
             />
             <button 
               onClick={() => handleTranslate('ar')}
               disabled={isLoading || !arabicInput.trim()}
-              className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all disabled:opacity-30"
+              className="absolute left-1.5 md:left-2 top-1/2 -translate-y-1/2 p-1.5 md:p-2 bg-indigo-600 text-white rounded-lg md:rounded-xl hover:bg-indigo-700 transition-all disabled:opacity-30"
             >
-              <ArrowRight size={20} className="rotate-180" />
+              <ArrowRight size={18} className="rotate-180 md:w-5 md:h-5" />
             </button>
           </div>
         </div>
 
         {isLoading && (
-          <div className="mt-4 flex justify-center">
-            <Loader2 size={24} className="animate-spin text-indigo-600" />
+          <div className="mt-3 md:mt-4 flex justify-center">
+            <Loader2 size={20} className="animate-spin text-indigo-600 md:w-6 md:h-6" />
           </div>
         )}
 
@@ -196,13 +196,13 @@ export const DictionaryTool: React.FC<DictionaryToolProps> = ({ localWords, onAd
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mt-6 p-6 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-[2rem] text-white relative overflow-hidden group"
+              className="mt-4 md:mt-6 p-5 md:p-6 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-[1.5rem] md:rounded-[2rem] text-white relative overflow-hidden group"
             >
               <button 
                 onClick={() => setResult(null)}
-                className="absolute top-4 left-4 p-1 hover:bg-white/10 rounded-lg transition-colors"
+                className="absolute top-3 left-3 md:top-4 md:left-4 p-1 hover:bg-white/10 rounded-lg transition-colors"
               >
-                <X size={20} />
+                <X size={18} className="md:w-5 md:h-5" />
               </button>
 
               <div className="flex flex-col items-center text-center space-y-4">

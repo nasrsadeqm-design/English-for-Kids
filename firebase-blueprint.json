@@ -1,22 +1,31 @@
 {
   "entities": {
-    "Activation": {
+    "activation": {
       "title": "Activation Record",
-      "description": "Records which device activated a specific student code.",
+      "description": "Records of student book activations tied to specific devices.",
       "type": "object",
       "properties": {
-        "studentId": { "type": "string", "description": "The unique ID of the student." },
-        "activationCode": { "type": "string", "description": "The code used for activation." },
-        "deviceFingerprint": { "type": "string", "description": "Unique identifier for the device." },
-        "activatedAt": { "type": "string", "format": "date-time", "description": "When the activation occurred." }
+        "studentId": { "type": "string", "description": "The unique ID of the student (e.g., STU-0001)" },
+        "activationCode": { "type": "string", "description": "The code used for activation" },
+        "deviceFingerprint": { "type": "string", "description": "Unique hash of the device hardware/browser" },
+        "activatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of activation" }
       },
       "required": ["studentId", "activationCode", "deviceFingerprint", "activatedAt"]
+    },
+    "admin": {
+      "title": "Admin User",
+      "description": "Authorized administrator accounts.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["admin"] }
+      }
     }
   },
   "firestore": {
-    "/activations/{studentId}": {
-      "schema": "Activation",
-      "description": "Collection of activation records keyed by student ID."
+    "/activations/{activationId}": {
+      "schema": "activation",
+      "description": "Collection of all activated licenses."
     }
   }
 }

@@ -32,18 +32,18 @@ export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete
   const progress = ((currentCardIndex + 1) / lesson.cards.length) * 100;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-4 md:gap-6">
         <BackButton onClick={onBack} />
         <div className="flex-1 text-right">
-          <h2 className="text-3xl font-black text-slate-800">{lesson.title}</h2>
-          <p className="text-slate-500 font-bold mt-1">{lesson.description}</p>
+          <h2 className="text-xl md:text-3xl font-black text-slate-800 whitespace-nowrap">{lesson.title}</h2>
+          <p className="text-xs md:text-base text-slate-500 font-bold mt-0.5 md:mt-1">{lesson.description}</p>
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="h-3 bg-white rounded-full overflow-hidden shadow-inner">
+      <div className="h-2 md:h-3 bg-white rounded-full overflow-hidden shadow-inner">
         <motion.div 
           className="h-full bg-indigo-500 rounded-full"
           initial={{ width: 0 }}
@@ -53,7 +53,7 @@ export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete
       </div>
 
       {/* Card Content */}
-      <div className="relative min-h-[400px]">
+      <div className="relative min-h-[350px] md:min-h-[400px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentCard.id}
@@ -63,13 +63,13 @@ export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="absolute inset-0"
           >
-            <div className="bg-white rounded-[2rem] shadow-sm border-2 border-indigo-50 p-8 h-full flex flex-col">
-              <div className="flex items-center gap-4 mb-6 justify-end">
-                <h3 className="text-2xl font-black text-indigo-900">{currentCard.title}</h3>
-                <span className="text-4xl">{currentCard.icon}</span>
+            <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-sm border-2 border-indigo-50 p-6 md:p-8 h-full flex flex-col">
+              <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6 justify-end">
+                <h3 className="text-lg md:text-2xl font-black text-indigo-900 whitespace-nowrap">{currentCard.title}</h3>
+                <span className="text-3xl md:text-4xl">{currentCard.icon}</span>
               </div>
               
-              <div className="flex-1 overflow-y-auto custom-scrollbar pr-2">
+              <div className="flex-1 overflow-y-auto custom-scrollbar pr-2 text-sm md:text-base">
                 {currentCard.content}
               </div>
             </div>
