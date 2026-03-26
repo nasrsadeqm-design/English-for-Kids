@@ -152,8 +152,22 @@ export default function App() {
   const [selectedGrammarLesson, setSelectedGrammarLesson] = useState<any>(null);
   const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isIOS, setIsIOS] = useState(false);
+
+  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
+    const checkStandalone = () => {
+      return (window.navigator as any).standalone || window.matchMedia('(display-mode: standalone)').matches;
+    };
+    setIsStandalone(checkStandalone());
+    
+    const checkIOS = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    setIsIOS(checkIOS());
+
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -484,7 +498,7 @@ export default function App() {
             {!isVerifying && <ArrowRight size={24} />}
           </button>
 
-          {deferredPrompt && (
+          {deferredPrompt && !isStandalone && (
             <button
               onClick={handleInstallClick}
               className="w-full py-4 bg-slate-100 text-indigo-600 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3"
@@ -492,6 +506,13 @@ export default function App() {
               <Download size={20} />
               <span>تثبيت التطبيق على الجهاز</span>
             </button>
+          )}
+
+          {isIOS && !isStandalone && (
+            <div className="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl text-indigo-900 text-center space-y-1">
+              <p className="font-bold text-xs" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
+              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
+            </div>
           )}
         </div>
 
@@ -667,7 +688,7 @@ export default function App() {
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
 
-          {deferredPrompt && (
+          {deferredPrompt && !isStandalone && (
             <motion.button
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
@@ -677,6 +698,13 @@ export default function App() {
               <span>تثبيت التطبيق • Install App</span>
               <Download size={24} className="sm:size-[28px] group-hover:-translate-y-1 transition-transform" />
             </motion.button>
+          )}
+
+          {isIOS && !isStandalone && (
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
+              <p className="font-bold text-sm" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
+              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
+            </div>
           )}
 
           <motion.button
