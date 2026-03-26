@@ -695,16 +695,6 @@ export default function App() {
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={handleInstallClick}
-            className="w-full py-3 sm:py-4 bg-indigo-500 text-white rounded-2xl sm:rounded-3xl font-black text-xl sm:text-2xl shadow-lg hover:bg-indigo-400 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
-          >
-            <span>تثبيت التطبيق • Install App</span>
-            <Download size={24} className="sm:size-[28px] group-hover:-translate-y-1 transition-transform" />
-          </motion.button>
-
           {isIOS && !isStandalone && (
             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
               <p className="font-bold text-sm" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>

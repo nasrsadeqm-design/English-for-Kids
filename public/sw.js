@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alfawaris-v4';
+const CACHE_NAME = 'alfawaris-v5';
 const ASSETS = [
   '/',
   '/index.html',
