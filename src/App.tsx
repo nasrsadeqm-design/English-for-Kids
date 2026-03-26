@@ -177,7 +177,14 @@ export default function App() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      if (isStandalone) {
+        alert('التطبيق مثبت بالفعل على جهازك. يمكنك فتحه من الشاشة الرئيسية.');
+      } else {
+        alert('يرجى استخدام خيار "الإضافة إلى الشاشة الرئيسية" من قائمة المتصفح إذا لم يظهر زر التثبيت التلقائي.');
+      }
+      return;
+    }
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
@@ -498,15 +505,13 @@ export default function App() {
             {!isVerifying && <ArrowRight size={24} />}
           </button>
 
-          {deferredPrompt && !isStandalone && (
-            <button
-              onClick={handleInstallClick}
-              className="w-full py-4 bg-slate-100 text-indigo-600 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3"
-            >
-              <Download size={20} />
-              <span>تثبيت التطبيق على الجهاز</span>
-            </button>
-          )}
+          <button
+            onClick={handleInstallClick}
+            className="w-full py-4 bg-slate-100 text-indigo-600 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3"
+          >
+            <Download size={20} />
+            <span>تثبيت التطبيق على الجهاز</span>
+          </button>
 
           {isIOS && !isStandalone && (
             <div className="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl text-indigo-900 text-center space-y-1">
@@ -688,17 +693,15 @@ export default function App() {
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
 
-          {deferredPrompt && !isStandalone && (
-            <motion.button
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={handleInstallClick}
-              className="w-full py-3 sm:py-4 bg-indigo-500 text-white rounded-2xl sm:rounded-3xl font-black text-xl sm:text-2xl shadow-lg hover:bg-indigo-400 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
-            >
-              <span>تثبيت التطبيق • Install App</span>
-              <Download size={24} className="sm:size-[28px] group-hover:-translate-y-1 transition-transform" />
-            </motion.button>
-          )}
+          <motion.button
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={handleInstallClick}
+            className="w-full py-3 sm:py-4 bg-indigo-500 text-white rounded-2xl sm:rounded-3xl font-black text-xl sm:text-2xl shadow-lg hover:bg-indigo-400 transition-all flex items-center justify-center gap-3 sm:gap-4 group"
+          >
+            <span>تثبيت التطبيق • Install App</span>
+            <Download size={24} className="sm:size-[28px] group-hover:-translate-y-1 transition-transform" />
+          </motion.button>
 
           {isIOS && !isStandalone && (
             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
