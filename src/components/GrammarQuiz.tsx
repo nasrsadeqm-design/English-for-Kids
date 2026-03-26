@@ -354,7 +354,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
             >
               <div className="flex items-start gap-3 md:gap-4" dir="rtl">
                 <div className="p-1.5 md:p-2 bg-white rounded-xl shadow-sm">
-                  <AlertCircle className="text-indigo-500" size={20} className="md:w-6 md:h-6" />
+                  <AlertCircle className="text-indigo-500 md:w-6 md:h-6" size={20} />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-black text-slate-800 text-base md:text-lg mb-0.5 md:mb-1">توضيح:</h4>

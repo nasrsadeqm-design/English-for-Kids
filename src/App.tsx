@@ -136,7 +136,7 @@ const FlashcardView: React.FC<FlashcardViewProps> = ({ words, onBack }) => {
 type View = 'landing' | 'home' | 'category' | 'flashcards' | 'match' | 'quiz' | 'results' | 'select-category' | 'activation' | 'admin' | 'grammar-list' | 'grammar-lesson' | 'grammar-quiz' | 'global-grammar-quiz' | 'games-menu' | 'situations';
 
 export default function App() {
-  const [view, setView] = useState<View>('home'); // Default to home, but logic below will override
+  const [view, setView] = useState<View>('activation'); // Default to activation, logic below will override
   const [isActivated, setIsActivated] = useState<boolean | null>(null);
   const [studentId, setStudentId] = useState<string | null>(null);
   const [activationCode, setActivationCode] = useState('');
@@ -234,9 +234,11 @@ export default function App() {
     } catch (err: any) {
       console.error('Admin Login Error:', err);
       if (err.code === 'auth/popup-blocked') {
-        setAdminError('تم حظر النافذة المنبثقة. يرجى السماح بالمنبثقات في متصفحك.');
+        setAdminError('تم حظر النافذة المنبثقة. يرجى الضغط على أيقونة "القفل" أو "السماح بالمنبثقات" في شريط عنوان المتصفح ثم المحاولة مرة أخرى.');
+      } else if (err.code === 'auth/unauthorized-domain') {
+        setAdminError('هذا النطاق (Domain) غير مصرح له بتسجيل الدخول في Firebase. يرجى إضافة رابط Netlify إلى قائمة النطاقات المصرح بها في Firebase Console.');
       } else {
-        setAdminError('حدث خطأ أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى.');
+        setAdminError(`حدث خطأ أثناء تسجيل الدخول (${err.code || 'unknown'}). يرجى المحاولة مرة أخرى.`);
       }
     } finally {
       setIsAdminLoading(false);
@@ -247,6 +249,14 @@ export default function App() {
     await auth.signOut();
     setIsAdminAuthenticated(false);
     setView('home');
+  };
+
+  const handleClearActivation = () => {
+    if (window.confirm('هل أنت متأكد من حذف التفعيل من هذا الجهاز؟ سيطلب منك الكود مرة أخرى عند الدخول.')) {
+      localStorage.removeItem('book_license');
+      setIsActivated(false);
+      setView('activation');
+    }
   };
 
   const handleActivate = async () => {
@@ -511,6 +521,14 @@ export default function App() {
               <h2 className="text-2xl font-black text-slate-800">لوحة التحكم (Admin)</h2>
             </div>
             <div className="flex items-center gap-3">
+              <button 
+                onClick={handleClearActivation}
+                className="flex items-center gap-2 px-4 py-3 bg-amber-50 text-amber-600 rounded-xl font-black hover:bg-amber-100 transition-colors"
+                title="حذف التفعيل من هذا الجهاز للتجربة"
+              >
+                <ShieldCheck size={20} />
+                <span>حذف التفعيل</span>
+              </button>
               <button 
                 onClick={handleAdminLogout}
                 className="flex items-center gap-2 px-4 py-3 bg-rose-50 text-rose-600 rounded-xl font-black hover:bg-rose-100 transition-colors"
