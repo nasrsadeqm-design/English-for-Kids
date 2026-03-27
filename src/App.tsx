@@ -170,6 +170,8 @@ export default function App() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
+      // Automatically show prompt if possible (though browsers usually block this without gesture)
+      console.log('PWA Install Prompt is ready');
     };
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -178,11 +180,11 @@ export default function App() {
   const handleInstallClick = async () => {
     if (!deferredPrompt) {
       if (isStandalone) {
-        alert('التطبيق مثبت بالفعل على جهازك. يمكنك فتحه من الشاشة الرئيسية.');
+        alert('التطبيق مثبت بالفعل على جهازك.');
       } else if (isIOS) {
-        alert('لمستخدمي آيفون: يرجى الضغط على زر "مشاركة" (Share) في المتصفح ثم اختيار "إضافة إلى الصفحة الرئيسية" (Add to Home Screen).');
+        alert('لمستخدمي آيفون: يرجى الضغط على زر "مشاركة" (Share) ثم اختيار "إضافة إلى الصفحة الرئيسية" (Add to Home Screen).');
       } else {
-        alert('يرجى استخدام خيار "تثبيت التطبيق" أو "الإضافة إلى الشاشة الرئيسية" من قائمة المتصفح (الثلاث نقاط) إذا لم يظهر زر التثبيت التلقائي.');
+        alert('يرجى استخدام خيار "تثبيت التطبيق" من قائمة المتصفح (الثلاث نقاط) إذا لم يظهر زر التثبيت التلقائي.');
       }
       return;
     }
@@ -695,17 +697,19 @@ export default function App() {
             <LogOut size={24} className="sm:size-[28px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
 
-          <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={handleInstallClick}
-            className="w-full py-4 bg-emerald-500 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-lg shadow-emerald-900/20 hover:bg-emerald-600 transition-all flex items-center justify-center gap-3 animate-pulse"
-          >
-            <Download size={24} />
-            <span>تثبيت التطبيق • Install App</span>
-          </motion.button>
+          {deferredPrompt && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={handleInstallClick}
+              className="w-full py-4 bg-emerald-600 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-lg shadow-emerald-900/20 hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 animate-pulse"
+            >
+              <Download size={24} />
+              <span>تثبيت التطبيق • Install App</span>
+            </motion.button>
+          )}
 
           {isIOS && !isStandalone && (
             <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">

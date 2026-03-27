@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alfawares-v10';
+const CACHE_NAME = 'alfawares-v11';
 const ASSETS = [
   '/',
   '/index.html',
