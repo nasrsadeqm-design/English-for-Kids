@@ -163,9 +163,10 @@ export default function App() {
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      console.log('PWA Install Prompt is ready');
+      console.log('✅ PWA Install Prompt is ready to be shown');
     };
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    console.log('🔍 PWA Logic Initialized. Standalone:', checkStandalone());
     return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
   }, []);
 
