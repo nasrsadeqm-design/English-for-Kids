@@ -18,7 +18,6 @@ import {
   Settings,
   Sparkles,
   Printer,
-  Download,
   LogOut
 } from 'lucide-react';
 import { words } from './data/words';
@@ -151,49 +150,6 @@ export default function App() {
   const [allWords, setAllWords] = useState<Word[]>(words);
   const [selectedGrammarLesson, setSelectedGrammarLesson] = useState<any>(null);
   const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [isIOS, setIsIOS] = useState(false);
-  const [isStandalone, setIsStandalone] = useState(false);
-
-  useEffect(() => {
-    const checkStandalone = () => {
-      return (window.navigator as any).standalone || window.matchMedia('(display-mode: standalone)').matches;
-    };
-    setIsStandalone(checkStandalone());
-    
-    const checkIOS = () => {
-      const userAgent = window.navigator.userAgent.toLowerCase();
-      return /iphone|ipad|ipod/.test(userAgent);
-    };
-    setIsIOS(checkIOS());
-
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      // Automatically show prompt if possible (though browsers usually block this without gesture)
-      console.log('PWA Install Prompt is ready');
-    };
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-  }, []);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) {
-      if (isStandalone) {
-        alert('التطبيق مثبت بالفعل على جهازك.');
-      } else if (isIOS) {
-        alert('لمستخدمي آيفون: يرجى الضغط على زر "مشاركة" (Share) ثم اختيار "إضافة إلى الصفحة الرئيسية" (Add to Home Screen).');
-      } else {
-        alert('يرجى استخدام خيار "تثبيت التطبيق" من قائمة المتصفح (الثلاث نقاط) إذا لم يظهر زر التثبيت التلقائي.');
-      }
-      return;
-    }
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
-    }
-  };
 
   // Use the 5000 students from the JSON file
   const studentsData = studentsDataRaw;
@@ -696,27 +652,6 @@ export default function App() {
             <span>خروج • Exit</span>
             <LogOut size={24} className="sm:size-[28px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
-
-          {deferredPrompt && (
-            <motion.button
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={handleInstallClick}
-              className="w-full py-4 bg-emerald-600 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-lg shadow-emerald-900/20 hover:bg-emerald-700 transition-all flex items-center justify-center gap-3 animate-pulse"
-            >
-              <Download size={24} />
-              <span>تثبيت التطبيق • Install App</span>
-            </motion.button>
-          )}
-
-          {isIOS && !isStandalone && (
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
-              <p className="font-bold text-sm" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
-              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
-            </div>
-          )}
 
           <p className="text-center text-indigo-200/80 font-medium text-xs sm:text-sm tracking-widest uppercase">
             Interactive Learning Experience
