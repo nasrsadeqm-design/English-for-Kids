@@ -1,7 +1,7 @@
 {
-  "id": "al-fawaris-english-pwa",
-  "name": "Al-Fawaris English",
-  "short_name": "Al-Fawaris",
+  "id": "al-fawares-books-pwa",
+  "name": "Al-Fawares books",
+  "short_name": "Al-Fawares",
   "description": "منصة الفوارس لتعلم اللغة الإنجليزية",
   "start_url": "/",
   "scope": "/",

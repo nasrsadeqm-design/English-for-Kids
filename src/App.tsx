@@ -153,7 +153,6 @@ export default function App() {
   const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isIOS, setIsIOS] = useState(false);
-
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
@@ -506,21 +505,6 @@ export default function App() {
             {isVerifying ? 'جاري التحقق...' : 'تفعيل الآن'}
             {!isVerifying && <ArrowRight size={24} />}
           </button>
-
-          <button
-            onClick={handleInstallClick}
-            className="w-full py-4 bg-slate-100 text-indigo-600 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3"
-          >
-            <Download size={20} />
-            <span>تثبيت التطبيق على الجهاز</span>
-          </button>
-
-          {isIOS && !isStandalone && (
-            <div className="bg-indigo-50 border border-indigo-100 p-4 rounded-2xl text-indigo-900 text-center space-y-1">
-              <p className="font-bold text-xs" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
-              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
-            </div>
-          )}
         </div>
 
         <p className="text-xs text-slate-400 font-bold leading-relaxed">
@@ -695,13 +679,6 @@ export default function App() {
             <ArrowRight size={24} className="sm:size-[32px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
 
-          {isIOS && !isStandalone && (
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
-              <p className="font-bold text-sm" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
-              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
-            </div>
-          )}
-
           <motion.button
             whileHover={{ scale: 1.03, y: -2 }}
             whileTap={{ scale: 0.97 }}
@@ -717,6 +694,25 @@ export default function App() {
             <span>خروج • Exit</span>
             <LogOut size={24} className="sm:size-[28px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={handleInstallClick}
+            className="w-full py-4 bg-emerald-500 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-lg shadow-emerald-900/20 hover:bg-emerald-600 transition-all flex items-center justify-center gap-3 animate-pulse"
+          >
+            <Download size={24} />
+            <span>تثبيت التطبيق • Install App</span>
+          </motion.button>
+
+          {isIOS && !isStandalone && (
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-white text-center space-y-2">
+              <p className="font-bold text-sm" dir="rtl">لمستخدمي آيفون: اضغط على زر "مشاركة" ثم "إضافة إلى الصفحة الرئيسية" لتثبيت التطبيق 📲</p>
+              <p className="text-[10px] opacity-70 uppercase tracking-widest">Tap "Share" then "Add to Home Screen"</p>
+            </div>
+          )}
 
           <p className="text-center text-indigo-200/80 font-medium text-xs sm:text-sm tracking-widest uppercase">
             Interactive Learning Experience

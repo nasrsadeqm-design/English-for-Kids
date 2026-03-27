@@ -1,12 +1,10 @@
-const CACHE_NAME = 'alfawaris-v5';
+const CACHE_NAME = 'alfawares-v10';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icon-192.png',
-  '/icon-512.png',
-  '/src/main.tsx',
-  '/src/App.tsx'
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
