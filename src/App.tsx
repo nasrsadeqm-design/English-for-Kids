@@ -151,33 +151,6 @@ export default function App() {
   const [allWords, setAllWords] = useState<Word[]>(words);
   const [selectedGrammarLesson, setSelectedGrammarLesson] = useState<any>(null);
   const [globalGrammarQuestions, setGlobalGrammarQuestions] = useState<any[]>([]);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-  const [isStandalone, setIsStandalone] = useState(false);
-
-  useEffect(() => {
-    const checkStandalone = () => {
-      return (window.navigator as any).standalone || window.matchMedia('(display-mode: standalone)').matches;
-    };
-    setIsStandalone(checkStandalone());
-
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      console.log('✅ PWA Install Prompt is ready to be shown');
-    };
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    console.log('🔍 PWA Logic Initialized. Standalone:', checkStandalone());
-    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-  }, []);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
-    }
-  };
 
   // Use the 5000 students from the JSON file
   const studentsData = studentsDataRaw;
@@ -680,20 +653,6 @@ export default function App() {
             <span>خروج • Exit</span>
             <LogOut size={24} className="sm:size-[28px] group-hover:-translate-x-1 transition-transform" />
           </motion.button>
-
-          {deferredPrompt && !isStandalone && (
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={handleInstallClick}
-              className="w-full py-4 bg-emerald-500 text-white rounded-2xl sm:rounded-3xl font-black text-lg sm:text-xl shadow-lg shadow-emerald-900/20 hover:bg-emerald-600 transition-all flex items-center justify-center gap-3 animate-pulse"
-            >
-              <Download size={24} />
-              <span>تثبيت التطبيق • Install App</span>
-            </motion.button>
-          )}
 
           <p className="text-center text-indigo-200/80 font-medium text-xs sm:text-sm tracking-widest uppercase">
             Interactive Learning Experience

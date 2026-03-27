@@ -6,19 +6,51 @@
     <meta name="theme-color" content="#0d47a1" />
     <title>Al-Fawaris English</title>
     <link rel="icon" type="image/png" href="/icons/icon-192.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d47a1">
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <button id="installBtn" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;background-color:#0d47a1;color:white;border:none;padding:10px 20px;border-radius:50px;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.3);cursor:pointer;">
+      تثبيت التطبيق • Install App
+    </button>
+
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
+        window.addEventListener('load', function() {
           navigator.serviceWorker.register('/sw.js')
             .then(reg => console.log('SW Registered', reg))
             .catch(err => console.log('SW Error', err));
         });
       }
+
+      let deferredPrompt;
+      const installBtn = document.getElementById('installBtn');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        console.log('✅ PWA Install Prompt ready');
+        // Show the button on all devices (mobile + desktop)
+        installBtn.style.display = 'block';
+      });
+
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const result = await deferredPrompt.userChoice;
+          console.log('User choice:', result.outcome);
+          deferredPrompt = null;
+          installBtn.style.display = 'none';
+        }
+      });
+
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('✅ App installed successfully');
+        installBtn.style.display = 'none';
+      });
     </script>
   </body>
 </html>
