@@ -2,8 +2,8 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-const icon192Url = 'https://i.ibb.co/xtpjQBbd/icon-192-png.png';
-const icon512Url = 'https://i.ibb.co/KzfLFZgT/icon-512-png.png';
+const icon192Url = 'https://alfawaresbook.netlify.app/icon-192.png';
+const icon512Url = 'https://alfawaresbook.netlify.app/icon-512.png';
 const iconsDir = path.join(__dirname, 'public', 'icons');
 
 if (!fs.existsSync(iconsDir)) {
