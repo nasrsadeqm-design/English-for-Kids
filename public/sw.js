@@ -1,4 +1,4 @@
-const CACHE_NAME = 'alfwares-books-v1';
+const CACHE_NAME = 'alfawares-books-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
