@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -176,22 +176,21 @@ export default function App() {
     checkActivation();
   }, []);
 
-  const [adminClickCount, setAdminClickCount] = useState(0);
+  const adminClickRef = useRef(0);
   const [showAdminAuth, setShowAdminAuth] = useState(false);
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const [isAdminLoading, setIsAdminLoading] = useState(false);
   const [adminError, setAdminError] = useState('');
 
   const handleLogoClick = () => {
-    setAdminClickCount(prev => {
-      const newCount = prev + 1;
-      if (newCount >= 10) {
-        setShowAdminAuth(true);
-        setAdminError('');
-        return 0;
-      }
-      return newCount;
-    });
+    adminClickRef.current += 1;
+    console.log('Logo clicked:', adminClickRef.current);
+    if (adminClickRef.current >= 10) {
+      console.log('Admin auth triggered');
+      setShowAdminAuth(true);
+      setAdminError('');
+      adminClickRef.current = 0;
+    }
   };
 
   const handleAdminLogin = async () => {
@@ -407,9 +406,21 @@ export default function App() {
         animate={{ scale: 1, opacity: 1 }}
         className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl p-8 sm:p-12 border-2 border-indigo-50 text-center space-y-8"
       >
-        <div className="w-20 h-20 bg-indigo-100 rounded-3xl mx-auto flex items-center justify-center text-indigo-600">
-          <ShieldCheck size={48} />
-        </div>
+          <motion.div 
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", stiffness: 100 }}
+            className="w-24 h-24 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
+            onPointerDown={handleLogoClick}
+          >
+            <img 
+              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
+              alt="Al-Fawaris Logo" 
+              className="w-full h-full object-contain drop-shadow-2xl"
+              referrerPolicy="no-referrer"
+              draggable="false"
+            />
+          </motion.div>
         
         <div className="space-y-2">
           <h2 className="text-3xl font-black text-slate-800">تفعيل الكتاب</h2>
@@ -597,13 +608,14 @@ export default function App() {
             animate={{ scale: 1 }}
             transition={{ type: "spring", stiffness: 100 }}
             className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
-            onClick={handleLogoClick}
+            onPointerDown={handleLogoClick}
           >
             <img 
               src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
               alt="Al-Fawaris Logo" 
               className="w-full h-full object-contain drop-shadow-2xl"
               referrerPolicy="no-referrer"
+              draggable="false"
             />
           </motion.div>
           
@@ -683,13 +695,14 @@ export default function App() {
             initial={{ scale: 0.5, y: -20 }}
             animate={{ scale: 1, y: 0 }}
             className="w-28 h-28 md:w-40 md:h-40 flex items-center justify-center mb-1 cursor-pointer active:scale-95 transition-transform"
-            onClick={handleLogoClick}
+            onPointerDown={handleLogoClick}
           >
             <img 
               src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
               alt="Al-Fawaris Logo" 
               className="w-full h-full object-contain drop-shadow-2xl"
               referrerPolicy="no-referrer"
+              draggable="false"
             />
           </motion.div>
           
@@ -962,121 +975,129 @@ export default function App() {
     );
   }
 
-  if (isActivated === false) return renderActivation();
-  if (view === 'admin') return renderAdmin();
-  if (view === 'landing') return renderLanding();
+  const renderCurrentView = () => {
+    if (isActivated === false) return renderActivation();
+    if (view === 'admin') return renderAdmin();
+    if (view === 'landing') return renderLanding();
+
+    return (
+      <div className="min-h-screen pb-28 pt-10 px-4 sm:px-6 bg-indigo-50/30">
+        <div className="max-w-3xl mx-auto">
+          <AnimatePresence mode="wait">
+            <motion.div key={view} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3, ease: "easeOut" }}>
+              {view === 'home' && renderHome()}
+              {view === 'grammar-list' && renderGrammarList()}
+              {view === 'grammar-lesson' && selectedGrammarLesson && (
+                <GrammarLesson 
+                  lesson={selectedGrammarLesson} 
+                  onComplete={() => setView('grammar-quiz')} 
+                  onBack={() => setView('grammar-list')} 
+                />
+              )}
+              {view === 'grammar-quiz' && selectedGrammarLesson && (
+                <GrammarQuiz 
+                  questions={selectedGrammarLesson.quiz} 
+                  onComplete={(score) => console.log('Quiz completed with score:', score)} 
+                  onBack={() => setView('grammar-list')} 
+                />
+              )}
+              {view === 'situations' && renderSituations()}
+              {view === 'global-grammar-quiz' && (
+                <GrammarQuiz 
+                  questions={globalGrammarQuestions} 
+                  onComplete={(score) => console.log('Global Quiz completed with score:', score)} 
+                  onBack={() => setView('select-category')} 
+                  backText="العودة لقائمة الاختبارات"
+                  title="اختبار القواعد الشامل 🏆"
+                />
+              )}
+              {view === 'games-menu' && renderGamesMenu()}
+              {view === 'select-category' && renderSelectCategory()}
+              {view === 'category' && renderCategory()}
+              {view === 'flashcards' && <FlashcardView words={filteredWords} onBack={handleBack} />}
+              {view === 'match' && (
+                <div className="space-y-10">
+                  <div className="flex items-center gap-6">
+                    <BackButton onClick={handleBack} />
+                    <h2 className="text-3xl font-black text-slate-800">لعبة التوصيل</h2>
+                  </div>
+                  <MatchGame words={filteredWords} onComplete={() => setView('category')} />
+                </div>
+              )}
+              {view === 'quiz' && (
+                <div className="space-y-10"><Quiz words={filteredWords} onBack={handleBack} /></div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-8 py-5 flex justify-around items-center z-50">
+          <button onClick={() => setView('home')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'home' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
+            <LayoutGrid size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الرئيسية</span>
+          </button>
+          <button onClick={() => setView('grammar-list')} className={cn("flex flex-col items-center gap-1.5 transition-all", view.includes('grammar') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
+            <BookOpen size={28} /><span className="text-[10px] font-black uppercase tracking-widest">القواعد</span>
+          </button>
+          <button onClick={() => setView('games-menu')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'games-menu' || view === 'quiz' || view === 'flashcards' || view === 'match' || view === 'select-category' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
+            <Trophy size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
+          </button>
+        </nav>
+      </div>
+    );
+  };
 
   return (
-    <div className="min-h-screen pb-28 pt-10 px-4 sm:px-6 bg-indigo-50/30">
-      <div className="max-w-3xl mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.div key={view} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3, ease: "easeOut" }}>
-            {view === 'home' && renderHome()}
-            {view === 'grammar-list' && renderGrammarList()}
-            {view === 'grammar-lesson' && selectedGrammarLesson && (
-              <GrammarLesson 
-                lesson={selectedGrammarLesson} 
-                onComplete={() => setView('grammar-quiz')} 
-                onBack={() => setView('grammar-list')} 
-              />
-            )}
-            {view === 'grammar-quiz' && selectedGrammarLesson && (
-              <GrammarQuiz 
-                questions={selectedGrammarLesson.quiz} 
-                onComplete={(score) => console.log('Quiz completed with score:', score)} 
-                onBack={() => setView('grammar-list')} 
-              />
-            )}
-            {view === 'situations' && renderSituations()}
-            {view === 'global-grammar-quiz' && (
-              <GrammarQuiz 
-                questions={globalGrammarQuestions} 
-                onComplete={(score) => console.log('Global Quiz completed with score:', score)} 
-                onBack={() => setView('select-category')} 
-                backText="العودة لقائمة الاختبارات"
-                title="اختبار القواعد الشامل 🏆"
-              />
-            )}
-            {view === 'games-menu' && renderGamesMenu()}
-            {view === 'select-category' && renderSelectCategory()}
-            {view === 'category' && renderCategory()}
-            {view === 'flashcards' && <FlashcardView words={filteredWords} onBack={handleBack} />}
-            {view === 'match' && (
-              <div className="space-y-10">
-                <div className="flex items-center gap-6">
-                  <BackButton onClick={handleBack} />
-                  <h2 className="text-3xl font-black text-slate-800">لعبة التوصيل</h2>
-                </div>
-                <MatchGame words={filteredWords} onComplete={() => setView('category')} />
-              </div>
-            )}
-            {view === 'quiz' && (
-              <div className="space-y-10"><Quiz words={filteredWords} onBack={handleBack} /></div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+    <>
+      {renderCurrentView()}
 
-        {showAdminAuth && (
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="bg-white rounded-[2.5rem] p-8 max-w-sm w-full text-center space-y-6 shadow-2xl"
-            >
-              <div className="w-20 h-20 bg-indigo-100 rounded-3xl mx-auto flex items-center justify-center text-indigo-600">
-                {isAdminLoading ? (
-                  <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-600"></div>
-                ) : (
-                  <Lock size={40} />
-                )}
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl font-black text-slate-800">دخول المسؤول</h3>
-                <p className="text-slate-500 font-bold">هذه المنطقة محمية. يرجى تسجيل الدخول للمتابعة.</p>
-              </div>
-              
-              {adminError && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-rose-500 bg-rose-50 p-3 rounded-xl text-sm font-bold"
-                >
-                  {adminError}
-                </motion.div>
+      {showAdminAuth && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="bg-white rounded-[2.5rem] p-8 max-w-sm w-full text-center space-y-6 shadow-2xl"
+          >
+            <div className="w-20 h-20 bg-indigo-100 rounded-3xl mx-auto flex items-center justify-center text-indigo-600">
+              {isAdminLoading ? (
+                <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-600"></div>
+              ) : (
+                <Lock size={40} />
               )}
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-2xl font-black text-slate-800">دخول المسؤول</h3>
+              <p className="text-slate-500 font-bold">هذه المنطقة محمية. يرجى تسجيل الدخول للمتابعة.</p>
+            </div>
+            
+            {adminError && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-rose-500 bg-rose-50 p-3 rounded-xl text-sm font-bold"
+              >
+                {adminError}
+              </motion.div>
+            )}
 
-              <button 
-                onClick={handleAdminLogin}
-                disabled={isAdminLoading}
-                className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-indigo-700 transition-all disabled:opacity-50"
-              >
-                <span>{isAdminLoading ? 'جاري التحقق...' : 'تسجيل الدخول بجوجل'}</span>
-              </button>
-              <button 
-                onClick={() => {
-                  setShowAdminAuth(false);
-                  setAdminError('');
-                }}
-                disabled={isAdminLoading}
-                className="text-slate-400 font-bold hover:text-slate-600 transition-colors"
-              >
-                إلغاء
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </div>
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/90 backdrop-blur-xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[2.5rem] px-8 py-5 flex justify-around items-center z-50">
-        <button onClick={() => setView('home')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'home' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
-          <LayoutGrid size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الرئيسية</span>
-        </button>
-        <button onClick={() => setView('grammar-list')} className={cn("flex flex-col items-center gap-1.5 transition-all", view.includes('grammar') ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
-          <BookOpen size={28} /><span className="text-[10px] font-black uppercase tracking-widest">القواعد</span>
-        </button>
-        <button onClick={() => setView('games-menu')} className={cn("flex flex-col items-center gap-1.5 transition-all", view === 'games-menu' || view === 'quiz' || view === 'flashcards' || view === 'match' || view === 'select-category' ? "text-indigo-600 scale-110" : "text-slate-400 hover:text-slate-600")}>
-          <Trophy size={28} /><span className="text-[10px] font-black uppercase tracking-widest">الاختبار</span>
-        </button>
-      </nav>
-    </div>
+            <button 
+              onClick={handleAdminLogin}
+              disabled={isAdminLoading}
+              className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black text-lg flex items-center justify-center gap-3 hover:bg-indigo-700 transition-all disabled:opacity-50"
+            >
+              <span>{isAdminLoading ? 'جاري التحقق...' : 'تسجيل الدخول بجوجل'}</span>
+            </button>
+            <button 
+              onClick={() => {
+                setShowAdminAuth(false);
+                setAdminError('');
+              }}
+              disabled={isAdminLoading}
+              className="text-slate-400 font-bold hover:text-slate-600 transition-colors"
+            >
+              إلغاء
+            </button>
+          </motion.div>
+        </div>
+      )}
+    </>
   );
 }
