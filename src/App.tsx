@@ -39,7 +39,7 @@ import {
 } from './utils/activation';
 import { db, auth } from './firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider, browserPopupRedirectResolver } from 'firebase/auth';
 import { GrammarLesson } from './components/GrammarLesson';
 import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
@@ -200,7 +200,7 @@ export default function App() {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
       
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider, browserPopupRedirectResolver);
       
       // Double checking email for safety
       if (result.user.email === 'nasrsadeqm@gmail.com') {
@@ -218,7 +218,9 @@ export default function App() {
       } else if (err.code === 'auth/unauthorized-domain') {
         setAdminError('هذا النطاق (Domain) غير مصرح له بتسجيل الدخول في Firebase. يرجى إضافة رابط Netlify إلى قائمة النطاقات المصرح بها في Firebase Console.');
       } else {
-        setAdminError(`حدث خطأ أثناء تسجيل الدخول (${err.code || 'unknown'}). يرجى المحاولة مرة أخرى.`);
+        const errorMessage = err.message || 'Unknown error';
+        const errorCode = err.code || 'unknown';
+        setAdminError(`حدث خطأ أثناء تسجيل الدخول (${errorCode}). التفاصيل: ${errorMessage}. يرجى المحاولة مرة أخرى.`);
       }
     } finally {
       setIsAdminLoading(false);
@@ -875,24 +877,27 @@ export default function App() {
       </div>
       <div className="grid grid-cols-1 gap-4">
         {filteredWords.map((word) => (
-          <motion.div key={word.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-6 bg-white rounded-[2rem] shadow-sm flex items-center justify-between group hover:shadow-md hover:scale-[1.01] transition-all border-2 border-transparent hover:border-indigo-50">
-            <div className="flex items-center gap-5">
-              <div className="flex flex-col gap-2">
-                <button onClick={() => speak(word.english, 'UK')} className="flex items-center justify-center gap-2 px-3 py-2 bg-indigo-50 rounded-xl text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm group/btn" title="British English">
-                  <Volume2 size={16} />
-                  <span className="text-xs font-bold tracking-wider">UK</span>
+          <motion.div key={word.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 md:p-6 bg-white rounded-[1.5rem] md:rounded-[2rem] shadow-sm flex items-center justify-between group hover:shadow-md hover:scale-[1.01] transition-all border-2 border-transparent hover:border-indigo-50">
+            <div className="flex items-center gap-4 md:gap-5">
+              <div className="flex flex-col gap-1.5">
+                <button onClick={() => speak(word.english, 'UK')} className="flex items-center justify-center gap-1.5 px-2 py-1.5 bg-indigo-50 rounded-lg text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm group/btn" title="British English">
+                  <Volume2 size={14} />
+                  <span className="text-[10px] font-bold tracking-wider">UK</span>
                 </button>
-                <button onClick={() => speak(word.english, 'US')} className="flex items-center justify-center gap-2 px-3 py-2 bg-rose-50 rounded-xl text-rose-600 hover:bg-rose-600 hover:text-white transition-all shadow-sm group/btn" title="American English">
-                  <Volume2 size={16} />
-                  <span className="text-xs font-bold tracking-wider">US</span>
+                <button onClick={() => speak(word.english, 'US')} className="flex items-center justify-center gap-1.5 px-2 py-1.5 bg-rose-50 rounded-lg text-rose-600 hover:bg-rose-600 hover:text-white transition-all shadow-sm group/btn" title="American English">
+                  <Volume2 size={14} />
+                  <span className="text-[10px] font-bold tracking-wider">US</span>
                 </button>
               </div>
-              <div>
-                <p className="text-2xl font-black text-slate-800 tracking-tight">{word.english}</p>
-                <p className="text-xs font-black text-indigo-400 uppercase tracking-widest mt-0.5">{word.category}</p>
+              <div className="flex flex-col">
+                <p className="text-lg md:text-2xl font-black text-slate-800 tracking-tight">{word.english}</p>
+                <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest mt-0.5">{word.category}</p>
               </div>
             </div>
-            <p className="text-3xl font-black text-indigo-600" dir="rtl">{word.arabic}</p>
+            <div className="flex items-center gap-3">
+              <p className="text-sm md:text-lg font-bold text-indigo-600" dir="rtl">{word.arabic}</p>
+              <ChevronRight size={20} className="text-slate-200 group-hover:text-indigo-200 transition-colors" />
+            </div>
           </motion.div>
         ))}
       </div>
@@ -913,7 +918,7 @@ export default function App() {
       <div className="space-y-8">
         <div className="flex items-center gap-6">
           <BackButton onClick={() => setView('home')} />
-          <h2 className="text-3xl font-black text-slate-800">قواعد اللغة الإنجليزية</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-slate-800 whitespace-nowrap">قواعد اللغة الإنجليزية</h2>
         </div>
         <div className="grid grid-cols-1 gap-4">
           {allGrammarLessons.map((lesson, index) => {
@@ -937,9 +942,16 @@ export default function App() {
                 <div className={cn("p-4 rounded-2xl group-hover:scale-110 transition-transform", colors.light)}>
                   <ChevronRight size={24} />
                 </div>
-                <div>
-                  <p className={cn("text-2xl font-black tracking-tight", colors.text)}>{lesson.title}</p>
-                  <p className={cn("text-sm font-bold mt-1", colors.subtext)}>{lesson.description}</p>
+                <div className="flex flex-col items-end gap-1">
+                  <p className={cn("text-lg sm:text-xl md:text-2xl font-black tracking-tight leading-tight", colors.text)}>
+                    {lesson.title.split('(')[0].trim()}
+                  </p>
+                  {lesson.title.includes('(') && (
+                    <p className={cn("text-xs sm:text-sm font-bold opacity-80", colors.subtext)}>
+                      {lesson.title.split('(')[1].replace(')', '').trim()}
+                    </p>
+                  )}
+                  <p className={cn("text-xs sm:text-sm font-bold mt-1", colors.subtext)}>{lesson.description}</p>
                 </div>
               </motion.button>
             );

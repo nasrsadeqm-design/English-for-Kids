@@ -1752,14 +1752,14 @@ export const pastContinuousLesson: GrammarLessonData = {
     {
       id: 'q7',
       type: 'arrange',
-      question: 'you / watch TV / yesterday evening',
+      question: 'هل كنت تشاهد التلفاز مساء أمس؟',
       correctAnswer: ['Were', 'you', 'watching', 'TV', 'yesterday', 'evening', '?'],
       explanation: 'تكوين السؤال: Were + you + watching + TV...'
     },
     {
       id: 'q8',
       type: 'arrange',
-      question: 'he / play football / yesterday',
+      question: 'هل كان يلعب كرة القدم أمس؟',
       correctAnswer: ['Was', 'he', 'playing', 'football', 'yesterday', '?'],
       explanation: 'تكوين السؤال: Was + he + playing + football...'
     },
@@ -2064,14 +2064,14 @@ export const presentPerfectLesson: GrammarLessonData = {
     {
       id: 'q7',
       type: 'arrange',
-      question: 'you / ever / eat sushi',
+      question: 'هل سبق لك أن أكلت السوشي؟',
       correctAnswer: ['Have', 'you', 'ever', 'eaten', 'sushi', '?'],
       explanation: 'تكوين السؤال: Have + you + ever + V3 (eaten)...'
     },
     {
       id: 'q8',
       type: 'arrange',
-      question: 'he / just / arrive',
+      question: 'لقد وصل للتو.',
       correctAnswer: ['He', 'has', 'just', 'arrived'],
       explanation: 'تكوين الجملة: He + has + just + V3 (arrived).'
     },
@@ -2364,14 +2364,14 @@ export const pastPerfectLesson: GrammarLessonData = {
     {
       id: 'q7',
       type: 'arrange',
-      question: 'you / finish your homework before he came',
+      question: 'هل كنت قد أنهيت واجبك المنزلي قبل أن يأتي؟',
       correctAnswer: ['Had', 'you', 'finished', 'your', 'homework', 'before', 'he', 'came', '?'],
       explanation: 'تكوين السؤال: Had + subject + V3...'
     },
     {
       id: 'q8',
       type: 'arrange',
-      question: 'she / leave when I arrived',
+      question: 'هل كانت قد غادرت عندما وصلت؟',
       correctAnswer: ['Had', 'she', 'left', 'when', 'I', 'arrived', '?'],
       explanation: 'تكوين السؤال: Had + subject + V3...'
     },
@@ -3418,7 +3418,7 @@ export const conditionalsLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: لو كنت درست، لنجحت.',
+      question: 'لو كنت درست، لنجحت.',
       options: ['studied', 'would', 'If', 'passed', 'had', 'have', 'I', 'I'],
       correctAnswer: ['If', 'I', 'had', 'studied', 'I', 'would', 'have', 'passed'],
       explanation: 'هذا ندم على الماضي (الحالة الثالثة): If + Past Perfect -> would have + P.P.'
@@ -3426,7 +3426,7 @@ export const conditionalsLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: إذا لم تذاكر، سترسب.',
+      question: 'إذا لم تذاكر، سترسب.',
       options: ['you', 'Unless', 'fail', 'will', 'study', 'you'],
       correctAnswer: ['Unless', 'you', 'study', 'you', 'will', 'fail'],
       explanation: 'استخدام Unless (إذا لم) مع الحالة الأولى.'
@@ -3434,7 +3434,7 @@ export const conditionalsLesson: GrammarLessonData = {
     {
       id: 'q10',
       type: 'arrange',
-      question: 'ترجم: إذا أمطرت، سأبقى في البيت.',
+      question: 'إذا أمطرت، سأبقى في البيت.',
       options: ['If', 'it', 'rains,', 'I', 'will', 'stay', 'at', 'home.'],
       correctAnswer: ['If', 'it', 'rains,', 'I', 'will', 'stay', 'at', 'home.'],
       explanation: 'الحالة الأولى (واقعية): If + Present Simple -> will + مصدر.'
@@ -3442,7 +3442,7 @@ export const conditionalsLesson: GrammarLessonData = {
     {
       id: 'q11',
       type: 'arrange',
-      question: 'ترجم: لو كنت مكانك، لذهبت إلى الطبيب.',
+      question: 'لو كنت مكانك، لذهبت إلى الطبيب.',
       options: ['If', 'I', 'were', 'you,', 'I', 'would', 'go', 'to', 'the', 'doctor.'],
       correctAnswer: ['If', 'I', 'were', 'you,', 'I', 'would', 'go', 'to', 'the', 'doctor.'],
       explanation: 'الحالة الثانية (نصيحة): If I were you + would + مصدر.'
@@ -3854,7 +3854,7 @@ export const passiveVoiceLesson: GrammarLessonData = {
     {
       id: 'q5',
       type: 'arrange',
-      question: 'was / The / yesterday / letter / written',
+      question: 'لقد كُتبت الرسالة أمس.',
       correctAnswer: ['The', 'letter', 'was', 'written', 'yesterday'],
       explanation: 'المفعول به (The letter) + was + التصريف الثالث (written) + ظرف الزمان (yesterday).'
     }
@@ -4849,7 +4849,7 @@ export const questionTagsLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: أنت ذكي، أليس كذلك؟',
+      question: 'أنت ذكي، أليس كذلك؟',
       options: ['You', 'are', 'smart,', 'aren’t', 'you?'],
       correctAnswer: ['You', 'are', 'smart,', 'aren’t', 'you?'],
       explanation: 'الترجمة الصحيحة هي You are smart, aren’t you?'
@@ -4857,7 +4857,7 @@ export const questionTagsLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: هو لم يذهب، أليس كذلك؟',
+      question: 'هو لم يذهب، أليس كذلك؟',
       options: ['He', 'didn’t', 'go,', 'did', 'he?'],
       correctAnswer: ['He', 'didn’t', 'go,', 'did', 'he?'],
       explanation: 'الترجمة الصحيحة هي He didn’t go, did he?'
@@ -5154,7 +5154,7 @@ export const politeRequestsLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: هل يمكنك مساعدتي؟',
+      question: 'هل يمكنك مساعدتي؟',
       options: ['Can', 'you', 'help', 'me?'],
       correctAnswer: ['Can', 'you', 'help', 'me?'],
       explanation: 'الترجمة الصحيحة هي Can you help me?'
@@ -5162,7 +5162,7 @@ export const politeRequestsLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: هل تمانع فتح النافذة؟',
+      question: 'هل تمانع فتح النافذة؟',
       options: ['Would', 'you', 'mind', 'opening', 'the', 'window?'],
       correctAnswer: ['Would', 'you', 'mind', 'opening', 'the', 'window?'],
       explanation: 'الترجمة الصحيحة هي Would you mind opening the window?'
@@ -5396,7 +5396,7 @@ export const givingAdviceLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: يجب أن تنام مبكرًا.',
+      question: 'يجب أن تنام مبكرًا.',
       options: ['You', 'should', 'sleep', 'early.'],
       correctAnswer: ['You', 'should', 'sleep', 'early.'],
       explanation: 'الترجمة الصحيحة هي You should sleep early.'
@@ -5404,7 +5404,7 @@ export const givingAdviceLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: لو كنت مكانك، لما ذهبت.',
+      question: 'لو كنت مكانك، لما ذهبت.',
       options: ['If', 'I', 'were', 'you,', 'I', 'wouldn\'t', 'go.'],
       correctAnswer: ['If', 'I', 'were', 'you,', 'I', 'wouldn\'t', 'go.'],
       explanation: 'الترجمة الصحيحة هي If I were you, I wouldn\'t go.'
@@ -5701,7 +5701,7 @@ export const quantityLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: لدي بعض الماء.',
+      question: 'لدي بعض الماء.',
       options: ['I', 'have', 'some', 'water'],
       correctAnswer: ['I', 'have', 'some', 'water'],
       explanation: 'الترجمة الصحيحة هي I have some water.'
@@ -5709,7 +5709,7 @@ export const quantityLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: لا يوجد الكثير من الطلاب.',
+      question: 'لا يوجد الكثير من الطلاب.',
       options: ['There', 'aren\'t', 'many', 'students'],
       correctAnswer: ['There', 'aren\'t', 'many', 'students'],
       explanation: 'الترجمة الصحيحة هي There aren\'t many students.'
@@ -5717,7 +5717,7 @@ export const quantityLesson: GrammarLessonData = {
     {
       id: 'q10',
       type: 'arrange',
-      question: 'ترجم: هل لديك أي أسئلة؟',
+      question: 'هل لديك أي أسئلة؟',
       options: ['Do', 'you', 'have', 'any', 'questions?'],
       correctAnswer: ['Do', 'you', 'have', 'any', 'questions?'],
       explanation: 'في السؤال نستخدم Do ونستخدم any مع الأسماء المعدودة في صيغة الجمع.'
@@ -6044,7 +6044,7 @@ export const reportedSpeechLesson: GrammarLessonData = {
     {
       id: 'q7',
       type: 'arrange',
-      question: 'ترجم: قال: "أنا سأدرس"',
+      question: 'قال: "أنا سأدرس"',
       options: ['He', 'said', 'that', 'he', 'would', 'study'],
       correctAnswer: ['He', 'said', 'that', 'he', 'would', 'study'],
       explanation: 'نحول "I will study" إلى "he would study".'
@@ -6052,7 +6052,7 @@ export const reportedSpeechLesson: GrammarLessonData = {
     {
       id: 'q8',
       type: 'arrange',
-      question: 'ترجم: قال: "أين تسكن؟"',
+      question: 'قال: "أين تسكن؟"',
       options: ['He', 'asked', 'where', 'I', 'lived'],
       correctAnswer: ['He', 'asked', 'where', 'I', 'lived'],
       explanation: 'في السؤال المنقول، نستخدم asked ونحول الفعل للماضي (lived).'
@@ -6060,7 +6060,7 @@ export const reportedSpeechLesson: GrammarLessonData = {
     {
       id: 'q9',
       type: 'arrange',
-      question: 'ترجم: قال إنه كان متعبًا.',
+      question: 'قال إنه كان متعبًا.',
       options: ['He', 'said', 'that', 'he', 'was', 'tired'],
       correctAnswer: ['He', 'said', 'that', 'he', 'was', 'tired'],
       explanation: 'نحول "I am tired" إلى "he was tired".'
@@ -6068,7 +6068,7 @@ export const reportedSpeechLesson: GrammarLessonData = {
     {
       id: 'q10',
       type: 'arrange',
-      question: 'ترجم: قالت إنها ستذهب إلى المدرسة.',
+      question: 'قالت إنها ستذهب إلى المدرسة.',
       options: ['She', 'said', 'that', 'she', 'would', 'go', 'to', 'school'],
       correctAnswer: ['She', 'said', 'that', 'she', 'would', 'go', 'to', 'school'],
       explanation: 'نحول "I will go" إلى "she would go".'

@@ -26,7 +26,8 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
 
   useEffect(() => {
     if (currentQuestion.type === 'arrange') {
-      const words = currentQuestion.options || (currentQuestion.question as string).split(' / ');
+      // Use correctAnswer as the source of words to ensure all necessary words (like 'Have') are present
+      const words = currentQuestion.options || (currentQuestion.correctAnswer as string[]);
       // Shuffle words but ensure they are not in the correct order initially
       let shuffled = [...words].sort(() => Math.random() - 0.5);
       // If by chance it's the correct order, shuffle again (simple check)
@@ -132,13 +133,44 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
     );
   }
 
+  const formatQuestion = (question: string) => {
+    if (question.includes('صحح الخطأ:')) {
+      const parts = question.split('صحح الخطأ:');
+      return (
+        <div className="space-y-2">
+          <span className="block text-indigo-600 font-black text-lg md:text-xl">صحح الخطأ:</span>
+          <span className="block text-xl md:text-2xl text-slate-800" dir="ltr">{parts[1].trim()}</span>
+        </div>
+      );
+    }
+    if (question.includes('اختر السؤال الصحيح لـ')) {
+      const parts = question.split('اختر السؤال الصحيح لـ');
+      return (
+        <div className="space-y-2">
+          <span className="block text-indigo-600 font-black text-lg md:text-xl">اختر السؤال الصحيح لـ</span>
+          <span className="block text-xl md:text-2xl text-slate-800" dir="ltr">{parts[1].trim()}</span>
+        </div>
+      );
+    }
+    if (question.includes('اختر السؤال الصحيح ل')) {
+      const parts = question.split('اختر السؤال الصحيح ل');
+      return (
+        <div className="space-y-2">
+          <span className="block text-indigo-600 font-black text-lg md:text-xl">اختر السؤال الصحيح ل</span>
+          <span className="block text-xl md:text-2xl text-slate-800" dir="ltr">{parts[1].trim()}</span>
+        </div>
+      );
+    }
+    return <span className="text-xl md:text-2xl font-black text-slate-800" dir="ltr">{question}</span>;
+  };
+
   const renderQuestionContent = () => {
     switch (currentQuestion.type) {
       case 'true_false':
         return (
           <div className="space-y-6">
-            <h3 className="text-2xl font-black text-center text-slate-800" dir="ltr">
-              {currentQuestion.question as string}
+            <h3 className="text-center">
+              {formatQuestion(currentQuestion.question as string)}
             </h3>
             <div className="grid grid-cols-2 gap-4">
               <button
@@ -172,8 +204,8 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
       case 'multiple_choice':
         return (
           <div className="space-y-6">
-            <h3 className="text-2xl font-black text-center text-slate-800" dir="ltr">
-              {currentQuestion.question as string}
+            <h3 className="text-center">
+              {formatQuestion(currentQuestion.question as string)}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" dir="ltr">
               {currentQuestion.options?.map((option, idx) => (
@@ -182,13 +214,13 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
                   onClick={() => handleAnswer(option)}
                   disabled={showFeedback}
                   className={cn(
-                    "p-4 rounded-2xl font-black text-xl transition-all border-4 text-left",
+                    "p-3 md:p-4 rounded-2xl font-black text-lg md:text-xl transition-all border-4 text-left",
                     showFeedback && currentQuestion.correctAnswer === option ? "bg-emerald-50 border-emerald-500 text-emerald-700" :
                     showFeedback && selectedAnswer === option ? "bg-red-50 border-red-500 text-red-700" :
                     "bg-white border-slate-100 hover:border-indigo-200 text-slate-700 hover:bg-indigo-50"
                   )}
                 >
-                  <span className="text-indigo-400 mr-3">{String.fromCharCode(97 + idx)})</span>
+                  <span className="text-indigo-400 mr-2 md:mr-3">{String.fromCharCode(97 + idx)})</span>
                   {option}
                 </button>
               ))}
@@ -198,34 +230,33 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
 
       case 'arrange':
         const isCorrectArrange = arrangedWords.join(' ') === (currentQuestion.correctAnswer as string[]).join(' ');
-        const targetWords = currentQuestion.options || (currentQuestion.question as string).split(' / ');
+        const targetWords = currentQuestion.options || (currentQuestion.correctAnswer as string[]);
 
         return (
-          <div className="space-y-8">
-            <div className="text-center space-y-3">
-              <p className="text-slate-500 font-bold text-lg">ترجم الجملة التالية إلى الإنجليزية:</p>
-              <h3 className="text-3xl font-black text-indigo-600 bg-indigo-50 py-4 px-6 rounded-2xl inline-block" dir="rtl">
+          <div className="space-y-6 md:space-y-8">
+            <div className="text-center space-y-2 md:space-y-3">
+              <h3 className="text-xl md:text-3xl font-black text-indigo-600 bg-indigo-50 py-3 px-5 md:py-4 md:px-6 rounded-2xl inline-block" dir="rtl">
                 {currentQuestion.question as string}
               </h3>
             </div>
 
             <div className="relative group">
-              <div className="min-h-[120px] p-6 bg-white border-4 border-dashed border-slate-200 rounded-[2rem] flex flex-wrap gap-3 items-center justify-center transition-all group-hover:border-indigo-200" dir="ltr">
+              <div className="min-h-[100px] md:min-h-[120px] p-4 md:p-6 bg-white border-4 border-dashed border-slate-200 rounded-[1.5rem] md:rounded-[2rem] flex flex-wrap gap-2 md:gap-3 items-center justify-center transition-all group-hover:border-indigo-200" dir="ltr">
                 {arrangedWords.map((word, idx) => (
                   <motion.button
                     key={`arr-${idx}-${word}`}
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     onClick={() => handleArrangeWord(word, idx, false)}
-                    className="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-black text-lg shadow-md hover:bg-indigo-700 active:scale-95 transition-all"
+                    className="px-3 py-1.5 md:px-5 md:py-2.5 bg-indigo-600 text-white rounded-xl font-black text-base md:text-lg shadow-md hover:bg-indigo-700 active:scale-95 transition-all"
                   >
                     {word}
                   </motion.button>
                 ))}
                 {arrangedWords.length === 0 && (
-                  <div className="flex flex-col items-center gap-2 text-slate-400">
-                    <AlertCircle size={32} className="opacity-20" />
-                    <span className="font-bold">اضغط على الكلمات بالأسفل لترتيبها هنا</span>
+                  <div className="flex flex-col items-center gap-1 md:gap-2 text-slate-400">
+                    <AlertCircle size={24} className="opacity-20 md:w-8 md:h-8" />
+                    <span className="font-bold text-xs md:text-base">اضغط على الكلمات بالأسفل لترتيبها هنا</span>
                   </div>
                 )}
               </div>
@@ -233,19 +264,18 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
               {arrangedWords.length > 0 && !showFeedback && (
                 <button
                   onClick={resetArrange}
-                  className="absolute -top-3 -right-3 w-10 h-10 bg-white border-2 border-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-sm hover:text-indigo-500 hover:border-indigo-200 transition-all"
+                  className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-8 h-8 md:w-10 md:h-10 bg-white border-2 border-slate-100 text-slate-400 rounded-full flex items-center justify-center shadow-sm hover:text-indigo-500 hover:border-indigo-200 transition-all"
                   title="إعادة الترتيب"
                 >
-                  <RotateCcw size={20} />
+                  <RotateCcw size={16} className="md:w-5 md:h-5" />
                 </button>
               )}
             </div>
 
-            <div className="flex flex-wrap gap-3 justify-center bg-slate-50 p-6 rounded-[2rem]" dir="ltr">
+            <div className="flex flex-wrap gap-2 md:gap-3 justify-center bg-slate-50 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem]" dir="ltr">
               {shuffledWords.map((word, idx) => {
                 // Count occurrences in arrangedWords to see if this instance is used
                 const instancesInArranged = arrangedWords.filter(w => w === word).length;
-                const instancesInTotal = shuffledWords.filter(w => w === word).length;
                 const instancesBeforeThis = shuffledWords.slice(0, idx).filter(w => w === word).length;
                 
                 const isUsed = instancesBeforeThis < instancesInArranged;
@@ -255,7 +285,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
                     key={`src-${idx}-${word}`}
                     onClick={() => !isUsed && handleArrangeWord(word, idx, true)}
                     className={cn(
-                      "px-5 py-2.5 rounded-xl font-black text-lg shadow-sm transition-all",
+                      "px-3 py-1.5 md:px-5 md:py-2.5 rounded-xl font-black text-base md:text-lg shadow-sm transition-all",
                       isUsed 
                         ? "bg-slate-100 text-slate-300 cursor-not-allowed opacity-50" 
                         : "bg-white border-2 border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:-translate-y-1"
@@ -273,7 +303,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 onClick={checkArrangeAnswer}
-                className="w-full py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-xl shadow-xl shadow-indigo-100 transition-all active:scale-95"
+                className="w-full py-4 md:py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-lg md:text-xl shadow-xl shadow-indigo-100 transition-all active:scale-95"
               >
                 تحقق من الإجابة
               </motion.button>
@@ -284,20 +314,20 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 className={cn(
-                  "p-6 rounded-[2rem] font-black text-center text-xl border-4",
+                  "p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] font-black text-center text-lg md:text-xl border-4",
                   isCorrectArrange 
                     ? "bg-emerald-50 border-emerald-200 text-emerald-700" 
                     : "bg-red-50 border-red-200 text-red-700"
                 )}
               >
-                <div className="flex items-center justify-center gap-3 mb-2">
+                <div className="flex items-center justify-center gap-2 md:gap-3 mb-1 md:mb-2 text-base md:text-xl">
                   {isCorrectArrange ? <CheckCircle2 className="text-emerald-500" /> : <XCircle className="text-red-500" />}
                   {isCorrectArrange ? "ترتيب صحيح! أحسنت ✅" : "ترتيب خاطئ ❌"}
                 </div>
                 {!isCorrectArrange && (
-                  <div className="mt-3 p-4 bg-white/50 rounded-xl">
-                    <p className="text-sm text-slate-500 mb-1">الإجابة الصحيحة هي:</p>
-                    <p className="text-2xl font-black text-slate-800" dir="ltr">
+                  <div className="mt-2 md:mt-3 p-3 md:p-4 bg-white/50 rounded-xl">
+                    <p className="text-[10px] md:text-sm text-slate-500 mb-1">الإجابة الصحيحة هي:</p>
+                    <p className="text-lg md:text-2xl font-black text-slate-800" dir="ltr">
                       {(currentQuestion.correctAnswer as string[]).join(' ')}
                     </p>
                   </div>
