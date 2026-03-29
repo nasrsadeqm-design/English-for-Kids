@@ -11,22 +11,38 @@ if (!fs.existsSync(iconsDir)) {
 }
 
 const download = (url, dest) => {
-  const file = fs.createWriteStream(dest);
-  https.get(url, (response) => {
-    if (response.statusCode !== 200) {
-      console.error(`Failed to download ${url}: ${response.statusCode}`);
-      return;
-    }
-    response.pipe(file);
-    file.on('finish', () => {
-      file.close();
-      console.log(`Downloaded ${dest}`);
+  return new Promise((resolve, reject) => {
+    const file = fs.createWriteStream(dest);
+    https.get(url, (response) => {
+      if (response.statusCode !== 200) {
+        reject(new Error(`Failed to download ${url}: ${response.statusCode}`));
+        return;
+      }
+      response.pipe(file);
+      file.on('finish', () => {
+        file.close();
+        console.log(`Downloaded ${dest}`);
+        resolve();
+      });
+    }).on('error', (err) => {
+      fs.unlink(dest, () => {});
+      reject(err);
     });
-  }).on('error', (err) => {
-    fs.unlink(dest, () => {});
-    console.error(`Error downloading ${dest}: ${err.message}`);
   });
 };
 
-download(icon192Url, path.join(iconsDir, 'icon-192.png'));
-download(icon512Url, path.join(iconsDir, 'icon-512.png'));
+async function run() {
+  try {
+    await Promise.all([
+      download(icon192Url, path.join(iconsDir, 'icon-192.png')),
+      download(icon512Url, path.join(iconsDir, 'icon-512.png'))
+    ]);
+    console.log('All icons downloaded successfully');
+    process.exit(0);
+  } catch (err) {
+    console.error('Error downloading icons:', err);
+    process.exit(1);
+  }
+}
+
+run();

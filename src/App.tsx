@@ -600,7 +600,7 @@ export default function App() {
             onClick={handleLogoClick}
           >
             <img 
-              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
+              src="/icons/icon-512.png" 
               alt="Al-Fawaris Logo" 
               className="w-full h-full object-contain drop-shadow-2xl"
               referrerPolicy="no-referrer"
@@ -686,7 +686,7 @@ export default function App() {
             onClick={handleLogoClick}
           >
             <img 
-              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
+              src="/icons/icon-512.png" 
               alt="Al-Fawaris Logo" 
               className="w-full h-full object-contain drop-shadow-2xl"
               referrerPolicy="no-referrer"
