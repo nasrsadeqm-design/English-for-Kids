@@ -2,8 +2,8 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-const icon192Url = 'https://raw.githubusercontent.com/nasrsadeqm-design/English-for-Kids/main/public/icon-192.png';
-const icon512Url = 'https://raw.githubusercontent.com/nasrsadeqm-design/English-for-Kids/main/public/icon-512.png';
+const icon192Url = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
+const icon512Url = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
 const iconsDir = path.join(__dirname, 'public', 'icons');
 
 if (!fs.existsSync(iconsDir)) {

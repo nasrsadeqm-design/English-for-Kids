@@ -1,10 +1,9 @@
-const CACHE_NAME = 'alfawares-books-v2';
+const CACHE_NAME = 'alfawares-books-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png'
 ];
 
 self.addEventListener("install", event => {
