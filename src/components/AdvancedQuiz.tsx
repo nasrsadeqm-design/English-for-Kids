@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { BackButton } from './BackButton';
-import { Logo } from './Logo';
 import { Word } from '../types';
 import { speak, cn } from '../utils';
 
@@ -27,10 +26,9 @@ type TestMode = 'multiple-choice' | 'scramble' | 'missing' | 'match' | 'listenin
 interface AdvancedQuizProps {
   words: Word[];
   onBack: () => void;
-  onLogoClick?: () => void;
 }
 
-export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack, onLogoClick }) => {
+export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack }) => {
   const [mode, setMode] = useState<TestMode | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -221,9 +219,8 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack, onLog
 
   const renderModeSelector = () => (
     <div className="space-y-8">
-      <div className="flex justify-between items-center px-2">
+      <div className="flex justify-start">
         <BackButton onClick={onBack} />
-        <Logo size="small" onClick={onLogoClick} />
       </div>
       <div className="text-center space-y-2">
         <h2 className="text-4xl font-black text-slate-800">اختر نوع الاختبار</h2>
@@ -277,10 +274,7 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack, onLog
     return (
       <div className="space-y-8">
         <div className="flex justify-between items-center px-2">
-          <div className="flex items-center gap-4">
-            <BackButton onClick={() => setMode(null)} />
-            <Logo size="small" onClick={onLogoClick} />
-          </div>
+          <BackButton onClick={() => setMode(null)} />
           <div className="flex flex-col items-end">
             <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
               {mode === 'match' ? 'توصيل الكلمات' : `السؤال ${currentIndex + 1} / ${questions.length}`}
@@ -549,7 +543,6 @@ export const AdvancedQuiz: React.FC<AdvancedQuizProps> = ({ words, onBack, onLog
         animate={{ opacity: 1, scale: 1 }}
         className="bg-white rounded-[4rem] p-12 shadow-2xl text-center border-8 border-indigo-50"
       >
-        <Logo size="large" onClick={onLogoClick} className="mx-auto mb-6" />
         <div className="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-8">
           <Trophy size={64} className="text-indigo-600" />
         </div>

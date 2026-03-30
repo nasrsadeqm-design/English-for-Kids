@@ -4,88 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
-    <title>English Summary - ملخص اللغة الإنجليزية</title>
-    <link rel="icon" type="image/png" href="/icons/logo.png" />
-    <link rel="apple-touch-icon" href="/icons/logo.png">
-    <meta name="msapplication-TileImage" content="/icons/logo.png">
+    <title>Al-Fawaris English</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" />
+    <link rel="apple-touch-icon" href="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
-    <style>
-      #installBtn {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 9999;
-        background: #4f46e5;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 9999px;
-        font-weight: 900;
-        box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-        border: none;
-        cursor: pointer;
-        font-family: system-ui, -apple-system, sans-serif;
-        animation: bounce 2s infinite;
-      }
-      @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
-        40% {transform: translateX(-50%) translateY(-10px);}
-        60% {transform: translateX(-50%) translateY(-5px);}
-      }
-    </style>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Al-Fawaris">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script>
+      // Capture beforeinstallprompt as early as possible
+      window.deferredPrompt = null;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        window.deferredPrompt = e;
+        console.log('✅ PWA Install Prompt captured');
+        // If the UI is already loaded, show the button
+        const btn = document.getElementById('installBtn');
+        const container = document.getElementById('installContainer');
+        if (btn && container) {
+          container.style.display = 'flex';
+          btn.style.display = 'flex';
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <button id="installBtn">تثبيت التطبيق 📲</button>
     <script type="module" src="/src/main.tsx"></script>
     
+    <div id="installContainer" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;flex-direction:column;align-items:flex-end;gap:10px;">
+      <button id="installBtn" style="background-color:#000000;color:white;border:none;padding:12px 24px;border-radius:50px;font-weight:bold;box-shadow:0 4px 15px rgba(0,0,0,0.4);cursor:pointer;font-family:sans-serif;display:flex;align-items:center;gap:8px;">
+        تثبيت التطبيق • Install App
+      </button>
+      <div id="iosInstruction" style="display:none;background-color:white;color:#333;padding:10px 15px;border-radius:15px;font-size:12px;font-weight:bold;box-shadow:0 4px 15px rgba(0,0,0,0.1);border:1px solid #eee;max-width:200px;text-align:center;direction:rtl;">
+        للتثبيت على آيفون: اضغط على <span style="font-size:16px;">⎋</span> ثم "إضافة إلى الشاشة الرئيسية"
+      </div>
+    </div>
+
     <script>
-      let deferredPrompt;
+      const installContainer = document.getElementById('installContainer');
       const installBtn = document.getElementById('installBtn');
+      const iosInstruction = document.getElementById('iosInstruction');
 
-      window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('✅ PWA: beforeinstallprompt event fired');
-        e.preventDefault();
-        deferredPrompt = e;
-        installBtn.style.display = 'block';
-      });
-
-      installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-          console.log('🚀 PWA: Triggering install prompt');
-          deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
-          console.log(`🏠 PWA: User choice outcome: ${outcome}`);
-          deferredPrompt = null;
+      // Check if already installed
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+      
+      if (!isStandalone) {
+        // Show iOS instruction if on iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+          installContainer.style.display = 'flex';
+          iosInstruction.style.display = 'block';
           installBtn.style.display = 'none';
         }
-      });
 
-      window.addEventListener('appinstalled', () => {
-        console.log('🎉 PWA: App installed successfully');
-        installBtn.style.display = 'none';
-      });
+        // If the prompt was already captured, show the button
+        if (window.deferredPrompt) {
+          installContainer.style.display = 'flex';
+          installBtn.style.display = 'flex';
+        }
 
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('✅ PWA: Service Worker Registered', reg.scope))
-            .catch(err => console.error('❌ PWA: Service Worker Error', err));
+        installBtn.addEventListener('click', () => {
+          if (window.deferredPrompt) {
+            window.deferredPrompt.prompt();
+            window.deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+                installContainer.style.display = 'none';
+              }
+              window.deferredPrompt = null;
+            });
+          }
+        });
+
+        window.addEventListener('appinstalled', (evt) => {
+          console.log('✅ App installed successfully');
+          installContainer.style.display = 'none';
         });
       }
-
-      // Check if icons are missing and log it
-      const checkIcon = (url) => {
-        fetch(url, { method: 'HEAD' })
-          .then(res => {
-            if (!res.ok) console.warn(`⚠️ PWA: Icon missing at ${url}`);
-          })
-          .catch(() => console.warn(`⚠️ PWA: Could not check icon at ${url}`));
-      };
-      checkIcon('/icons/logo.png');
-      checkIcon('/manifest.json');
     </script>
   </body>
 </html>
