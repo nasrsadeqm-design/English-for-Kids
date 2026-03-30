@@ -4,7 +4,6 @@ import { ChevronRight, ChevronLeft, CheckCircle2, AlertCircle, Play } from 'luci
 import { GrammarLessonData } from '../types';
 import { BackButton } from './BackButton';
 import { cn } from '../utils';
-import Logo from "./Logo";
 
 interface GrammarLessonProps {
   lesson: GrammarLessonData;

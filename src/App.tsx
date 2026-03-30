@@ -46,7 +46,7 @@ import { allGrammarLessons } from './data/grammar';
 import { situationalWords } from './data/situations';
 import { BackButton } from './components/BackButton';
 
-const LOGO_URL = '/icons/icon-512.png';
+const LOGO_URL = '/icons/logo.png';
 const FALLBACK_LOGO_URL = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
 
 const LogoImage: React.FC<{ className?: string }> = ({ className }) => {
