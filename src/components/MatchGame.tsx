@@ -3,10 +3,14 @@ import { motion } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Word } from '../types';
 import { cn } from '../utils';
+import { Logo } from './Logo';
+import { BackButton } from './BackButton';
 
 interface MatchGameProps {
   words: Word[];
   onComplete: () => void;
+  onBack: () => void;
+  onLogoClick?: () => void;
 }
 
 interface MatchItem {
@@ -16,7 +20,7 @@ interface MatchItem {
   wordId: string;
 }
 
-export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
+export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete, onBack, onLogoClick }) => {
   const [items, setItems] = useState<MatchItem[]>([]);
   const [selected, setSelected] = useState<MatchItem | null>(null);
   const [matchedIds, setMatchedIds] = useState<Set<string>>(new Set());
@@ -55,9 +59,7 @@ export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
       return;
     }
 
-    // Check match
     if (selected.type !== item.type && selected.wordId === item.wordId) {
-      // Match!
       const newMatched = new Set(matchedIds);
       newMatched.add(selected.id);
       newMatched.add(item.id);
@@ -69,7 +71,6 @@ export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
         setTimeout(onComplete, 1500);
       }
     } else {
-      // Wrong match
       setWrongId(item.id);
       setTimeout(() => setWrongId(null), 500);
       setSelected(null);
@@ -77,33 +78,40 @@ export const MatchGame: React.FC<MatchGameProps> = ({ words, onComplete }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-5 w-full max-w-xl mx-auto p-4">
-      {items.map((item) => {
-        const isMatched = matchedIds.has(item.id);
-        const isSelected = selected?.id === item.id;
-        const isWrong = wrongId === item.id;
+    <div className="space-y-8 w-full max-w-xl mx-auto p-4">
+      <div className="flex items-center justify-between px-2">
+        <BackButton onClick={onBack} />
+        <Logo size="small" onClick={onLogoClick} />
+      </div>
 
-        return (
-          <motion.button
-            key={item.id}
-            layout
-            whileHover={!isMatched ? { scale: 1.02 } : {}}
-            whileTap={!isMatched ? { scale: 0.98 } : {}}
-            onClick={() => handleSelect(item)}
-            disabled={isMatched}
-            className={cn(
-              "p-6 h-32 rounded-[2rem] font-black text-2xl transition-all border-4 flex items-center justify-center text-center shadow-sm",
-              isMatched ? "bg-emerald-50 border-emerald-400 text-emerald-600 opacity-40 grayscale" : 
-              isSelected ? "bg-indigo-50 border-indigo-500 text-indigo-700 shadow-lg shadow-indigo-100" :
-              isWrong ? "bg-rose-50 border-rose-500 text-rose-700 animate-shake" :
-              "bg-white border-slate-50 text-slate-700 hover:border-indigo-100 hover:shadow-md"
-            )}
-            dir={item.type === 'arabic' ? 'rtl' : 'ltr'}
-          >
-            {item.text}
-          </motion.button>
-        );
-      })}
+      <div className="grid grid-cols-2 gap-5">
+        {items.map((item) => {
+          const isMatched = matchedIds.has(item.id);
+          const isSelected = selected?.id === item.id;
+          const isWrong = wrongId === item.id;
+
+          return (
+            <motion.button
+              key={item.id}
+              layout
+              whileHover={!isMatched ? { scale: 1.02 } : {}}
+              whileTap={!isMatched ? { scale: 0.98 } : {}}
+              onClick={() => handleSelect(item)}
+              disabled={isMatched}
+              className={cn(
+                "p-6 h-32 rounded-[2rem] font-black text-2xl transition-all border-4 flex items-center justify-center text-center shadow-sm",
+                isMatched ? "bg-emerald-50 border-emerald-400 text-emerald-600 opacity-40 grayscale" : 
+                isSelected ? "bg-indigo-50 border-indigo-500 text-indigo-700 shadow-lg shadow-indigo-100" :
+                isWrong ? "bg-rose-50 border-rose-500 text-rose-700 animate-shake" :
+                "bg-white border-slate-50 text-slate-700 hover:border-indigo-100 hover:shadow-md"
+              )}
+              dir={item.type === 'arabic' ? 'rtl' : 'ltr'}
+            >
+              {item.text}
+            </motion.button>
+          );
+        })}
+      </div>
     </div>
   );
 };

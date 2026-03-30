@@ -3,17 +3,19 @@ import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, XCircle, ChevronRight, ChevronLeft, Trophy, RefreshCw, AlertCircle, RotateCcw } from 'lucide-react';
 import { GrammarQuizQuestion } from '../types';
 import { BackButton } from './BackButton';
+import { Logo } from './Logo';
 import { cn } from '../utils';
 
 interface GrammarQuizProps {
   questions: GrammarQuizQuestion[];
   onComplete: (score: number) => void;
   onBack: () => void;
+  onLogoClick?: () => void;
   backText?: string;
   title?: string;
 }
 
-export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete, onBack, backText = "العودة لقائمة القواعد", title = "تحدي القواعد 🧠" }) => {
+export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete, onBack, onLogoClick, backText = "العودة لقائمة القواعد", title = "تحدي القواعد 🧠" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | boolean | null>(null);
@@ -101,6 +103,7 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
   if (isFinished) {
     return (
       <div className="text-center py-10 md:py-20 space-y-6 md:space-y-8">
+        <Logo size="large" onClick={onLogoClick} className="mx-auto" />
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -342,14 +345,17 @@ export const GrammarQuiz: React.FC<GrammarQuizProps> = ({ questions, onComplete,
   return (
     <div className="space-y-6 md:space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-4 md:gap-6">
-        <BackButton onClick={onBack} />
-        <div className="flex-1 text-right">
-          <h2 className="text-xl md:text-3xl font-black text-slate-800 whitespace-nowrap">{title}</h2>
-          <p className="text-xs md:text-base text-slate-500 font-bold mt-0.5 md:mt-1">
-            السؤال {currentIndex + 1} من {questions.length}
-          </p>
+      <div className="flex items-center justify-between gap-4 md:gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
+          <BackButton onClick={onBack} />
+          <div className="flex-1 text-right">
+            <h2 className="text-xl md:text-3xl font-black text-slate-800 whitespace-nowrap">{title}</h2>
+            <p className="text-xs md:text-base text-slate-500 font-bold mt-0.5 md:mt-1">
+              السؤال {currentIndex + 1} من {questions.length}
+            </p>
+          </div>
         </div>
+        <Logo size="small" onClick={onLogoClick} />
       </div>
 
       {/* Progress */}

@@ -6,25 +6,32 @@ const icon192Url = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
 const icon512Url = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
 const iconsDir = path.join(__dirname, 'public', 'icons');
 
+console.log('🚀 Starting icon download process...');
+console.log(`📂 Icons directory: ${iconsDir}`);
+
 if (!fs.existsSync(iconsDir)) {
+  console.log('📁 Creating icons directory...');
   fs.mkdirSync(iconsDir, { recursive: true });
 }
 
 const download = (url, dest) => {
+  console.log(`⬇️ Downloading ${url} to ${dest}...`);
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(dest);
     https.get(url, (response) => {
       if (response.statusCode !== 200) {
+        console.error(`❌ Failed to download ${url}: ${response.statusCode}`);
         reject(new Error(`Failed to download ${url}: ${response.statusCode}`));
         return;
       }
       response.pipe(file);
       file.on('finish', () => {
         file.close();
-        console.log(`Downloaded ${dest}`);
+        console.log(`✅ Downloaded ${dest}`);
         resolve();
       });
     }).on('error', (err) => {
+      console.error(`❌ Error downloading ${url}:`, err.message);
       fs.unlink(dest, () => {});
       reject(err);
     });

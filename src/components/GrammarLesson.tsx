@@ -3,15 +3,17 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronRight, ChevronLeft, CheckCircle2, AlertCircle, Play } from 'lucide-react';
 import { GrammarLessonData } from '../types';
 import { BackButton } from './BackButton';
+import { Logo } from './Logo';
 import { cn } from '../utils';
 
 interface GrammarLessonProps {
   lesson: GrammarLessonData;
   onComplete: () => void;
   onBack: () => void;
+  onLogoClick?: () => void;
 }
 
-export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete, onBack }) => {
+export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete, onBack, onLogoClick }) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   const handleNext = () => {
@@ -34,19 +36,22 @@ export const GrammarLesson: React.FC<GrammarLessonProps> = ({ lesson, onComplete
   return (
     <div className="space-y-6 md:space-y-8">
       {/* Header */}
-      <div className="flex items-center gap-4 md:gap-6">
-        <BackButton onClick={onBack} />
-        <div className="flex-1 text-right">
-          <h2 className="text-lg md:text-2xl font-black text-slate-800 leading-tight">
-            {lesson.title.split('(')[0].trim()}
-          </h2>
-          {lesson.title.includes('(') && (
-            <p className="text-xs md:text-sm font-bold text-indigo-600 mt-0.5">
-              {lesson.title.split('(')[1].replace(')', '').trim()}
-            </p>
-          )}
-          <p className="text-[10px] md:text-sm text-slate-500 font-bold mt-1">{lesson.description}</p>
+      <div className="flex items-center justify-between gap-4 md:gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
+          <BackButton onClick={onBack} />
+          <div className="flex-1 text-right">
+            <h2 className="text-lg md:text-2xl font-black text-slate-800 leading-tight">
+              {lesson.title.split('(')[0].trim()}
+            </h2>
+            {lesson.title.includes('(') && (
+              <p className="text-xs md:text-sm font-bold text-indigo-600 mt-0.5">
+                {lesson.title.split('(')[1].replace(')', '').trim()}
+              </p>
+            )}
+            <p className="text-[10px] md:text-sm text-slate-500 font-bold mt-1">{lesson.description}</p>
+          </div>
         </div>
+        <Logo size="small" onClick={onLogoClick} />
       </div>
 
       {/* Progress Bar */}

@@ -39,12 +39,29 @@ import {
 } from './utils/activation';
 import { db, auth } from './firebase';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { signInWithPopup, GoogleAuthProvider, browserPopupRedirectResolver } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { GrammarLesson } from './components/GrammarLesson';
 import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
 import { situationalWords } from './data/situations';
 import { BackButton } from './components/BackButton';
+
+const LOGO_URL = '/icons/icon-512.png';
+const FALLBACK_LOGO_URL = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
+
+const LogoImage: React.FC<{ className?: string }> = ({ className }) => {
+  const [src, setSrc] = useState(LOGO_URL);
+  return (
+    <img 
+      src={src} 
+      alt="Al-Fawaris Logo" 
+      className={className}
+      referrerPolicy="no-referrer"
+      draggable="false"
+      onError={() => setSrc(FALLBACK_LOGO_URL)}
+    />
+  );
+};
 
 interface FlashcardViewProps {
   words: Word[];
@@ -200,7 +217,7 @@ export default function App() {
       const provider = new GoogleAuthProvider();
       provider.setCustomParameters({ prompt: 'select_account' });
       
-      const result = await signInWithPopup(auth, provider, browserPopupRedirectResolver);
+      const result = await signInWithPopup(auth, provider);
       
       // Double checking email for safety
       if (result.user.email === 'nasrsadeqm@gmail.com') {
@@ -213,7 +230,10 @@ export default function App() {
       }
     } catch (err: any) {
       console.error('Admin Login Error:', err);
-      if (err.code === 'auth/popup-blocked') {
+      if (err.code === 'auth/popup-closed-by-user') {
+        // User closed the popup, don't show a scary error, just reset loading
+        setAdminError('');
+      } else if (err.code === 'auth/popup-blocked') {
         setAdminError('تم حظر النافذة المنبثقة. يرجى الضغط على أيقونة "القفل" أو "السماح بالمنبثقات" في شريط عنوان المتصفح ثم المحاولة مرة أخرى.');
       } else if (err.code === 'auth/unauthorized-domain') {
         setAdminError('هذا النطاق (Domain) غير مصرح له بتسجيل الدخول في Firebase. يرجى إضافة رابط Netlify إلى قائمة النطاقات المصرح بها في Firebase Console.');
@@ -403,26 +423,15 @@ export default function App() {
 
   const renderActivation = () => (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-indigo-50 to-white">
-      <motion.div 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+      <div 
         className="w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl p-8 sm:p-12 border-2 border-indigo-50 text-center space-y-8"
       >
-          <motion.div 
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 100 }}
+          <div 
             className="w-24 h-24 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <img 
-              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
-              alt="Al-Fawaris Logo" 
-              className="w-full h-full object-contain drop-shadow-2xl"
-              referrerPolicy="no-referrer"
-              draggable="false"
-            />
-          </motion.div>
+            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+          </div>
         
         <div className="space-y-2">
           <h2 className="text-3xl font-black text-slate-800">تفعيل الكتاب</h2>
@@ -483,7 +492,7 @@ export default function App() {
           * هذا الكود صالح لجهاز واحد فقط.<br/>
           * في حال فقدان الكود يرجى التواصل مع الأستاذ.
         </p>
-      </motion.div>
+      </div>
     </div>
   );
 
@@ -597,29 +606,18 @@ export default function App() {
 
   const renderLanding = () => (
     <div className="min-h-screen flex items-center justify-center p-4 bg-slate-50">
-      <motion.div 
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+      <div 
         className="w-full max-w-lg min-h-[580px] sm:aspect-[3/4.2] bg-indigo-600 rounded-[2.5rem] sm:rounded-[3rem] shadow-xl relative overflow-hidden flex flex-col items-center justify-between p-8 sm:p-14 text-white border-[10px] sm:border-[16px] border-indigo-700"
       >
         {/* Removed glowing circles for matte look */}
         
         <div className="relative z-10 text-center space-y-6 sm:space-y-8 w-full">
-          <motion.div 
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 100 }}
+          <div 
             className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <img 
-              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
-              alt="Al-Fawaris Logo" 
-              className="w-full h-full object-contain drop-shadow-2xl"
-              referrerPolicy="no-referrer"
-              draggable="false"
-            />
-          </motion.div>
+            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+          </div>
           
           <div className="space-y-3 sm:space-y-4">
             <div className="space-y-1 flex flex-col items-center">
@@ -673,7 +671,7 @@ export default function App() {
           </p>
         </div>
         <div className="absolute left-0 top-0 bottom-0 w-4 sm:w-6 bg-gradient-to-r from-black/30 to-transparent" />
-      </motion.div>
+      </div>
     </div>
   );
 
@@ -693,20 +691,12 @@ export default function App() {
             <BackButton onClick={handleBack} />
           </div>
           
-          <motion.div 
-            initial={{ scale: 0.5, y: -20 }}
-            animate={{ scale: 1, y: 0 }}
+          <div 
             className="w-28 h-28 md:w-40 md:h-40 flex items-center justify-center mb-1 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <img 
-              src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
-              alt="Al-Fawaris Logo" 
-              className="w-full h-full object-contain drop-shadow-2xl"
-              referrerPolicy="no-referrer"
-              draggable="false"
-            />
-          </motion.div>
+            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+          </div>
           
           <div className="space-y-1">
             <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight whitespace-nowrap">مرحباً بك يا بطل!</h1>
