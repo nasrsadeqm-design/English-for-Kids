@@ -45,23 +45,7 @@ import { GrammarQuiz } from './components/GrammarQuiz';
 import { allGrammarLessons } from './data/grammar';
 import { situationalWords } from './data/situations';
 import { BackButton } from './components/BackButton';
-
-const LOGO_URL = '/icons/logo.png';
-const FALLBACK_LOGO_URL = 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png';
-
-const LogoImage: React.FC<{ className?: string }> = ({ className }) => {
-  const [src, setSrc] = useState(LOGO_URL);
-  return (
-    <img 
-      src={src} 
-      alt="Al-Fawaris Logo" 
-      className={className}
-      referrerPolicy="no-referrer"
-      draggable="false"
-      onError={() => setSrc(FALLBACK_LOGO_URL)}
-    />
-  );
-};
+import Logo from './components/Logo';
 
 interface FlashcardViewProps {
   words: Word[];
@@ -430,7 +414,7 @@ export default function App() {
             className="w-24 h-24 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+            <Logo className="w-full h-full object-contain drop-shadow-2xl" />
           </div>
         
         <div className="space-y-2">
@@ -616,7 +600,7 @@ export default function App() {
             className="w-28 h-28 sm:w-40 sm:h-40 mx-auto flex items-center justify-center mb-2 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+            <Logo className="w-full h-full object-contain drop-shadow-2xl" />
           </div>
           
           <div className="space-y-3 sm:space-y-4">
@@ -695,7 +679,7 @@ export default function App() {
             className="w-28 h-28 md:w-40 md:h-40 flex items-center justify-center mb-1 cursor-pointer active:scale-95 transition-transform"
             onPointerDown={handleLogoClick}
           >
-            <LogoImage className="w-full h-full object-contain drop-shadow-2xl" />
+            <Logo className="w-full h-full object-contain drop-shadow-2xl" />
           </div>
           
           <div className="space-y-1">
