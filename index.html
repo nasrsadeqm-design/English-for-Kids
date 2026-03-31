@@ -17,15 +17,16 @@
       // Capture beforeinstallprompt as early as possible
       window.deferredPrompt = null;
       window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
+        // Stash the event so it can be triggered later.
         window.deferredPrompt = e;
         console.log('✅ PWA Install Prompt captured');
-        // If the UI is already loaded, show the button
-        const btn = document.getElementById('installBtn');
-        const container = document.getElementById('installContainer');
-        if (btn && container) {
-          container.style.display = 'flex';
-          btn.style.display = 'flex';
+        
+        // Show the install UI
+        const installContainer = document.getElementById('installContainer');
+        if (installContainer) {
+          installContainer.style.display = 'flex';
         }
       });
     </script>
@@ -34,12 +35,59 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <div id="installContainer" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;flex-direction:column;align-items:flex-end;gap:10px;">
-      <button id="installBtn" style="background-color:#000000;color:white;border:none;padding:12px 24px;border-radius:50px;font-weight:bold;box-shadow:0 4px 15px rgba(0,0,0,0.4);cursor:pointer;font-family:sans-serif;display:flex;align-items:center;gap:8px;">
-        تثبيت التطبيق • Install App
+    <!-- Professional PWA Install Banner -->
+    <div id="installContainer" style="display:none; position:fixed; bottom:0; left:0; right:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); padding:20px; border-top:1px solid #eee; z-index:99999; flex-direction:column; align-items:center; gap:15px; box-shadow:0 -10px 25px rgba(0,0,0,0.1); border-radius:25px 25px 0 0; animation: slideUp 0.5s ease-out; font-family: 'Inter', sans-serif;">
+      <style>
+        @keyframes slideUp {
+          from { transform: translateY(100%); }
+          to { transform: translateY(0); }
+        }
+        .install-btn {
+          background: linear-gradient(135deg, #000000 0%, #333333 100%);
+          color: white;
+          border: none;
+          padding: 14px 32px;
+          border-radius: 16px;
+          font-weight: 700;
+          font-size: 16px;
+          cursor: pointer;
+          width: 100%;
+          max-width: 300px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .install-btn:active {
+          transform: scale(0.98);
+        }
+        .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          background: none;
+          border: none;
+          font-size: 20px;
+          color: #999;
+          cursor: pointer;
+          padding: 5px;
+        }
+      </style>
+      <button class="close-btn" onclick="document.getElementById('installContainer').style.display='none'">✕</button>
+      <div style="display:flex; align-items:center; gap:12px; width:100%; max-width:300px;">
+        <img src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" style="width:48px; height:48px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);" alt="Logo">
+        <div style="flex:1;">
+          <div style="font-weight:800; font-size:16px; color:#000;">Al-Fawaris English</div>
+          <div style="font-size:12px; color:#666;">ثبت التطبيق للوصول السريع</div>
+        </div>
+      </div>
+      <button id="installBtn" class="install-btn">
+        تثبيت التطبيق • Install
       </button>
-      <div id="iosInstruction" style="display:none;background-color:white;color:#333;padding:10px 15px;border-radius:15px;font-size:12px;font-weight:bold;box-shadow:0 4px 15px rgba(0,0,0,0.1);border:1px solid #eee;max-width:200px;text-align:center;direction:rtl;">
-        للتثبيت على آيفون: اضغط على <span style="font-size:16px;">⎋</span> ثم "إضافة إلى الشاشة الرئيسية"
+      <div id="iosInstruction" style="display:none; font-size:13px; color:#444; text-align:center; direction:rtl; line-height:1.5;">
+        للتثبيت على آيفون: اضغط على أيقونة المشاركة <span style="font-size:18px; vertical-align:middle;">⎋</span> ثم اختر <b>"إضافة إلى الشاشة الرئيسية"</b>
       </div>
     </div>
 
@@ -52,30 +100,40 @@
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
       
       if (!isStandalone) {
-        // Show iOS instruction if on iOS
+        // Detect iOS
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        
+        // Show banner as soon as possible
+        const showBanner = () => {
+          if (isIOS) {
+            installContainer.style.display = 'flex';
+            iosInstruction.style.display = 'block';
+            installBtn.style.display = 'none';
+          } else if (window.deferredPrompt) {
+            installContainer.style.display = 'flex';
+          }
+        };
+
+        // Check every 500ms if prompt is available (for Android)
+        const checkPrompt = setInterval(() => {
+          if (window.deferredPrompt) {
+            showBanner();
+            clearInterval(checkPrompt);
+          }
+        }, 500);
+
+        // Also show for iOS immediately
         if (isIOS) {
-          installContainer.style.display = 'flex';
-          iosInstruction.style.display = 'block';
-          installBtn.style.display = 'none';
+          showBanner();
         }
 
-        // If the prompt was already captured, show the button
-        if (window.deferredPrompt) {
-          installContainer.style.display = 'flex';
-          installBtn.style.display = 'flex';
-        }
-
-        installBtn.addEventListener('click', () => {
+        installBtn.addEventListener('click', async () => {
           if (window.deferredPrompt) {
             window.deferredPrompt.prompt();
-            window.deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-                installContainer.style.display = 'none';
-              }
-              window.deferredPrompt = null;
-            });
+            const { outcome } = await window.deferredPrompt.userChoice;
+            console.log(`User response to the install prompt: ${outcome}`);
+            window.deferredPrompt = null;
+            installContainer.style.display = 'none';
           }
         });
 
