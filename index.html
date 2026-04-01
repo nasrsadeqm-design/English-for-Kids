@@ -23,11 +23,17 @@
         window.deferredPrompt = e;
         console.log('✅ PWA Install Prompt captured');
         
-        // Show the install UI
-        const installContainer = document.getElementById('installContainer');
-        if (installContainer) {
-          installContainer.style.display = 'flex';
+        // Trigger display immediately when event fires
+        if (typeof showPWAInstallBanner === 'function') {
+          showPWAInstallBanner();
         }
+      });
+
+      // Handle app installed event
+      window.addEventListener('appinstalled', (evt) => {
+        console.log('✅ App installed successfully');
+        const installContainer = document.getElementById('installContainer');
+        if (installContainer) installContainer.style.display = 'none';
       });
     </script>
   </head>
@@ -89,59 +95,53 @@
       <div id="iosInstruction" style="display:none; font-size:13px; color:#444; text-align:center; direction:rtl; line-height:1.5;">
         للتثبيت على آيفون: اضغط على أيقونة المشاركة <span style="font-size:18px; vertical-align:middle;">⎋</span> ثم اختر <b>"إضافة إلى الشاشة الرئيسية"</b>
       </div>
+      <div id="androidManualInstruction" style="display:none; font-size:13px; color:#444; text-align:center; direction:rtl; line-height:1.5;">
+        للتثبيت: اضغط على النقاط الثلاث <span style="font-size:18px; vertical-align:middle;">⋮</span> في المتصفح ثم اختر <b>"تثبيت التطبيق"</b>
+      </div>
     </div>
 
     <script>
-      const installContainer = document.getElementById('installContainer');
-      const installBtn = document.getElementById('installBtn');
-      const iosInstruction = document.getElementById('iosInstruction');
+      function showPWAInstallBanner() {
+        const installContainer = document.getElementById('installContainer');
+        const installBtn = document.getElementById('installBtn');
+        const iosInstruction = document.getElementById('iosInstruction');
+        const androidManualInstruction = document.getElementById('androidManualInstruction');
 
-      // Check if already installed
-      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-      
-      if (!isStandalone) {
-        // Detect iOS
+        // Check if already installed
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        if (isStandalone) return;
+
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        
-        // Show banner as soon as possible
-        const showBanner = () => {
-          if (isIOS) {
-            installContainer.style.display = 'flex';
-            iosInstruction.style.display = 'block';
-            installBtn.style.display = 'none';
-          } else if (window.deferredPrompt) {
-            installContainer.style.display = 'flex';
-          }
-        };
 
-        // Check every 500ms if prompt is available (for Android)
-        const checkPrompt = setInterval(() => {
-          if (window.deferredPrompt) {
-            showBanner();
-            clearInterval(checkPrompt);
-          }
-        }, 500);
-
-        // Also show for iOS immediately
         if (isIOS) {
-          showBanner();
-        }
-
-        installBtn.addEventListener('click', async () => {
+          installContainer.style.display = 'flex';
+          iosInstruction.style.display = 'block';
+          installBtn.style.display = 'none';
+        } else {
+          installContainer.style.display = 'flex';
           if (window.deferredPrompt) {
-            window.deferredPrompt.prompt();
-            const { outcome } = await window.deferredPrompt.userChoice;
-            console.log(`User response to the install prompt: ${outcome}`);
-            window.deferredPrompt = null;
-            installContainer.style.display = 'none';
+            installBtn.style.display = 'flex';
+            androidManualInstruction.style.display = 'none';
+          } else {
+            // Fallback if browser is slow to fire the event
+            installBtn.style.display = 'none';
+            androidManualInstruction.style.display = 'block';
           }
-        });
-
-        window.addEventListener('appinstalled', (evt) => {
-          console.log('✅ App installed successfully');
-          installContainer.style.display = 'none';
-        });
+        }
       }
+
+      // Force show after 1.5 seconds regardless of events
+      setTimeout(showPWAInstallBanner, 1500);
+
+      document.getElementById('installBtn').addEventListener('click', async () => {
+        if (window.deferredPrompt) {
+          window.deferredPrompt.prompt();
+          const { outcome } = await window.deferredPrompt.userChoice;
+          console.log(`User response to the install prompt: ${outcome}`);
+          window.deferredPrompt = null;
+          document.getElementById('installContainer').style.display = 'none';
+        }
+      });
     </script>
   </body>
 </html>
