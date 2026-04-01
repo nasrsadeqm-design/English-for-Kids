@@ -12,12 +12,13 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg', 'icons/*.png'],
         filename: 'manifest.json',
         manifest: {
           name: 'Al-Fawaris English',
           short_name: 'Al-Fawaris',
-          description: 'تطبيق الفوارس لتعلم اللغة الإنجليزية',
+          description: 'تطبيق الفوارس لتعلم اللغة الإنجليزية - تجربة تعليمية متكاملة',
+          categories: ['education', 'learning'],
           theme_color: '#4f46e5',
           background_color: '#ffffff',
           display: 'standalone',
@@ -26,25 +27,25 @@ export default defineConfig(({ mode }) => {
           start_url: '/',
           icons: [
             {
-              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
+              src: '/icons/icon-192.png',
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any'
             },
             {
-              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
+              src: '/icons/icon-512.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any'
             },
             {
-              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
+              src: '/icons/icon-192.png',
               sizes: '192x192',
               type: 'image/png',
               purpose: 'maskable'
             },
             {
-              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
+              src: '/icons/icon-512.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable'

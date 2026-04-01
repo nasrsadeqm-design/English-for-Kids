@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#000000" />
     <title>Al-Fawaris English</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" />
-    <link rel="apple-touch-icon" href="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png">
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-512.png">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -83,7 +83,7 @@
       </style>
       <button class="close-btn" onclick="document.getElementById('installContainer').style.display='none'">✕</button>
       <div style="display:flex; align-items:center; gap:12px; width:100%; max-width:300px;">
-        <img src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" style="width:48px; height:48px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);" alt="Logo">
+        <img src="/icons/icon-192.png" style="width:48px; height:48px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);" alt="Logo">
         <div style="flex:1;">
           <div style="font-weight:800; font-size:16px; color:#000;">Al-Fawaris English</div>
           <div style="font-size:12px; color:#666;">ثبت التطبيق للوصول السريع</div>
@@ -109,7 +109,10 @@
 
         // Check if already installed
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-        if (isStandalone) return;
+        if (isStandalone) {
+          installContainer.style.display = 'none';
+          return;
+        }
 
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -117,8 +120,10 @@
           installContainer.style.display = 'flex';
           iosInstruction.style.display = 'block';
           installBtn.style.display = 'none';
+          androidManualInstruction.style.display = 'none';
         } else {
           installContainer.style.display = 'flex';
+          iosInstruction.style.display = 'none';
           if (window.deferredPrompt) {
             installBtn.style.display = 'flex';
             androidManualInstruction.style.display = 'none';
@@ -130,8 +135,21 @@
         }
       }
 
-      // Force show after 1.5 seconds regardless of events
-      setTimeout(showPWAInstallBanner, 1500);
+      // Force show after 2 seconds regardless of events to ensure visibility
+      setTimeout(showPWAInstallBanner, 2000);
+
+      // Re-check every 3 seconds if not installed and prompt not yet available
+      const checkInterval = setInterval(() => {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        if (isStandalone) {
+          clearInterval(checkInterval);
+          return;
+        }
+        if (window.deferredPrompt) {
+          showPWAInstallBanner();
+          clearInterval(checkInterval);
+        }
+      }, 3000);
 
       document.getElementById('installBtn').addEventListener('click', async () => {
         if (window.deferredPrompt) {
