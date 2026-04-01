@@ -19,33 +19,33 @@ export default defineConfig(({ mode }) => {
           short_name: 'Al-Fawaris',
           description: 'تطبيق الفوارس لتعلم اللغة الإنجليزية - تجربة تعليمية متكاملة',
           categories: ['education', 'learning'],
-          theme_color: '#4f46e5',
+          theme_color: '#000000',
           background_color: '#ffffff',
           display: 'standalone',
-          id: '/',
+          id: 'al-fawaris-english-pwa',
           orientation: 'portrait',
           start_url: '/',
           icons: [
             {
-              src: '/icons/icon-192.png',
+              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any'
             },
             {
-              src: '/icons/icon-512.png',
+              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any'
             },
             {
-              src: '/icons/icon-192.png',
+              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
               sizes: '192x192',
               type: 'image/png',
               purpose: 'maskable'
             },
             {
-              src: '/icons/icon-512.png',
+              src: 'https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png',
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable'

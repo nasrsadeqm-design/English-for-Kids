@@ -5,7 +5,7 @@ export function Logo({ className, size, onClick }: { className?: string, size?: 
 
   return (
     <img 
-      src="/icons/logo.png" 
+      src="https://i.ibb.co/ZzDyvmt0/1769711064-removebg-preview.png" 
       alt="logo" 
       className={className}
       onClick={onClick}
